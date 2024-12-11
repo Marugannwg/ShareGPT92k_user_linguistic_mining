@@ -1,0 +1,178 @@
+{
+  "id": "Zp9u0ow_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "A group of 11 teachers are attending a school fundraiser. One teacher is planning to take $300 donations while the rest of the group would contribute $200 each. If the grand prize for the year was a $10,000 car, how much money will teachers need to spend to raise the funds for the car?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.892,
+        "pos": 0.108,
+        "compound": 0.743
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 61,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.03278688524590164,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 61
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.333333333333332,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.896551724137931
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBG": 2,
+            "VBZ": 1,
+            "VB": 5,
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The teacher planning to take $300 donations will raise $300 \\* 11 = $<<300*11=3300>>3,300\nThe rest of the group will raise $200 \\* 10 = $<<200*10=2000>>2,000\nIn total, the teachers will raise $3,300 + $2,000 = $<<3300+2000=5300>>5,300.\nTo raise the funds for the car, the teachers will need to raise an additional $10,000 - $5,300 = $<<10000-5300=4700>>4,700. Answer: \\boxed{4700}.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 105,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.06666666666666667,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 105
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 35.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7037037037037037
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBD": 7,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.3715,
+    "pos": 0.054,
+    "neu": 0.946,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 9,
+    "adj_adv_ratio": 0.05421686746987952,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 166
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 27.666666666666664,
+      "clause_complexity": 0.3333333333333333,
+      "vocabulary_richness": 0.8001277139208174
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 0,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 1,
+        "VBG": 2,
+        "VBZ": 1,
+        "VB": 12,
+        "VBD": 8,
+        "VBN": 1
+      },
+      "named_entities": {}
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 166
+  }
+}

@@ -1,0 +1,728 @@
+{
+  "id": "FQi5DlJ_57",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "The reason you are getting the same index on every card is because of the way you are using the `for` loop to iterate through the `searchResults` array.\nIn your for loop, you define `user` as the current element in the `searchResults` array, and then you bind the click event to the `.View` class which will be present in each card.\n\nWhen the loop finishes running, `user` references the last element in the `searchResults` array.\n\nSo when you click on the 'view film details' button, the event will reference the `user` variable, which is the last element in the `searchResults` array, which is the same for every card.\n\nYou can resolve this by binding the click event inside the for loop and passing the current `user` to the event.\n```css\nfor (var i = 0; i < searchResults.length; i++) {\n    var user = searchResults[i];\n    var card = `<div class=\"card\" style=\"margin-top: 2rem;\">\n                            <div class=\"card-body\">\n                                <p class=\"card-text\">` + user.title + `</p>\n                            </div>\n                            <div class=\"card-footer text-muted\">\n                                ` + user.release_year + `\n                            </div>\n                            <div class=\"card-footer text-muted\">\n                                ` + user.rating + `\n                            </div>\n                            <div class=\"card-footer text-muted\">\n                                <a href=\"filmDetails.html\" class=\"btn btn-primary View\">View Film Details</a>\n                            </div>\n                        </div>`;\n    $(\"#posts\").append(card);\n    $(\".View\").on(\"click\", {user:user}, function(event) {\n        sessionStorage.setItem(\"selectedFilm\", JSON.stringify(event.data.user));\n    });\n}\n```\nIn this way you are passing the correct `user` to the event, so that the correct data is stored in the session storage.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.988,
+        "pos": 0.012,
+        "compound": 0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 8,
+        "token_count": 376,
+        "self_ref_ratio": 0.010638297872340425,
+        "second_person_ratio": 0.02127659574468085
+      },
+      "lexical_features": {
+        "adj_adv_freq": 40,
+        "adj_adv_ratio": 0.10638297872340426,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.010638297872340425,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.02127659574468085,
+        "token_count": 376
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 62.666666666666664,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.5104166666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 12,
+            "VBG": 6,
+            "VBZ": 6,
+            "VB": 4,
+            "VBD": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I am still only getting the same index data when I press view film details",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 15,
+        "self_ref_ratio": 0.13333333333333333,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.2,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.13333333333333333,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "This is likely because you are defining the on click function inside the for loop. The for loop assigns the same on click function to every \"View Film Details\" button, and so when the function is called, it references the last value of the user variable, which is the last value of the loop. To fix this, you can move the on click function outside of the for loop, and use the $(this) selector to reference the specific button that was clicked.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.943,
+        "pos": 0.057,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 95,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.021052631578947368
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.06315789473684211,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.021052631578947368,
+        "token_count": 95
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 31.666666666666668,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.7027027027027027
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBP": 2,
+            "VBG": 1,
+            "VBN": 2,
+            "VB": 4,
+            "VBD": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "how would the code look like for that",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.737,
+        "pos": 0.263,
+        "compound": 0.3612
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 8,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 8
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is an example of how the code would look like:\n```php\n<script>\n$(document).ready(function () {\n    var searchResults = JSON.parse(sessionStorage.getItem(\"searchResults\"));\n    for (var i = 0; i < searchResults.length; i++) {\n        var user = searchResults[i];\n        var card = `<div class=\"card\" style=\"margin-top: 2rem;\">\n                        <div class=\"card-body\">\n                            <p class=\"card-text\">` + user.title + `</p>\n                        </div>\n                        <div class=\"card-footer text-muted\">\n                            ` + user.release_year + `\n                        </div>\n                        <div class=\"card-footer text-muted\">\n                            ` + user.rating + `\n                        </div>\n                        <div class=\"card-footer text-muted\">\n                            <button class=\"btn btn-primary View\" data-index=\"` + i + `\">View Film Details</button>\n                        </div>\n                    </div>`;\n        $(\"#posts\").append(card);\n    }\n\n    $(\".View\").on(\"click\", function() {\n        var index = $(this).attr(\"data-index\");\n        sessionStorage.setItem(\"selectedFilm\", JSON.stringify(searchResults[index]));\n        window.location.assign(\"filmDetails.html\");\n    });\n});\n</script>\n```\nIn this example, for each iteration of the for loop, we add a button with the class \"View\" and a custom attribute \"data-index\" to store the index of the film. We then attach a click event to all elements with the class \"View\", which retrieves the value of the \"data-index\" attribute and stores the corresponding film object in session storage. This way when the button is clicked, it will store the correct film object in the session storage and redirect to the \"filmDetails.html\" page.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.974,
+        "pos": 0.026,
+        "compound": 0.5994
+      },
+      "core_lexical": {
+        "self_ref_freq": 7,
+        "second_person_freq": 2,
+        "token_count": 354,
+        "self_ref_ratio": 0.01977401129943503,
+        "second_person_ratio": 0.005649717514124294
+      },
+      "lexical_features": {
+        "adj_adv_freq": 30,
+        "adj_adv_ratio": 0.0847457627118644,
+        "self_ref_freq": 7,
+        "self_ref_ratio": 0.01977401129943503,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.005649717514124294,
+        "token_count": 354
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 118.0,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.6
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 5,
+            "VBP": 9,
+            "VBD": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "in the previous answer you provided, can you explain this does $(\".View\").on(\"click\", function() {\n var index = $(this).attr(\"data-index\");\n sessionStorage.setItem(\"selectedFilm\", JSON.stringify(searchResults[index]));\n window.location.assign(\"filmDetails.html\");",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 64,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.03125
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.03125,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.03125,
+        "token_count": 64
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 64.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9090909090909091
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 2,
+            "VB": 2,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, in this code block, we are first selecting all elements with the class \"View\" and attaching a click event listener to them using the jQuery method .on(\"click\", function() {...}).\n\nWhen any of the elements are clicked, the function inside the .on(\"click\", function() {...}) block is executed.\n\nInside the function, we first declare a variable named \"index\" and set it equal to the value of the \"data-index\" attribute of the clicked element. The .attr(\"data-index\") is a jQuery method that gets the value of the specified attribute of the selected element.\n\nWe then use the sessionStorage.setItem(\"selectedFilm\", JSON.stringify(searchResults[index])) method to store the selected film details in the session storage using the index variable as the index of the selected film in the searchResults array.\n\nFinally, we use the window.location.assign(\"filmDetails.html\") method to navigate to the filmDetails.html page. This is similar to using the href attribute in an anchor tag, it will change the current page to the specified url.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.035,
+        "neu": 0.921,
+        "pos": 0.043,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 4,
+        "token_count": 217,
+        "self_ref_ratio": 0.018433179723502304,
+        "second_person_ratio": 0.018433179723502304
+      },
+      "lexical_features": {
+        "adj_adv_freq": 14,
+        "adj_adv_ratio": 0.06451612903225806,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.018433179723502304,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.018433179723502304,
+        "token_count": 217
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 31.0,
+          "clause_complexity": 0.14285714285714285,
+          "vocabulary_richness": 0.6172839506172839
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBG": 5,
+            "VBN": 7,
+            "VBZ": 4,
+            "VB": 6
+          },
+          "named_entities": {
+            "ORGANIZATION": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "// Use jQuery to make the AJAX request\n $(document).ready(function () {\n $.ajax({\n type: \"GET\",\n url: \"http://localhost:8081/category\",\n contentType: \"application/json; charset=utf-8\",\n dataType: \"json\",\n success: function (data) {\n console.log(data)\n $(\"#exampleSelect\").append('<option value=\"\" selected disabled hidden>All</option>');\n // Loop through the query results and create an option for each row\n $.each(data, function (i, item) {\n $(\"#exampleSelect\").append('<option value=\"' + item.name + '\">' + item.name + '</option>');\n });\n }\n });\n });\n \n\ngiven the code above how can I make the \"All\" option return a null value when selected",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.852,
+        "pos": 0.148,
+        "compound": 0.9001
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 173,
+        "self_ref_ratio": 0.011560693641618497,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.06358381502890173,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.011560693641618497,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 173
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 173.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.7619047619047619
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBP": 3,
+            "VBN": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "You can change the value of the \"All\" option to null, like this:\n```javascript\n$(\"#exampleSelect\").append('<option value=null selected disabled hidden>All</option>');\n```\nThen, when you check the value of the select option, you can check if it is equal to null and handle it accordingly.\n```javascript\nif (category === null) {\n    // handle \"All\" option being selected\n} else {\n    // handle other options\n}\n```\nKeep in mind that you need to change the corresponding code that uses this option value in the script so it doesn't throw an error when the value is null.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.86,
+        "pos": 0.14,
+        "compound": 0.9073
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 132,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.030303030303030304
+      },
+      "lexical_features": {
+        "adj_adv_freq": 14,
+        "adj_adv_ratio": 0.10606060606060606,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.030303030303030304,
+        "token_count": 132
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 66.0,
+          "clause_complexity": 2.0,
+          "vocabulary_richness": 0.627906976744186
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 10,
+            "VBP": 3,
+            "VBN": 2,
+            "VBZ": 4,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "$(document).ready(function () {\n\n var selectedFilm = JSON.parse(sessionStorage.getItem(\"selectedFilm\"));\n console.log(selectedFilm)\n \n $.ajax({\n type: \"GET\",\n url: \"http://localhost:8081/filmActors\",\n data: {\n film\\_id: selectedFilm.film\\_id\n },\n success: function (data) {\n \n actors = data\n\n // Open a new page with the search results\n //window.open(\"results.php?data=\" + data, \"\\_blank\");\n }\n });\n\n var card = `\n \n <p class=\"card-text\">` + selectedFilm.title + `</p>\n </div>\n\n \n ` + selectedFilm.name + `\n </div>\n\n \n ` + selectedFilm.description + `\n </div>\n\n \n ` + selectedFilm.release\\_year + `\n </div>\n\n \n ` + selectedFilm.rating + `\n </div>\n \n \n </div>`;\n $(\"#posts\").append(card);\n\n }\n\n )\n \n\ngiven the code above how can I loop through the data in actors and display them in a card like the others",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.941,
+        "pos": 0.059,
+        "compound": 0.7351
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 186,
+        "self_ref_ratio": 0.005376344086021506,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.11827956989247312,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.005376344086021506,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 186
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 186.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6944444444444444
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBP": 3,
+            "VBG": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "You can use a for loop to loop through the actors data and create a card for each actor. Inside the for loop, you can create a card element similar to the one you already have for the selectedFilm, but instead of using the properties of selectedFilm, you can use the properties of the current actor.\n\nHere is an example of how you can do this:\n```css\nfor (var i = 0; i < actors.length; i++) {\n    var actor = actors[i];\n    var card = `<div class=\"card\" style=\"margin-top: 2rem;\">\n                  <div class=\"card-body\">\n                      <p class=\"card-text\">` + actor.first_name + ` ` + actor.last_name + `</p>\n                  </div>\n                </div>`;\n    $(\"#posts\").append(card);\n}\n```\nYou can also add more information to the card, like the actor's id, picture, etc.\nYou can also use the jQuery's .append() function to add this card element to the #posts element.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.955,
+        "pos": 0.045,
+        "compound": 0.6542
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 7,
+        "token_count": 207,
+        "self_ref_ratio": 0.01932367149758454,
+        "second_person_ratio": 0.033816425120772944
+      },
+      "lexical_features": {
+        "adj_adv_freq": 17,
+        "adj_adv_ratio": 0.0821256038647343,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.01932367149758454,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.033816425120772944,
+        "token_count": 207
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 51.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.576271186440678
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 6,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 9,
+            "VBP": 7,
+            "VBG": 1,
+            "VBZ": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.47292727272727275,
+    "pos": 0.0720909090909091,
+    "neu": 0.9246363636363637,
+    "neg": 0.003181818181818182
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 159,
+    "adj_adv_ratio": 0.08702791461412152,
+    "self_ref_freq": 24,
+    "self_ref_ratio": 0.013136288998357963,
+    "second_person_freq": 29,
+    "second_person_ratio": 0.015873015873015872,
+    "total_tokens": 1827
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 73.37121212121211,
+      "clause_complexity": 0.512987012987013,
+      "vocabulary_richness": 0.7272746907828757
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 5,
+        "why": 0,
+        "can_could": 13,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 2,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 45,
+        "VBG": 16,
+        "VBZ": 25,
+        "VB": 46,
+        "VBD": 6,
+        "VBN": 17
+      },
+      "named_entities": {
+        "PERSON": 4,
+        "ORGANIZATION": 15
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 11
+    },
+    "turn_count": 11,
+    "total_tokens": 1827
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "id": "2EPgEmd_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Here's a natural language based algorithm to follow to generate a poem paragraph following a rhyming scheme.\n\n-- start --\n\n rhyming scheme : X1 ... XN # each character Xi is called a \"label\"\n\n labels used so far = \\_\n\n | = concatenate\n\n repeat from X1 to XN\n current label ? < current label >\n < current label > in < labels used so far > ? < say yes or no >\n\n if yes :\n last line using < current label > : < say last line >\n ending word of line : < ending word >\n word that rhymes with ending word : < word >\n new poem line ending with < word > : < generate line >\n\n if no :\n list ending words of previous lines : < ending words >\n words that DO NOT RHYME with < ending words > : < word 1 > ... < word k > # generate multiple word examples in place of ...\n best choice among < word 1 > ... < word k > : < word >\n new poem line ending with < word > : < generate line >\n\n < labels used so far > = < labels used so far > | < current label > # example : < labels used so far > = A C D B B C A | B = A C D B B C A B ; do not forget to follow this format\n < go to next label >\n\n-- end --\n\nFollow the algorithm and give me a poem paragraph with the rhyming scheme A B C D E . Write out each instruction before following it and giving the output. Match the template given here as closely as possible (except the comments), especially when doing concatenation. Show the concatenation step. Triple dots ... mean multiple values.Save & SubmitCancel",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.013,
+        "neu": 0.936,
+        "pos": 0.051,
+        "compound": 0.9027
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 324,
+        "self_ref_ratio": 0.0030864197530864196,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 47,
+        "adj_adv_ratio": 0.14506172839506173,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0030864197530864196,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 324
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 40.5,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.46875
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 2
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 6,
+            "VBN": 8,
+            "VB": 9,
+            "VBG": 16,
+            "VBP": 9,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, I'd be happy to generate a poem paragraph using the given algorithm. Here we go:\n\nrhyming scheme : A B C D E\n\nlabels used so far = \\_\n\nA\ncurrent label ? A\n< current label > in < labels used so far > ? no\n\nlist ending words of previous lines :\nwords that DO NOT RHYME with <> : tree ... free ... be ... knee\nbest choice among <tree> ... <free> ... <be> ... <knee> : be\nnew poem line ending with <be> : A be is a word that rhymes with me\n\nlabels used so far = A | B\nB\ncurrent label ? B\n< current label > in < labels used so far > ? no\n\nlist ending words of previous lines : be\nwords that DO NOT RHYME with <be> : know ... grow ... though ... slow\nbest choice among <know> ... <grow> ... <though> ... <slow> : though\nnew poem line ending with <though> : B though I search and wander\n\nlabels used so far = A | B | C\nC\ncurrent label ? C\n< current label > in < labels used so far > ? no\n\nlist ending words of previous lines : be ... though\nwords that DO NOT RHYME with <be> <though> : near ... car ... smear ... bizarre\nbest choice among <near> ... <car> ... <smear> ... <bizarre> : bizarre\nnew poem line ending with <bizarre> : C my journey became quite bizarre\n\nlabels used so far = A | B | C | D\nD\ncurrent label ? D\n< current label > in < labels used so far > ? no\n\nlist ending words of previous lines : be ... though ... bizarre\nwords that DO NOT RHYME with <be> <though> <bizarre> : she ... bay ... lay ... way\nbest choice among <she> ... <bay> ... <lay> ... <way> : way\nnew poem line ending with <way> : D and led me far, far away\n\nlabels used so far = A | B | C | D | E\nE\ncurrent label ? E\n< current label > in < labels used so far > ? no\n\nlist ending words of previous lines : be ... though ... bizarre ... way\nwords that DO NOT RHYME with <be> <though> <bizarre> <way> : try ... pie ... sky ... high\nbest choice among <try> ... <pie> ... <sky> ... <high> : high\nnew poem line ending with <high> : E up to the mountains so high\n\nFinal paragraph:\n\nA be is a word that rhymes with me\nB though I search and wander\nC my journey became quite bizarre\nD and led me far, far away\nE up to the mountains so high",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.079,
+        "neu": 0.855,
+        "pos": 0.066,
+        "compound": 0.609
+      },
+      "core_lexical": {
+        "self_ref_freq": 10,
+        "second_person_freq": 1,
+        "token_count": 541,
+        "self_ref_ratio": 0.018484288354898338,
+        "second_person_ratio": 0.0018484288354898336
+      },
+      "lexical_features": {
+        "adj_adv_freq": 105,
+        "adj_adv_ratio": 0.19408502772643252,
+        "self_ref_freq": 10,
+        "self_ref_ratio": 0.018484288354898338,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0018484288354898336,
+        "token_count": 541
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 45.083333333333336,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.24380165289256198
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 10
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 12,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 23,
+            "VBG": 11,
+            "VBN": 13,
+            "VBP": 13,
+            "VBZ": 8,
+            "VBD": 5
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.7558499999999999,
+    "pos": 0.058499999999999996,
+    "neu": 0.8955,
+    "neg": 0.046
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 152,
+    "adj_adv_ratio": 0.17572254335260115,
+    "self_ref_freq": 11,
+    "self_ref_ratio": 0.012716763005780347,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.0011560693641618498,
+    "total_tokens": 865
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 42.79166666666667,
+      "clause_complexity": 0.25,
+      "vocabulary_richness": 0.356275826446281
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 12
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 12,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 14,
+        "VBN": 21,
+        "VB": 32,
+        "VBG": 27,
+        "VBP": 22,
+        "VBD": 6
+      },
+      "named_entities": {
+        "GPE": 1,
+        "ORGANIZATION": 7
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 865
+  }
+}

@@ -1,0 +1,429 @@
+{
+  "id": "95v8Vce_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Create an SQL Server function that takes:\nAddress (nvarchar 75)\nCity (nvarchar 50)\nState (char(2))\nZip varchar(100)",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.884,
+        "pos": 0.116,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 30,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.06666666666666667,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 30
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 30.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9411764705882353
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "```\nCREATE FUNCTION dbo.GetAddress(\n    @Address nvarchar(75),\n    @City nvarchar(50),\n    @State char(2),\n    @Zip varchar(100)\n)\nRETURNS nvarchar(200)\nAS\nBEGIN\n    DECLARE @FullAddress nvarchar(200)\n    SET @FullAddress = @Address + ', ' + @City + ', ' + @State + ' ' + @Zip\n    RETURN @FullAddress\nEND\n```\nThis function takes four input parameters - `@Address`, `@City`, `@State`, and `@Zip`, and returns a concatenated string of the full address using these inputs, in the format of `Address, City, State Zip`.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.963,
+        "pos": 0.037,
+        "compound": 0.4278
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 134,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.08208955223880597,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 134
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 134.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5961538461538461
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBZ": 2,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "PERSON": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "In the following view:\n```\nALTER VIEW [dbo].[vwSpecSheet] AS\nSELECT \n s.SpecSheetId,\n s.CreatedDate,\n p.ProposalNumber,\n cbu.FirstName + ' ' + cbu.LastName CreatedBy,\n p.[Address] + ' ' + p.[City] + ', ' + p.[State] + ', ' + p.[Zipcode] ProposalAddress,\n p.[BillingAddress] + ' ' + p.[BillingCity] + ', ' + p.[BillingState] + ', ' + p.[BillingZipcode] ProposalBillingAddress,\n fru.FirstName + ' ' + fru.LastName FieldRep,\n spu.FirstName + ' ' + spu.LastName Salesperson\n\nFROM SpecSheet s\n LEFT JOIN dbo.Proposal p ON p.ProposalId = s.ProposalId\n LEFT JOIN dbo.Customer c ON c.CustomerID = s.CustomerId\n INNER JOIN auth.aspnetusers cbu on cbu.userid = s.createdbyuserid\n INNER JOIN auth.aspnetusers fru on fru.userid = s.FieldRepId\n INNER JOIN auth.aspnetusers spu on spu.userid = s.salespersonid\nGO\n```\nInstead of ProposalAddress and ProposalBillingAddress, I want two new columns, Address and Billing Address. If the left join on `Proposal p` yields a result, then use dbo.GetAddress with the respective columns from `p`. Otherwise, do the same thing but for `Customer c`. Do the same thing for Billing Address",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.914,
+        "pos": 0.086,
+        "compound": 0.8585
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 219,
+        "self_ref_ratio": 0.0045662100456621,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 15,
+        "adj_adv_ratio": 0.0684931506849315,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0045662100456621,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 219
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 43.8,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.671875
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 10,
+            "VBZ": 2,
+            "VB": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 14,
+            "PERSON": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "```\nALTER VIEW [dbo].[vwSpecSheet] AS\nSELECT \n    s.SpecSheetId,\n    s.CreatedDate,\n    p.ProposalNumber,\n    cbu.FirstName + ' ' + cbu.LastName CreatedBy,\n    CASE \n        WHEN p.ProposalId IS NOT NULL THEN dbo.GetAddress(p.Address, p.City, p.State, p.Zipcode) \n        ELSE dbo.GetAddress(c.Address, c.City, c.State, c.Zipcode) \n    END AS Address,\n    CASE \n        WHEN p.ProposalId IS NOT NULL THEN dbo.GetAddress(p.BillingAddress, p.BillingCity, p.BillingState, p.BillingZipcode) \n        ELSE dbo.GetAddress(c.BillingAddress, c.BillingCity, c.BillingState, c.BillingZipcode) \n    END AS BillingAddress,\n    fru.FirstName + ' ' + fru.LastName FieldRep,\n    spu.FirstName + ' ' + spu.LastName Salesperson\nFROM SpecSheet s\n    LEFT JOIN dbo.Proposal p ON p.ProposalId = s.ProposalId\n    LEFT JOIN dbo.Customer c ON c.CustomerID = s.CustomerId\n    INNER JOIN auth.aspnetusers cbu on cbu.userid = s.createdbyuserid\n    INNER JOIN auth.aspnetusers fru on fru.userid = s.FieldRepId\n    INNER JOIN auth.aspnetusers spu on spu.userid = s.salespersonid\nGO\n```\nThis will create two new columns \"Address\" and \"BillingAddress\" in the view, the values of these columns will be determined by whether the left join on the Proposal table yields a result or not. If it does, the `dbo.GetAddress` function will be called using the respective columns from the Proposal table, otherwise it will be called using the respective columns from the Customer table.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.848,
+        "pos": 0.152,
+        "compound": 0.9791
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 227,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.04405286343612335,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 227
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 75.66666666666667,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.6212121212121212
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 7,
+            "VBZ": 3,
+            "VB": 4,
+            "VBN": 3,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 16,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Rename \"dbo.GetAddress\" to \"dbo.fnGetAddress\" in the view",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 11,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 11
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "```\nALTER VIEW [dbo].[vwSpecSheet] AS\nSELECT \n    s.SpecSheetId,\n    s.CreatedDate,\n    p.ProposalNumber,\n    cbu.FirstName + ' ' + cbu.LastName CreatedBy,\n    CASE \n        WHEN p.ProposalId IS NOT NULL THEN dbo.fnGetAddress(p.Address, p.City, p.State, p.Zipcode) \n        ELSE dbo.fnGetAddress(c.Address, c.City, c.State, c.Zipcode) \n    END AS Address,\n    CASE \n        WHEN p.ProposalId IS NOT NULL THEN dbo.fnGetAddress(p.BillingAddress, p.BillingCity, p.BillingState, p.BillingZipcode) \n        ELSE dbo.fnGetAddress(c.BillingAddress, c.BillingCity, c.BillingState, c.BillingZipcode) \n    END AS BillingAddress,\n    fru.FirstName + ' ' + fru.LastName FieldRep,\n    spu.FirstName + ' ' + spu.LastName Salesperson\nFROM SpecSheet s\n    LEFT JOIN dbo.Proposal p ON p.ProposalId = s.ProposalId\n    LEFT JOIN dbo.Customer c ON c.CustomerID = s.CustomerId\n    INNER JOIN auth.aspnetusers cbu on cbu.userid = s.createdbyuserid\n    INNER JOIN auth.aspnetusers fru on fru.userid = s.FieldRepId\n    INNER JOIN auth.aspnetusers spu on spu.userid = s.salespersonid\nGO\n```\nThis will update the view by renaming \"dbo.GetAddress\" to \"dbo.fnGetAddress\" in the view, so that the function used in the view will be called \"dbo.fnGetAddress\" instead of \"dbo.GetAddress\".",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.903,
+        "pos": 0.097,
+        "compound": 0.9282
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 190,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.02631578947368421,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 190
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 95.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.6818181818181818
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 6,
+            "VBZ": 2,
+            "VB": 3,
+            "VBG": 1,
+            "VBN": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 14,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.5778,
+    "pos": 0.08133333333333333,
+    "neu": 0.9186666666666667,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 43,
+    "adj_adv_ratio": 0.0530209617755857,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0012330456226880395,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 811
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 64.91111111111111,
+      "clause_complexity": 0.3666666666666667,
+      "vocabulary_richness": 0.752039269962064
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 10,
+        "VBP": 24,
+        "VBG": 4,
+        "VB": 10,
+        "VBN": 5
+      },
+      "named_entities": {
+        "GPE": 4,
+        "ORGANIZATION": 53,
+        "PERSON": 6
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 6
+    },
+    "turn_count": 6,
+    "total_tokens": 811
+  }
+}

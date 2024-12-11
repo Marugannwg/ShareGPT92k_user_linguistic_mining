@@ -1,0 +1,193 @@
+{
+  "id": "ZJLQDHO_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Create a blog article that's catered towards developers and explains how Telesign's Phone ID Contact product can be used to check the name associated with a phone number while new users are signing up and compare that value to the name they entered while signing up. Explain how this is helpful when trying to understand whether new users are fraudsters or legitimate actors. Include code samples for how Phone ID can be used to cleanse phone numbers in the python programming language.\n\nAt the end of the blog article, encourage readers to sign up for their own Telesign trial account, where they can try Phone ID for free and get access to their own API keys. Include a link and call to action to this page: https://portal.telesign.com/signup",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.025,
+        "neu": 0.866,
+        "pos": 0.11,
+        "compound": 0.8689
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 138,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.057971014492753624,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 138
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 27.6,
+          "clause_complexity": 0.6,
+          "vocabulary_richness": 0.7887323943661971
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 11,
+            "VBZ": 3,
+            "VBN": 3,
+            "VBP": 3,
+            "VBG": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "PERSON": 5,
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "As developers, we know how important it is to ensure the security and integrity of our user data. One way to do this is by using Telesign's Phone ID Contact product to verify the authenticity of new users during the sign-up process.\n\nPhone ID Contact allows you to check the name associated with a phone number and compare it to the name entered by the user during sign-up. This can be incredibly helpful in identifying potential fraudsters and ensuring that only legitimate actors are accessing your platform.\n\nHere's an example of how to use Phone ID Contact in Python to cleanse phone numbers and check for the associated name:\n```\nimport telesign\n\n# Your Telesign API credentials\ncustomer_id = \"YOUR_CUSTOMER_ID\"\napi_key = \"YOUR_API_KEY\"\n\n# Instantiate the Telesign client\nclient = telesign.PhoneId(customer_id, api_key)\n\n# The phone number to check\nphone_number = \"+11234567890\"\n\n# Make the Phone ID Contact request\nresponse = client.contact(phone_number)\n\n# Extract the name from the response\nname = response[\"name\"]\n\n# Compare the extracted name to the name entered by the user during sign-up\nif name != \"John Smith\":\n    print(\"The name associated with this phone number does not match the name entered during sign-up. Potential fraud detected.\")\nelse:\n    print(\"The name associated with this phone number matches the name entered during sign-up. User is likely legitimate.\")\n```\nBy using Phone ID Contact in this way, you can easily and quickly verify the authenticity of new users and prevent potential fraud. And with Telesign, you can try Phone ID for free with a trial account. Simply sign up here: <https://portal.telesign.com/signup> and start using Phone ID Contact to protect your platform and your users today.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.037,
+        "neu": 0.863,
+        "pos": 0.099,
+        "compound": 0.8881
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 9,
+        "token_count": 330,
+        "self_ref_ratio": 0.0030303030303030303,
+        "second_person_ratio": 0.02727272727272727
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.08181818181818182,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0030303030303030303,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.02727272727272727,
+        "token_count": 330
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 30.0,
+          "clause_complexity": 0.09090909090909091,
+          "vocabulary_richness": 0.5172413793103449
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBZ": 8,
+            "VB": 15,
+            "VBG": 6,
+            "VBN": 7,
+            "VBD": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "PERSON": 9,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.8785000000000001,
+    "pos": 0.10450000000000001,
+    "neu": 0.8645,
+    "neg": 0.031
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 35,
+    "adj_adv_ratio": 0.07478632478632478,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.002136752136752137,
+    "second_person_freq": 9,
+    "second_person_ratio": 0.019230769230769232,
+    "total_tokens": 468
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 28.8,
+      "clause_complexity": 0.34545454545454546,
+      "vocabulary_richness": 0.652986886838271
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 5,
+        "why": 0,
+        "can_could": 6,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 26,
+        "VBZ": 11,
+        "VBN": 10,
+        "VBP": 7,
+        "VBG": 9,
+        "VBD": 4
+      },
+      "named_entities": {
+        "PERSON": 14,
+        "ORGANIZATION": 7,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 468
+  }
+}

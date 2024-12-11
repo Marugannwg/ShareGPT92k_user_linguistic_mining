@@ -1,0 +1,505 @@
+{
+  "id": "bphsyUS_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Please write a FHIR API Server in Python using FastAPI with Mangum for Lambda proxy. Include Post methods for Patient, Appointment, and CarePlan endpoints. Use the fhir.resources library to convert incoming json to objects. Also use the dependency-injector library for IoC.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.946,
+        "pos": 0.054,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 47,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.02127659574468085,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 47
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9285714285714286
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBG": 2,
+            "VBP": 2
+          },
+          "named_entities": {
+            "GPE": 4,
+            "ORGANIZATION": 4,
+            "PERSON": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is an example implementation of a FHIR API server in Python using FastAPI, Mangum, and the fhir.resources library:\n```python\nfrom typing import List, Dict\nfrom fastapi import FastAPI, HTTPException\nfrom fhir.resources import Patient, Appointment, CarePlan\nfrom dependency_injector import containers, providers\n\napp = FastAPI()\n\nclass Services(containers.DeclarativeContainer):\n    patient_service = providers.Singleton(PatientService)\n    appointment_service = providers.Singleton(AppointmentService)\n    careplan_service = providers.Singleton(CarePlanService)\n\nclass PatientService:\n    def create_patient(self, patient: Patient):\n        # implementation to create a patient record\n        pass\n        \n    def get_patient(self, patient_id: str):\n        # implementation to retrieve a patient record\n        pass\n    \n    def update_patient(self, patient_id: str, patient: Patient):\n        # implementation to update a patient record\n        pass\n    \n    def delete_patient(self, patient_id: str):\n        # implementation to delete a patient record\n        pass\n\nclass AppointmentService:\n    def create_appointment(self, appointment: Appointment):\n        # implementation to create an appointment record\n        pass\n        \n    def get_appointment(self, appointment_id: str):\n        # implementation to retrieve an appointment record\n        pass\n    \n    def update_appointment(self, appointment_id: str, appointment: Appointment):\n        # implementation to update an appointment record\n        pass\n    \n    def delete_appointment(self, appointment_id: str):\n        # implementation to delete an appointment record\n        pass\n\nclass CarePlanService:\n    def create_careplan(self, careplan: CarePlan):\n        # implementation to create a careplan record\n        pass\n        \n    def get_careplan(self, careplan_id: str):\n        # implementation to retrieve a careplan record\n        pass\n    \n    def update_careplan(self, careplan_id: str, careplan: CarePlan):\n        # implementation to update a careplan record\n        pass\n    \n    def delete_careplan(self, careplan_id: str):\n        # implementation to delete a careplan record\n        pass\n\n@app.post(\"/Patient\")\nasync def create_patient(patient: Patient):\n    patient_service = Services.patient_service()\n    created_patient = patient_service.create_patient(patient)\n    return {\"patient_id\": created_patient.id}\n\n@app.get(\"/Patient/{patient_id}\")\nasync def get_patient(patient_id: str):\n    patient_service = Services.patient_service()\n    patient = patient_service.get_patient(patient_id)\n    if patient:\n        return patient.as_json()\n    else:\n        raise HTTPException(status_code=404, detail=\"Patient not found\")\n\n@app.put(\"/Patient/{patient_id}\")\nasync def update_patient(patient_id: str, patient: Patient):\n    patient_service = Services.patient_service()\n    updated_patient = patient_service.update_patient(patient_id, patient)\n    return {\"patient\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.976,
+        "pos": 0.024,
+        "compound": 0.6486
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 445,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.04044943820224719,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 445
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 445.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.23668639053254437
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBG": 2,
+            "VBP": 6,
+            "VB": 13,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "GPE": 3,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "please continue",
+      "language": "es",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.303,
+        "pos": 0.697,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "id\": updated\\_patient.id}\n\n@app.delete(\"/Patient/{patient\\_id}\")\nasync def delete\\_patient(patient\\_id: str):\npatient\\_service = Services.patient\\_service()\npatient\\_service.delete\\_patient(patient\\_id)\nreturn {\"message\": \"Patient successfully deleted\"}\n\n@app.post(\"/Appointment\")\nasync def create\\_appointment(appointment: Appointment):\nappointment\\_service = Services.appointment\\_service()\ncreated\\_appointment = appointment\\_service.create\\_appointment(appointment)\nreturn {\"appointment\\_id\": created\\_appointment.id}\n\n@app.get(\"/Appointment/{appointment\\_id}\")\nasync def get\\_appointment(appointment\\_id: str):\nappointment\\_service = Services.appointment\\_service()\nappointment = appointment\\_service.get\\_appointment(appointment\\_id)\nif appointment:\nreturn appointment.as\\_json()\nelse:\nraise HTTPException(status\\_code=404, detail=\"Appointment not found\")\n\n@app.put(\"/Appointment/{appointment\\_id}\")\nasync def update\\_appointment(appointment\\_id: str, appointment: Appointment):\nappointment\\_service = Services.appointment\\_service()\nupdated\\_appointment = appointment\\_service.update\\_appointment(appointment\\_id, appointment)\nreturn {\"appointment\\_id\": updated\\_appointment.id}\n\n@app.delete(\"/Appointment/{appointment\\_id}\")\nasync def delete\\_appointment(appointment\\_id: str):\nappointment\\_service = Services.appointment\\_service()\nappointment\\_service.delete\\_appointment(appointment\\_id)\nreturn {\"message\": \"Appointment successfully deleted\"}\n\n@app.post(\"/CarePlan\")\nasync def create\\_careplan(careplan: CarePlan):\ncareplan\\_service = Services.careplan\\_service()\ncreated\\_careplan = careplan\\_service.create\\_careplan(careplan)\nreturn {\"careplan\\_id\": created\\_careplan.id}\n\n@app.get(\"/CarePlan/{careplan\\_id}\")\nasync def get\\_careplan(careplan\\_id: str):\ncareplan\\_service = Services.careplan\\_service()\ncareplan = careplan\\_service.get\\_careplan(careplan\\_id)\nif careplan:\nreturn careplan.as\\_json()\nelse:\nraise HTTPException(status\\_code=404, detail=\"CarePlan not found\")\n\n@app.put(\"/CarePlan/{careplan\\_id}\")\nasync def update\\_careplan(careplan\\_id: str, careplan: CarePlan):\ncareplan\\_service = Services.careplan\\_service()\nupdated\\_careplan = careplan\\_service.update\\_careplan(careplan\\_id, careplan)\nreturn {\"careplan\\_id\": updated\\_careplan.id}\n\n@app.delete(\"/CarePlan/{careplan\\_id}\")\nasync def delete\\_careplan(careplan\\_id: str):\ncareplan\\_service = Services.careplan\\_service()\ncareplan\\_service.delete\\_careplan(careplan\\_id)\nreturn {\"message",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.957,
+        "pos": 0.043,
+        "compound": 0.7506
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 377,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 32,
+        "adj_adv_ratio": 0.08488063660477453,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 377
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 377.0,
+          "clause_complexity": 2.0,
+          "vocabulary_richness": 0.21428571428571427
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 9,
+            "VBD": 4,
+            "VB": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "please continue, and include the container implementation",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.723,
+        "pos": 0.277,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 8,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 8
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Container Implementation\n========================\n\nfrom dependency\\_injector import containers, providers\n\nclass Services(containers.DeclarativeContainer):\npatient\\_service = providers.Singleton(PatientService)\nappointment\\_service = providers.Singleton(AppointmentService)\ncareplan\\_service = providers.Singleton(CarePlanService)\n\nAWS Lambda Function\n===================\n\nimport os\nfrom mangum import Mangum\n\nhandler = Mangum(app, api\\_gateway\\_handler=True)\n\nif **name** == \"**main**\":\napp.run()\n\nAWS SAM or Serverless Framework Configuration\n=============================================\n\nThis code uses the Serverless Framework syntax.\n===============================================\n\nYou may use AWS SAM syntax with similar configurations.\n=======================================================\n\nservice: fhir-api-server\n\nprovider:\nname: aws\nruntime: python3.8\nstage: dev\nregion: us-west-2\n\nfunctions:\napi:\nhandler: handler\nevents:\n- http:\npath: /{proxy+}\nmethod: any\n\nDeploy the API Server\n=====================\n\nRun the following command to deploy the API server\n==================================================\n\nserverless deploy\n=================\n\nThis will deploy the API server and provide the endpoint URL, which can be used to access the API.\n==================================================================================================",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 174,
+        "self_ref_ratio": 0.005747126436781609,
+        "second_person_ratio": 0.011494252873563218
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.06896551724137931,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.005747126436781609,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.011494252873563218,
+        "token_count": 174
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 43.5,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.6842105263157895
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBN": 2,
+            "VBZ": 1,
+            "VB": 5
+          },
+          "named_entities": {
+            "PERSON": 2,
+            "ORGANIZATION": 13
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Could you add support for oauth2 credentials?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.69,
+        "pos": 0.31,
+        "compound": 0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 8,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.125
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.125,
+        "token_count": 8
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, you can add OAuth2 support to your FHIR API server in Python using FastAPI. Here's an example of how you can do it:\n\n1. Install the OAuth2 library:\n```\npip install fastapi-oauth2-provider\n```\n2. Import the library in your code:\n```python\nfrom fastapi_oauth2_provider import OAuth2PasswordRequestForm\nfrom fastapi_oauth2_provider.models import Token\nfrom fastapi_oauth2_provider.oauth2 import OAuth2PasswordBearer\n\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"token\")\n```\n3. In your API endpoint, add the `oauth2_scheme` as a security requirement:\n```python\n@app.post(\"/Patient\")\nasync def create_patient(patient: Patient, oauth2_scheme=Depends(oauth2_scheme)):\n    # your code here\n    ...\n```\n4. In your OAuth2 server, validate the token:\n```python\n@app.post(\"/token\")\nasync def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):\n    user = authenticate_user(form_data.username, form_data.password)\n    if not user:\n        raise HTTPException(status_code=400, detail=\"Incorrect username or password\")\n    access_token = create_access_token(data={\"sub\": user.username})\n    return {\"access_token\": access_token, \"token_type\": \"bearer\"}\n```\nThis is a basic example of how you can add OAuth2 support to your API server. You can customize it based on your requirements.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.916,
+        "pos": 0.084,
+        "compound": 0.9001
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 11,
+        "token_count": 241,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.04564315352697095
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.07468879668049792,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 11,
+        "second_person_ratio": 0.04564315352697095,
+        "token_count": 241
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 34.42857142857143,
+          "clause_complexity": 0.14285714285714285,
+          "vocabulary_richness": 0.6111111111111112
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 10,
+            "VBG": 1,
+            "VBZ": 2,
+            "VBP": 6,
+            "VBN": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "GPE": 1,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.45697499999999996,
+    "pos": 0.18612499999999998,
+    "neu": 0.8138749999999999,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 81,
+    "adj_adv_ratio": 0.06230769230769231,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0007692307692307692,
+    "second_person_freq": 14,
+    "second_person_ratio": 0.010769230769230769,
+    "total_tokens": 1300
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 132.52551020408163,
+      "clause_complexity": 0.4846938775510204,
+      "vocabulary_richness": 0.6678378815452268
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 2,
+        "why": 0,
+        "can_could": 6,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 35,
+        "VBG": 5,
+        "VBP": 24,
+        "VBZ": 7,
+        "VBD": 5,
+        "VBN": 6
+      },
+      "named_entities": {
+        "GPE": 8,
+        "ORGANIZATION": 38,
+        "PERSON": 9
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 7,
+      "es": 1
+    },
+    "turn_count": 8,
+    "total_tokens": 1300
+  }
+}

@@ -1,0 +1,671 @@
+{
+  "id": "uCk0lyj_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Can show me example of a RoomService with NestJS that query database to get all available room for a given time period",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 22,
+        "self_ref_ratio": 0.045454545454545456,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.045454545454545456,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.045454545454545456,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 22
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBZ": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here is an example of a RoomService with NestJS that uses a database to get all available rooms for a given time period:\n```\nimport { Injectable } from '@nestjs/common';\nimport { InjectRepository } from '@nestjs/typeorm';\nimport { Repository } from 'typeorm';\n\nimport { Room } from './room.entity';\n\n@Injectable()\nexport class RoomService {\n  constructor(\n    @InjectRepository(Room)\n    private readonly roomRepository: Repository<Room>,\n  ) {}\n\n  async findAvailableRooms(startDate: Date, endDate: Date): Promise<Room[]> {\n    return this.roomRepository.find({\n      where: [\n        // here you can specify your database query to find all rooms\n        // that are available between the start and end dates\n      ],\n    });\n  }\n}\n```\nIn this example, the `RoomService` is using the `@Injectable` decorator to indicate that it is a NestJS service that can be injected into other components. It also uses the `@InjectRepository` decorator to inject the `roomRepository`, which is a repository for the `Room` entity that will be used to interact with the database.\n\nThe `RoomService` has a `findAvailableRooms` method that takes a start date and an end date as arguments. This method uses the `roomRepository` to query the database for all rooms that are available between the start and end dates. It then returns the list of available rooms as a promise.\n\nYou can use this `RoomService` in a controller or another service to get a list of available rooms for a given time period.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.012,
+        "neu": 0.967,
+        "pos": 0.021,
+        "compound": 0.2942
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 300,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.01
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.01,
+        "token_count": 300
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 42.857142857142854,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5092592592592593
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 10,
+            "VB": 11,
+            "VBN": 4,
+            "VBP": 4,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "GPE": 1,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you me a example with a database structure that will make that query work",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 15,
+        "self_ref_ratio": 0.06666666666666667,
+        "second_person_ratio": 0.06666666666666667
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.06666666666666667,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.06666666666666667,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here is an example database structure that will work with the `RoomService` from the previous answer:\n```\n// This is the structure for the Room entity\nexport class Room {\n  id: number;\n  name: string;\n  description: string;\n  capacity: number;\n  // other room properties...\n\n  // array of reservations for this room\n  reservations: Reservation[];\n}\n\n// This is the structure for the Reservation entity\nexport class Reservation {\n  id: number;\n  startDate: Date;\n  endDate: Date;\n  // other reservation properties...\n\n  // reference to the room that this reservation is for\n  room: Room;\n}\n```\nIn this example, the `Room` entity has a `reservations` property that is an array of `Reservation` objects. Each `Reservation` object has a `startDate` and an `endDate` property that represent the time period for the reservation. It also has a `room` property that references the `Room` entity that this reservation is for.\n\nWith this database structure, you can use the following query in the `findAvailableRooms` method of the `RoomService` to find all rooms that are available between the given start and end dates:\n```\nreturn this.roomRepository.find({\n  where: [\n    // find rooms that do not have any reservations\n    // or have reservations but not between the given start and end dates\n    {\n      reservations: isEmpty(),\n      or: [\n        {\n          reservations: isNotEmpty(),\n          reservations: {\n            startDate: MoreThan(endDate),\n            endDate: LessThan(startDate),\n          },\n        },\n      ],\n    },\n  ],\n});\n```\nThis query will find all rooms that do not have any reservations, or have reservations but not between the given start and end dates. This will effectively find all rooms that are available between the start and end dates.\n\nI hope this helps! Let me know if you have any other questions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.938,
+        "pos": 0.062,
+        "compound": 0.937
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 2,
+        "token_count": 363,
+        "self_ref_ratio": 0.005509641873278237,
+        "second_person_ratio": 0.005509641873278237
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.049586776859504134,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.005509641873278237,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.005509641873278237,
+        "token_count": 363
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 45.375,
+          "clause_complexity": 0.125,
+          "vocabulary_richness": 0.4453125
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 2,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 12,
+            "VB": 13,
+            "VBP": 10,
+            "VBN": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you expose this service via a rest api3 / 3",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.138,
+        "neu": 0.862,
+        "pos": 0.0,
+        "compound": -0.1531
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 11,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.09090909090909091
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.09090909090909091,
+        "token_count": 11
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here is an example of how you can expose the `RoomService` from the previous answers via a REST API with NestJS:\n```\nimport { Controller, Get, Query } from '@nestjs/common';\nimport { ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';\n\nimport { RoomService } from './room.service';\n\n@ApiUseTags('rooms')\n@Controller('rooms')\nexport class RoomController {\n  constructor(private readonly roomService: RoomService) {}\n\n  @Get()\n  @ApiOperation({\n    title: 'Find Available Rooms',\n    description:\n      'Returns a list of all rooms that are available between the given start and end dates',\n  })\n  @ApiResponse({\n    status: 200,\n    description: 'The list of available rooms',\n  })\n  async findAvailableRooms(\n    @Query('start') startDate: Date,\n    @Query('end') endDate: Date,\n  ): Promise<Room[]> {\n    return this.roomService.findAvailableRooms(startDate, endDate);\n  }\n}\n```\nIn this example, the `RoomController` is using the `@Controller` decorator to indicate that it is a NestJS controller that will handle incoming HTTP requests. It also uses the `@ApiUseTags` and `@ApiOperation` decorators from the `@nestjs/swagger` package to provide metadata about the API endpoint for documentation purposes.\n\nThe `RoomController` has a `findAvailableRooms` method that is decorated with the `@Get` decorator to handle `GET` requests to the `/rooms` endpoint. This method uses the `@Query` decorator to get the `start` and `end` query parameters from the request, which represent the start and end dates for the search. It then calls the `findAvailableRooms` method on the `roomService` to get the list of available rooms and returns it as the response.\n\nWith this setup, you can make a `GET` request to the `/rooms` endpoint with the `start` and `end` query parameters to get a list of all rooms that are available between the given start and end dates. For example, the following request will get all rooms that are available between December 1, 2022 and December 15, 2022:\n```\nGET /rooms?start=2022-12-01&end=2022-12-15\n```\nI hope this helps! Let me know if you have any other questions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.014,
+        "neu": 0.957,
+        "pos": 0.029,
+        "compound": 0.658
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 445,
+        "self_ref_ratio": 0.0044943820224719105,
+        "second_person_ratio": 0.006741573033707865
+      },
+      "lexical_features": {
+        "adj_adv_freq": 31,
+        "adj_adv_ratio": 0.0696629213483146,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.0044943820224719105,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.006741573033707865,
+        "token_count": 445
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 49.44444444444444,
+          "clause_complexity": 0.1111111111111111,
+          "vocabulary_richness": 0.5031847133757962
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 10,
+            "VB": 17,
+            "VBP": 6,
+            "VBN": 3,
+            "VBG": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 19,
+            "PERSON": 3,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you do it with graphql",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 6,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.16666666666666666
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.16666666666666666,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here is an example of how you can expose the `RoomService` from the previous answers via a GraphQL API with NestJS:\n```\nimport { Resolver, Query, Args } from '@nestjs/graphql';\nimport { RoomService } from './room.service';\n\n@Resolver('Room')\nexport class RoomResolver {\n  constructor(private readonly roomService: RoomService) {}\n\n  @Query('availableRooms')\n  async availableRooms(\n    @Args('startDate') startDate: Date,\n    @Args('endDate') endDate: Date,\n  ): Promise<Room[]> {\n    return this.roomService.findAvailableRooms(startDate, endDate);\n  }\n}\n```\nIn this example, the `RoomResolver` is using the `@Resolver` decorator to indicate that it is a GraphQL resolver for the `Room` type. It also has a `availableRooms` method that is decorated with the `@Query` decorator to handle GraphQL queries for the `availableRooms` field. This method uses the `@Args` decorator to get the `startDate` and `endDate` arguments from the query and passes them to the `findAvailableRooms` method on the `roomService` to get the list of available rooms.\n\nWith this setup, you can make a GraphQL query for the `availableRooms` field with the `startDate` and `endDate` arguments to get a list of all rooms that are available between the given start and end dates. For example, the following query will get all rooms that are available between December 1, 2022 and December 15, 2022:\n```\nquery {\n  availableRooms(startDate: \"2022-12-01\", endDate: \"2022-12-15\") {\n    id\n    name\n    description\n    capacity\n    // other room properties...\n  }\n}\n```\nI hope this helps! Let me know if you have any other questions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.04,
+        "neu": 0.902,
+        "pos": 0.057,
+        "compound": 0.4738
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 340,
+        "self_ref_ratio": 0.0058823529411764705,
+        "second_person_ratio": 0.008823529411764706
+      },
+      "lexical_features": {
+        "adj_adv_freq": 23,
+        "adj_adv_ratio": 0.06764705882352941,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.0058823529411764705,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.008823529411764706,
+        "token_count": 340
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 48.57142857142857,
+          "clause_complexity": 0.14285714285714285,
+          "vocabulary_richness": 0.5537190082644629
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VB": 13,
+            "VBG": 1,
+            "VBN": 2,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "GPE": 4,
+            "PERSON": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you implement an only one page in NextJS that let you create a reservation. From previous graphql endpoint that let you search for all available room in given time period",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.935,
+        "pos": 0.065,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 32,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.09375
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.09375,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.09375,
+        "token_count": 32
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9411764705882353
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBP": 3,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here is an example of how you can implement a NextJS page that lets users create reservations using the `RoomService` and GraphQL API from the previous answers:\n```\nimport { useState } from 'react';\nimport { useQuery } from '@apollo/client';\nimport gql from 'graphql-tag';\n\nimport { Form, Input, Button } from 'antd';\nimport { Room } from './room.entity';\n\nconst GET_AVAILABLE_ROOMS = gql`\n  query availableRooms($startDate: Date!, $endDate: Date!) {\n    availableRooms(startDate: $startDate, endDate: $endDate) {\n      id\n      name\n      description\n      capacity\n      // other room properties...\n    }\n  }\n`;\n\nconst CREATE_RESERVATION = gql`\n  mutation createReservation($roomId: ID!, $startDate: Date!, $endDate: Date!) {\n    createReservation(roomId: $roomId, startDate: $startDate, endDate: $endDate) {\n      id\n      startDate\n      endDate\n      // other reservation properties...\n    }\n  }\n`;\n\nconst ReservationForm = () => {\n  const [roomId, setRoomId] = useState('');\n  const [startDate, setStartDate] = useState('');\n  const [endDate, setEndDate] = useState('');\n\n  // use the useQuery hook to get the list of available rooms\n  const { data, loading, error } = useQuery(GET_AVAILABLE_ROOMS, {\n    variables: { startDate, endDate },\n  });\n\n  // use the useMutation hook to create a new reservation\n  const [createReservation, { loading: creating, error: createError }] = useMutation(\n    CREATE_RESERVATION,\n    {\n      variables: { roomId, startDate, endDate },\n      // update the cache after creating a new reservation\n      update: (cache, { data: { createReservation } }) => {\n        // get the current list of available rooms from the cache\n        const { availableRooms } = cache.readQuery({\n          query: GET_AVAILABLE_ROOMS,\n          variables: { startDate, endDate },\n        });\n        // filter out the newly reserved room from the list of available rooms\n        const updatedRooms = availableRooms.filter(\n          (room) => room.id !== createReservation.room.id,\n        );\n        // update the cache with the updated list of available rooms\n        cache.writeQuery({\n          query: GET_AVAILABLE_ROOMS,\n          variables: { startDate, endDate },\n          data: { availableRooms: updatedRooms },\n        });\n      },\n    },\n  );\n\n  // show loading state while fetching available rooms\n  if (loading) {\n    return <p>Loading...</p>;\n  }\n  // show error message if there was an error fetching available rooms\n  if (error) {\n    return <p>Error: {error.message}</p>;\n  }\n\n  // render the form to create a new reservation\n  return (\n    <Form>\n      <Form.\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.042,
+        "neu": 0.921,
+        "pos": 0.037,
+        "compound": -0.5673
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 509,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0019646365422396855
+      },
+      "lexical_features": {
+        "adj_adv_freq": 36,
+        "adj_adv_ratio": 0.07072691552062868,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0019646365422396855,
+        "token_count": 509
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 101.8,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.37967914438502676
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 14,
+            "VBP": 8,
+            "VBG": 7,
+            "VBN": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 42,
+            "PERSON": 2
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.19158000000000003,
+    "pos": 0.027100000000000003,
+    "neu": 0.9481999999999999,
+    "neg": 0.024600000000000004
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 137,
+    "adj_adv_ratio": 0.06705824767498776,
+    "self_ref_freq": 8,
+    "self_ref_ratio": 0.003915810083210965,
+    "second_person_freq": 18,
+    "second_person_ratio": 0.00881057268722467,
+    "total_tokens": 2043
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 35.80480158730159,
+      "clause_complexity": 0.1378968253968254,
+      "vocabulary_richness": 0.733233109587278
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 3,
+        "why": 0,
+        "can_could": 14,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 2,
+        "contrast": 2,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 75,
+        "VBZ": 45,
+        "VBN": 17,
+        "VBP": 35,
+        "VBG": 12,
+        "VBD": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 82,
+        "GPE": 9,
+        "PERSON": 8
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 10
+    },
+    "turn_count": 10,
+    "total_tokens": 2043
+  }
+}

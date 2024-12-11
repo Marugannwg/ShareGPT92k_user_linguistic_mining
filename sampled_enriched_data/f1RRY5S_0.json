@@ -1,0 +1,427 @@
+{
+  "id": "f1RRY5S_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Webrtrc on iphone how do i play audio on speaker phone vs headset.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.833,
+        "pos": 0.167,
+        "compound": 0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 14,
+        "self_ref_ratio": 0.07142857142857142,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.07142857142857142,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 14
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 2
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To play audio on speakerphone during a WebRTC call on an iPhone, you can follow these steps:\n\n1. During a WebRTC call, tap the \"Audio\" button in the bottom left corner of the screen. This will open the audio options menu.\n2. Tap the \"Speaker\" option. This will enable speakerphone mode and the audio will be played through the phone's built-in speaker.\n\nTo play audio through a headset instead, you can connect a headset to your iPhone and then follow the same steps above. Instead of tapping the \"Speaker\" option, tap the \"Headset\" option to route the audio through the connected headset.\n\nNote that the exact steps and user interface may vary depending on the specific WebRTC app or service that you are using.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.944,
+        "pos": 0.056,
+        "compound": 0.7351
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 147,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.027210884353741496
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.06802721088435375,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.027210884353741496,
+        "token_count": 147
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.333333333333332,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6363636363636364
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 13,
+            "VBD": 1,
+            "VBP": 2,
+            "VBN": 1,
+            "VBG": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "what is the angular code to identify and select audio output source for iphone for webrtc",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 16,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.125,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 16
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To identify and select an audio output source in an Angular application for WebRTC on an iPhone, you can use the `getUserMedia` function from the `navigator.mediaDevices` API to access the device's audio output sources.\n\nHere is an example of how you can use this API to identify and select an audio output source in Angular:\n```\nnavigator.mediaDevices.getUserMedia({ audio: true })\n  .then(stream => {\n    const audioTracks = stream.getAudioTracks();\n    console.log('Audio tracks:', audioTracks);\n    // audioTracks is an array of audio output sources available on the device\n    // You can use this array to select a specific audio output source\n\n    // For example, to select the second audio output source in the array:\n    const selectedAudioTrack = audioTracks[1];\n\n    // You can then use the selected audio output source in your WebRTC call\n  })\n  .catch(error => {\n    console.error('Error accessing audio output sources:', error);\n  });\n```\nThis code will access the device's audio output sources, log them to the console, and then select the second audio output source in the array. You can modify the code to select a different audio output source or to prompt the user to select an audio output source.\n\nNote that this code is just an example and may need to be modified to work with your specific WebRTC implementation.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.013,
+        "neu": 0.974,
+        "pos": 0.013,
+        "compound": 0.0258
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 7,
+        "token_count": 260,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.026923076923076925
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.07692307692307693,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.026923076923076925,
+        "token_count": 260
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 65.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.41284403669724773
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 5,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 18,
+            "VBP": 3,
+            "VBZ": 4,
+            "VBN": 2,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "does the above work on IOS iphone",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 7,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.14285714285714285,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 7
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 7.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, the above code should work on an iPhone running iOS as long as the device has a compatible browser that supports the `navigator.mediaDevices` API.\n\nThe `navigator.mediaDevices` API is a part of the WebRTC specification and is supported by most modern browsers, including Safari on iOS. It provides access to the device's media input and output devices, such as microphones and speakers, and allows you to capture and manipulate audio and video streams in your web application.\n\nTo use the `navigator.mediaDevices` API on an iPhone, you will need to make sure that you have a compatible browser and that you have granted the necessary permissions for your web application to access the device's audio output sources.\n\nOnce you have set up your application and granted the necessary permissions, you should be able to use the `getUserMedia` function as shown in the example above to access and select audio output sources on an iPhone.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.914,
+        "pos": 0.086,
+        "compound": 0.8957
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 9,
+        "token_count": 174,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.05172413793103448
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.11494252873563218,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.05172413793103448,
+        "token_count": 174
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 34.8,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6891891891891891
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBG": 2,
+            "VBZ": 6,
+            "VBN": 4,
+            "VBP": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.33276666666666666,
+    "pos": 0.05366666666666667,
+    "neu": 0.9441666666666667,
+    "neg": 0.0021666666666666666
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 53,
+    "adj_adv_ratio": 0.08576051779935275,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0016181229773462784,
+    "second_person_freq": 20,
+    "second_person_ratio": 0.032362459546925564,
+    "total_tokens": 618
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 25.522222222222222,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.7897328103750123
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 2,
+        "why": 0,
+        "can_could": 7,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 2,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 9,
+        "VB": 43,
+        "VBD": 2,
+        "VBN": 7,
+        "VBG": 6,
+        "VBZ": 12
+      },
+      "named_entities": {
+        "GPE": 2,
+        "ORGANIZATION": 16,
+        "PERSON": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 6
+    },
+    "turn_count": 6,
+    "total_tokens": 618
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "id": "RfatPhu_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "I defined AIRFLOW\\_\\_CORE\\_\\_MAX\\_ACTIVE\\_RUNS\\_PER\\_DAG=48 but 16 (default) were executed",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 10,
+        "self_ref_ratio": 0.1,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 2,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "It is possible that the Airflow scheduler is not respecting the max active runs per DAG configuration. To troubleshoot this issue, you can check the following:\n\n1. Verify that the configuration is set correctly in your airflow.cfg file and that the file is being read by the scheduler at startup.\n2. Check the airflow scheduler logs to see if there are any errors or warnings that may indicate a problem with the configuration.\n3. Make sure that the scheduler is running and has the correct number of worker processes.\n4. Check if there are any other configuration that might be conflicting with max active runs per DAG.\n5. If none of the above helped, you can try to increase the logging level of the scheduler and see if that provides more information on why the setting is not being respected.\n\nIt is also possible that the number of tasks in the DAG is less than the max active runs per DAG, which would explain why only 16 tasks are being executed.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.08,
+        "neu": 0.829,
+        "pos": 0.09,
+        "compound": -0.0212
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 187,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.016042780748663103
+      },
+      "lexical_features": {
+        "adj_adv_freq": 17,
+        "adj_adv_ratio": 0.09090909090909091,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.016042780748663103,
+        "token_count": 187
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.583333333333334,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.6904761904761905
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 2,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 10,
+            "VBG": 6,
+            "VB": 13,
+            "VBN": 4,
+            "VBP": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "number of tasks is 200, Airflow version in 2.0.2",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.86,
+        "pos": 0.14,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 10,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "It is possible that the issue is caused by a bug in the version of Airflow you are using. In Airflow 2.0.2, there is a known issue where the `max_active_runs_per_dag` configuration is not being respected by the scheduler. This issue has been fixed in later versions of Airflow.\n\nYou can try upgrading to a later version of Airflow or try to use a workaround to achieve the same effect.\n\nOne workaround is to set the `max_active_runs_per_dag` configuration in the `default_args` of the DAG. This can be done by adding the following to the DAG definition:\n```\ndefault_args = {\n    'max_active_runs': 48,\n}\n```\nThis will set the max active runs per DAG to 48 for all tasks in this DAG.\n\nAnother workaround is to use the `concurrency` parameter in the `DAG` constructor. This parameter controls the number of tasks that can run simultaneously for a DAG, with a default value of 16. If you set this parameter to a value of 48, it will limit the number of tasks that can run simultaneously to 48.\n```\ndag = DAG(\n    'my_dag',\n    concurrency=48,\n    schedule_interval=timedelta(hours=1),\n    default_args=default_args\n)\n```\nPlease note that this will limit the overall concurrency and not per dag.\n\nIt is also recommended to keep an eye on the Airflow community for any update.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.012,
+        "neu": 0.924,
+        "pos": 0.064,
+        "compound": 0.8246
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 253,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.011857707509881422
+      },
+      "lexical_features": {
+        "adj_adv_freq": 16,
+        "adj_adv_ratio": 0.06324110671936758,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.011857707509881422,
+        "token_count": 253
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.0,
+          "clause_complexity": 0.09090909090909091,
+          "vocabulary_richness": 0.5934065934065934
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 9,
+            "VBN": 6,
+            "VBP": 2,
+            "VBG": 5,
+            "VB": 15
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 1,
+            "ORGANIZATION": 6
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.22015,
+    "pos": 0.07350000000000001,
+    "neu": 0.90325,
+    "neg": 0.023
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 33,
+    "adj_adv_ratio": 0.07173913043478261,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.002173913043478261,
+    "second_person_freq": 6,
+    "second_person_ratio": 0.013043478260869565,
+    "total_tokens": 460
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 14.645833333333334,
+      "clause_complexity": 0.10606060606060605,
+      "vocabulary_richness": 0.820970695970696
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 2,
+        "can_could": 6,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBD": 3,
+        "VBN": 11,
+        "VBZ": 20,
+        "VBG": 11,
+        "VB": 28,
+        "VBP": 5
+      },
+      "named_entities": {
+        "ORGANIZATION": 11,
+        "PERSON": 2,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 4
+    },
+    "turn_count": 4,
+    "total_tokens": 460
+  }
+}

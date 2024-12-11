@@ -1,0 +1,306 @@
+{
+  "id": "CM04pSx_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Can you create in x++ RESTClient to make GET, POST, PUT, DELETE requests?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.851,
+        "pos": 0.149,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 17,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.058823529411764705
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.058823529411764705,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.058823529411764705,
+        "token_count": 17
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 4
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, it is possible to create a REST client in X++ to make GET, POST, PUT, and DELETE requests. Here's an example implementation using the Sys.Net.HttpClient class in Dynamics 365 Finance and Operations:\n```java\nclass RestApiClient\n{\n    public static void makeGetRequest(str url)\n    {\n        Sys.Net.HttpClient httpClient = new Sys.Net.HttpClient();\n        Sys.Net.HttpRequestHeaderCollection headers = httpClient.requestHeaders();\n        headers.add(\"Accept\", \"application/json\");\n        httpClient.get(url, new Sys.Net.ResponseHandler(onResponse));\n    }\n    \n    public static void makePostRequest(str url, str requestBody)\n    {\n        Sys.Net.HttpClient httpClient = new Sys.Net.HttpClient();\n        Sys.Net.HttpRequestHeaderCollection headers = httpClient.requestHeaders();\n        headers.add(\"Content-Type\", \"application/json\");\n        httpClient.post(url, requestBody, new Sys.Net.ResponseHandler(onResponse));\n    }\n    \n    public static void makePutRequest(str url, str requestBody)\n    {\n        Sys.Net.HttpClient httpClient = new Sys.Net.HttpClient();\n        Sys.Net.HttpRequestHeaderCollection headers = httpClient.requestHeaders();\n        headers.add(\"Content-Type\", \"application/json\");\n        httpClient.put(url, requestBody, new Sys.Net.ResponseHandler(onResponse));\n    }\n    \n    public static void makeDeleteRequest(str url)\n    {\n        Sys.Net.HttpClient httpClient = new Sys.Net.HttpClient();\n        httpClient.delete(url, new Sys.Net.ResponseHandler(onResponse));\n    }\n    \n    private static void onResponse(Sys.Net.WebRequest webRequest, Sys.Net.HttpStatusCode httpStatusCode, Sys.Net.HttpResponse httpResponse)\n    {\n        if (httpStatusCode == Sys.Net.HttpStatusCode.OK)\n        {\n            str responseText = httpResponse.get_responseDataAsString();\n            // Process response\n        }\n        else\n        {\n            // Handle error\n        }\n    }\n}\n```\nIn this example, the `Sys.Net.HttpClient` class is used to send HTTP requests. The `makeGetRequest`, `makePostRequest`, `makePutRequest`, and `makeDeleteRequest` methods take a URL and an optional request body as parameters and send the corresponding HTTP request to that URL. The `onResponse` method is called when a response is received, and it can be used to process the response data.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.012,
+        "neu": 0.956,
+        "pos": 0.032,
+        "compound": 0.4939
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 347,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 49,
+        "adj_adv_ratio": 0.14121037463976946,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 347
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 86.75,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.4918032786885246
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VB": 9,
+            "VBG": 1,
+            "VBP": 3,
+            "VBN": 6
+          },
+          "named_entities": {
+            "ORGANIZATION": 23,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "And how it can be achieved in AX Dynamics 4 instead of Dynamics 365 Finance and Operations ?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.792,
+        "pos": 0.208,
+        "compound": 0.4939
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 18,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.05555555555555555,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8888888888888888
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "In AX Dynamics 4, you can use the `WinHttp.WinHttpRequest` COM object to make REST requests. Here's an example implementation for making GET, POST, PUT, and DELETE requests:\n```scss\nclass RestApiClient\n{\n    WinHttp.WinHttpRequest winHttpRequest;\n    \n    public RestApiClient()\n    {\n        winHttpRequest = new WinHttp.WinHttpRequest();\n        winHttpRequest.setTimeouts(10000, 10000, 10000, 10000); // Set timeout to 10 seconds\n        winHttpRequest.setProxy(0, \"\"); // Use system proxy\n    }\n    \n    public str makeGetRequest(str url)\n    {\n        winHttpRequest.open(\"GET\", url);\n        winHttpRequest.send();\n        return handleResponse();\n    }\n    \n    public str makePostRequest(str url, str requestBody)\n    {\n        winHttpRequest.open(\"POST\", url);\n        winHttpRequest.setRequestHeader(\"Content-Type\", \"application/json\");\n        winHttpRequest.send(requestBody);\n        return handleResponse();\n    }\n    \n    public str makePutRequest(str url, str requestBody)\n    {\n        winHttpRequest.open(\"PUT\", url);\n        winHttpRequest.setRequestHeader(\"Content-Type\", \"application/json\");\n        winHttpRequest.send(requestBody);\n        return handleResponse();\n    }\n    \n    public str makeDeleteRequest(str url)\n    {\n        winHttpRequest.open(\"DELETE\", url);\n        winHttpRequest.send();\n        return handleResponse();\n    }\n    \n    private str handleResponse()\n    {\n        if (winHttpRequest.Status == 200)\n        {\n            return winHttpRequest.responseText;\n        }\n        else\n        {\n            throw error(strFmt(\"Error %1: %2\", winHttpRequest.Status, winHttpRequest.StatusText));\n        }\n    }\n}\n```\nIn this example, the `WinHttp.WinHttpRequest` COM object is used to send HTTP requests. The `makeGetRequest`, `makePostRequest`, `makePutRequest`, and `makeDeleteRequest` methods take a URL and an optional request body as parameters and send the corresponding HTTP request to that URL. The `handleResponse` method is called when a response is received, and it can be used to process the response data. Note that the `setTimeouts` and `setProxy` methods are used to set timeouts and proxy settings, respectively.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.979,
+        "pos": 0.021,
+        "compound": 0.5423
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 370,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.002702702702702703
+      },
+      "lexical_features": {
+        "adj_adv_freq": 45,
+        "adj_adv_ratio": 0.12162162162162163,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.002702702702702703,
+        "token_count": 370
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 74.0,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.518796992481203
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 13,
+            "VBZ": 4,
+            "VBG": 1,
+            "VBN": 6,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 23
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.45082500000000003,
+    "pos": 0.10250000000000001,
+    "neu": 0.8945000000000001,
+    "neg": 0.003
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 96,
+    "adj_adv_ratio": 0.1276595744680851,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 2,
+    "second_person_ratio": 0.0026595744680851063,
+    "total_tokens": 752
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 48.9375,
+      "clause_complexity": 0.225,
+      "vocabulary_richness": 0.7248722900146541
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 5,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 25,
+        "VBZ": 9,
+        "VBG": 2,
+        "VBP": 4,
+        "VBN": 13
+      },
+      "named_entities": {
+        "ORGANIZATION": 51,
+        "GPE": 1,
+        "PERSON": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 4
+    },
+    "turn_count": 4,
+    "total_tokens": 752
+  }
+}

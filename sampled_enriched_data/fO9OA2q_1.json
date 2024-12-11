@@ -1,0 +1,284 @@
+{
+  "id": "fO9OA2q_1",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Here's the equivalent React component for the Angular code you provided:\n```javascript\nimport React, { useState, useEffect } from 'react';\nimport { useLocation } from 'react-router-dom';\nimport { MatDialog } from '@angular/material/dialog';\nimport { Observable, of, Subject } from 'rxjs';\nimport { debounceTime, map, skip, switchMap, takeUntil } from 'rxjs/operators';\nimport { DepositService } from '../../services/deposit.service';\nimport { CasesService } from 'src/app/cases/services/cases.service';\nimport { Title } from '@angular/platform-browser';\nimport { MatCheckboxChange } from '@angular/material/checkbox';\nimport { AppConfigService } from 'src/app/core/services/app-config.service';\nimport { GlobalLootieState } from '../../../rxstate/global-lootie.state';\nimport { LanguageRouter } from '../../../core/services/language-router';\nimport { SegmentProxy } from '../../../lazy-bootstrap/proxies/segment.proxy';\nimport { LocalizedToastrService } from '../../../core/services/localized-toastr.service';\nimport { defined } from '../../../core/utils/defined';\n\nconst DEFAULT_DEPOSIT_AMOUNT = 100;\n\nconst PaymentMethods = {\n  zen: 'zen',\n  g2a: 'g2a',\n  credit: 'credit',\n  coinbase: 'coinbase',\n  giftcards: 'giftcards',\n  payop: 'payop',\n  paytriot: 'paytriot',\n};\n\nconst DepositComponent = ({ depositService, casesService, dialog, router, titleService, languageRouter, appConfigService, globalState, segment, localizedToastr, changeDetectorRef }) => {\n  const [isLoading, setIsLoading] = useState(false);\n  const [checkoutUrl, setCheckoutUrl] = useState('');\n  const [checkoutOptions, setCheckoutOptions] = useState(null);\n  const [success, setSuccess] = useState(false);\n  const [failed, setFailed] = useState('');\n  const [isMobile, setIsMobile] = useState(false);\n  const [paymentOption, setPaymentOption] = useState('');\n  const [selectedMethod, setSelectedMethod] = useState(PaymentMethods.credit);\n  const [amount, setAmount] = useState(DEFAULT_DEPOSIT_AMOUNT);\n  const [amountList, setAmountList] = useState([]);\n  const [promocode, setPromocode] = useState('');\n  const [promocodeStatus, setPromocodeStatus] = useState('');\n  const [promocodeValue, setPromocodeValue] = useState(0);\n  const [isPaymentFAQ, setIsPaymentFAQ] = useState(false);\n  const [isTOSAgreed, setIsTOSAgreed] = useState(false);\n  const [depositTitle, setDepositTitle] = useState('DEPOSIT.CHOOSE_PAYMENT_METHOD');\n\n  const location = useLocation();\n\n  const initialAmountList = [5, 10, 25, 50, 100, 150, 200, 300, 400, 500, 1000];\n\n  const unsubscribe$ = new Subject();\n\n  const faqItems = [\n    {\n      title: 'DEPOSIT.FAQ.FIRST_STEP_TITLE',\n      description: 'DEPOSIT.FAQ.FIRST_STEP_DESCRIPTION',\n      color: '#4fc1e3',\n    },\n    {\n      title: 'DEPOSIT.FAQ.SECOND_STEP_TITLE',\n      description: 'DEPOSIT.FAQ.SECOND_STEP_DESCRIPTION',\n      color: '#1abe66',\n    },\n    {\n      title: 'DEPOSIT.FAQ.THIRD_STEP_TITLE',\n      description: 'DEPOSIT.FAQ.THIRD_STEP_DESCRIPTION',\n      color: '#f34747',\n    },\n    {\n      title: 'DEPOSIT.FAQ.FOURTH_STEP_TITLE',\n      description: 'DEPOSIT.FAQ.F\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.011,
+        "neu": 0.959,
+        "pos": 0.03,
+        "compound": 0.6808
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 581,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0017211703958691911
+      },
+      "lexical_features": {
+        "adj_adv_freq": 48,
+        "adj_adv_ratio": 0.08261617900172118,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0017211703958691911,
+        "token_count": 581
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 581.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5828571428571429
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBD": 6,
+            "VB": 2,
+            "VBP": 3,
+            "VBG": 1,
+            "VBN": 15
+          },
+          "named_entities": {
+            "ORGANIZATION": 36,
+            "PERSON": 2,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "}\n\nonCheckboxChange(event: MatCheckboxChange): void {\nthis.isTOSAgreed = event.checked;\n}\n\nprivate proceedFormDeposit(options: any): void {\nconst form = document.createElement(‘form’);\nform.setAttribute(‘action’, options.action);\nform.setAttribute(‘method’, options.method);\nform.setAttribute(‘target’, ‘\\_blank’);\n\nfor (const key in options.params) {\nif (options.params.hasOwnProperty(key)) {\nconst value = options.params[key];\nconst input = document.createElement(‘input’);\ninput.setAttribute(‘type’, ‘hidden’);\ninput.setAttribute(‘name’, key);\ninput.setAttribute(‘value’, value);\nform.appendChild(input);\n}\n}\n\ndocument.body.appendChild(form);\nform.submit();\ndocument.body.removeChild(form);\n}\n\nisCreditCardPayment(): boolean {\nreturn (\nthis.selectedMethod === PaymentMethods.credit &&\n(!this.paymentOption || this.paymentOption === PaymentMethods.credit)\n);\n}\n\nngOnDestroy() {\nthis.unsubscribe$.next();\nthis.unsubscribe$.complete();\n}\n}",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.936,
+        "pos": 0.064,
+        "compound": 0.6239
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 191,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.11518324607329843,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 191
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 191.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.6111111111111112
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBD": 1,
+            "VBZ": 1,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "}\n\nvalidatePromocode(promocode: string): Observable<any> {\n// return this.http.post<any>(`${this.apiUrl}/credit/promocode/`, { promocode });\nreturn of({});\n}\n}\n\nIn the React version of the component, we will use functional components with hooks and `useEffect` to handle the lifecycle of the component.\n\nFirst, we will create an `enum` to define the payment methods:\n```cpp\nexport enum PaymentMethods {\n  zen = 'zen',\n  g2a = 'g2a',\n  credit = 'credit',\n  coinbase = 'coinbase',\n  giftcards = 'giftcards',\n  payop = 'payop',\n  paytriot = 'paytriot',\n}\n```\nWe will also define the initial state of the component:\n```yaml\nconst DEFAULT_DEPOSIT_AMOUNT = 100;\n\ninterface DepositState {\n  loading: boolean;\n  checkoutUrl: string;\n  checkoutOptions: any;\n  success: boolean;\n  failed: string;\n}\n\nconst initialState: DepositState = {\n  loading: false,\n  checkoutUrl: '',\n  checkoutOptions: null,\n  success: false,\n  failed: '',\n};\n```\nWe will use the `useReducer` hook to manage the state of the component:\n```go\nconst reducer = (state: DepositState, action: any): DepositState => {\n  switch (action.type) {\n    case 'LOADING':\n      return {\n        ...state,\n        loading: true,\n      };\n    case 'SET_CHECKOUT_URL':\n      return {\n        ...state,\n        checkoutUrl: action.payload,\n        loading: false,\n      };\n    case 'SET_CHECKOUT_OPTIONS':\n      return {\n        ...state,\n        checkoutOptions: action.payload,\n        loading: false,\n      };\n    case 'SET_SUCCESS':\n      return {\n        ...state,\n        success: true,\n        loading: false,\n      };\n    case 'SET_FAILED':\n      return {\n        ...state,\n        failed: action.payload,\n        loading: false,\n      };\n    default:\n      return state;\n  }\n};\n\nconst [state, dispatch] = useReducer(reducer, initialState);\n```\nWe will define the `useEffect` hook to handle the side effects of the component:\n```scss\nconst [isMobile, setIsMobile] = useState(false);\nconst [paymentOption, setPaymentOption] = useState(PaymentMethods.credit);\nconst [selectedMethod, setSelectedMethod] = useState(PaymentMethods.credit);\nconst [amount, setAmount] = useState(DEFAULT_DEPOSIT_AMOUNT);\nconst [amountList, setAmountList] = useState<number[]>([]);\nconst [promocode, setPromocode] = useState('');\nconst [promocodeStatus, setPromocodeStatus] = useState('');\nconst [promocodeValue, setPromocodeValue] = useState(0);\nconst [isPaymentFAQ, setIsPaymentFAQ] = useState(false);\nconst [isTOSAgreed, setIsTOSAgreed] = useState(false);\nconst [depositTitle, setDepositTitle] = useState('DEPOSIT.CHOOSE_PAYMENT_METHOD');\n\nconst isMounted = useRef(true);\nconst unsubscribe$ = useRef(new Subject<void>()).current;\n\nconst depositService = new DepositService();\n\nuseEffect(() => {\n  return () => {\n    isMounted.current = false;\n    unsubscribe$.next();\n    unsubscribe$.complete();\n  };\n}, []);\n```\nWe will use the `useState` hook to manage the local state of the component:\n\n* `isMobile` will hold the value of whether the user is using a mobile device or not.\n* `paymentOption` will hold the current payment option.\n* `selectedMethod` will hold the selected payment method.\n* `amount` will hold the current deposit amount.\n* `amountList` will hold the available deposit amounts.\n* `promocode",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.025,
+        "neu": 0.909,
+        "pos": 0.066,
+        "compound": 0.9382
+      },
+      "core_lexical": {
+        "self_ref_freq": 6,
+        "second_person_freq": 6,
+        "token_count": 672,
+        "self_ref_ratio": 0.008928571428571428,
+        "second_person_ratio": 0.008928571428571428
+      },
+      "lexical_features": {
+        "adj_adv_freq": 61,
+        "adj_adv_ratio": 0.09077380952380952,
+        "self_ref_freq": 6,
+        "self_ref_ratio": 0.008928571428571428,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.008928571428571428,
+        "token_count": 672
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 96.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.46956521739130436
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 20,
+            "VBP": 3,
+            "VBN": 11,
+            "VBD": 5,
+            "VBG": 2,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 28,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.44858000000000003,
+    "pos": 0.032,
+    "neu": 0.9608000000000001,
+    "neg": 0.007200000000000001
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 131,
+    "adj_adv_ratio": 0.0907202216066482,
+    "self_ref_freq": 6,
+    "self_ref_ratio": 0.004155124653739612,
+    "second_person_freq": 7,
+    "second_person_ratio": 0.004847645429362881,
+    "total_tokens": 1444
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 289.3333333333333,
+      "clause_complexity": 0.3333333333333333,
+      "vocabulary_richness": 0.5545111571198528
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 3,
+        "VBD": 12,
+        "VB": 23,
+        "VBP": 6,
+        "VBG": 3,
+        "VBN": 27
+      },
+      "named_entities": {
+        "ORGANIZATION": 64,
+        "PERSON": 3,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 3,
+      "it": 2
+    },
+    "turn_count": 5,
+    "total_tokens": 1444
+  }
+}

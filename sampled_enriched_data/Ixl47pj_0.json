@@ -1,0 +1,426 @@
+{
+  "id": "Ixl47pj_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Here is a salesforce apex class please just wait for my next request",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.839,
+        "pos": 0.161,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 13,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.23076923076923078,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 13
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Alright, I'm here to help. Please provide the Salesforce Apex class or your next request, and I'll do my best to assist you.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.629,
+        "pos": 0.371,
+        "compound": 0.8807
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 2,
+        "token_count": 29,
+        "self_ref_ratio": 0.10344827586206896,
+        "second_person_ratio": 0.06896551724137931
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.10344827586206896,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.10344827586206896,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.06896551724137931,
+        "token_count": 29
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 4
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "public static String phoneNumbersToSearch(String inputPhone){\n String sOutputValue = '';\n \n if(String.isEmpty(inputPhone)){\n return inputPhone;\n }\n String sFlattenedInput = inputPhone.replace(' ', '-');\n sFlattenedInput = sFlattenedInput.replace('-', '');\n sFlattenedInput = sFlattenedInput.replace('(', '');\n sFlattenedInput = sFlattenedInput.replace(')', '');\n System.debug('DEV:LOG::sFlattenedInput : ' + sFlattenedInput);\n if(sFlattenedInput.length() < 10 || sFlattenedInput.length() > 13){\n sOutputValue = inputPhone;\n }\n else if(sFlattenedInput.left(1) == '+' && sFlattenedInput.left(3) != '+61'){ \n sOutputValue = inputPhone;\n }\n else if(sFlattenedInput.left(2) == '00' && sFlattenedInput.left(4) != '0061'){ \n sOutputValue = inputPhone;\n }\n else if(sFlattenedInput.left(4) == '0061' || sFlattenedInput.left(3) == '+61'){\n if(sFlattenedInput.left(4) == '0061'){\n sFlattenedInput = sFlattenedInput.right(sFlattenedInput.length() - 4);\n }\n if(sFlattenedInput.left(3) == '+61'){\n sFlattenedInput = sFlattenedInput.right(sFlattenedInput.length() - 3);\n }\n if(sFlattenedInput.length() != 9){\n sOutputValue = inputPhone;\n }\n }\n else{\n if(sFlattenedInput.left(1) == '0' && sFlattenedInput.length() != 10){\n sOutputValue = inputPhone;\n }\n else if(sFlattenedInput.left(1) != '0' && sFlattenedInput.length() != 9){\n sOutputValue = inputPhone;\n }\n }\n if(String.isEmpty(sOutputValue)){\n String sPhoneLast9Digits = ''; //Last nine digits to build various phone number formats\n if(sFlattenedInput.left(1) == '0'){\n sOutputValue = sFlattenedInput + '\\', \\'';\n sPhoneLast9Digits = sFlattenedInput.right(sFlattenedInput.length() - 1); \n }\n else{\n sOutputValue = '0' + sFlattenedInput + '\\', \\'';\n sPhoneLast9Digits = sFlattenedInput;\n }\n\n sOutputValue += '+61' + sPhoneLast9Digits + '\\', \\'';\n sOutputValue += '0061' + sPhoneLast9Digits + '\\', \\'';\n\n String sPhoneLast9Digits333Split = sPhoneLast9Digits.left(3) + ' ' + sPhoneLast9Digits.mid(3, 3) + ' ' + sPhoneLast9Digits.right(3);\n String sPhoneLast9Digits144Split = sPhoneLast9Digits.left(1) + ' ' + sPhoneLast9Digits.mid(1, 4) + ' ' + sPhoneLast9Digits.right(4);\n //added as part of JIRA -NCC 287 \n \n String sPhoneLast9Digits028Split = sPhoneLast9Digits.left(1)+' '+sPhoneLast9Digits.right(8);\n System.debug('The new format that is supported'+sPhoneLast9Digits028Split);\n\n sOutputValue += '+61 ' + sPhoneLast9Digits333Split + '\\', \\'';\n sOutputValue += '0061 ' + sPhoneLast9Digits333Split + '\\', \\'';\n sOutputValue += '0' + sPhoneLast9Digits333Split + '\\', \\'';\n\n sOutputValue += '+61 ' + sPhoneLast9Digits144Split + '\\', \\'';\n sOutputValue += '0061 ' + sPhoneLast9Digits144Split + '\\', \\'';\n sOutputValue += '0' + sPhoneLast9Digits144Split+'\\',\\''; // + '\\', \\'';\n sOutputValue += '0' + sPhoneLast9Digits028Split; // + '\\', \\'';\n System.debug('the value is sOutputValue'+sOutputValue);\n }\n return sOutputValue;\n }",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.984,
+        "pos": 0.016,
+        "compound": 0.5951
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 595,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 36,
+        "adj_adv_ratio": 0.06050420168067227,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 595
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 595.0,
+          "clause_complexity": 12.0,
+          "vocabulary_richness": 0.29508196721311475
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 4,
+            "VB": 10,
+            "VBD": 7,
+            "VBN": 5,
+            "VBZ": 5,
+            "VBP": 8
+          },
+          "named_entities": {
+            "ORGANIZATION": 26,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Thank you for providing the Apex class. This is a static method named `phoneNumbersToSearch` that takes a `String` input called `inputPhone` and returns a formatted `String`. The purpose of this method",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.923,
+        "pos": 0.077,
+        "compound": 0.3612
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 41,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.024390243902439025
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.04878048780487805,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.024390243902439025,
+        "token_count": 41
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.666666666666666,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8888888888888888
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 2,
+            "VBZ": 3,
+            "VBN": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Please tell me what the return value will be if the following input phone is provided. 0414567071",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.761,
+        "pos": 0.239,
+        "compound": 0.5719
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 18,
+        "self_ref_ratio": 0.05555555555555555,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.05555555555555555,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.05555555555555555,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBZ": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To determine the return value for the provided input phone `0414567071`, let's walk through the code:\n\n1. The method checks if the input is empty, and if so, returns the input. In this case, the input is not empty, so we continue.\n2. All spaces, hyphens, and parentheses are removed from the input, resulting in the same value: `0414567071`.\n3. The input length is checked to see if it's between 10 and 13 characters. It's 10 characters long, so we proceed.\n4. The method checks if the input starts with a '+' or '00' and if it does not match a specific pattern. In this case, it does not start with a '+' or '00', so we continue.\n5. Next, it checks if the input starts with a '0' and if the length is not equal to 10. The input starts with '0' and has a length of 10, so the condition is not met. The method then checks if the input doesn't start with '0' and if the length is not equal to 9. The input starts with '0', so this condition is also not met.\n6. Since `sOutputValue` is still an empty string, the method starts building different phone number formats. It strips the leading '0' and uses the remaining 9 digits (`414567071`) for the following formats:\n\t* `0414567071`\n\t* `+61414567071`\n\t* `0061414567071`\n\t* `+61 414 567 071`\n\t* `0061 414 567 071`\n\t* `0 414 567 071`\n\t* `+61 4 1456 7071`\n\t* `0061 4 1456 7071`\n\t* `0 4 1456 7071`\n\t* `0 414567071`\n7. The formatted phone numbers are returned as a single string, separated by commas:\n```yaml\n0414567071, +61414567071, 0061414567071, +61 414 567 071, 0061 414 567 071, 0 414 567 071, +61 4 1456 7071, 0061 4 1456 7071, 0 4 1456 7071, 0 414567071\n```\nSo, the return value for the input `0414567071` will be the above string containing different phone number formats.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.011,
+        "neu": 0.954,
+        "pos": 0.035,
+        "compound": 0.6996
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 3,
+        "token_count": 424,
+        "self_ref_ratio": 0.007075471698113208,
+        "second_person_ratio": 0.007075471698113208
+      },
+      "lexical_features": {
+        "adj_adv_freq": 44,
+        "adj_adv_ratio": 0.10377358490566038,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.007075471698113208,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.007075471698113208,
+        "token_count": 424
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 21.2,
+          "clause_complexity": 0.45,
+          "vocabulary_richness": 0.43820224719101125
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBZ": 24,
+            "VBP": 5,
+            "VBN": 6,
+            "VBG": 5,
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.5711166666666667,
+    "pos": 0.14983333333333335,
+    "neu": 0.8483333333333333,
+    "neg": 0.0018333333333333333
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 89,
+    "adj_adv_ratio": 0.07946428571428571,
+    "self_ref_freq": 8,
+    "self_ref_ratio": 0.007142857142857143,
+    "second_person_freq": 6,
+    "second_person_ratio": 0.005357142857142857,
+    "total_tokens": 1120
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 111.06111111111112,
+      "clause_complexity": 2.158333333333333,
+      "vocabulary_richness": 0.7703621838821691
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 34,
+        "VBP": 14,
+        "VB": 24,
+        "VBG": 11,
+        "VBD": 9,
+        "VBN": 13
+      },
+      "named_entities": {
+        "GPE": 2,
+        "ORGANIZATION": 28,
+        "PERSON": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 6
+    },
+    "turn_count": 6,
+    "total_tokens": 1120
+  }
+}

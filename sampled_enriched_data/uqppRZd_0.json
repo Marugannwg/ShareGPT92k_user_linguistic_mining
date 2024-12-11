@@ -1,0 +1,191 @@
+{
+  "id": "uqppRZd_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "I have to work on an AI project. Write code to train and infer a model which can get best score.\n\n1. Data : Divided into three parts.\n- Training data: train.csv (consists of 3 columns of id, text and label)\n- Test data: test.csv (consists of 2 columns of id and text)\n- Submission file: sample\\_submission.csv (consists of id and label columns)\n(Label consists of a total of 8, and the text column consists of news article data)\n\n2. Preprocess : Preprocess text data based on countvectorizer\n\n3. Model : soft-voting with 2 models below\n- Model 1 : \"LightGBM\" (has general fine-tuned hyperparameters, has early-stopping)\n- Model 2 : \"BertForSequenceClassification\" (has general fine-tuned hyperparameters, has early-stopping, with pytorch)\n- All models use Stratified K-fold (5 n\\_splits)\n- All models use CPU, not GPU.\n\n4. Others\n- Type of train\\_feature, val\\_feature, and test\\_feature is float64.\n- The eval metric for validation is the macro f1 score.\n- No Tensorflow, all should be pytorch.\n- Make simple code\n- Do not your code got cut off",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.024,
+        "neu": 0.953,
+        "pos": 0.023,
+        "compound": 0.2263
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 217,
+        "self_ref_ratio": 0.004608294930875576,
+        "second_person_ratio": 0.004608294930875576
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.04608294930875576,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.004608294930875576,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.004608294930875576,
+        "token_count": 217
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.083333333333332,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.631578947368421
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VB": 5,
+            "VBN": 7,
+            "VBZ": 11,
+            "VBD": 1
+          },
+          "named_entities": {
+            "PERSON": 2,
+            "GPE": 1,
+            "ORGANIZATION": 4
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, I can help you with that. Here's a code that trains and infers a soft-voting model using LightGBM and BertForSequenceClassification on the provided data:\n```python\nimport pandas as pd\nimport numpy as np\nfrom sklearn.feature_extraction.text import CountVectorizer\nfrom sklearn.model_selection import StratifiedKFold\nfrom sklearn.metrics import f1_score\nimport lightgbm as lgb\nfrom transformers import BertTokenizer, BertForSequenceClassification\nimport torch\n\n# Load the data\ntrain_df = pd.read_csv('train.csv')\ntest_df = pd.read_csv('test.csv')\nsubmission_df = pd.read_csv('sample_submission.csv')\n\n# Preprocess the text data\nvectorizer = CountVectorizer()\ntrain_feature = vectorizer.fit_transform(train_df['text'])\nval_feature = vectorizer.transform(test_df['text'])\ntest_feature = vectorizer.transform(test_df['text'])\n\n# Define the models and hyperparameters\nparams = {\n    'boosting_type': 'gbdt',\n    'objective': 'multiclass',\n    'num_class': 8,\n    'metric': 'multi_logloss',\n    'num_leaves': 31,\n    'learning_rate': 0.05,\n    'feature_fraction': 0.9,\n    'bagging_fraction': 0.8,\n    'bagging_freq': 5,\n    'verbose': -1,\n    'random_state': 42\n}\nmodel_lgb = lgb.LGBMClassifier(**params)\n\ntokenizer = BertTokenizer.from_pretrained('bert-base-uncased')\nmodel_bert = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=8)\n\n# Train the models using Stratified K-fold\nn_splits = 5\nskf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)\noof_lgb = np.zeros((len(train_df), 8))\noof_bert = np.zeros((len(train_df), 8))\nfor fold, (train_idx, val_idx) in enumerate(skf.split(train_feature, train_df['label'])):\n    X_train, y_train = train_feature[train_idx], train_df['label'][train_idx]\n    X_val, y_val = train_feature[val_idx], train_df['label'][val_idx]\n\n    # Train LightGBM model\n    dtrain = lgb.Dataset(X_train, label=y_train)\n    dval = lgb.Dataset(X_val, label=y_val, reference=dtrain)\n    model_lgb.fit(X_train, y_train, eval_set=[(X_val, y_val)], early_stopping_rounds=100, verbose=False)\n    oof_lgb[val_idx] = model_lgb.predict_proba(X_val)\n\n    # Train BERT model\n    train_texts = train_df['text'][train_idx].tolist()\n    val_texts = train_df['text'][val_idx].tolist()\n    train_encodings = tokenizer(train_texts, truncation=True, padding=True, max_length=512, return_tensors='pt')\n    val_encodings = tokenizer(val_texts, truncation=True, padding=True, max_length=512, return_tensors='pt')\n    train_labels = torch.tensor(train_df['label'][train_idx].tolist())\n    val_labels = torch.tensor(train_df['label'][val_idx].tolist())\n    train_dataset = torch.utils.data.TensorDataset(train_encodings['input_ids'], train_encodings['attention_mask'], train_labels)\n    val_dataset = torch.utils.data.TensorDataset(val_encodings['input_ids'], val_encodings['attention_mask'], val_labels)\n    model_bert.train()\n    optimizer = torch.optim.Adam(model_bert.parameters(), lr=5e-5)\n    train_loader = torch.utils.data.DataLoader(train\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.96,
+        "pos": 0.04,
+        "compound": 0.836
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 521,
+        "self_ref_ratio": 0.0019193857965451055,
+        "second_person_ratio": 0.0019193857965451055
+      },
+      "lexical_features": {
+        "adj_adv_freq": 38,
+        "adj_adv_ratio": 0.07293666026871401,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0019193857965451055,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0019193857965451055,
+        "token_count": 521
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 260.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6216216216216216
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBZ": 3,
+            "VBG": 2,
+            "VBN": 3,
+            "VBP": 20
+          },
+          "named_entities": {
+            "ORGANIZATION": 11,
+            "PERSON": 3
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.53115,
+    "pos": 0.0315,
+    "neu": 0.9564999999999999,
+    "neg": 0.012
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 48,
+    "adj_adv_ratio": 0.06504065040650407,
+    "self_ref_freq": 2,
+    "self_ref_ratio": 0.0027100271002710027,
+    "second_person_freq": 2,
+    "second_person_ratio": 0.0027100271002710027,
+    "total_tokens": 738
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 139.29166666666666,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.6266002844950214
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 2,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 25,
+        "VB": 8,
+        "VBN": 10,
+        "VBZ": 14,
+        "VBD": 1,
+        "VBG": 2
+      },
+      "named_entities": {
+        "PERSON": 5,
+        "GPE": 1,
+        "ORGANIZATION": 15
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 738
+  }
+}

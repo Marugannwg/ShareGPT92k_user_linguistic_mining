@@ -1,0 +1,620 @@
+{
+  "id": "7mH2NVL_11",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "To display an anchor (a) tag like the default button in wp-admin with hover effect and disabled state, you can use the `button` CSS class that is included in WordPress.\n\nHere's an example HTML code:\n```php\n<a href=\"#\" class=\"button\">Click me</a>\n```\nAnd the updated CSS code:\n```css\n.button {\n  display: inline-block;\n  padding: 0.5em 1em;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 1em;\n  line-height: 1;\n  text-align: center;\n  text-decoration: none;\n  white-space: nowrap;\n  cursor: pointer;\n  background-color: #f7f7f7;\n  color: #333;\n}\n\n.button:hover {\n  background-color: #fafafa;\n  border-color: #999;\n  color: #0073aa;\n}\n\n.button:focus, .button:active {\n  background-color: #f7f7f7;\n  border-color: #333;\n  color: #0073aa;\n}\n\n.button.disabled, .button:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n```\nThis will style the anchor tag with the `button` class to match the default button style in wp-admin, including the hover effect and disabled state.\n\nNote that the `.button` class is already included in WordPress, so you do not need to add any custom CSS or JavaScript to use it. Just add the `button` class to your anchor tag and it will be styled as a button.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.977,
+        "pos": 0.023,
+        "compound": 0.4767
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 3,
+        "token_count": 273,
+        "self_ref_ratio": 0.003663003663003663,
+        "second_person_ratio": 0.01098901098901099
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.07326007326007326,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.003663003663003663,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.01098901098901099,
+        "token_count": 273
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 68.25,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5978260869565217
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 10,
+            "VBZ": 3,
+            "VBN": 3,
+            "VBD": 1,
+            "VBG": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "When in the .disabled state, it shouldn't be hoovered, active, or focused.\nAnswer in English.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.126,
+        "neu": 0.728,
+        "pos": 0.146,
+        "compound": 0.088
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 21,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.14285714285714285,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 21
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.5,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBN": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "You can modify the CSS code provided in the previous answer to disable hover, active, and focus styles when the button is in the `.disabled` state.\n\nHere's the updated CSS code:\n```css\n.button {\n  display: inline-block;\n  padding: 0.5em 1em;\n  margin: 0;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  font-size: 1em;\n  line-height: 1;\n  text-align: center;\n  text-decoration: none;\n  white-space: nowrap;\n  cursor: pointer;\n  background-color: #f7f7f7;\n  color: #333;\n}\n\n.button:hover:not(.disabled) {\n  background-color: #fafafa;\n  border-color: #999;\n  color: #0073aa;\n}\n\n.button:focus:not(.disabled), .button:active:not(.disabled) {\n  background-color: #f7f7f7;\n  border-color: #333;\n  color: #0073aa;\n}\n\n.button.disabled, .button:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n```\nIn this updated CSS code, the `:not(.disabled)` selector is used to exclude the hover state when the button is in the `.disabled` state. Similarly, the `:not(.disabled)` selector is used to exclude the focus and active states when the button is in the `.disabled` state.\n\nIn addition, the `pointer-events: none;` property is used to disable all mouse events (including hover and click) on the button when it is in the `.disabled` state.\n\nWith these changes, the button will not respond to hover, active, or focus events when it is in the `.disabled` state.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.02,
+        "neu": 0.93,
+        "pos": 0.05,
+        "compound": 0.7096
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 310,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0032258064516129032
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.08709677419354839,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0032258064516129032,
+        "token_count": 310
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 62.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.5604395604395604
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 9,
+            "VBD": 2,
+            "VBZ": 9,
+            "VBN": 8,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "What if you want to block the click event when a link is .disabled?\nAnswer in English.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.151,
+        "neu": 0.781,
+        "pos": 0.068,
+        "compound": -0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 19,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.05263157894736842
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.05263157894736842,
+        "token_count": 19
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.5,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 1,
+            "VBZ": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "To block the click event when an anchor tag with the `.disabled` class is clicked, you can use JavaScript and jQuery to prevent the default behavior of the click event.\n\nHere's an example:\n```php\n<a href=\"#\" class=\"button disabled\">Click me</a>\n\n<script>\n$(document).ready(function() {\n  $('a.disabled').click(function(event) {\n    event.preventDefault();\n  });\n});\n</script>\n```\nIn this example, the anchor tag has both the `button` and `disabled` classes. The `disabled` class is used to indicate that the link should not be clickable.\n\nThe jQuery code adds a click event listener to all anchor tags with the `.disabled` class. When the link is clicked, the event.preventDefault() method is called to prevent the default behavior of the click event, which would normally follow the link to its `href` attribute.\n\nWith this code, clicking on the anchor tag will do nothing when it has the `.disabled` class. Note that this code only applies to anchor tags with the `.disabled` class, so other anchor tags on the page will still behave normally when clicked.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.017,
+        "neu": 0.969,
+        "pos": 0.013,
+        "compound": -0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 242,
+        "self_ref_ratio": 0.004132231404958678,
+        "second_person_ratio": 0.004132231404958678
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.08264462809917356,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.004132231404958678,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.004132231404958678,
+        "token_count": 242
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 34.57142857142857,
+          "clause_complexity": 0.5714285714285714,
+          "vocabulary_richness": 0.5375
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 12,
+            "VBZ": 9,
+            "VBN": 6,
+            "VBD": 1,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "If the a tag of #downloadCSV with jQuery has .disabled, click invalid\nAnswer in English.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 18,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To prevent the click event on the anchor tag with ID `downloadCSV` when it has the `.disabled` class, you can use JavaScript and jQuery to check for the presence of the `.disabled` class before allowing the click event to proceed.\n\nHere's an example:\n```php\n<a href=\"#\" id=\"downloadCSV\" class=\"button disabled\">Download CSV</a>\n\n<script>\n$(document).ready(function() {\n  $('#downloadCSV').click(function(event) {\n    if ($(this).hasClass('disabled')) {\n      event.preventDefault();\n    } else {\n      // Create a CSV data string\n      var csvData = \"Name,Email\\nJohn Doe,john.doe@example.com\\nJane Smith,jane.smith@example.com\";\n\n      // Encode the CSV data as a data URI\n      var csvUrl = \"data:text/csv;charset=utf-8,\" + encodeURIComponent(csvData);\n\n      // Set the href and download attributes of the anchor element\n      $(this).attr({\n        'href': csvUrl,\n        'download': 'data.csv'\n      });\n    }\n  });\n});\n</script>\n```\nIn this example, the anchor tag has the ID `downloadCSV` and the `.disabled` class. The jQuery code adds a click event listener to the anchor tag.\n\nWhen the link is clicked, the event listener checks for the presence of the `.disabled` class using the `hasClass` method. If the link has the `.disabled` class, the `event.preventDefault()` method is called to prevent the default behavior of the click event, which would normally follow the link to its `href` attribute.\n\nIf the link does not have the `.disabled` class, the code proceeds to create a CSV data string, encode it as a data URI, and set the `href` and `download` attributes of the anchor element to the data URI and file name respectively.\n\nWith this code, clicking on the anchor tag will only proceed to download the CSV file if it does not have the `.disabled` class.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.966,
+        "pos": 0.034,
+        "compound": 0.7003
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 399,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.002506265664160401
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.06265664160401002,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.002506265664160401,
+        "token_count": 399
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 57.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.4765625
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 15,
+            "VBZ": 10,
+            "VBG": 3,
+            "VBD": 2,
+            "VBN": 3,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 18,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "$('#downloadCSV').prop('disabled', true); How to check this setting?\nAnd in css, how do you select something set like that?\nAnswer in English.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.77,
+        "pos": 0.23,
+        "compound": 0.6868
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 38,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.02631578947368421
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.02631578947368421,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.02631578947368421,
+        "token_count": 38
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.666666666666666,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 0,
+            "general": 2
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBN": 2,
+            "VB": 2,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To check if the `disabled` property of the anchor tag with ID `downloadCSV` is set to `true` using jQuery, you can use the `prop` method to get the value of the property. Here's an example:\n```php\n<a href=\"#\" id=\"downloadCSV\" class=\"button\" download>Download CSV</a>\n\n<script>\n$(document).ready(function() {\n  $('#downloadCSV').click(function() {\n    $(this).prop('disabled', true);\n\n    // Do something else here...\n\n    if ($(this).prop('disabled')) {\n      console.log('The download button is disabled.');\n    } else {\n      console.log('The download button is enabled.');\n    }\n  });\n});\n</script>\n```\nIn this example, the anchor tag has the ID `downloadCSV` and the `.button` class. The `download` attribute is also included to specify that the link should download a file when clicked.\n\nThe jQuery code adds a click event listener to the anchor tag. When the link is clicked, the `prop` method is called to set the `disabled` property of the anchor tag to `true`.\n\nAfter doing something else (which is not shown in the example), the code checks the value of the `disabled` property using the `prop` method again. If the `disabled` property is `true`, the code logs a message to the console indicating that the download button is disabled. Otherwise, the code logs a message indicating that the download button is enabled.\n\nTo select an element in CSS based on its `disabled` state, you can use the `:disabled` pseudo-class. Here's an example:\n```css\n.button:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n```\nIn this example, the `.button:disabled` selector targets all elements with the `.button` class that have the `disabled` property set to `true`. The CSS code sets the `opacity` property to 0.5 and the `cursor` property to `not-allowed` to indicate that the element is disabled.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.933,
+        "pos": 0.067,
+        "compound": 0.9501
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 431,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.004640371229698376
+      },
+      "lexical_features": {
+        "adj_adv_freq": 32,
+        "adj_adv_ratio": 0.07424593967517401,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.004640371229698376,
+        "token_count": 431
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 33.15384615384615,
+          "clause_complexity": 0.46153846153846156,
+          "vocabulary_richness": 0.43795620437956206
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 11,
+            "VBZ": 19,
+            "VBN": 14,
+            "VBG": 3,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 7
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.3142,
+    "pos": 0.07011111111111111,
+    "neu": 0.894888888888889,
+    "neg": 0.034888888888888886
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 130,
+    "adj_adv_ratio": 0.07424328954882924,
+    "self_ref_freq": 2,
+    "self_ref_ratio": 0.001142204454597373,
+    "second_person_freq": 10,
+    "second_person_ratio": 0.0057110222729868645,
+    "total_tokens": 1751
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 33.96021571021571,
+      "clause_complexity": 0.6147741147741148,
+      "vocabulary_richness": 0.7344760390861826
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 2,
+        "why": 0,
+        "can_could": 6,
+        "general": 3
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 61,
+        "VBZ": 52,
+        "VBN": 39,
+        "VBD": 7,
+        "VBG": 9,
+        "VBP": 6
+      },
+      "named_entities": {
+        "ORGANIZATION": 39,
+        "PERSON": 5,
+        "GPE": 4
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 9
+    },
+    "turn_count": 9,
+    "total_tokens": 1751
+  }
+}

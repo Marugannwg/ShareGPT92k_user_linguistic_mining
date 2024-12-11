@@ -1,0 +1,187 @@
+{
+  "id": "RQypdVT_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "How do I make an HTTP request in Javascript?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 10,
+        "self_ref_ratio": 0.1,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To make an HTTP request in JavaScript, you can use the built-in `XMLHttpRequest` object or the newer `fetch()` API.\n\nHere's an example using `XMLHttpRequest`:\n```javascript\nconst xhr = new XMLHttpRequest();\nxhr.open('GET', 'https://example.com/data');\nxhr.onload = () => {\n  if (xhr.status === 200) {\n    console.log(xhr.responseText);\n  } else {\n    console.log('Error!');\n  }\n};\nxhr.send();\n```\nThis code creates a new `XMLHttpRequest` object, sets the HTTP method and URL, defines a callback function to handle the response when it's received, and sends the request.\n\nAnd here's an example using `fetch()`:\n```javascript\nfetch('https://example.com/data')\n  .then(response => {\n    if (response.ok) {\n      return response.text();\n    } else {\n      throw new Error('Network response was not ok.');\n    }\n  })\n  .then(data => console.log(data))\n  .catch(error => console.error(error));\n```\nThis code uses the `fetch()` function to make a GET request to the specified URL. The response is a Promise, which is then parsed as text and logged to the console. If there is an error, it is caught and logged to the console.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.017,
+        "neu": 0.954,
+        "pos": 0.029,
+        "compound": 0.2481
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 263,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0038022813688212928
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.06844106463878327,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0038022813688212928,
+        "token_count": 263
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 43.833333333333336,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.5833333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5,
+            "VBZ": 12,
+            "VBG": 2,
+            "VBN": 6,
+            "VBP": 1,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 7,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.12405,
+    "pos": 0.0145,
+    "neu": 0.977,
+    "neg": 0.0085
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 18,
+    "adj_adv_ratio": 0.06593406593406594,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.003663003663003663,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.003663003663003663,
+    "total_tokens": 273
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 26.916666666666668,
+      "clause_complexity": 0.3333333333333333,
+      "vocabulary_richness": 0.7916666666666667
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 1,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 2,
+        "VB": 6,
+        "VBZ": 12,
+        "VBG": 2,
+        "VBN": 6,
+        "VBD": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 8,
+        "GPE": 2
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 273
+  }
+}

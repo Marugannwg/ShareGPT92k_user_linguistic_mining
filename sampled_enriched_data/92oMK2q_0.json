@@ -1,0 +1,294 @@
+{
+  "id": "92oMK2q_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "How to convert a percentage string to number in node js?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.885,
+        "pos": 0.115,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 12,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To convert a percentage string to a number in Node.js, you can use the parseFloat() function and divide the result by 100. For example:\n```\nlet percentageString = \"12.5%\";\nlet number = parseFloat(percentageString) / 100;\nconsole.log(number); // 0.125\n```\nAlternatively, you can use the parseFloat() function with the replace() method to remove the % symbol before dividing by 100.\n```\nlet percentageString = \"12.5%\";\nlet number = parseFloat(percentageString.replace(\"%\", \"\")) / 100;\nconsole.log(number); // 0.125\n```\nNote that parseFloat() returns NaN if the input string is not a valid number. you should check the output before using it.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.012,
+        "neu": 0.948,
+        "pos": 0.04,
+        "compound": 0.1724
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 147,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.02040816326530612
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.02040816326530612,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.02040816326530612,
+        "token_count": 147
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 36.75,
+          "clause_complexity": 0.75,
+          "vocabulary_richness": 0.574468085106383
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 15,
+            "VBG": 5,
+            "VBZ": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 6
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I dont want to divide by 100",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.169,
+        "neu": 0.831,
+        "pos": 0.0,
+        "compound": -0.0572
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 7,
+        "self_ref_ratio": 0.14285714285714285,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.14285714285714285,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 7
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 7.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "If you don't want to divide the parsed float by 100, you can simply use the parseFloat() function without any further operations.\n```\nlet percentageString = \"12.5%\";\nlet number = parseFloat(percentageString);\nconsole.log(number); // 12.5\n```\nAlternatively, you can use the parseFloat() function with the replace() method to remove the % symbol and then use the result as it is.\n```\nlet percentageString = \"12.5%\";\nlet number = parseFloat(percentageString.replace(\"%\", \"\"));\nconsole.log(number); // 12.5\n```\nNote that parseFloat() returns NaN if the input string is not a valid number. You should check the output before using it.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.025,
+        "neu": 0.947,
+        "pos": 0.027,
+        "compound": 0.0402
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 145,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.027586206896551724
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.05517241379310345,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.027586206896551724,
+        "token_count": 145
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 36.25,
+          "clause_complexity": 0.75,
+          "vocabulary_richness": 0.6444444444444445
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 16,
+            "VBG": 4,
+            "VBZ": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 6
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.05814999999999999,
+    "pos": 0.0455,
+    "neu": 0.9027499999999999,
+    "neg": 0.051500000000000004
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 12,
+    "adj_adv_ratio": 0.03858520900321544,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.003215434083601286,
+    "second_person_freq": 7,
+    "second_person_ratio": 0.022508038585209004,
+    "total_tokens": 311
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 23.0,
+      "clause_complexity": 0.375,
+      "vocabulary_richness": 0.8047281323877068
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 4,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 33,
+        "VBG": 9,
+        "VBZ": 5,
+        "VBP": 3
+      },
+      "named_entities": {
+        "ORGANIZATION": 12
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 4
+    },
+    "turn_count": 4,
+    "total_tokens": 311
+  }
+}

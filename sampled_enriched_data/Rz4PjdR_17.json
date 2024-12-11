@@ -1,0 +1,128 @@
+{
+  "id": "Rz4PjdR_17",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Since my last annual appraisal, I have been working on several significant features for multiple services, including:\n\n* Dark Mode Assertion and Overlap Assertion, which are visual testing features that help ensure the accuracy of a website's visual elements.\n* Feedback Loop for Visual Testing, which allows for the continuous improvement of visual testing by enabling users to provide feedback.\n* Common Step Analytics and Smart Scripts, which use data from all users to develop an algorithm that can find common steps between two test scripts.\n* Slack Integration for QyrusBot, which provides users with easy access to the major services and features of the Qyrus platform.\n* Next User Action Recommendation, which simplifies the test creation process for new users.\n* Data Warehouse for Insights and Analytics, which extracts relevant data from multiple sources to build test insights for the user.\n* Insights and Analytics Service, which provides customers with a better understanding of how their tests are performing over time.\n\nIn addition to these features, I also worked on laying the foundations for the Desktop Testing framework by providing design guidelines and coding skeletons, which allowed for faster implementation. I successfully developed a POC for the API Recorder feature, which records a website's API calls and translates them into simple English explanations. Although the filtering is still in the early stages of development, this feature holds great potential and can be expanded to include more robust API testing capabilities like chaining relevant APIs and testing those.\n\nThe Dark Mode Assertion feature uses OpenCV and multiple different algorithms to clean, enhance, and connect invisible textual features on a web page. Similarly, the Overlap Assertion feature helps detect overlapping elements on a webpage, which involves a lot of data generation and collection.\n\nThe AutoSelect/Suggest Actions feature simplifies the test creation process by allowing the user to write the description of what they want to achieve with a test step and automatically selects the most suitable action for the given step description.\n\nFinally, I was tasked with moving QyrusBot and Sage from our GPU machines to independent Fargate containers on AWS. I have successfully completed the required code changes for this movement to independent instances, and the ticket is currently awaiting infra deployments as of March 8th.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.888,
+        "pos": 0.112,
+        "compound": 0.9906
+      },
+      "core_lexical": {
+        "self_ref_freq": 6,
+        "second_person_freq": 1,
+        "token_count": 413,
+        "self_ref_ratio": 0.014527845036319613,
+        "second_person_ratio": 0.002421307506053269
+      },
+      "lexical_features": {
+        "adj_adv_freq": 47,
+        "adj_adv_ratio": 0.11380145278450363,
+        "self_ref_freq": 6,
+        "self_ref_ratio": 0.014527845036319613,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.002421307506053269,
+        "token_count": 413
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 27.533333333333335,
+          "clause_complexity": 0.06666666666666667,
+          "vocabulary_richness": 0.7379912663755459
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 8,
+            "VBN": 5,
+            "VBG": 15,
+            "VB": 13,
+            "VBZ": 16,
+            "VBD": 4
+          },
+          "named_entities": {
+            "PERSON": 9,
+            "ORGANIZATION": 15,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.9906,
+    "pos": 0.112,
+    "neu": 0.888,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 47,
+    "adj_adv_ratio": 0.11380145278450363,
+    "self_ref_freq": 6,
+    "self_ref_ratio": 0.014527845036319613,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.002421307506053269,
+    "total_tokens": 413
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 27.533333333333335,
+      "clause_complexity": 0.06666666666666667,
+      "vocabulary_richness": 0.7379912663755459
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 1,
+        "why": 0,
+        "can_could": 2,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 8,
+        "VBN": 5,
+        "VBG": 15,
+        "VB": 13,
+        "VBZ": 16,
+        "VBD": 4
+      },
+      "named_entities": {
+        "PERSON": 9,
+        "ORGANIZATION": 15,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 1
+    },
+    "turn_count": 1,
+    "total_tokens": 413
+  }
+}

@@ -1,0 +1,993 @@
+{
+  "id": "t3f69h7_43",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "AAC is certainly a widely used audio codec for internet radio broadcast, but there are other codecs in use as well. MP3, for example, remains a popular format for internet radio, particularly for legacy streams that have been in operation for many years. Additionally, some broadcasters may use other codecs such as Opus or Vorbis for specific purposes, such as providing higher-quality streams for certain genres of music or for use in low-bandwidth environments.\n\nUltimately, the choice of codec will depend on a number of factors, including the needs of the broadcaster, the preferences of their audience, and the capabilities of their distribution platforms.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.891,
+        "pos": 0.109,
+        "compound": 0.8793
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 118,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 15,
+        "adj_adv_ratio": 0.1271186440677966,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 118
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 29.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8727272727272727
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 4,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VBN": 2,
+            "VBP": 2,
+            "VB": 2,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "PERSON": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "As the app converts an AES67 audio compatible stream to an HLS stream with stiched audio, I find AAC adequate because is compatible for both. Are there other format, compatible with both AES67 and HLS which I can consider as well? Why would I choose another one of those if ther are any",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.927,
+        "pos": 0.073,
+        "compound": 0.4588
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 0,
+        "token_count": 57,
+        "self_ref_ratio": 0.05263157894736842,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.15789473684210525,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.05263157894736842,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 57
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 19.0,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.76
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 1,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VBP": 3,
+            "VB": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "AAC is a commonly used audio format that is compatible with both AES67 and HLS, making it a good choice for applications that require interoperability between the two. However, other audio formats may also be compatible with both standards, such as MP3 or Opus.\n\nThe choice of audio format ultimately depends on factors such as audio quality, bitrate, and compatibility with the target devices or platforms. For example, Opus may offer better audio quality at lower bitrates compared to AAC or MP3, making it a good choice for applications where bandwidth is a concern.\n\nHowever, if compatibility with specific devices or platforms is a key requirement, it may be necessary to choose an audio format that is widely supported by those devices or platforms. In general, AAC is a widely supported audio format that is commonly used in both streaming and broadcast applications, making it a safe choice for many use cases.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.013,
+        "neu": 0.887,
+        "pos": 0.099,
+        "compound": 0.9186
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 169,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 29,
+        "adj_adv_ratio": 0.17159763313609466,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 169
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.166666666666668,
+          "clause_complexity": 0.16666666666666666,
+          "vocabulary_richness": 0.6022727272727273
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 3,
+            "contrast": 2,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VBN": 5,
+            "VBG": 3,
+            "VBP": 1,
+            "VB": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 7,
+            "GPE": 1,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Between Opus and AAC, which one would be better if target devices include 2010 and up smartphones, laptops, and smartwatches... would MP3 still be a good choice?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.812,
+        "pos": 0.188,
+        "compound": 0.7003
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 32,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.125,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 32
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 32.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.9411764705882353
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBP": 1
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Between Opus and AAC, both are capable of delivering high-quality audio at low bitrates, but Opus is generally considered to be better at lower bitrates, while AAC is more efficient at higher bitrates.\n\nFor your target devices which include 2010 and up smartphones, laptops, and smartwatches, both Opus and AAC are widely supported and should work well. However, Opus is a newer format and may not be supported by some older devices, while AAC is more widely supported across different devices and platforms.\n\nMP3 is also a widely supported format, but it is less efficient than Opus and AAC at lower bitrates, which may result in lower audio quality. For this reason, Opus and AAC are generally preferred over MP3 for low bitrate streaming. However, MP3 may still be a good choice if compatibility with older devices is a concern.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.089,
+        "neu": 0.74,
+        "pos": 0.171,
+        "compound": 0.9411
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 158,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.006329113924050633
+      },
+      "lexical_features": {
+        "adj_adv_freq": 30,
+        "adj_adv_ratio": 0.189873417721519,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.006329113924050633,
+        "token_count": 158
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.333333333333332,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.575
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 4,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBG": 1,
+            "VBZ": 7,
+            "VBN": 6,
+            "VB": 5
+          },
+          "named_entities": {
+            "PERSON": 5,
+            "ORGANIZATION": 10
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Because Opus is better at lower bitrates, maybe this on eis better to make more efficient use of bandwith, as the stream could work better with smaller packages. Also, if RTCP is being used, maybe a system of switching from Opus and AAC in th broadcasting provider may be consider to implement...would this be possible? I think it could be",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.032,
+        "neu": 0.797,
+        "pos": 0.171,
+        "compound": 0.8622
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 68,
+        "self_ref_ratio": 0.014705882352941176,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.17647058823529413,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.014705882352941176,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 68
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.666666666666668,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.8571428571428571
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 4
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 6,
+            "VBG": 3,
+            "VBN": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 2,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, Opus may be a better choice for lower bitrates and more efficient use of bandwidth. It is also a versatile codec that can handle a range of audio applications, from music to speech.\n\nSwitching between Opus and AAC based on network conditions is a technique called adaptive streaming, and it is commonly used in streaming applications. The system monitors network conditions and switches to the best codec and bitrate based on available bandwidth and other factors. This can help ensure the best possible user experience for listeners.\n\nTo implement adaptive streaming, the broadcast provider would need to have the necessary infrastructure in place, including encoders and servers that support both Opus and AAC, as well as software that can monitor network conditions and make real-time adjustments. It may also require additional bandwidth and processing power to handle the additional overhead of adaptive streaming.\n\nOverall, both Opus and AAC are good choices for internet radio broadcasting, and the decision of which one to use may depend on factors such as the target audience, available bandwidth, and desired audio quality.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.011,
+        "neu": 0.829,
+        "pos": 0.16,
+        "compound": 0.9817
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 197,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.13705583756345177,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 197
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.625,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7222222222222222
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 14,
+            "VBZ": 3,
+            "VBG": 4,
+            "VBN": 4,
+            "VBP": 2,
+            "VBD": 1
+          },
+          "named_entities": {
+            "PERSON": 2,
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "How can the app check if the end user supports Opus?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.8,
+        "pos": 0.2,
+        "compound": 0.3612
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 12,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The app can check if the end user's device and browser support Opus by using the Web Audio API or MediaDevices API in JavaScript.\n\nUsing the Web Audio API, the app can create an audio context and check if Opus is supported by calling the `AudioContext.prototype.createMediaStreamDestination()` method with an options object that specifies the codec to use. If Opus is not supported, the method will throw an error.\n\nUsing the MediaDevices API, the app can check if Opus is supported by calling the `MediaDevices.prototype.getSupportedConstraints()` method to retrieve a list of supported constraints, including audio codecs. If Opus is not listed as a supported audio codec, it is not supported on the user's device.\n\nOnce the app determines if Opus is supported, it can dynamically switch to using Opus or fallback to another audio codec as necessary.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.044,
+        "neu": 0.831,
+        "pos": 0.125,
+        "compound": 0.88
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 158,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.056962025316455694,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 158
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.333333333333332,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.5066666666666667
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 9,
+            "VBG": 7,
+            "VBZ": 8,
+            "VBN": 6,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 6
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "But, there is no browser, so there is no Web audio Api. There is just a node server serving HLS endpoints. How can the server know if the end user supports Opus? IF they support it, we could ask the provider for Opus streams",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.114,
+        "neu": 0.758,
+        "pos": 0.129,
+        "compound": 0.2034
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 50,
+        "self_ref_ratio": 0.02,
+        "second_person_ratio": 0.02
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.04,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.02,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.02,
+        "token_count": 50
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.5,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.9047619047619048
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBG": 1,
+            "VBP": 2,
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "If there is no browser involved and the HLS endpoints are being served by a node server, there are other ways to check if the end user supports Opus. One way is to look at the HTTP request headers sent by the client when requesting the HLS stream. The \"Accept\" header in the request can indicate what media types the client is capable of handling. For example, if the \"Accept\" header includes \"audio/opus\", it suggests that the client can play Opus audio.\n\nAnother way is to use a user agent string parser library to extract information about the client's browser or device from the User-Agent header in the request. Some user agent strings may indicate support for Opus audio.\n\nOnce you have determined that the client supports Opus, you can request the provider for Opus streams.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.015,
+        "neu": 0.849,
+        "pos": 0.136,
+        "compound": 0.9442
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 154,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.012987012987012988
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.03896103896103896,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.012987012987012988,
+        "token_count": 154
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.0,
+          "clause_complexity": 0.5714285714285714,
+          "vocabulary_richness": 0.684931506849315
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 9,
+            "VBN": 4,
+            "VBP": 3,
+            "VBG": 4,
+            "VB": 8
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "What are the most common apps used for listenin to HLS stream by clients?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 15,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.13333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "There are several popular apps that support HLS streaming on different platforms. Some of the most commonly used apps for listening to HLS streams include:\n\n* VLC Media Player: A free and open-source media player that supports a wide range of video and audio formats, including HLS streams.\n* QuickTime Player: A media player developed by Apple that supports HLS streaming on macOS and iOS.\n* Windows Media Player: A media player developed by Microsoft that supports HLS streaming on Windows.\n* MX Player: A popular media player for Android devices that supports HLS streaming.\n* JW Player: A widely-used video player that supports HLS streaming on web browsers and mobile devices.\n* ExoPlayer: A media player developed by Google that supports HLS streaming on Android.\n* Kodi: A free and open-source media player software that supports HLS streaming on various platforms including Windows, macOS, Linux, and Android.\n\nThere are many other apps and media players that support HLS streaming, but these are some of the most commonly used ones.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.856,
+        "pos": 0.144,
+        "compound": 0.9532
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 192,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.109375,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 192
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 21.333333333333332,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.4392523364485981
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBG": 10,
+            "VBD": 1,
+            "VBZ": 8,
+            "VBN": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 14,
+            "PERSON": 10
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Mention all AES67 standard protocols and their referece as in, where are they defined, in which document or their reference name, please",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.901,
+        "pos": 0.099,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 25,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 25
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBD": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here are the AES67 standard protocols and their references:\n\n1. AES67-2018 - Audio-over-IP interoperability standard - This is the primary document that defines the AES67 standard.\n2. SMPTE ST 2110-30:2018 - Professional Media Over Managed IP Networks: AES67 - This standard specifies how AES67 is used in the context of a larger IP-based media network, including synchronization and timing requirements.\n3. IEEE 1722.1™-2013 - Standard for Layer 2 Transport Protocol for Time-Sensitive Applications in Local Area Networks - This standard defines the Layer 2 transport protocol used by AES67.\n4. IETF RFC 7273 - RTP Control Protocol (RTCP) Extended Report (XR) Block for Delay Metric Reporting - This RFC defines an RTCP extension used by AES67 to report latency and delay metrics.\n5. IETF RFC 7587 - RTP Payload Format for the Opus Speech and Audio Codec - This RFC specifies the payload format used by AES67 for Opus-encoded audio.\n6. IETF RFC 8331 - RTP Payload for Minimalistic Low-Latency Audio and Video - This RFC specifies the payload format used by AES67 for uncompressed audio.\n7. IETF RFC 8677 - Signaling Maximum Bitrate Support over RTP - This RFC defines a method for signaling the maximum bitrate supported by a receiver for a particular media stream, which is used by AES67.\n8. IEEE 1588-2008 - Precision Clock Synchronization Protocol for Networked Measurement and Control Systems - This standard defines the Precision Time Protocol (PTP), which is used by AES67 for clock synchronization.\n\nThese are the main protocols and standards used in the AES67 standard for audio-over-IP interoperability.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.028,
+        "neu": 0.945,
+        "pos": 0.027,
+        "compound": -0.0516
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 288,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.07291666666666667,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 288
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.941176470588236,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5308641975308642
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VBZ": 12,
+            "VBN": 9,
+            "VBG": 3,
+            "VBD": 1,
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 33,
+            "PERSON": 8,
+            "GPE": 3
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.6233733333333333,
+    "pos": 0.12206666666666664,
+    "neu": 0.8548666666666666,
+    "neg": 0.02306666666666667
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 188,
+    "adj_adv_ratio": 0.11104548139397519,
+    "self_ref_freq": 5,
+    "self_ref_ratio": 0.0029533372711163615,
+    "second_person_freq": 4,
+    "second_person_ratio": 0.002362669816893089,
+    "total_tokens": 1693
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 22.226633986928103,
+      "clause_complexity": 0.40476190476190477,
+      "vocabulary_richness": 0.7598012108140443
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 2,
+        "how": 3,
+        "why": 1,
+        "can_could": 16,
+        "general": 6
+      },
+      "discourse_markers": {
+        "elaboration": 9,
+        "contrast": 9,
+        "causality": 2,
+        "hedging": 5
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 66,
+        "VBN": 41,
+        "VBP": 29,
+        "VB": 56,
+        "VBG": 38,
+        "VBD": 4
+      },
+      "named_entities": {
+        "ORGANIZATION": 89,
+        "PERSON": 40,
+        "GPE": 6
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 15
+    },
+    "turn_count": 15,
+    "total_tokens": 1693
+  }
+}

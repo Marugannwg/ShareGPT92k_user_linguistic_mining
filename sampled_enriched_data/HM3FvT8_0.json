@@ -1,0 +1,180 @@
+{
+  "id": "HM3FvT8_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "how can i copy a javascript outlook add-in build with webpack and to rerun the webpack build again based on the webpack results",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 23,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.08695652173913043,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 23
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7272727272727273
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To copy a JavaScript Outlook add-in that is built with webpack and to run the webpack build again based on the webpack results, you can follow these steps:\n\n1. Clone the repository that contains the source code of the add-in.\n2. Install the necessary dependencies by running `npm install` in the terminal.\n3. Run the webpack build by executing `npm run build` in the terminal.\n4. After the build process has completed, you can open the generated `dist` folder and verify that the add-in has been built correctly.\n5. If you want to make changes to the add-in, you can modify the source code in the repository and then run the webpack build again to see the results of your changes.\n\nNote: You should have npm installed on your system to run the build process.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.99,
+        "pos": 0.01,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 7,
+        "token_count": 157,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.044585987261146494
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.06369426751592357,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.044585987261146494,
+        "token_count": 157
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.272727272727273,
+          "clause_complexity": 0.18181818181818182,
+          "vocabulary_richness": 0.6470588235294118
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 14,
+            "VBZ": 4,
+            "VBN": 6,
+            "VBG": 2,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.0386,
+    "pos": 0.005,
+    "neu": 0.995,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 12,
+    "adj_adv_ratio": 0.06666666666666667,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.005555555555555556,
+    "second_person_freq": 7,
+    "second_person_ratio": 0.03888888888888889,
+    "total_tokens": 180
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 18.636363636363637,
+      "clause_complexity": 0.09090909090909091,
+      "vocabulary_richness": 0.6871657754010696
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 4,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 17,
+        "VBN": 7,
+        "VBZ": 4,
+        "VBG": 2,
+        "VBP": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 180
+  }
+}

@@ -1,0 +1,1364 @@
+{
+  "id": "Rklh6vF_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Write a talk abstract and title for a technical session focusing on the history to monorepo tooling for the javascript ecosystem, and how the tools can help your company.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.912,
+        "pos": 0.088,
+        "compound": 0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 31,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.03225806451612903
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.03225806451612903,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.03225806451612903,
+        "token_count": 31
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 31.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBG": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Monorepo Tooling in the JavaScript Ecosystem: A Technical Overview\"\n\nAbstract:\n\nThis session will provide a technical overview of the history and evolution of monorepo tooling in the JavaScript ecosystem. We will delve into the benefits and drawbacks of using monorepos in your organization, and how modern monorepo tools such as Lerna, Yarn Workspaces, and Rush can help your company streamline development and collaboration. We will also discuss best practices for implementing and maintaining a monorepo in a large-scale organization, including how to handle versioning, testing, and deployment. Attendees will come away with a deeper understanding of the monorepo landscape and how they can use these tools to improve their own development workflow.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.898,
+        "pos": 0.102,
+        "compound": 0.9081
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 4,
+        "token_count": 128,
+        "self_ref_ratio": 0.015625,
+        "second_person_ratio": 0.03125
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.078125,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.015625,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.03125,
+        "token_count": 128
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 32.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8032786885245902
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBG": 5
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 3,
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you add a mention of Nx in there?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 10,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.1
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.1,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Monorepo Tooling in the JavaScript Ecosystem: A Technical Overview\"\n\nAbstract:\nThis session will provide a technical overview of the history and evolution of monorepo tooling in the JavaScript ecosystem. We will delve into the benefits and drawbacks of using monorepos in your organization, and how modern monorepo tools such as Lerna, Yarn Workspaces, Nx and Rush can help your company streamline development and collaboration. We will also discuss best practices for implementing and maintaining a monorepo in a large-scale organization, including how to handle versioning, testing, and deployment. Attendees will come away with a deeper understanding of the monorepo landscape and how they can use these tools to improve their own development workflow.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.899,
+        "pos": 0.101,
+        "compound": 0.9081
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 4,
+        "token_count": 129,
+        "self_ref_ratio": 0.015503875968992248,
+        "second_person_ratio": 0.031007751937984496
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.07751937984496124,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.015503875968992248,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.031007751937984496,
+        "token_count": 129
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 32.25,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8064516129032258
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBG": 5
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 4,
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you remove the mention of deployment and make it a bit spicier?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 14,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.07142857142857142
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.07142857142857142,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.07142857142857142,
+        "token_count": 14
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Streamlining Development with Monorepo Tooling in the JavaScript Ecosystem\"\n\nAbstract:\nThis session will explore the evolution of monorepo tooling in the JavaScript ecosystem and how it can revolutionize your organization's development workflow. We'll delve into the benefits of using monorepos, such as improved collaboration and code reuse, and look at popular tools like Lerna, Yarn Workspaces, Nx and Rush. You'll learn best practices for implementing and maintaining a monorepo in a large-scale organization, including how to handle versioning and testing. We'll also discuss advanced techniques for scaling and optimizing your monorepo. By the end of this session, you'll have a solid understanding of how to use monorepo tooling to improve your development process and increase your team's productivity.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.801,
+        "pos": 0.199,
+        "compound": 0.975
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 8,
+        "token_count": 140,
+        "self_ref_ratio": 0.014285714285714285,
+        "second_person_ratio": 0.05714285714285714
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.06428571428571428,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.014285714285714285,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.05714285714285714,
+        "token_count": 140
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8208955223880597
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 7,
+            "VB": 10
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 4,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you update the title so that it starts with \"Monorepo Mania:\"",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 15,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.06666666666666667
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.06666666666666667,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Monorepo Mania: Streamlining Development with JavaScript Ecosystem Tools\"\n\nAbstract:\nThis session will explore the evolution of monorepo tooling in the JavaScript ecosystem and how it can revolutionize your organization's development workflow. We'll delve into the benefits of using monorepos, such as improved collaboration and code reuse, and look at popular tools like Lerna, Yarn Workspaces, Nx and Rush. You'll learn best practices for implementing and maintaining a monorepo in a large-scale organization, including how to handle versioning and testing. We'll also discuss advanced techniques for scaling and optimizing your monorepo. By the end of this session, you'll have a solid understanding of how to use monorepo tooling to improve your development process and increase your team's productivity.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.8,
+        "pos": 0.2,
+        "compound": 0.975
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 8,
+        "token_count": 140,
+        "self_ref_ratio": 0.014285714285714285,
+        "second_person_ratio": 0.05714285714285714
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.06428571428571428,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.014285714285714285,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.05714285714285714,
+        "token_count": 140
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8235294117647058
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 7,
+            "VB": 10
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 4,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you update the title so its more focused on the history aspect of the talk?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.826,
+        "pos": 0.174,
+        "compound": 0.4865
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 17,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.058823529411764705
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.11764705882352941,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.058823529411764705,
+        "token_count": 17
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Monorepo Evolution: A Technical Overview of the History of Monorepo Tooling in the JavaScript Ecosystem\"\n\nAbstract:\nThis session will provide a technical overview of the history and evolution of monorepo tooling in the JavaScript ecosystem. We will delve into the benefits and drawbacks of using monorepos in your organization, and how modern monorepo tools such as Lerna, Yarn Workspaces, Nx and Rush have emerged and evolved over time to help companies streamline development and collaboration. We will also discuss best practices for implementing and maintaining a monorepo in a large-scale organization, including how to handle versioning, testing, and learn from the historical approach. Attendees will come away with a deeper understanding of the monorepo landscape and how they can use these tools to improve their own development workflow.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.91,
+        "pos": 0.09,
+        "compound": 0.9081
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 144,
+        "self_ref_ratio": 0.013888888888888888,
+        "second_person_ratio": 0.020833333333333332
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.06944444444444445,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.013888888888888888,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.020833333333333332,
+        "token_count": 144
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 36.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7857142857142857
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 9,
+            "VBG": 5,
+            "VBP": 1,
+            "VBN": 2
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 4,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you reword the title to remove the word technical?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 11,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.09090909090909091
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.09090909090909091,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.09090909090909091,
+        "token_count": 11
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Monorepo Evolution: An Overview of the History of Monorepo Tooling in the JavaScript Ecosystem\"\n\nAbstract:\nThis session will provide an overview of the history and evolution of monorepo tooling in the JavaScript ecosystem. We will delve into the benefits and drawbacks of using monorepos in your organization, and how modern monorepo tools such as Lerna, Yarn Workspaces, Nx and Rush have emerged and evolved over time to help companies streamline development and collaboration. We will also discuss best practices for implementing and maintaining a monorepo in a large-scale organization, including how to handle versioning, testing, and learn from the historical approach. Attendees will come away with a deeper understanding of the monorepo landscape and how they can use these tools to improve their own development workflow.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.908,
+        "pos": 0.092,
+        "compound": 0.9081
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 142,
+        "self_ref_ratio": 0.014084507042253521,
+        "second_person_ratio": 0.02112676056338028
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.06338028169014084,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.014084507042253521,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.02112676056338028,
+        "token_count": 142
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 35.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7941176470588235
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 9,
+            "VBG": 5,
+            "VBP": 1,
+            "VBN": 2
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 3,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you make the title a bit more engaging, and remove the mention of javascript from it?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.856,
+        "pos": 0.144,
+        "compound": 0.4005
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 19,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.05263157894736842
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.10526315789473684,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.05263157894736842,
+        "token_count": 19
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 19.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Mastering Monorepos: Navigating the Evolution of Tooling for Improved Development\"\n\nAbstract:\nThis session will explore the evolution of monorepo tooling and how it can revolutionize your organization's development workflow. We'll delve into the benefits of using monorepos, such as improved collaboration and code reuse, and look at popular tools like Lerna, Yarn Workspaces, Nx and Rush. You'll learn best practices for implementing and maintaining a monorepo in a large-scale organization, including how to handle versioning and testing. We'll also discuss advanced techniques for scaling and optimizing your monorepo. By the end of this session, you'll have a solid understanding of how to use monorepo tooling to improve your development process and increase your team's productivity.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.777,
+        "pos": 0.223,
+        "compound": 0.9801
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 8,
+        "token_count": 138,
+        "self_ref_ratio": 0.014492753623188406,
+        "second_person_ratio": 0.057971014492753624
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.06521739130434782,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.014492753623188406,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.057971014492753624,
+        "token_count": 138
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 27.6,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8181818181818182
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 9,
+            "VB": 10
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 5,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you retheme some of the wording in the abstract around the feeling of summer camp? e.g. adding verbs like \"trek\", \"adventure\" etc.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.76,
+        "pos": 0.24,
+        "compound": 0.6486
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 31,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.03225806451612903
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.03225806451612903,
+        "token_count": 31
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.333333333333334,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Monorepo Summer Camp: An Adventure Through the Evolution of Tooling for Improved Development\"\n\nAbstract:\nJoin us for an exciting adventure through the evolution of monorepo tooling and discover how it can revolutionize your organization's development workflow. We'll trek through the benefits of using monorepos, such as improved collaboration and code reuse, and explore popular tools like Lerna, Yarn Workspaces, Nx and Rush. You'll embark on a journey to learn best practices for implementing and maintaining a monorepo in a large-scale organization, including how to handle versioning and testing. We'll also embark on an adventure to learn advanced techniques for scaling and optimizing your monorepo. By the end of this session, you'll have a solid understanding of how to use monorepo tooling to improve your development process and increase your team's productivity, feeling like you just returned from a summer camp full of knowledge and skills.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.734,
+        "pos": 0.266,
+        "compound": 0.9908
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 10,
+        "token_count": 169,
+        "self_ref_ratio": 0.01775147928994083,
+        "second_person_ratio": 0.05917159763313609
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.07692307692307693,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.01775147928994083,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.05917159763313609,
+        "token_count": 169
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 33.8,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7804878048780488
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 13,
+            "VBG": 7,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 5,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you update the title to start with Monorepo Mania again?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 12,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.08333333333333333
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.08333333333333333,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Monorepo Mania: An Adventure Through the Evolution of Tooling for Improved Development\"\n\nAbstract:\nJoin us for an exciting adventure through the evolution of monorepo tooling and discover how it can revolutionize your organization's development workflow. We'll trek through the benefits of using monorepos, such as improved collaboration and code reuse, and explore popular tools like Lerna, Yarn Workspaces, Nx and Rush. You'll embark on a journey to learn best practices for implementing and maintaining a monorepo in a large-scale organization, including how to handle versioning and testing. We'll also embark on an adventure to learn advanced techniques for scaling and optimizing your monorepo. By the end of this session, you'll have a solid understanding of how to use monorepo tooling to improve your development process and increase your team's productivity, feeling like you just returned from a summer camp full of knowledge and skills.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.732,
+        "pos": 0.268,
+        "compound": 0.9908
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 10,
+        "token_count": 168,
+        "self_ref_ratio": 0.017857142857142856,
+        "second_person_ratio": 0.05952380952380952
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.07738095238095238,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.017857142857142856,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.05952380952380952,
+        "token_count": 168
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 33.6,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8024691358024691
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 13,
+            "VBG": 7,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 5,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you simplify the subtitle a bit?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 8,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.125
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.125,
+        "token_count": 8
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Monorepo Mania: Navigating the Evolution of Tooling\"\n\nAbstract:\nJoin us for an exciting journey through the evolution of monorepo tooling and learn how it can improve your organization's development workflow. We'll explore the benefits of using monorepos, such as improved collaboration and code reuse, and take a closer look at popular tools like Lerna, Yarn Workspaces, Nx and Rush. We'll also cover best practices for implementing and maintaining a monorepo in a large-scale organization, including versioning and testing. By the end of this session, you'll have a solid understanding of how to use monorepo tooling to improve your development process and increase your team's productivity.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.758,
+        "pos": 0.242,
+        "compound": 0.9805
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 7,
+        "token_count": 126,
+        "self_ref_ratio": 0.023809523809523808,
+        "second_person_ratio": 0.05555555555555555
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.07936507936507936,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.023809523809523808,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.05555555555555555,
+        "token_count": 126
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 31.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8548387096774194
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 7,
+            "VB": 10
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 4,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you add some buzzwords to the abstract and remove the mention of rush?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 15,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.06666666666666667
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.06666666666666667,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: \"Monorepo Mania: Navigating the Evolution of Tooling\"\n\nAbstract:\nJoin us for an exciting journey through the evolution of monorepo tooling and learn how it can revolutionize your organization's development workflow. We'll explore the benefits of using monorepos, such as improved collaboration, scalability, and code reuse, and take a closer look at popular tools like Lerna, Yarn Workspaces, and Nx. We'll also cover best practices for implementing and maintaining a monorepo in a large-scale organization, including versioning and testing. By the end of this session, you'll have a solid understanding of how to use monorepo tooling to streamline your development process, increase your team's productivity and stay ahead of the curve.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.806,
+        "pos": 0.194,
+        "compound": 0.9702
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 7,
+        "token_count": 134,
+        "self_ref_ratio": 0.022388059701492536,
+        "second_person_ratio": 0.05223880597014925
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.08208955223880597,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.022388059701492536,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.05223880597014925,
+        "token_count": 134
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 33.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8769230769230769
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 7,
+            "VB": 11
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 3,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.5651045454545455,
+    "pos": 0.11922727272727274,
+    "neu": 0.8807727272727273,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 122,
+    "adj_adv_ratio": 0.0700746697300402,
+    "self_ref_freq": 26,
+    "self_ref_ratio": 0.014933946008041356,
+    "second_person_freq": 83,
+    "second_person_ratio": 0.04767375071797817,
+    "total_tokens": 1741
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 23.367424242424246,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.9075858051734784
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 32,
+        "why": 0,
+        "can_could": 24,
+        "general": 9
+      },
+      "discourse_markers": {
+        "elaboration": 11,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 129,
+        "VBG": 74,
+        "VBZ": 1,
+        "VBN": 7,
+        "VBP": 2
+      },
+      "named_entities": {
+        "GPE": 21,
+        "PERSON": 45,
+        "ORGANIZATION": 22
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 22
+    },
+    "turn_count": 22,
+    "total_tokens": 1741
+  }
+}

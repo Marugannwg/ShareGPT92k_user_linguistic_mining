@@ -1,0 +1,255 @@
+{
+  "id": "UFWr8H4_47",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "I see the error in your script. It appears you're using the `client.workflows.list_executions` function with the `workflow_name` as an argument, but the function expects the `workflow_id` instead. You need to update the script to provide the workflow ID. Here's how you can modify your script to fix the issue:\n\nFirst, create a function to retrieve the workflow ID using the workflow name:\n```python\ndef get_workflow_id(workflow_name):\n    workflows = client.workflows.list()\n    for workflow in workflows:\n        if workflow['name'] == workflow_name:\n            return workflow['id']\n    return None\n```\nThen, update the `get_last_workflow_run` function to call `get_workflow_id` first and pass the ID to `client.workflows.list_executions`:\n```python\ndef get_last_workflow_run(workflow_name):\n    workflow_id = get_workflow_id(workflow_name)\n    if workflow_id is not None:\n        runs = client.workflows.list_executions(workflow_id)\n        return sorted(runs, key=lambda x: x['id'], reverse=True)[0]\n    else:\n        print(f\"Workflow with name '{workflow_name}' not found.\")\n        return None\n```\nFinally, call the `get_last_workflow_run` function with the workflow name:\n```python\nlast_run = get_last_workflow_run(workflow_name)\n```\nWith these changes, your script should work without encountering the CivisAPIError.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.023,
+        "neu": 0.959,
+        "pos": 0.017,
+        "compound": 0.0129
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 6,
+        "token_count": 244,
+        "self_ref_ratio": 0.004098360655737705,
+        "second_person_ratio": 0.02459016393442623
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.08196721311475409,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.004098360655737705,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.02459016393442623,
+        "token_count": 244
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 48.8,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.56
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 6,
+            "VBZ": 5,
+            "VBG": 3,
+            "VB": 12,
+            "VBN": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Could you rewrite my code and make those fixes? Here's what I have.\n\nimport subprocess\n\nsubprocess.check\\_call([\"pip\", \"install\", \"slack-sdk\"])\n\nimport os\nimport sys\nimport subprocess\nfrom slack\\_sdk import WebClient\nimport civis\n\ndef install\\_package(package\\_name):\n subprocess.check\\_call([sys.executable, \"-m\", \"pip\", \"install\", package\\_name])\n\n# Install the required packages\ninstall\\_package(\"slack-sdk\")\ninstall\\_package(\"civis\")\n\n# Your API keys\nSLACK\\_API\\_TOKEN = os.getenv(\"SLACK\\_API\\_TOKEN\")\nCIVIS\\_API\\_KEY = os.environ[\"CIVIS\\_API\\_KEY\"]\n\n# Your desired Slack channel\nSLACK\\_CHANNEL\\_ID = \"C016ZP7LTQA\"\n\n# Initialize Civis and Slack clients\nclient = civis.APIClient(api\\_key=CIVIS\\_API\\_KEY)\nslack\\_client = WebClient(token=SLACK\\_API\\_TOKEN)\n\n# Function to fetch the last run of a workflow\ndef get\\_last\\_workflow\\_run(workflow\\_name):\n runs = client.workflows.list\\_executions(workflow\\_name)\n return sorted(runs, key=lambda x: x[\"created\\_at\"], reverse=True)[0]\n\n# Function to send a message to Slack\ndef send\\_slack\\_message(channel\\_id, message):\n slack\\_client.chat\\_postMessage(channel=channel\\_id, text=message)\n\n# Fetch the last run of the \"Middle Seat Workflow\"\nworkflow\\_name = \"Middle Seat Workflow\"\nlast\\_run = get\\_last\\_workflow\\_run(workflow\\_name)\n\n# Determine the status of the last run and send a message to Slack\nif last\\_run[\"state\"] == \"succeeded\":\n message = f\"TEST: The {workflow\\_name} finished successfully.\"\nelse:\n message = f\"The {workflow\\_name} failed.\"\n\nsend\\_slack\\_message(SLACK\\_CHANNEL\\_ID, message)",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.02,
+        "neu": 0.931,
+        "pos": 0.049,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 285,
+        "self_ref_ratio": 0.007017543859649123,
+        "second_person_ratio": 0.010526315789473684
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.08421052631578947,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.007017543859649123,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.010526315789473684,
+        "token_count": 285
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 57.0,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.5764705882352941
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VB": 6,
+            "VBZ": 3,
+            "VBN": 1,
+            "VBD": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "PERSON": 1,
+            "GPE": 4
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's your updated code with the fixes:\n```python\nimport subprocess\n\nsubprocess.check_call([\"pip\", \"install\", \"slack-sdk\"])\n\nimport os\nimport sys\nimport subprocess\nfrom slack_sdk import WebClient\nimport civis\n\ndef install_package(package_name):\n    subprocess.check_call([sys.executable, \"-m\", \"pip\", \"install\", package_name])\n\n# Install the required packages\ninstall_package(\"slack-sdk\")\ninstall_package(\"civis\")\n\n# Your API keys\nSLACK_API_TOKEN = os.getenv(\"SLACK_API_TOKEN\")\nCIVIS_API_KEY = os.environ[\"CIVIS_API_KEY\"]\n\n# Your desired Slack channel\nSLACK_CHANNEL_ID = \"C016ZP7LTQA\"\n\n# Initialize Civis and Slack clients\nclient = civis.APIClient(api_key=CIVIS_API_KEY)\nslack_client = WebClient(token=SLACK_API_TOKEN)\n\n# Function to get the workflow ID by name\ndef get_workflow_id(workflow_name):\n    workflows = client.workflows.list()\n    for workflow in workflows:\n        if workflow['name'] == workflow_name:\n            return workflow['id']\n    return None\n\n# Function to fetch the last run of a workflow\ndef get_last_workflow_run(workflow_name):\n    workflow_id = get_workflow_id(workflow_name)\n    if workflow_id is not None:\n        runs = client.workflows.list_executions(workflow_id)\n        return sorted(runs, key=lambda x: x[\"created_at\"], reverse=True)[0]\n    else:\n        print(f\"Workflow with name '{workflow_name}' not found.\")\n        return None\n\n# Function to send a message to Slack\ndef send_slack_message(channel_id, message):\n    slack_client.chat_postMessage(channel=channel_id, text=message)\n\n# Fetch the last run of the \"Middle Seat Workflow\"\nworkflow_name = \"Middle Seat Workflow\"\nlast_run = get_last_workflow_run(workflow_name)\n\n# Determine the status of the last run and send a message to Slack\nif last_run[\"state\"] == \"succeeded\":\n    message = f\"TEST: The {workflow_name} finished successfully.\"\nelse:\n    message = f\"The {workflow_name} failed.\"\n\nsend_slack_message(SLACK_CHANNEL_ID, message)\n```\nThis updated code includes the new `get_workflow_id` function and the updated `get_last_workflow_run` function that uses the workflow ID instead of the workflow name. The script should now work as intended without encountering the CivisAPIError.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.014,
+        "neu": 0.952,
+        "pos": 0.034,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 398,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.007537688442211055
+      },
+      "lexical_features": {
+        "adj_adv_freq": 37,
+        "adj_adv_ratio": 0.09296482412060302,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.007537688442211055,
+        "token_count": 398
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 79.6,
+          "clause_complexity": 0.6,
+          "vocabulary_richness": 0.5158730158730159
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VB": 8,
+            "VBP": 5,
+            "VBN": 3,
+            "VBD": 4,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "PERSON": 3,
+            "GPE": 4
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.3949,
+    "pos": 0.03333333333333333,
+    "neu": 0.9473333333333334,
+    "neg": 0.019
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 81,
+    "adj_adv_ratio": 0.08737864077669903,
+    "self_ref_freq": 3,
+    "self_ref_ratio": 0.003236245954692557,
+    "second_person_freq": 12,
+    "second_person_ratio": 0.012944983818770227,
+    "total_tokens": 927
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 61.79999999999999,
+      "clause_complexity": 0.4000000000000001,
+      "vocabulary_richness": 0.5507812013694368
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 1,
+        "why": 0,
+        "can_could": 2,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 14,
+        "VBZ": 13,
+        "VBG": 4,
+        "VB": 26,
+        "VBN": 6,
+        "VBD": 8
+      },
+      "named_entities": {
+        "ORGANIZATION": 12,
+        "PERSON": 5,
+        "GPE": 8
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 3
+    },
+    "turn_count": 3,
+    "total_tokens": 927
+  }
+}

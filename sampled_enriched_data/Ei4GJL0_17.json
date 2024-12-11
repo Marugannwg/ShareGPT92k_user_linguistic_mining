@@ -1,0 +1,733 @@
+{
+  "id": "Ei4GJL0_17",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "To set the body of an appointment in Outlook without requiring the user to place the cursor, you can use the `body.setAsync` method instead of `body.setSelectedDataAsync`.\n\nHere's an example TypeScript code snippet that demonstrates this approach:\n```typescript\nOffice.context.mailbox.item.body.setAsync(\n  \"Your new body text here\",\n  { coercionType: Office.CoercionType.Html },\n  (result) => {\n    if (result.status === Office.AsyncResultStatus.Succeeded) {\n      console.log(\"Body updated successfully\");\n    } else {\n      console.error(result.error);\n    }\n  }\n);\n```\nThis code sets the body of the currently selected item (in this case, an appointment) to the specified string, using `CoercionType.Html` to indicate that the string contains HTML content.\n\nNote that when you use `body.setAsync`, it replaces the entire body of the item, so if you want to preserve any existing content, you will need to retrieve the existing body content first, modify it as needed, and then call `body.setAsync` with the updated content.\n\nYou can find more information about `body.setAsync` in the Microsoft documentation: <https://docs.microsoft.com/en-us/javascript/api/outlook/office.body?view=outlook-js-1.5#setasync-data--options---callback->",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.969,
+        "pos": 0.031,
+        "compound": 0.5809
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 7,
+        "token_count": 217,
+        "self_ref_ratio": 0.004608294930875576,
+        "second_person_ratio": 0.03225806451612903
+      },
+      "lexical_features": {
+        "adj_adv_freq": 19,
+        "adj_adv_ratio": 0.08755760368663594,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.004608294930875576,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.03225806451612903,
+        "token_count": 217
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 54.25,
+          "clause_complexity": 0.75,
+          "vocabulary_richness": 0.7746478873239436
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 10,
+            "VBG": 4,
+            "VBZ": 5,
+            "VBD": 1,
+            "VBN": 3,
+            "VBP": 3
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 3,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "it doesnt work, the code runs but the body is not being replaced in my appointment",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 17,
+        "self_ref_ratio": 0.058823529411764705,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.058823529411764705,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.058823529411764705,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 17
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBG": 1,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize that the code did not work as expected. Here are a few things you can check:\n\n1. Make sure that your add-in has permission to write to the body of the appointment. You can check this in the add-in manifest file under the `Permissions` section, which should include the `ReadWriteItem` permission.\n2. Ensure that the appointment is selected before running the code to update the body. You can use `Office.context.mailbox.item.itemId` to check whether an item is selected.\n3. Confirm that the `setAsync` method is not returning an error. You can check the `status` property of the result object passed to the callback function to see whether the operation succeeded or failed. If it failed, you can check the `error` property to get more information about the error.\n\nHere's an updated TypeScript code snippet that includes error handling:\n```typescript\nif (Office.context.mailbox.item.itemId) {\n  Office.context.mailbox.item.body.setAsync(\n    \"Your new body text here\",\n    { coercionType: Office.CoercionType.Html },\n    (result) => {\n      if (result.status === Office.AsyncResultStatus.Succeeded) {\n        console.log(\"Body updated successfully\");\n      } else {\n        console.error(result.error);\n      }\n    }\n  );\n} else {\n  console.error(\"No appointment selected.\");\n}\n```\nIf you're still having trouble, please provide more information about the specific behavior you're seeing and any error messages you're receiving, and I can try to provide more targeted guidance.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.087,
+        "neu": 0.841,
+        "pos": 0.073,
+        "compound": -0.6419
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 10,
+        "token_count": 277,
+        "self_ref_ratio": 0.007220216606498195,
+        "second_person_ratio": 0.036101083032490974
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.07942238267148015,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.007220216606498195,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.036101083032490974,
+        "token_count": 277
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 21.307692307692307,
+          "clause_complexity": 0.38461538461538464,
+          "vocabulary_richness": 0.7157894736842105
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 6,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBD": 6,
+            "VB": 17,
+            "VBN": 4,
+            "VBZ": 7,
+            "VBG": 5
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Office.context.mailbox.userProfile only returns me their display name, how can i access the user's first and last name",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 19,
+        "self_ref_ratio": 0.10526315789473684,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.15789473684210525,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.10526315789473684,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 19
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 19.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.875
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "If `Office.context.mailbox.userProfile.displayName` is only returning the user's display name, and you need to access their first and last name, you can try using the Microsoft Graph API to retrieve additional user properties.\n\nHere's an example TypeScript code snippet that retrieves the user's first and last name using the Graph API:\n```typescript\nOffice.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {\n  if (result.status === \"succeeded\") {\n    var accessToken = result.value;\n    var getUserUrl = \"https://graph.microsoft.com/v1.0/me?$select=givenName,surname\";\n    $.ajax({\n      url: getUserUrl,\n      headers: {\n        Authorization: \"Bearer \" + accessToken,\n      },\n      type: \"GET\",\n      success: function (response) {\n        console.log(\"User's first name: \" + response.givenName);\n        console.log(\"User's last name: \" + response.surname);\n      },\n      error: function (error) {\n        console.error(error);\n      },\n    });\n  } else {\n    console.error(result.error);\n  }\n});\n```\nThis code uses `Office.context.mailbox.getCallbackTokenAsync` to obtain an access token for the Graph API, and then makes a `GET` request to the `/me` endpoint to retrieve the user's `givenName` and `surname` properties. You can modify the `getUserUrl` variable to include any additional properties you need.\n\nNote that this code requires the `Mail.ReadWrite` and `User.Read` Graph API permissions, which you will need to add to your add-in's manifest file.\n\nYou can find more information about using the Graph API with Outlook add-ins in the Microsoft documentation: <https://docs.microsoft.com/en-us/office/dev/add-ins/outlook/use-rest-api>",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.026,
+        "neu": 0.93,
+        "pos": 0.044,
+        "compound": 0.5994
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 8,
+        "token_count": 309,
+        "self_ref_ratio": 0.009708737864077669,
+        "second_person_ratio": 0.025889967637540454
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.07766990291262135,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.009708737864077669,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.025889967637540454,
+        "token_count": 309
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 61.8,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.5754716981132075
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 6,
+            "VBG": 4,
+            "VBP": 2,
+            "VB": 12,
+            "VBD": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 7,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "i made a google calendar addin that has an event trigger where everytime an event is changed, the add in will grab all the events on the user's calendar and send it to my server.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 38,
+        "self_ref_ratio": 0.05263157894736842,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.05263157894736842,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 38
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 38.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.875
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VBZ": 2,
+            "VBN": 1,
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "That's great to hear! It",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.477,
+        "pos": 0.523,
+        "compound": 0.6588
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 7,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.14285714285714285,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 7
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 3.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "i made a google calendar addin that has an event trigger where everytime an event is changed, the add in will grab all the events on the user's calendar and send it to my server. the add in picks up changes even when the user is not logged into their account such as when a guest changes the event data.\n\nhow can i do the same thing in oultook, where i can get the user's calendar and events any time an event is changed, even if the user is not online",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 0,
+        "token_count": 98,
+        "self_ref_ratio": 0.04081632653061224,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.07142857142857142,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.04081632653061224,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 98
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 32.666666666666664,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.6666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VBZ": 7,
+            "VBN": 3,
+            "VB": 4,
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To achieve this in Outlook, you can use the Microsoft Graph API to subscribe to change notifications for the user's calendar, and then receive those notifications on your server. This approach will allow you to receive notifications even when the user is not logged in, as long as the subscription is still valid.\n\nHere are the general steps you can follow:\n\n1. Authenticate the user and obtain an access token for the Microsoft Graph API.\n2. Create a subscription to receive change notifications for the user's calendar. You can use the `/subscriptions` endpoint of the Graph API to create a subscription, specifying the resource you want to monitor (in this case, the user's calendar), the type of change you want to be notified about (e.g. \"updated\"), and the URL of the endpoint where you want to receive notifications. You can set the `expirationDateTime` property to a date far in the future to ensure that the subscription stays active.\n3. Handle the subscription validation request. When you create a subscription, the Graph API will send a validation request to the URL you specified. Your server must respond to this request with the `validationToken` included in the request body to confirm the subscription.\n4. Handle incoming notifications. When an event is changed on the user's calendar, the Graph API will send a notification to the URL you specified when creating the subscription. Your server can then process the notification and take whatever action is required.\n\nHere is an example TypeScript code snippet that creates a subscription for calendar change notifications:\n```typescript\nconst subscription = {\n  changeType: \"updated\",\n  notificationUrl: \"https://your-server.com/notifications\",\n  resource: \"me/calendars/{calendar-id}/events\",\n  expirationDateTime: \"2023-02-28T23:59:59.0000000Z\",\n};\n\nOffice.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {\n  if (result.status === \"succeeded\") {\n    const accessToken = result.value;\n    $.ajax({\n      url: \"https://graph.microsoft.com/v1.0/subscriptions\",\n      type: \"POST\",\n      headers: {\n        Authorization: \"Bearer \" + accessToken,\n        \"Content-Type\": \"application/json\",\n      },\n      data: JSON.stringify(subscription),\n      success: function (response) {\n        console.log(\"Subscription created: \", response);\n      },\n      error: function (error) {\n        console.error(\"Error creating subscription: \", error);\n      },\n    });\n  } else {\n    console.error(\"Error getting access token: \", result.error);\n  }\n});\n```\nNote that this code is just an example and will need to be adapted to your specific requirements. You will also need to handle subscription validation and notification processing on your server.\n\nYou can find more information about creating subscriptions for Microsoft Graph API notifications in the Microsoft documentation: <https://docs.microsoft.com/en-us/graph/webhooks>",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.02,
+        "neu": 0.889,
+        "pos": 0.091,
+        "compound": 0.9704
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 20,
+        "token_count": 537,
+        "self_ref_ratio": 0.0037243947858473,
+        "second_person_ratio": 0.037243947858473
+      },
+      "lexical_features": {
+        "adj_adv_freq": 29,
+        "adj_adv_ratio": 0.054003724394785846,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.0037243947858473,
+        "second_person_freq": 20,
+        "second_person_ratio": 0.037243947858473,
+        "token_count": 537
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.85,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.5392156862745098
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 6,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 33,
+            "VBZ": 8,
+            "VBN": 7,
+            "VBP": 5,
+            "VBG": 5,
+            "VBD": 4
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 10,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "https://learn.microsoft.com/en-us/office/dev/add-ins/outlook/autolaunch?tabs=xmlmanifest here the outlook add in allows the add in to run functions even when the add in is not open. do you know if these functions run even when the user is not logged into outlook or doesnt have their browser open?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 49,
+        "self_ref_ratio": 0.02040816326530612,
+        "second_person_ratio": 0.04081632653061224
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.16326530612244897,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.02040816326530612,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.04081632653061224,
+        "token_count": 49
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.5,
+          "clause_complexity": 1.5,
+          "vocabulary_richness": 0.65
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 2
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VB": 4,
+            "VBP": 2,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The auto-launch functionality in Outlook add-ins allows the add-in to be loaded and execute specified functions automatically in certain scenarios, even if the add-in pane is not open. These scenarios include when the user starts Outlook or opens a specific item type, like a message or an appointment.\n\nHowever, the user needs to be logged into Outlook and have it open in order for the add-in functions to run. The add-in functions run within the context of the Office application, so the user needs to have Outlook open or running in the background for the functions to execute.\n\nIf the user is not logged into Outlook or does not have their browser open, the add-in functions will not be able to run.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.963,
+        "pos": 0.037,
+        "compound": 0.5574
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 132,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.15151515151515152,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 132
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.4,
+          "clause_complexity": 0.6,
+          "vocabulary_richness": 0.6428571428571429
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VB": 10,
+            "VBN": 3,
+            "VBP": 2,
+            "VBG": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 4
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.24772727272727274,
+    "pos": 0.07263636363636364,
+    "neu": 0.9153636363636363,
+    "neg": 0.01209090909090909
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 134,
+    "adj_adv_ratio": 0.07882352941176471,
+    "self_ref_freq": 18,
+    "self_ref_ratio": 0.010588235294117647,
+    "second_person_freq": 47,
+    "second_person_ratio": 0.027647058823529413,
+    "total_tokens": 1700
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 29.57039627039627,
+      "clause_complexity": 0.444055944055944,
+      "vocabulary_richness": 0.7558771413563345
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 2,
+        "why": 0,
+        "can_could": 20,
+        "general": 4
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 2,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 94,
+        "VBG": 20,
+        "VBZ": 50,
+        "VBD": 14,
+        "VBN": 24,
+        "VBP": 20
+      },
+      "named_entities": {
+        "GPE": 3,
+        "ORGANIZATION": 21,
+        "PERSON": 10
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 11
+    },
+    "turn_count": 11,
+    "total_tokens": 1700
+  }
+}

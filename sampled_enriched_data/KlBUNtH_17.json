@@ -1,0 +1,333 @@
+{
+  "id": "KlBUNtH_17",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "To simplify the construction of a `TestData` object with modified fields, you can add setter methods to the `TestData` class that return the object itself, and use method chaining to set multiple fields at once. Here's an example of how the updated `TestData` class would look like:\n```java\nimport java.util.Collections;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.HashMap;\nimport com.fasterxml.jackson.annotation.JsonProperty;\nimport com.fasterxml.jackson.databind.ObjectMapper;\nimport com.fasterxml.jackson.databind.SerializationFeature;\n\npublic class TestData {\n    @JsonProperty(\"common_message_fields\")\n    private CommonMessageFields commonMessageFields;\n\n    private List<Event> events;\n\n    private List<Cleanup> cleanup;\n\n    public static TestData fromJson(String json) throws Exception {\n        ObjectMapper mapper = new ObjectMapper();\n        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);\n        return mapper.readValue(json, TestData.class);\n    }\n\n    public CommonMessageFields getCommonMessageFields() {\n        return commonMessageFields;\n    }\n\n    public void setCommonMessageFields(CommonMessageFields commonMessageFields) {\n        this.commonMessageFields = commonMessageFields;\n    }\n\n    public List<Event> getEvents() {\n        return events;\n    }\n\n    public void setEvents(List<Event> events) {\n        this.events = events;\n    }\n\n    public List<Cleanup> getCleanup() {\n        return cleanup;\n    }\n\n    public void setCleanup(List<Cleanup> cleanup) {\n        this.cleanup = cleanup;\n    }\n\n    public static TestData getDefault(String tenantId) {\n        CommonMessageFields commonFields = new CommonMessageFields();\n        commonFields.setTenantId(tenantId);\n\n        Event event = new Event();\n        event.setTopic(\"ingress-raw-occupancy-changed\");\n        event.setDelay(3);\n\n        Map<String, String> message = new HashMap<String, String>();\n        message.put(\"locationName\", \"101\");\n\n        event.setMessage(message);\n\n        Cleanup cleanup = new Cleanup();\n        cleanup.setTopic(\"ingress-raw-occupancy-changed\");\n        cleanup.setMessage(message);\n\n        return new TestData(commonFields, Collections.singletonList(event), Collections.singletonList(cleanup));\n    }\n\n    public static TestData getDefaultDeviceError(String tenantId) {\n        CommonMessageFields commonFields = new CommonMessageFields();\n        commonFields.setTenantId(tenantId);\n\n        Event event = new Event();\n        event.setTopic(\"ingress-device-error\");\n        event.setDelay(5);\n\n        Map<String, String> message = new HashMap<String, String>();\n        message.put(\"deviceId\", \"device-001\");\n        message.put(\"errorCode\", \"ERR-001\");\n\n        event.setMessage(message);\n\n        Cleanup cleanup = new Cleanup();\n        cleanup.setTopic(\"ingress-device-error\");\n        cleanup.setMessage(message);\n\n        return new TestData(commonFields, Collections.singletonList(event), Collections.singletonList(cleanup));\n    }\n\n    public TestData setSiteName(String siteName) {\n        this.commonMessageFields.setSiteName(siteName);\n        return this;\n    }\n\n    public TestData setErrorNumber(String errorNumber) {\n        Map<String, String> message = this.events.get(0).getMessage();\n        message.put(\"errorNumber\", errorNumber);\n        return this;\n    }\n\n    public TestData(CommonMessageFields commonMessageFields, List<Event> events, List<Cleanup> cleanup) {\n        this.commonMessageFields = commonMessageFields;\n        this.events = events;\n        this.cleanup = cleanup;\n    }\n}\n\npublic class CommonMessageFields {\n    private String tenantId;\n    private String siteName = \"Site A\";\n    private String timestamp;\n\n    public CommonMessageFields() {\n        this.timestamp = String.valueOf(System.currentTimeMillis());\n    }\n\n    public String getTenantId() {\n        return tenantId;\n    }\n\n    public void setTenantId(String tenantId) {\n        this.tenantId =\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.992,
+        "pos": 0.008,
+        "compound": 0.3612
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 611,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0016366612111292963
+      },
+      "lexical_features": {
+        "adj_adv_freq": 61,
+        "adj_adv_ratio": 0.09983633387888707,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0016366612111292963,
+        "token_count": 611
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 305.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.2978723404255319
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 11,
+            "VBP": 4,
+            "VBG": 1,
+            "VBZ": 2,
+            "VBD": 4,
+            "VBN": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 42,
+            "PERSON": 10,
+            "GPE": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Code seem to be incomplete",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.2,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Apologies for the mistake. Here's the complete code:\n```java\nimport java.util.Collections;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.HashMap;\nimport com.fasterxml.jackson.annotation.JsonProperty;\nimport com.fasterxml.jackson.databind.ObjectMapper;\nimport com.fasterxml.jackson.databind.SerializationFeature;\n\npublic class TestData {\n    @JsonProperty(\"common_message_fields\")\n    private CommonMessageFields commonMessageFields;\n\n    private List<Event> events;\n\n    private List<Cleanup> cleanup;\n\n    public static TestData fromJson(String json) throws Exception {\n        ObjectMapper mapper = new ObjectMapper();\n        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);\n        return mapper.readValue(json, TestData.class);\n    }\n\n    public CommonMessageFields getCommonMessageFields() {\n        return commonMessageFields;\n    }\n\n    public void setCommonMessageFields(CommonMessageFields commonMessageFields) {\n        this.commonMessageFields = commonMessageFields;\n    }\n\n    public List<Event> getEvents() {\n        return events;\n    }\n\n    public void setEvents(List<Event> events) {\n        this.events = events;\n    }\n\n    public List<Cleanup> getCleanup() {\n        return cleanup;\n    }\n\n    public void setCleanup(List<Cleanup> cleanup) {\n        this.cleanup = cleanup;\n    }\n\n    public static TestData getDefault(String tenantId) {\n        CommonMessageFields commonFields = new CommonMessageFields();\n        commonFields.setTenantId(tenantId);\n\n        Event event = new Event();\n        event.setTopic(\"ingress-raw-occupancy-changed\");\n        event.setDelay(3);\n\n        Map<String, String> message = new HashMap<String, String>();\n        message.put(\"locationName\", \"101\");\n\n        event.setMessage(message);\n\n        Cleanup cleanup = new Cleanup();\n        cleanup.setTopic(\"ingress-raw-occupancy-changed\");\n        cleanup.setMessage(message);\n\n        return new TestData(commonFields, Collections.singletonList(event), Collections.singletonList(cleanup));\n    }\n\n    public static TestData getDefaultDeviceError(String tenantId) {\n        CommonMessageFields commonFields = new CommonMessageFields();\n        commonFields.setTenantId(tenantId);\n\n        Event event = new Event();\n        event.setTopic(\"ingress-device-error\");\n        event.setDelay(5);\n\n        Map<String, String> message = new HashMap<String, String>();\n        message.put(\"deviceId\", \"device-001\");\n        message.put(\"errorCode\", \"ERR-001\");\n\n        event.setMessage(message);\n\n        Cleanup cleanup = new Cleanup();\n        cleanup.setTopic(\"ingress-device-error\");\n        cleanup.setMessage(message);\n\n        return new TestData(commonFields, Collections.singletonList(event), Collections.singletonList(cleanup));\n    }\n\n    public TestData setSiteName(String siteName) {\n        this.commonMessageFields.setSiteName(siteName);\n        return this;\n    }\n\n    public TestData setErrorNumber(String errorNumber) {\n        Map<String, String> message = this.events.get(0).getMessage();\n        message.put(\"errorNumber\", errorNumber);\n        return this;\n    }\n\n    public TestData(CommonMessageFields commonMessageFields, List<Event> events, List<Cleanup> cleanup) {\n        this.commonMessageFields = commonMessageFields;\n        this.events = events;\n        this.cleanup = cleanup;\n    }\n}\n\npublic class CommonMessageFields {\n    private String tenantId;\n    private String siteName = \"Site A\";\n    private String timestamp;\n\n    public CommonMessageFields() {\n        this.timestamp = String.valueOf(System.currentTimeMillis());\n    }\n\n    public String getTenantId() {\n        return tenantId;\n    }\n\n    public void setTenantId(String tenantId) {\n        this.tenantId = tenantId;\n    }\n\n    public String getSiteName() {\n        return siteName;\n    }\n\n    public void setSiteName(String siteName) {\n        this.siteName = siteName;\n    }\n\n    public String getTimestamp\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.008,
+        "neu": 0.992,
+        "pos": 0.0,
+        "compound": -0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 593,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 62,
+        "adj_adv_ratio": 0.1045531197301855,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 593
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 296.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.2543859649122807
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 6,
+            "VBP": 3,
+            "VBD": 4,
+            "VBN": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 43,
+            "PERSON": 10,
+            "GPE": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "remaining code?",
+      "language": "pt",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the mistake. Here's the rest of the code:\n```java\n    public void setTimestamp(String timestamp) {\n        this.timestamp = timestamp;\n    }\n}\n\npublic class Event {\n    private String topic;\n    private int delay;\n    private Map<String, String> message;\n\n    public String getTopic() {\n        return topic;\n    }\n\n    public void setTopic(String topic) {\n        this.topic = topic;\n    }\n\n    public int getDelay() {\n        return delay;\n    }\n\n    public void setDelay(int delay) {\n        this.delay = delay;\n    }\n\n    public Map<String, String> getMessage() {\n        return message;\n    }\n\n    public void setMessage(Map<String, String> message) {\n        this.message = message;\n    }\n}\n\npublic class Cleanup {\n    private String topic;\n    private Map<String, String> message;\n\n    public String getTopic() {\n        return topic;\n    }\n\n    public void setTopic(String topic) {\n        this.topic = topic;\n    }\n\n    public Map<String, String> getMessage() {\n        return message;\n    }\n\n    public void setMessage(Map<String, String> message) {\n        this.message = message;\n    }\n}\n```\nWith these modifications, you can now create a new `TestData` object with modified fields using method chaining. Here's an example:\n```java\nTestData testData = TestData.getDefaultDeviceError(tenantId)\n    .setSiteName(\"Site B\")\n    .setErrorNumber(\"12341010001\");\n```\nThis code first creates a default device error `TestData` object with `tenantId` set to the `tenantId` variable, using the `TestData.getDefaultDeviceError` method. It then sets the `siteName` field to `\"Site B\"` and the `errorNumber` field to `\"12341010001\"` using method chaining. Finally, it assigns the resulting `testData` object to a variable for further use.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.063,
+        "neu": 0.912,
+        "pos": 0.025,
+        "compound": -0.8271
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 339,
+        "self_ref_ratio": 0.0029498525073746312,
+        "second_person_ratio": 0.0029498525073746312
+      },
+      "lexical_features": {
+        "adj_adv_freq": 42,
+        "adj_adv_ratio": 0.12389380530973451,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0029498525073746312,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0029498525073746312,
+        "token_count": 339
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 67.8,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.37583892617449666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBZ": 5,
+            "VB": 1,
+            "VBN": 2,
+            "VBG": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 12,
+            "PERSON": 7,
+            "FACILITY": 2
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.16118,
+    "pos": 0.0066,
+    "neu": 0.9792,
+    "neg": 0.0142
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 166,
+    "adj_adv_ratio": 0.10723514211886305,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0006459948320413437,
+    "second_person_freq": 2,
+    "second_person_ratio": 0.0012919896640826874,
+    "total_tokens": 1548
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 168.7,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.48202430787807726
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 2,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 19,
+        "VBP": 11,
+        "VBG": 5,
+        "VBZ": 9,
+        "VBD": 8,
+        "VBN": 10
+      },
+      "named_entities": {
+        "ORGANIZATION": 97,
+        "PERSON": 27,
+        "GPE": 9,
+        "FACILITY": 2
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 4,
+      "pt": 1
+    },
+    "turn_count": 5,
+    "total_tokens": 1548
+  }
+}

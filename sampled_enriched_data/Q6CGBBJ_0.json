@@ -1,0 +1,193 @@
+{
+  "id": "Q6CGBBJ_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "This is my code import config\\_manager\nimport configparser\nimport requests\nimport sys\nimport json\nimport pathlib\nimport os\nimport shutil\nimport psutil\nfrom gigapixel import Gigapixel, Scale, Mode\nfrom pathlib import Path, WindowsPath\nfrom PIL import Image\n# Gigapixel needs to save the images to the filesystem, for the GraphQL image update mutation the image needs to be served from a URL, for this to work you need to setup custom mapped folders in Stash (https://github.com/stashapp/stash/pull/620). Below you need to specify both the location to save the images and also the custom Stash mapping for that folder.\n\n# Path to Stash custom Served Folder from root Stash folder, eg. if C:\\Stash\\static, just enter static\nmapped\\_path = \"B:\\Stash\\custom\\static\"\n\n# Url to mapped path\nmapped\\_url = \"http://localhost:9999/custom\"\n\n# Topaz Gigapixel Settings\nexe\\_path = Path('B:\\Program Files\\Topaz Labs LLC\\Topaz Gigapixel AI\\Topaz Gigapixel AI.exe')\n\n# Output file suffix. (e.g. pic.jpg -> pic-gigapixel.jpg)\n# You should set same value inside Gigapixel (File -> Preferences -> Default filename suffix).\noutput\\_suffix = '-gigapixel'\n\n# Global Gigapixel variables\nscale\\_setting = []\nmode\\_setting = []\n\n# Gigapixel tag names\ntag\\_names = ['Upscale Standard:0.5x','Upscale Standard:2x','Upscale Standard:4x','Upscale Standard:6x','Upscale Lines:0.5x','Upscale Lines:2x','Upscale Lines:4x','Upscale Lines:6x','Upscale Art & CG:0.5x','Upscale Art & CG:2x','Upscale Art & CG:4x','Upscale Art & CG:6x','Upscale Low Resolution:0.5x','Upscale Low Resolution:2x','Upscale Low Resolution:4x','Upscale Low Resolution:6x','Upscale Very Compressed:0.5x','Upscale Very Compressed:2x','Upscale Very Compressed:4x','Upscale Very Compressed:6x']\n \nconfigpath = os.path.join(pathlib.Path(\\_\\_file\\_\\_).parent.resolve(), 'config.ini')\n\ndef get\\_config\\_value(config\\_file, section, option):\n config = configparser.ConfigParser()\n config.read(config\\_file)\n return config.get(section, option)\n\n \nclass upscale\\_with:\n\n def \\_\\_init\\_\\_(self, url):\n self.url = url\n self.api\\_key = get\\_config\\_value(configpath, 'STASH', 'api\\_key')\n stash\\_url = get\\_config\\_value(configpath, 'STASH', 'url')\n if not stash\\_url:\n self.error(\"You need to set the URL in 'config.ini'\")\n return None\n self.stash\\_url = stash\\_url + \"/graphql\"\n self.headers = {\n \"Accept-Encoding\": \"gzip, deflate, br\",\n \"Content-Type\": \"application/json\",\n \"Accept\": \"application/json\",\n \"Connection\": \"keep-alive\",\n \"DNT\": \"1\",\n \"ApiKey\": self.api\\_key\n }\n \n def log(self, level, message):\n print(f\"[{level.upper()}] {message}\")\n \n def \\_\\_prefix(self,levelChar):\n startLevelChar = b'\\x01'\n endLevelChar = b'\\x02'\n\n ret = startLevelChar + levelChar + endLevelChar\n return ret.decode()\n\n def \\_\\_log(self,levelChar, s):\n if levelChar == \"\":\n return\n\n print(self.\\_\\_prefix(levelChar) + s + \"\\n\", file=sys.stderr, flush=True)\n\n def trace(self,s):\n self.\\_\\_log(b't', s)\n\n def debug(self,s):\n self.\\_\\_log(b'd', s)\n\n def info(self,s):\n self.\\_\\_log(b'i', s)\n\n def warning(self,s):\n self.\\_\\_log(b'w', s)\n\n def error(self,s):\n self.\\_\\_log(b'e', s)\n\n def progress(self,p):\n progress = min(max(0, p), 1)\n self.\\_\\_log(b'p', str(progress))\n\n def \\_\\_callGraphQL(self, query, variables=None):\n json = {}\n json['query'] = query\n if variables != None:\n json['variables'] = variables\n\n # handle cookies\n response = requests.post(self.url, json=json, headers=self.headers)\n\n if response.status\\_code == 200:\n result = response.json()\n if result.get(\"error\", None):\n for error in result[\"error\"][\"errors\"]:\n raise Exception(\"GraphQL error: {}\".format(error))\n if result.get(\"data\", None):\n return result.get(\"data\")\n else:\n raise Exception(\n \"GraphQL query failed:{} - {}. Query: {}. Variables: {}\".format(response.status\\_code, response.content, query, variables))\n \n \n def listTags(self):\n query = \"\"\"\n query {\n allTags {\n id\n name\n }\n }\"\"\"\n\n result = self.\\_\\_callGraphQL(query)\n return result[\"allTags\"]\n \n\n def findTagIdWithName(self, tag\\_names):\n query = \"\"\"\n query {\n allTags {\n id\n name\n }\n }\n \"\"\"\n result = self.\\_\\_callGraphQL(query)\n for tag in result[\"allTags\"]:\n if tag[\"name\"] in tag\\_names:\n return tag[\"id\"]\n return None\n \n\n def createTagWithName(self, name):\n query = \"\"\"\nmutation tagCreate($input:TagCreateInput!) {\n tagCreate(input: $input){\n id \n }\n}\n\"\"\"\n variables = {'input': {\n 'name': name\n }}\n\n result = self.\\_\\_callGraphQL(query, variables)\n return result[\"tagCreate\"][\"id\"]\n def removeTagWithID(self, id):\n query = \"\"\"\nmutation tagDestroy($input: TagDestroyInput!) {\n tagDestroy(input: $input)\n}\n\"\"\"\n variables = {'input': {\n 'id': id\n }}\n self.\\_\\_callGraphQL(query, variables)\n\n \n def findPerformersByTag(self, id):\n query = \"\"\"query performer\\_images($performer\\_filter: PerformerFilterType!) {\n findPerformers(performer\\_filter: $performer\\_filter filter: {per\\_page: -1}){\n\n performers{\n id\n name\n image\\_path\n tags{\n name\n }\n }\n}\n}\"\"\"\n variables = {'performer\\_filter': {\n 'tags': {\n 'value': id, 'modifier': 'INCLUDES', 'depth':1\n \n }\n }}\n result = self.\\_\\_callGraphQL(query, variables)\n performers = result[\"findPerformers\"][\"performers\"]\n image\\_paths\\_tags = [(performer[\"image\\_path\"], performer[\"id\"]) for performer in performers]\n return image\\_paths\\_tags \n \n \n def processPerformerImage(self, image\\_path, performer\\_id, scale, mode):\n # code to process image using the gigapixel library\n # using the scale and mode values passed as arguments\n scale = Scale.\\_\\_getattr\\_\\_(scale\\_setting)\n mode = Mode.\\_\\_getattr\\_\\_(mode\\_setting)\n\n # Check if Gigapixel is open, if yes close items\n for process in psutil.process\\_iter():\n try:\n if process.exe() == exe\\_path:\n # The process was found\n process\\_id = process.pid\n break\n except psutil.AccessDenied:\n # The process cannot be accessed, so skip it\n pass\n \n # Create Gigapixel instance.\n app = Gigapixel(exe\\_path, output\\_suffix)\n\n # Set current directory\n current\\_dir = Path().resolve()\n\n # Variable for saved image\n image\\_name = \"image\\_to\\_process.jpg\"\n image\\_saved = current\\_dir / image\\_name\n\n # Download image data from the image URL\n r = requests.get(image\\_path, stream = True)\n r.raw.decode\\_content = True\n with open(image\\_saved, 'wb') as f:\n shutil.copyfileobj(r.raw, f)\n \n # Process the image\n output\\_path = app.process(image\\_saved, scale=scale, mode=mode)\n\n # Delete the original image\n os.remove(image\\_saved)\n \n # move the processed image to custom mapped folder\n image\\_moved = shutil.move(output\\_path, mapped\\_path)\n\n image\\_upload\\_url = mapped\\_url + image\\_name\n\n # Update performer with new image\n query = \"\"\"\n mutation performerUpdate($performer\\_update\\_input: PerformerUpdateInput!){\n performerUpdate(input: $performer\\_update\\_input){\n id\n }\n }\n \"\"\"\n variables = {\"performer\\_update\\_input\": {\"image\": image\\_upload\\_url, \"id\": performer\\_id}}\n result = self.\\_\\_callGraphQL(query, variables)\n \n # Print the result of the GraphQL mutation\n self.error(\"result: \"+str(result))\n \n # Delete the processed image\n os.remove(image\\_moved)\n \n \n def setup\\_tags(self):\n for tag\\_name in tag\\_names:\n tag\\_id = self.findTagIdWithName(tag\\_name)\n if tag\\_id == None:\n tag\\_id = self.createTagWithName(tag\\_name)\n self.debug(\"Adding tag: \"+tag\\_name)\n else:\n self.error(\"Tag already exists: \"+tag\\_name)\n\n def remove\\_tags(self):\n for tag\\_name in tag\\_names:\n tag\\_id = self.findTagIdWithName(tag\\_name)\n if tag\\_id == None:\n self.error(\"Error: \"+tag\\_name + \"doesn't exist\")\n else:\n self.debug(\"Removing tag: , \"+tag\\_name)\n tag\\_id = self.removeTagWithID(tag\\_id)\n\n \n def upscale\\_PerformerImage(self):\n \n global scale\\_setting\n global mode\\_setting\n \n\n for tag\\_name in tag\\_names:\n \n # Set variables for scale\n if '0.5x' in tag\\_name:\n scale\\_setting = 'Scale.X05'\n elif \"2x\" in tag\\_name:\n scale\\_setting = 'Scale.X2' \n elif \"4x\" in tag\\_name:\n scale\\_setting = 'Scale.X4' \n elif \"6x\" in tag\\_name:\n scale\\_setting = 'Scale.X6'\n else:\n print('No scale in tag name')\n # Set variables for mode\n if 'Standard' in tag\\_name:\n mode\\_setting = 'Mode.STANDARD'\n elif \"Lines\" in tag\\_name:\n mode\\_setting = 'Mode.Lines' \n elif \"Art & CG\" in tag\\_name:\n mode\\_setting = 'Mode.ART\\_AND\\_CG' \n elif \"Low Resolution\" in tag\\_name:\n mode\\_setting = 'Mode.LOW\\_RESOLUTION'\n elif \"Very Compressed\" in tag\\_name:\n mode\\_setting = 'Mode.VERY\\_COMPRESSED'\n else:\n print('No mode in tag name') \n \n tag\\_id = self.findTagIdWithName(tag\\_name)\n if tag\\_id is None:\n self.error(\"Tag missing:\"+tag\\_name) \n else:\n self.info(\"Tag exists: \"+tag\\_name)\n\n image\\_paths\\_tags = self.findPerformersByTag(tag\\_id)\n for image\\_path, performer\\_id in image\\_paths\\_tags:\n scale = Scale.\\_\\_getattr\\_\\_(scale\\_setting)\n mode = Mode.\\_\\_getattr\\_\\_(mode\\_setting)\n self.processPerformerImage(image\\_path, performer\\_id, scale, mode)\n\n# Press the green button in the gutter to run the script.\nif \\_\\_name\\_\\_ == '\\_\\_main\\_\\_':\n if len(sys.argv) > 1:\n url = \"http://localhost:9999/graphql\"\n if len(sys.argv) > 2:\n url = sys.argv[2]\n\n if sys.argv[1] == \"setup\":\n client = upscale\\_all(url)\n client.setup\\_tags()\n elif sys.argv[1] ==\"upscale\\_all\":\n client = upscale\\_all(url)\n client.upscale\\_PerformerImage()\n elif sys.argv[1] ==\"remove\\_tags\":\n client = upscale\\_all(url)\n client.remove\\_tags()\n elif sys.argv[1]== \"api\":\n fragment = json.loads(sys.stdin.read())\n scheme=fragment[\"server\\_connection\"][\"Scheme\"]\n port=fragment[\"server\\_connection\"][\"Port\"]\n domain=\"localhost\"\n if \"Domain\" in fragment[\"server\\_connection\"]:\n domain = fragment[\"server\\_connection\"][\"Domain\"]\n if not domain:\n domain='localhost'\n url = scheme + \"://\" + domain + \":\" +str(port) + \"/graphql\"\n\n client=upscale\\_with(url)\n mode=fragment[\"args\"][\"mode\"]\n client.debug(\"Mode: \"+mode)\n if mode == \"setup\":\n client.setup\\_tags()\n elif mode == \"upscale\\_all\":\n client.upscale\\_PerformerImage()\n elif mode == \"remove\\_tags\":\n client.remove\\_tags()\n else:\n print(\"\")\nHow do I make it that in the upscale\\_PerformerImage function for it to check that only entry exists for performer\\_id using def findPerformersByTag, to check that performer only is tagged with one value out of the entries in tag\\_names. And when it is ascertained the performer is only tagged with one value, to put that value into a variable?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.017,
+        "neu": 0.944,
+        "pos": 0.039,
+        "compound": 0.9756
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 4,
+        "token_count": 2121,
+        "self_ref_ratio": 0.0014144271570014145,
+        "second_person_ratio": 0.001885902876001886
+      },
+      "lexical_features": {
+        "adj_adv_freq": 136,
+        "adj_adv_ratio": 0.06412069778406412,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.0014144271570014145,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.001885902876001886,
+        "token_count": 2121
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 132.5625,
+          "clause_complexity": 1.5,
+          "vocabulary_richness": 0.3628472222222222
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 26,
+            "VBP": 27,
+            "VBD": 7,
+            "VB": 24,
+            "VBN": 19,
+            "VBG": 10
+          },
+          "named_entities": {
+            "PERSON": 19,
+            "ORGANIZATION": 32,
+            "GPE": 8
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "It looks like you have a Python script that is using the `Topaz Gigapixel AI` software to upscale images. The script has a number of functions including `upscale_with` which appears to handle the main logic of interacting with the `Topaz Gigapixel AI` software, as well as functions for logging, configuring the script, and handling errors.\n\nThe script also has a number of variables that store values such as file paths, URLs, and settings for the `Topaz Gigapixel AI` software. It looks like this script is intended to be used in conjunction with the `Stash` software, as there are references to the `Stash` API and configuration options for `Stash`.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.021,
+        "neu": 0.872,
+        "pos": 0.107,
+        "compound": 0.7906
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 132,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.007575757575757576
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.007575757575757576,
+        "token_count": 132
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 33.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6779661016949152
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VBP": 3,
+            "VBG": 5,
+            "VB": 2,
+            "VBN": 2
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 3,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.8831,
+    "pos": 0.073,
+    "neu": 0.9079999999999999,
+    "neg": 0.019000000000000003
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 147,
+    "adj_adv_ratio": 0.06524633821571238,
+    "self_ref_freq": 3,
+    "self_ref_ratio": 0.0013315579227696406,
+    "second_person_freq": 5,
+    "second_person_ratio": 0.0022192632046160675,
+    "total_tokens": 2253
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 82.78125,
+      "clause_complexity": 0.75,
+      "vocabulary_richness": 0.5204066619585688
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 0,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 33,
+        "VBP": 30,
+        "VBD": 7,
+        "VB": 26,
+        "VBN": 21,
+        "VBG": 15
+      },
+      "named_entities": {
+        "PERSON": 22,
+        "ORGANIZATION": 33,
+        "GPE": 9
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 2253
+  }
+}

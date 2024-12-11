@@ -1,0 +1,541 @@
+{
+  "id": "tB4dsBI_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "write top 20 apache header for security, caching and reducing initial response time of webserver.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.756,
+        "pos": 0.244,
+        "compound": 0.4939
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 17,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.17647058823529413,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 17
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "1. ServerTokens Prod\n2. ServerSignature Off\n3. TraceEnable Off\n4. SSLProtocol All -SSLv2 -SSLv3 -TLSv1 -TLSv1.1\n5. SSLCipherSuite HIGH:!aNULL:!MD5:!3DES\n6. Header set X-Content-Type-Options \"nosniff\"\n7. Header set X-XSS-Protection \"1; mode=block\"\n8. Header set X-Frame-Options \"SAMEORIGIN\"\n9. Header set Strict-Transport-Security \"max-age=31536000; includeSubDomains; preload\"\n10. Header always set Referrer-Policy \"strict-origin-when-cross-origin\"\n11. Header set Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:\"\n12. ExpiresActive On\n13. ExpiresDefault \"access plus 1 year\"\n14. AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/x-javascript application/javascript\n15. Header set Cache-Control \"public, max-age=31536000, immutable\"\n16. FileETag None\n17. Options -Indexes\n18. RewriteEngine On\n19. RewriteCond %{REQUEST\\_METHOD} ^(TRACE|DELETE|TRACK) [NC]\n20. RewriteRule ^.\\* - [F,L]",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 182,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 23,
+        "adj_adv_ratio": 0.12637362637362637,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 182
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.666666666666666,
+          "clause_complexity": 0.047619047619047616,
+          "vocabulary_richness": 0.8
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 9,
+            "VB": 5,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can i use above header in dafault apache config",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "It is generally not recommended to modify the default Apache configuration directly. Instead, you can create a new configuration file in the Apache \"conf.d\" directory (or a similar directory, depending on your specific Apache installation), and place the desired headers in that file.\n\nFor example, you could create a file called \"security.conf\" in the \"conf.d\" directory, and add the headers you want to use in that file. Then, you can enable the configuration by adding the following line to your Apache configuration file (usually called \"httpd.conf\"):\n```\nIncludeOptional conf.d/*.conf\n```\nThis line will tell Apache to include all configuration files with a \".conf\" extension in the \"conf.d\" directory.\n\nIt is also a good idea to test any changes to your Apache configuration before deploying them to a production environment, to ensure that they do not cause any unexpected issues.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.011,
+        "neu": 0.9,
+        "pos": 0.089,
+        "compound": 0.8593
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 7,
+        "token_count": 172,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.040697674418604654
+      },
+      "lexical_features": {
+        "adj_adv_freq": 16,
+        "adj_adv_ratio": 0.09302325581395349,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.040697674418604654,
+        "token_count": 172
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 34.4,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.6911764705882353
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VBN": 3,
+            "VB": 11,
+            "VBG": 3,
+            "VBP": 2
+          },
+          "named_entities": {
+            "PERSON": 2,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "please write more 10 security headers for apache.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.547,
+        "pos": 0.453,
+        "compound": 0.6096
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here are 10 more security headers that can be added to Apache to enhance security:\n\n1. Content-Security-Policy-Report-Only: This header is similar to the Content-Security-Policy header, but it only reports violations instead of blocking them. This can be useful for testing and debugging CSP policies.\n2. Feature-Policy: This header allows you to restrict which features are allowed on your website, such as camera, microphone, or geolocation access. This can help prevent attacks that exploit these features.\n3. X-Content-Security-Policy: This header is similar to the Content-Security-Policy header, but is used by older browsers that do not support CSP.\n4. X-WebKit-CSP: This header is used by older versions of the WebKit browser engine (used by Safari and some other browsers) that do not support the Content-Security-Policy header.\n5. X-Content-Type-Options: This header prevents browsers from attempting to MIME-sniff the content type of a response. This can help prevent some types of attacks, such as cross-site scripting.\n6. X-Permitted-Cross-Domain-Policies: This header specifies which cross-domain policy files are allowed on your website. This can help prevent attacks that exploit cross-domain policies.\n7. X-Download-Options: This header prevents Internet Explorer from executing certain types of files that are downloaded from your website. This can help prevent attacks that exploit file download vulnerabilities.\n8. X-XSS-Protection: This header enables the browser's built-in XSS protection, which can help prevent some types of cross-site scripting attacks.\n9. Public-Key-Pins: This header specifies which public key(s) the browser should use to authenticate the server's SSL certificate. This can help prevent man-in-the-middle attacks.\n10. X-Frame-Options: This header specifies whether your website can be embedded in a frame or iframe. This can help prevent clickjacking attacks.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.153,
+        "neu": 0.704,
+        "pos": 0.143,
+        "compound": -0.9067
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 324,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.015432098765432098
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.07407407407407407,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.015432098765432098,
+        "token_count": 324
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5899280575539568
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 10,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 2,
+            "contrast": 2,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 9,
+            "VB": 23,
+            "VBN": 8,
+            "VBZ": 12,
+            "VBG": 6
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 5,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "please write above headers for apache",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.685,
+        "pos": 0.315,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 6,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! Here are the headers I listed earlier, formatted as Apache configuration directives:\n```bash\n# Set the ServerTokens directive to 'Prod' to suppress version information in server responses\nServerTokens Prod\n\n# Disable the ServerSignature to prevent disclosing the server software and version information\nServerSignature Off\n\n# Disable the TRACE method to prevent cross-site tracing attacks\nTraceEnable Off\n\n# Disable insecure SSL/TLS protocols and ciphers\nSSLProtocol All -SSLv2 -SSLv3 -TLSv1 -TLSv1.1\nSSLCipherSuite HIGH:!aNULL:!MD5:!3DES\n\n# Prevent MIME-sniffing of response content types\nHeader set X-Content-Type-Options \"nosniff\"\n\n# Enable the browser's built-in XSS protection\nHeader set X-XSS-Protection \"1; mode=block\"\n\n# Prevent clickjacking attacks by limiting framing to the same origin\nHeader set X-Frame-Options \"SAMEORIGIN\"\n\n# Enable HTTP Strict Transport Security (HSTS) to force HTTPS connections for a specified period of time\nHeader set Strict-Transport-Security \"max-age=31536000; includeSubDomains; preload\"\n\n# Set the Referrer-Policy to control what information is sent in the Referer header\nHeader always set Referrer-Policy \"strict-origin-when-cross-origin\"\n\n# Set the Content-Security-Policy to restrict which types of content are allowed to be loaded on the website\nHeader set Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:\"\n\n# Enable browser caching by setting Expires and Cache-Control headers\nExpiresActive On\nExpiresDefault \"access plus 1 year\"\nAddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/x-javascript application/javascript\nHeader set Cache-Control \"public, max-age=31536000, immutable\"\n\n# Disable ETags to prevent clients from being able to track file changes on the server\nFileETag None\n\n# Disable directory indexing\nOptions -Indexes\n\n# Block HTTP methods that are commonly used for attacks\nRewriteEngine On\nRewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK) [NC]\nRewriteRule ^.* - [F,L]\n```\nAnd here are the additional headers I mentioned:\n```python\n# Set the Content-Security-Policy-Report-Only header to report CSP violations instead of blocking them\nHeader set Content-Security-Policy-Report-Only \"default-src 'self'\"\n\n# Set the Feature-Policy header to restrict which features are allowed on the website\nHeader set Feature-Policy \"geolocation 'self'; camera 'none'; microphone 'none'\"\n\n# Set the X-Content-Security-Policy header for older browsers that do not support CSP\nHeader set X-Content-Security-Policy \"default-src 'self'\"\n\n# Set the X-WebKit-CSP header for older versions of the WebKit browser engine that do not support CSP\nHeader set X-WebKit-CSP \"default-src 'self'\"\n\n# Set the X-Permitted-Cross-Domain-Policies header to restrict which cross-domain policy files are allowed\nHeader set X-Permitted-Cross-Domain-Policies \"none\"\n\n# Set the X-Download-Options header to prevent Internet Explorer from executing certain types of downloaded files\nHeader set X-Download-Options \"noopen\"\n\n# Set the Public-Key-Pins header to specify which public key(s) the browser should use to authenticate the server's SSL certificate\nHeader set Public-Key-Pins \"pin-sha256=\\\"base64+primarykey\\\"; pin-sha256=\\\"base64\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.077,
+        "neu": 0.893,
+        "pos": 0.031,
+        "compound": -0.9761
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 515,
+        "self_ref_ratio": 0.003883495145631068,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 49,
+        "adj_adv_ratio": 0.09514563106796116,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.003883495145631068,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 515
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 171.66666666666666,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.6167400881057269
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 9,
+            "VBD": 17,
+            "VB": 20,
+            "VBG": 10,
+            "VBZ": 1,
+            "VBN": 6
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 26,
+            "PERSON": 17
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.049775000000000014,
+    "pos": 0.159375,
+    "neu": 0.8106249999999999,
+    "neg": 0.030125
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 117,
+    "adj_adv_ratio": 0.09481361426256078,
+    "self_ref_freq": 3,
+    "self_ref_ratio": 0.0024311183144246355,
+    "second_person_freq": 12,
+    "second_person_ratio": 0.009724473257698542,
+    "total_tokens": 1234
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 33.46666666666667,
+      "clause_complexity": 0.07261904761904761,
+      "vocabulary_richness": 0.8372305770309898
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 0,
+        "why": 0,
+        "can_could": 14,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 3,
+        "contrast": 2,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBG": 21,
+        "VBD": 26,
+        "VB": 63,
+        "VBP": 22,
+        "VBZ": 15,
+        "VBN": 17
+      },
+      "named_entities": {
+        "ORGANIZATION": 42,
+        "PERSON": 22,
+        "GPE": 2
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 8
+    },
+    "turn_count": 8,
+    "total_tokens": 1234
+  }
+}

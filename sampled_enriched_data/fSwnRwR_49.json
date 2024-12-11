@@ -1,0 +1,850 @@
+{
+  "id": "fSwnRwR_49",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Here is an example of the `CompanyEntityDefinitionComponent` in Angular:\n```php\nimport { Component, Input } from '@angular/core';\nimport { CompanyEntityDefinition } from '../models/CompanyEntityDefinition';\n\n@Component({\n  selector: 'app-company-entity-definition',\n  template: `\n    <div class=\"card\">\n      <div class=\"card-header\">\n        <h5>{{companyEntityDefinition.Name}}</h5>\n      </div>\n      <div class=\"card-body\">\n        <div class=\"form-group\">\n          <label for=\"name\">Name</label>\n          <input type=\"text\" id=\"name\" [(ngModel)]=\"companyEntityDefinition.Name\" class=\"form-control\">\n        </div>\n        <h6>Properties</h6>\n        <table class=\"table\">\n          <thead>\n            <tr>\n              <th>Name</th>\n              <th>Type</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let property of companyEntityDefinition.Properties\">\n              <td>{{property.Name}}</td>\n              <td>{{property.Type}}</td>\n            </tr>\n          </tbody>\n        </table>\n        <div class=\"form-group\">\n          <label for=\"lookups\">Lookups</label>\n          <select multiple id=\"lookups\" [(ngModel)]=\"companyEntityDefinition.Lookups\" class=\"form-control\">\n            <option *ngFor=\"let lookup of allLookups\" [value]=\"lookup\">{{lookup}}</option>\n          </select>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"indices\">Indices</label>\n          <select multiple id=\"indices\" [(ngModel)]=\"companyEntityDefinition.Indices\" class=\"form-control\">\n            <option *ngFor=\"let index of allIndices\" [value]=\"index\">{{index}}</option>\n          </select>\n        </div>\n        <div class=\"form-group\">\n          <label for=\"validations\">Validations</label>\n          <select multiple id=\"validations\" [(ngModel)]=\"companyEntityDefinition.Validations\" class=\"form-control\">\n            <option *ngFor=\"let validation of allValidations\" [value]=\"validation\">{{validation}}</option>\n          </select>\n        </div>\n      </div>\n    </div>\n  `,\n  styles: []\n})\nexport class CompanyEntityDefinitionComponent {\n  @Input() companyEntityDefinition: CompanyEntityDefinition;\n  @Input() allLookups: string[];\n  @Input() allIndices: string[];\n  @Input() allValidations: string[];\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 486,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 16,
+        "adj_adv_ratio": 0.03292181069958848,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 486
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 486.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.4411764705882353
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 6,
+            "VBP": 17
+          },
+          "named_entities": {
+            "GPE": 3,
+            "ORGANIZATION": 12,
+            "PERSON": 5
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can you generate the CompanyEntityDefinition model in angular?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.1111111111111111
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.1111111111111111,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, here is an example of the `CompanyEntityDefinition` model in Angular:\n```typescript\nexport class CompanyEntityDefinition {\n    name: string;\n    properties: PropertyDefinition[];\n    lookups: string[];\n    indices: string[];\n    validations: string[];\n    id: string;\n\n    constructor() {\n        this.properties = [];\n        this.lookups = [];\n        this.indices = [];\n        this.validations = [];\n    }\n}\n\nexport class PropertyDefinition {\n    name: string;\n    type: any;\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.952,
+        "pos": 0.048,
+        "compound": 0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 95,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.06315789473684211,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 95
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 95.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6428571428571429
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 1,
+            "VBP": 4
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you generate the CompanyValueObjectDefinitionComponent assuming it uses the following inputs : public class CompanyValueObjectDefinition\n {\n public string Name { get; set; }\n public IList Properties { get; set; }\n public Guid Id { get; set; }\n\n public CompanyValueObjectDefinition()\n {\n Properties = new List();\n }\n } public class PropertyDefinition\n {\n public string Name { get; set; }\n public Type Type { get; set; }\n }",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 80,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0125
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.125,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0125,
+        "token_count": 80
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 80.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBG": 1,
+            "VBZ": 1,
+            "VBN": 5,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4,
+            "PERSON": 2,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here's an Angular model for the `CompanyValueObjectDefinition` class:\n```typescript\nexport class CompanyValueObjectDefinition {\n  public name: string;\n  public properties: PropertyDefinition[];\n  public id: string;\n\n  constructor() {\n    this.properties = [];\n  }\n}\n\nexport class PropertyDefinition {\n  public name: string;\n  public type: string;\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.947,
+        "pos": 0.053,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 66,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.15151515151515152,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 66
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 66.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5357142857142857
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can you generate the CompanyValueObjectDefinitionComponent ?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 6,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.16666666666666666
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.16666666666666666,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "```vbnet\nimport { Component, OnInit } from '@angular/core';\n\ninterface PropertyDefinition {\n  Name: string;\n  Type: any;\n}\n\ninterface CompanyValueObjectDefinition {\n  Name: string;\n  Properties: PropertyDefinition[];\n  Id: string;\n}\n\n@Component({\n  selector: 'app-company-value-object-definition',\n  template: `\n    <form>\n      <div>\n        <label>Name:</label>\n        <input [(ngModel)]=\"valueObject.Name\" name=\"name\" />\n      </div>\n      <div>\n        <label>Properties:</label>\n        <div *ngFor=\"let prop of valueObject.Properties\">\n          <input [(ngModel)]=\"prop.Name\" name=\"propName\" />\n          <select [(ngModel)]=\"prop.Type\" name=\"propType\">\n            <option value=\"string\">string</option>\n            <option value=\"number\">number</option>\n            <option value=\"boolean\">boolean</option>\n          </select>\n        </div>\n      </div>\n    </form>\n  `,\n})\nexport class CompanyValueObjectDefinitionComponent implements OnInit {\n  valueObject: CompanyValueObjectDefinition = {\n    Name: '',\n    Properties: [{ Name: '', Type: '' }],\n    Id: '',\n  };\n\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 245,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.02857142857142857,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 245
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 245.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5555555555555556
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 3,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can you generate a sample css theme for the angular site assuming that the site is based on an insurance company that has blue and white as primary colors",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 29,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.034482758620689655
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.10344827586206896,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.034482758620689655,
+        "token_count": 29
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 29.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBG": 1,
+            "VBZ": 2,
+            "VBN": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Here is a sample CSS theme for an Angular site based on an insurance company with blue and white as primary colors:\n```css\n/* define primary colors */\n:root {\n  --primary-color: #0072c6;\n  --secondary-color: #ffffff;\n}\n\n/* apply primary colors to headers and links */\nh1, h2, h3, h4, h5, h6, a {\n  color: var(--primary-color);\n}\n\n/* apply secondary color to backgrounds */\nbody, .section-bg {\n  background-color: var(--secondary-color);\n}\n\n/* create a button class with primary color background and white text */\n.btn {\n  background-color: var(--primary-color);\n  color: var(--secondary-color);\n  padding: 0.5em 1em;\n  border-radius: 4px;\n  text-decoration: none;\n  display: inline-block;\n}\n```\nThis is just a simple example and can be extended based on the requirements of the site.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.982,
+        "pos": 0.018,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 176,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 16,
+        "adj_adv_ratio": 0.09090909090909091,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 176
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 176.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VBN": 3,
+            "VB": 3,
+            "VBP": 5,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can you generate a sample css theme for the angular site assuming that the site is based on an NES theme based on 8 bit video games",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 27,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.037037037037037035
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.07407407407407407,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.037037037037037035,
+        "token_count": 27
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 27.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8125
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBG": 1,
+            "VBZ": 1,
+            "VBN": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Here's a sample CSS theme for an NES (8-bit video game) based Angular site:\n```css\n/* Base Styles */\nbody {\n  background-color: #FFF;\n  color: #333;\n  font-family: 'Press Start 2P', cursive;\n}\n\n/* NES Theme Styles */\n.nes-theme {\n  background-color: #000;\n  color: #FFF;\n}\n\n.nes-btn {\n  background-color: #FFF;\n  color: #000;\n  border: 1px solid #333;\n  border-radius: 4px;\n  padding: 10px 20px;\n  font-size: 16px;\n  font-weight: bold;\n  text-transform: uppercase;\n}\n\n.nes-btn:hover {\n  background-color: #333;\n  color: #FFF;\n  cursor: pointer;\n}\n\n/* NES Icon Styles */\n.nes-icon {\n  font-size: 36px;\n  color: #FFF;\n}\n\n/* NES Header Styles */\n.nes-header {\n  background-color: #333;\n  color: #FFF;\n  padding: 20px;\n  text-align: center;\n  font-size: 36px;\n  font-weight: bold;\n}\n\n/* NES Card Styles */\n.nes-card {\n  background-color: #FFF;\n  color: #333;\n  border: 1px solid #333;\n  border-radius: 4px;\n  box-shadow: 2px 2px 5px #CCC;\n  padding: 20px;\n  margin: 20px 0;\n}\n\n.nes-card h3 {\n  font-size: 24px;\n  font-weight: bold;\n  margin-bottom: 20px;\n}\n\n.nes-card p {\n  font-size: 16px;\n  line-height: 1.5;\n}\n```\nThis is just a basic theme to get started with, feel free to modify and add more styles to fit the overall look and feel of your NES-themed site.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.911,
+        "pos": 0.089,
+        "compound": 0.9333
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 293,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0034129692832764505
+      },
+      "lexical_features": {
+        "adj_adv_freq": 40,
+        "adj_adv_ratio": 0.13651877133105803,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0034129692832764505,
+        "token_count": 293
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 293.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5392156862745098
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VBN": 2,
+            "VB": 6,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 14,
+            "PERSON": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "let's assume that CompanyEntityDefinitionComponent will also be used in a component to add CompanyEntityDefinitions",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 15,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.06666666666666667,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, below is the code for CompanyEntityDefinitionAddComponent:\n```php\nimport { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-company-entity-definition-add',\n  template: `\n    <form>\n      <div>\n        <label for=\"name\">Name:</label>\n        <input type=\"text\" id=\"name\" [(ngModel)]=\"entityDefinition.Name\" name=\"name\">\n      </div>\n      <div>\n        <label for=\"properties\">Properties:</label>\n        <div *ngFor=\"let prop of entityDefinition.Properties\">\n          <div>\n            <label for=\"propertyName\">Name:</label>\n            <input type=\"text\" id=\"propertyName\" [(ngModel)]=\"prop.Name\" name=\"propertyName\">\n          </div>\n          <div>\n            <label for=\"propertyType\">Type:</label>\n            <input type=\"text\" id=\"propertyType\" [(ngModel)]=\"prop.Type\" name=\"propertyType\">\n          </div>\n        </div>\n        <button (click)=\"addProperty()\">Add Property</button>\n      </div>\n      <div>\n        <label for=\"lookups\">Lookups:</label>\n        <div *ngFor=\"let lookup of entityDefinition.Lookups\">\n          <input type=\"text\" [(ngModel)]=\"lookup\" name=\"lookup\">\n        </div>\n        <button (click)=\"addLookup()\">Add Lookup</button>\n      </div>\n      <div>\n        <label for=\"indices\">Indices:</label>\n        <div *ngFor=\"let index of entityDefinition.Indices\">\n          <input type=\"text\" [(ngModel)]=\"index\" name=\"index\">\n        </div>\n        <button (click)=\"addIndex()\">Add Index</button>\n      </div>\n      <div>\n        <label for=\"validations\">Validations:</label>\n        <div *ngFor=\"let validation of entityDefinition.Validations\">\n          <input type=\"text\" [(ngModel)]=\"validation\" name=\"validation\">\n        </div>\n        <button (click)=\"addValidation()\">Add Validation</button>\n      </div>\n      <button (click)=\"saveEntityDefinition()\">Save</button>\n    </form>\n  `,\n  styles: []\n})\nexport class CompanyEntityDefinitionAddComponent implements OnInit {\n  entityDefinition: CompanyEntityDefinition = new CompanyEntityDefinition();\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  addProperty(): void {\n    this.entityDefinition.Properties.push(new PropertyDefinition());\n  }\n\n  addLookup(): void {\n    this.entityDefinition.Lookups.push('');\n  }\n\n  addIndex(): void {\n    this.entityDefinition.Indices.push('');\n  }\n\n  addValidation(): void {\n    this.entityDefinition.Validations.push('');\n  }\n\n  saveEntityDefinition(): void {\n    // Save logic here\n  }\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.968,
+        "pos": 0.032,
+        "compound": 0.6705
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 540,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.03333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 540
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 540.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.3787878787878788
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 6,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 18,
+            "PERSON": 4
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.1997769230769231,
+    "pos": 0.018461538461538463,
+    "neu": 0.9815384615384615,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 130,
+    "adj_adv_ratio": 0.06289308176100629,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 6,
+    "second_person_ratio": 0.002902757619738752,
+    "total_tokens": 2067
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 159.0,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.6978825912649442
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 6,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 14,
+        "VB": 34,
+        "VBP": 35,
+        "VBG": 4,
+        "VBN": 15
+      },
+      "named_entities": {
+        "GPE": 5,
+        "ORGANIZATION": 65,
+        "PERSON": 17
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 13
+    },
+    "turn_count": 13,
+    "total_tokens": 2067
+  }
+}

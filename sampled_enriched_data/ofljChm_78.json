@@ -1,0 +1,660 @@
+{
+  "id": "ofljChm_78",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "provide the java script again",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.2,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the confusion. Here's the updated JavaScript code:\n```javascript\nconst startCard = document.getElementById(\"start-card\");\nconst endCard = document.getElementById(\"end-card\");\nconst operationButtons = document.querySelectorAll(\".button-container button\");\nconst cards = document.querySelectorAll(\".card:not(#start-card):not(#end-card)\");\n\nlet selectedOperation = null;\n\n// Set up click listeners for operation buttons\noperationButtons.forEach(function(button) {\n\tbutton.addEventListener(\"click\", function() {\n\t\t// Deselect previously selected operation\n\t\tif (selectedOperation !== null) {\n\t\t\tselectedOperation.classList.remove(\"selected\");\n\t\t}\n\n\t\t// Select new operation\n\t\tselectedOperation = button;\n\t\tselectedOperation.classList.add(\"selected\");\n\t});\n});\n\n// Set up click listeners for cards\ncards.forEach(function(card) {\n\tcard.addEventListener(\"click\", handleClick);\n});\n\nfunction handleClick() {\n\t// Only perform action if an operation is selected and the card has not been used\n\tif (selectedOperation !== null && !this.classList.contains(\"used\")) {\n\t\tconst startValue = parseInt(startCard.querySelector(\"p\").textContent);\n\t\tconst cardValue = parseInt(this.querySelector(\"p\").textContent);\n\t\tlet result;\n\n\t\t// Perform arithmetic operation based on selected\n\t\tswitch (selectedOperation.textContent) {\n\t\t\tcase \"+\":\n\t\t\t\tresult = startValue + cardValue;\n\t\t\t\tbreak;\n\t\t\tcase \"-\":\n\t\t\t\tresult = startValue - cardValue;\n\t\t\t\tbreak;\n\t\t\tcase \"*\":\n\t\t\t\tresult = startValue * cardValue;\n\t\t\t\tbreak;\n\t\t\tcase \"/\":\n\t\t\t\tresult = startValue / cardValue;\n\t\t\t\tbreak;\n\t\t}\n\n\t\t// Update start card value and clear selected operation\n\t\tstartCard.querySelector(\"p\").textContent = result;\n\t\tselectedOperation.classList.remove(\"selected\");\n\t\tselectedOperation = null;\n\n\t\t// Mark card as used\n\t\tthis.classList.add(\"used\");\n\n\t\t// Remove click listener from used card\n\t\tthis.removeEventListener(\"click\", handleClick);\n\t}\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.011,
+        "neu": 0.952,
+        "pos": 0.037,
+        "compound": 0.6219
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 363,
+        "self_ref_ratio": 0.0027548209366391185,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.05785123966942149,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0027548209366391185,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 363
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 181.5,
+          "clause_complexity": 1.5,
+          "vocabulary_richness": 0.3983050847457627
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 6,
+            "VBZ": 3,
+            "VBN": 16,
+            "VB": 5,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 17,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "numbers on the cards are gone",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 6,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the mistake. Please try updating the `handleClick` function with the following code:\n```javascript\nfunction handleClick() {\n  // Only perform action if an operation is selected and the card has not been used\n  if (selectedOperation !== null && !this.classList.contains(\"used\")) {\n    const startValue = parseInt(startCard.querySelector(\"p\").textContent);\n    const cardValue = parseInt(this.querySelector(\"p\").textContent);\n    let result;\n\n    // Perform arithmetic operation based on selected\n    switch (selectedOperation.textContent) {\n      case \"+\":\n        result = startValue + cardValue;\n        break;\n      case \"-\":\n        result = startValue - cardValue;\n        break;\n      case \"*\":\n        result = startValue * cardValue;\n        break;\n      case \"/\":\n        result = startValue / cardValue;\n        break;\n    }\n\n    // Update start card value and clear selected operation\n    startCard.querySelector(\"p\").textContent = result;\n    selectedOperation.classList.remove(\"selected\");\n    selectedOperation = null;\n\n    // Mark card as used\n    this.classList.add(\"used\");\n    this.querySelector(\"p\").textContent = \"\";\n\n    // Remove click listener from used card\n    this.removeEventListener(\"click\", handleClick);\n  }\n}\n```\nThis should clear the number from the used card, so it's more obvious that it can't be clicked again.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.015,
+        "neu": 0.902,
+        "pos": 0.083,
+        "compound": 0.8309
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 252,
+        "self_ref_ratio": 0.003968253968253968,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.051587301587301584,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.003968253968253968,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 252
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 126.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.4772727272727273
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 6,
+            "VBG": 1,
+            "VBZ": 3,
+            "VBN": 14,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 10,
+            "PERSON": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Still not seeing the numbers",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.4,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the confusion. Please try updating the `handleClick` function with the following code instead:\n```javascript\nfunction handleClick() {\n\t// Only perform action if an operation is selected and the card has not been used\n\tif (selectedOperation !== null && !this.classList.contains(\"used\")) {\n\t\tconst startValue = parseInt(startCard.querySelector(\"p\").textContent);\n\t\tconst cardValue = parseInt(this.querySelector(\"p\").textContent);\n\t\tlet result;\n\n\t\t// Perform arithmetic operation based on selected\n\t\tswitch (selectedOperation.textContent) {\n\t\t\tcase \"+\":\n\t\t\t\tresult = startValue + cardValue;\n\t\t\t\tbreak;\n\t\t\tcase \"-\":\n\t\t\t\tresult = startValue - cardValue;\n\t\t\t\tbreak;\n\t\t\tcase \"*\":\n\t\t\t\tresult = startValue * cardValue;\n\t\t\t\tbreak;\n\t\t\tcase \"/\":\n\t\t\t\tresult = startValue / cardValue;\n\t\t\t\tbreak;\n\t\t}\n\n\t\t// Update start card value and clear selected operation\n\t\tstartCard.querySelector(\"p\").textContent = result;\n\t\tselectedOperation.classList.remove(\"selected\");\n\t\tselectedOperation = null;\n\n\t\t// Mark card as used and clear its value\n\t\tthis.classList.add(\"used\");\n\t\tthis.querySelector(\"p\").textContent = \"\";\n\n\t\t// Add checkmark to used card\n\t\tconst checkmark = document.createElement(\"span\");\n\t\tcheckmark.classList.add(\"checkmark\");\n\t\tthis.appendChild(checkmark);\n\n\t\t// Remove click listener from used card\n\t\tthis.removeEventListener(\"click\", handleClick);\n\t}\n}\n```\nThis should add a green checkmark to the used card after it's clicked.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.013,
+        "neu": 0.904,
+        "pos": 0.083,
+        "compound": 0.8774
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 277,
+        "self_ref_ratio": 0.0036101083032490976,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.039711191335740074,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0036101083032490976,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 277
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 138.5,
+          "clause_complexity": 1.5,
+          "vocabulary_richness": 0.4444444444444444
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 6,
+            "VBG": 2,
+            "VBZ": 3,
+            "VBN": 16,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 10,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "The problem is that there are no numbers on any of the cards",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.308,
+        "neu": 0.692,
+        "pos": 0.0,
+        "compound": -0.5994
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 13,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 13
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the continued issues. Please check that the `generateCards` function in the JavaScript code is still generating the random numbers and appending them to the card elements. Here's the updated `generateCards` function:\n```javascript\nfunction generateCards() {\n\t// Generate random numbers and set card values\n\tconst cardValues = [];\n\tfor (let i = 0; i < cards.length; i++) {\n\t\tlet value = Math.floor(Math.random() * 20) + 1;\n\t\twhile (cardValues.includes(value)) {\n\t\t\tvalue = Math.floor(Math.random() * 20) + 1;\n\t\t}\n\t\tcardValues.push(value);\n\n\t\tconst card = cards[i];\n\t\tconst cardValue = card.querySelector(\"p\");\n\t\tcardValue.textContent = value;\n\t\tcard.appendChild(cardValue);\n\t}\n}\n```\nThis should generate the random numbers and display them on the cards.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.881,
+        "pos": 0.119,
+        "compound": 0.891
+      },
+      "core_lexical": {
+        "self_ref_freq": 5,
+        "second_person_freq": 0,
+        "token_count": 163,
+        "self_ref_ratio": 0.03067484662576687,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.06748466257668712,
+        "self_ref_freq": 5,
+        "self_ref_ratio": 0.03067484662576687,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 163
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 54.333333333333336,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.5740740740740741
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 8,
+            "VB": 8,
+            "VBZ": 2,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "What is the complete javascript?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 6,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is the complete JavaScript code:\n```javascript\nconst startCard = document.getElementById(\"start-card\");\nconst endCard = document.getElementById(\"end-card\");\nconst operationButtons = document.querySelectorAll(\".button-container button\");\nconst cards = document.querySelectorAll(\".card:not(#start-card):not(#end-card)\");\n\nlet selectedOperation = null;\n\n// Set up click listeners for operation buttons\noperationButtons.forEach(function(button) {\n\tbutton.addEventListener(\"click\", function() {\n\t\t// Deselect previously selected operation\n\t\tif (selectedOperation !== null) {\n\t\t\tselectedOperation.classList.remove(\"selected\");\n\t\t}\n\n\t\t// Select new operation\n\t\tselectedOperation = button;\n\t\tselectedOperation.classList.add(\"selected\");\n\t});\n});\n\n// Set up click listeners for cards\ncards.forEach(function(card) {\n\tcard.addEventListener(\"click\", handleClick);\n});\n\nfunction handleClick() {\n\t// Only perform action if an operation is selected and the card has not been used\n\tif (selectedOperation !== null && !this.classList.contains(\"used\")) {\n\t\tconst startValue = parseInt(startCard.querySelector(\"p\").textContent);\n\t\tconst cardValue = parseInt(this.querySelector(\"p\").textContent);\n\t\tlet result;\n\n\t\t// Perform arithmetic operation based on selected\n\t\tswitch (selectedOperation.textContent) {\n\t\t\tcase \"+\":\n\t\t\t\tresult = startValue + cardValue;\n\t\t\t\tbreak;\n\t\t\tcase \"-\":\n\t\t\t\tresult = startValue - cardValue;\n\t\t\t\tbreak;\n\t\t\tcase \"*\":\n\t\t\t\tresult = startValue * cardValue;\n\t\t\t\tbreak;\n\t\t\tcase \"/\":\n\t\t\t\tresult = startValue / cardValue;\n\t\t\t\tbreak;\n\t\t}\n\n\t\t// Update start card value and clear selected operation\n\t\tstartCard.querySelector(\"p\").textContent = result;\n\t\tselectedOperation.classList.remove(\"selected\");\n\t\tselectedOperation = null;\n\n\t\t// Mark card as used and clear its value\n\t\tthis.classList.add(\"used\");\n\t\tthis.querySelector(\"p\").textContent = \"\";\n\n\t\t// Add checkmark to used card\n\t\tconst checkmark = document.createElement(\"span\");\n\t\tcheckmark.classList.add(\"checkmark\");\n\t\tthis.appendChild(checkmark);\n\n\t\t// Remove click listener from used card\n\t\tthis.removeEventListener(\"click\", handleClick);\n\t}\n}\n\nfunction generateCards() {\n\t// Generate random numbers and set card values\n\tconst cardValues = [];\n\tfor (let i = 0; i < cards.length; i++) {\n\t\tlet value = Math.floor(Math.random() * 20) + 1;\n\t\twhile (cardValues.includes(value)) {\n\t\t\tvalue = Math.floor(Math.random() * 20) + 1;\n\t\t}\n\t\tcardValues.push(value);\n\n\t\tconst card = cards[i];\n\t\tconst cardValue = document.createElement(\"p\");\n\t\tcardValue.textContent = value;\n\t\tcard.appendChild(cardValue);\n\t}\n}\n\n// Generate initial card values\ngenerateCards();\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.918,
+        "pos": 0.082,
+        "compound": 0.966
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 0,
+        "token_count": 512,
+        "self_ref_ratio": 0.0078125,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 32,
+        "adj_adv_ratio": 0.0625,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.0078125,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 512
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 512.0,
+          "clause_complexity": 4.0,
+          "vocabulary_richness": 0.35802469135802467
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBN": 17,
+            "VBP": 12,
+            "VB": 11,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 22,
+            "PERSON": 3
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.35878,
+    "pos": 0.040400000000000005,
+    "neu": 0.9248999999999998,
+    "neg": 0.0347
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 92,
+    "adj_adv_ratio": 0.05742821473158552,
+    "self_ref_freq": 12,
+    "self_ref_ratio": 0.00749063670411985,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 1602
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 104.73333333333335,
+      "clause_complexity": 0.8333333333333333,
+      "vocabulary_richness": 0.7252121021895033
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 37,
+        "VBP": 32,
+        "VBZ": 16,
+        "VBN": 64,
+        "VBD": 5,
+        "VBG": 6
+      },
+      "named_entities": {
+        "ORGANIZATION": 64,
+        "PERSON": 11
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 10
+    },
+    "turn_count": 10,
+    "total_tokens": 1602
+  }
+}

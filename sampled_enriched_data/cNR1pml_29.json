@@ -1,0 +1,515 @@
+{
+  "id": "cNR1pml_29",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "I apologize, providing detailed guide with code examples for each task in the to-do list would be too extensive for a single response. However, I can provide you with a summary of each task and resources where you can find more information and code examples.\n\n1. **Create a new Django project**: Use the `django-admin startproject` command to create a new Django project. This command will create the project's directory structure and the necessary files for a new Django project.\n\t* Resources:\n\t\t+ Django documentation on [creating a project](https://docs.djangoproject.com/en/3.2/intro/tutorial01/)\n\t\t+ Real Python's article on [Django project structure](https://realpython.com/django-project-structure/)\n2. **Create a new Django app**: Use the `python manage.py startapp` command to create a new Django app within the project. This command will create the app's directory structure and the necessary files for a new Django app.\n\t* Resources:\n\t\t+ Django documentation on [creating an app](https://docs.djangoproject.com/en/3.2/intro/tutorial01/)\n\t\t+ Real Python's article on [Django app structure](https://realpython.com/django-apps-folders/)\n3. **Create Django models**: Create Django models to represent the scraped data. These models will be used to store the scraped data in the database. In the models.py file, you will define the fields and the types of the fields that will be stored in the database.\n\t* Resources:\n\t\t+ Django documentation on [models](https://docs.djangoproject.com/en/3.2/topics/db/models/)\n\t\t+ Real Python's article on [Django models](https://realpython.com/django-models/)\n4. **Register as a developer and create an Instagram app**: Go to <https://www.instagram.com/developer/register/> and register as a developer. Once you have registered, create a new Instagram app and obtain an access token.\n\t* Resources:\n\t\t+ Instagram documentation on [getting started with Instagram API](https://developers.facebook.com/docs/instagram-basic-display-api/getting-started)\n\t\t+ Real Python's article on [scraping Instagram with Python](https://realpython.com/beautiful-soup-instagram/)",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.904,
+        "pos": 0.096,
+        "compound": 0.9628
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 4,
+        "token_count": 377,
+        "self_ref_ratio": 0.005305039787798408,
+        "second_person_ratio": 0.010610079575596816
+      },
+      "lexical_features": {
+        "adj_adv_freq": 35,
+        "adj_adv_ratio": 0.09283819628647215,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.005305039787798408,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.010610079575596816,
+        "token_count": 377
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.5625,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.40993788819875776
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBG": 5,
+            "VB": 27,
+            "VBN": 4
+          },
+          "named_entities": {
+            "PERSON": 7,
+            "ORGANIZATION": 6,
+            "GPE": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here is the continuation of the detailed guide for the remaining tasks in the to-do list:\n\n5. **Install scraping dependencies**: You will need to install Python libraries that are used for web scraping such as Requests, json, pandas and requests\\_cache. You can install them by running `pip install requests json pandas requests_cache`\n\t* Resources:\n\t\t+ Requests library documentation [here](http://docs.python-requests.org/en/master/)\n\t\t+ json library documentation [here](https://docs.python.org/3/library/json.html)\n\t\t+ pandas library documentation [here](https://pandas.pydata.org/pandas-docs/stable/)\n\t\t+ requests\\_cache documentation [here](https://pypi.org/project/requests-cache/)\n6. **Define the scraping logic**: Write Python code to perform the scraping. This code should use the requests library to send requests to the Instagram API to get the necessary data for the analytics. You will need to use the access token obtained in step 4 to authenticate the requests.\n\t* Resources:\n\t\t+ Instagram API documentation [here](https://developers.facebook.com/docs/instagram-basic-display-api)\n\t\t+ Real Python's article on [scraping Instagram with Python](https://realpython.com/beautiful-soup-instagram/)\n7. **Create function to scrape hashtags**: Create a function that takes a keyword as input and returns a list of top related hashtags.\n\t* Resources:\n\t\t+ Instagram API documentation on [hashtag search](https://developers.facebook.com/docs/instagram-basic-display-api/reference/hashtag-search)\n8. **Create function to scrape posts**: Create a function that takes a hashtag as input and returns a list of top recommended posts.\n\t* Resources:\n\t----------",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.922,
+        "pos": 0.078,
+        "compound": 0.9022
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 292,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.010273972602739725
+      },
+      "lexical_features": {
+        "adj_adv_freq": 38,
+        "adj_adv_ratio": 0.13013698630136986,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.010273972602739725,
+        "token_count": 292
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.545454545454547,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5203252032520326
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 6,
+            "VBG": 5,
+            "VB": 20,
+            "VBP": 4,
+            "VBN": 4
+          },
+          "named_entities": {
+            "PERSON": 6,
+            "ORGANIZATION": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "​",
+      "language": "unknown",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Instagram API documentation on [hashtag media](https://developers.facebook.com/docs/instagram-basic-display-api/reference/hashtag)\n\n9. **Create function to scrape profiles**: Create a function that takes a post as input and returns the profile of the user who posted it.\n\t* Resources:\n\t\t+ Instagram API documentation on [user](https://developers.facebook.com/docs/instagram-basic-display-api/reference/user)\n10. **Create function to run analytics on profiles**: Create a function that takes a profile as input and returns analytics data such as average likes per post, average posts per day, engagement rate, follower growth rate, post reach and video and story performance.\n\t* Resources:\n\t\t+ Instagram API documentation on [user media](https://developers.facebook.com/docs/instagram-basic-display-api/reference/user)\n11. **Create function to sort profiles**: Create a function that takes a list of profiles and sorts them based on the analytics data.\n\t* Resources:\n\t\t+ Python documentation on [sorting lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)\n12. **Create Django views**: Create views using Django's views module to handle incoming HTTP requests from the frontend and return the scraped data in JSON format.\n\t* Resources:\n\t\t+ Django documentation on [views](https://docs.djangoproject.com/en/3.2/topics/http/views/)\n\t\t+ Real Python's article on [Django views](https://realpython.com/django-views/)\n13. **Create Django serializers**: Create serializers using the Django REST framework to convert the scraped data into JSON format.\n\t* Resources:\n\t\t+ Django REST framework documentation on [serializers](https://www.django-rest-framework.org/api-guide/serializers/)\n14. **Create Django URLs**",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.846,
+        "pos": 0.154,
+        "compound": 0.9766
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 296,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.08445945945945946,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 296
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.666666666666668,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.47183098591549294
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 20,
+            "VBZ": 5,
+            "VBD": 1,
+            "VBN": 1,
+            "VBG": 4,
+            "VBP": 2
+          },
+          "named_entities": {
+            "PERSON": 7,
+            "ORGANIZATION": 12
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": ": Create URLs using Django's URL dispatcher to map incoming requests to the appropriate views.\n- Resources:\n- Django documentation on [URL dispatcher](https://docs.djangoproject.com/en/3.2/topics/http/urls/)\n- Real Python's article on [Django URLs](https://realpython.com/django-url-mapping/)\n\n15. **Create a management command**: Create a management command using Django's management command module to run the scraping and analytics functions.\n\t* Resources:\n\t\t+ Django documentation on [management commands](https://docs.djangoproject.com/en/3.2/howto/custom-management-commands/)\n\t\t+ Real Python's article on [Django management commands](https://realpython.com/custom-django-management-commands/)\n16. **Create a celery task**: Create a celery task using the celery library to run the scraping and analytics functions in the background.\n\t* Resources:\n\t\t+ Celery documentation on [tasks](http://docs.celeryproject.org/en/latest/userguide/tasks.html)\n\t\t+ Real Python's article on [Celery with Django](https://realpython.com/asynchronous-tasks-with-django-and-celery/)\n17. **Integrate celery with Django**: Integrate celery into the Django project by configuring celery and creating a celery instance.\n\t* Resources:\n\t\t+ Celery documentation on [Django integration](http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html)\n18. **Create a celery task schedule**: Create a schedule for the celery task using celery beat. This will allow you to run the scraping task periodically for each topic.\n\t* Resources:\n\t\t+ Celery documentation on [beat schedule](http://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html#beat-schedules)\n19. **Create a message broker**: Create a message broker, such as RabbitMQ or Redis, to handle the communication between the Django app and the celery task.\n\t* Resources:\n\t\t+ Celery documentation on [brokers](http://docs.celeryproject.org/en/latest/getting-started/brokers/)\n20. **Deploy the app**: Deploy the app on a production server. This could involve configuring a web server such as Apache or Nginx, a database server such as PostgreSQL or MySQL, and the message broker.\n\t* Resources:\n\t\t+ Django documentation on [deployment](https://docs.djangoproject.com/en/3.2/howto/deployment/)\n\nand so on ...\nPlease let me know if you have any question or if there is a specific step that you would like me to elaborate on.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.902,
+        "pos": 0.098,
+        "compound": 0.9685
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 406,
+        "self_ref_ratio": 0.0049261083743842365,
+        "second_person_ratio": 0.007389162561576354
+      },
+      "lexical_features": {
+        "adj_adv_freq": 37,
+        "adj_adv_ratio": 0.09113300492610837,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.0049261083743842365,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.007389162561576354,
+        "token_count": 406
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.88235294117647,
+          "clause_complexity": 0.11764705882352941,
+          "vocabulary_richness": 0.44
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 3,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 8,
+            "VB": 27,
+            "VBP": 2,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 12,
+            "GPE": 5
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "write code example for the scraping logic",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 7,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.14285714285714285,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 7
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 7.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here is a code example of how you can use the requests library to scrape data from the Instagram API:\n```\nimport requests\nimport json\n\naccess_token = 'your_access_token'\n\ndef scrape_hashtags(keyword):\n    url = f'https://api.instagram.com/v1/tags/search?q={keyword}&access_token={access_token}'\n    response = requests.get(url)\n    data = json.loads(response.text)\n    hashtags = [tag['name'] for tag in data['data']]\n    return hashtags\n\ndef scrape_posts(hashtag):\n    url = f'https://api.instagram.com/v1/tags/{hashtag}/media/recent?access_token={access_token}'\n    response = requests.get(url)\n    data = json.loads(response.text)\n    posts = [post['link'] for post in data['data']]\n    return posts\n\ndef scrape_profiles(post):\n    url = f'https://api.instagram.com/v1/media/{post}?access_token={access_token}'\n    response = requests.get(url)\n    data = json.loads(response.text)\n    profile = data['data']['user']['username']\n    return profile\n```\nThis is a simple example and it might need to be adjusted depending on the specific requirements of your project, but it should give you an idea of how to use the requests library to scrape data from the Instagram API.\n\nThe `scrape_hashtags` function takes a keyword as input and returns a list of top related hashtags by making a GET request to the Instagram API's hashtag search endpoint.\n\nThe `scrape_posts` function takes a hashtag as input and returns a list of top recommended posts by making a GET request to the Instagram API's hashtag media endpoint.\n\nThe `scrape_profiles` function takes a post as input and returns the profile of the user who posted it by making a GET request to the Instagram API's media endpoint.\n\nYou can also use requests\\_cache library to cache the responses of the requests and not hitting the instagram api too often.\n\nPlease keep in mind that this code is only a sample and you need to implement error handling, pagination, and rate limiting for the requests you send to the API.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.013,
+        "neu": 0.944,
+        "pos": 0.043,
+        "compound": 0.7343
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 6,
+        "token_count": 383,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.015665796344647518
+      },
+      "lexical_features": {
+        "adj_adv_freq": 36,
+        "adj_adv_ratio": 0.09399477806788512,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.015665796344647518,
+        "token_count": 383
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 63.833333333333336,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.45454545454545453
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 2,
+            "general": 3
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 11,
+            "VB": 13,
+            "VBP": 7,
+            "VBN": 3,
+            "VBG": 5,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 9
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.4131272727272728,
+    "pos": 0.04263636363636363,
+    "neu": 0.9561818181818182,
+    "neg": 0.0011818181818181817
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 172,
+    "adj_adv_ratio": 0.097671777399205,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.002271436683702442,
+    "second_person_freq": 16,
+    "second_person_ratio": 0.009085746734809767,
+    "total_tokens": 1761
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 28.24838458110517,
+      "clause_complexity": 0.0196078431372549,
+      "vocabulary_richness": 0.5494399219852897
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 2,
+        "why": 0,
+        "can_could": 6,
+        "general": 3
+      },
+      "discourse_markers": {
+        "elaboration": 5,
+        "contrast": 2,
+        "causality": 0,
+        "hedging": 2
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 19,
+        "VBG": 27,
+        "VB": 107,
+        "VBN": 12,
+        "VBZ": 23,
+        "VBD": 2
+      },
+      "named_entities": {
+        "PERSON": 32,
+        "ORGANIZATION": 40,
+        "GPE": 8
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 6,
+      "it": 4,
+      "unknown": 1
+    },
+    "turn_count": 11,
+    "total_tokens": 1761
+  }
+}

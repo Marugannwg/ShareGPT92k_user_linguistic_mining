@@ -1,0 +1,181 @@
+{
+  "id": "oloRPxA_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "how to get list of apps installed on device using react native",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 12,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBN": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To get a list of apps installed on a device using React Native, you can use the `react-native-device-info` library. This library provides an API to access information about the device, including the list of installed apps.\n\nHere's an example of how you can use it:\n\n1. Install the library:\n```\nnpm install react-native-device-info\n```\n2. Link the library to your project:\n```\nreact-native link react-native-device-info\n```\n3. Import the library in your code:\n```\nimport DeviceInfo from 'react-native-device-info';\n```\n4. Use the `getInstalledApps()` method to get the list of installed apps:\n```\nconst apps = await DeviceInfo.getInstalledApps();\nconsole.log(apps);\n```\nThis will give you an array of objects, where each object contains information about an installed app, such as its package name, version, and label.\n\nPlease note that this method works only for android and getInstalledApps() is not available for iOS.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.974,
+        "pos": 0.026,
+        "compound": 0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 185,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.02702702702702703
+      },
+      "lexical_features": {
+        "adj_adv_freq": 14,
+        "adj_adv_ratio": 0.07567567567567568,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.02702702702702703,
+        "token_count": 185
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.125,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6714285714285714
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 10,
+            "VBN": 1,
+            "VBG": 2,
+            "VBZ": 5
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.20095,
+    "pos": 0.013,
+    "neu": 0.987,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 16,
+    "adj_adv_ratio": 0.08121827411167512,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 5,
+    "second_person_ratio": 0.025380710659898477,
+    "total_tokens": 197
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 17.5625,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.8357142857142856
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 2,
+        "why": 0,
+        "can_could": 2,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 11,
+        "VBN": 2,
+        "VBG": 3,
+        "VBZ": 5
+      },
+      "named_entities": {
+        "PERSON": 1,
+        "ORGANIZATION": 3
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 197
+  }
+}

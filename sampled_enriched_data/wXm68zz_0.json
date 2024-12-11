@@ -1,0 +1,669 @@
+{
+  "id": "wXm68zz_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "We know our salesforce instance can breakdown if more than 400 per hour join our registry. Those records appear on our contact object. Generate a query that groups by hour so that I can see if in any hour we exceeded our limits.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.95,
+        "pos": 0.05,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 6,
+        "token_count": 46,
+        "self_ref_ratio": 0.06521739130434782,
+        "second_person_ratio": 0.13043478260869565
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.021739130434782608,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.06521739130434782,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.13043478260869565,
+        "token_count": 46
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.333333333333334,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.9047619047619048
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 3,
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To create a query that groups the number of contacts created by hour, you can use the SOQL (Salesforce Object Query Language) with the aggregate function COUNT() and the date functions CALENDAR\\_HOUR() and DAY\\_ONLY(). Here's a sample query to help you achieve your goal:\n```scss\nSELECT DAY_ONLY(CreatedDate) day, CALENDAR_HOUR(CreatedDate) hour, COUNT(Id) numberOfContacts\nFROM Contact\nWHERE CreatedDate = LAST_N_DAYS:30\nGROUP BY DAY_ONLY(CreatedDate), CALENDAR_HOUR(CreatedDate)\nHAVING COUNT(Id) > 400\nORDER BY DAY_ONLY(CreatedDate), CALENDAR_HOUR(CreatedDate)\n```\nThis query will:\n\n1. Select the day and hour of the created contacts using the DAY\\_ONLY() and CALENDAR\\_HOUR() functions.\n2. Count the number of contacts created in each hour using the COUNT() function.\n3. Filter the results to only show the data for the last 30 days using the LAST\\_N\\_DAYS keyword.\n4. Group the results by day and hour.\n5. Only show the hours where more than 400 contacts were created using the HAVING clause.\n6. Order the results by day and hour.\n\nYou can adjust the time frame by changing the value in the LAST\\_N\\_DAYS keyword. This query will show if there are any hours where the number of contacts created exceeded your limit of 400 per hour.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.895,
+        "pos": 0.105,
+        "compound": 0.9337
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 254,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.01968503937007874
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.03543307086614173,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.01968503937007874,
+        "token_count": 254
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.933333333333334,
+          "clause_complexity": 0.06666666666666667,
+          "vocabulary_richness": 0.5283018867924528
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 10,
+            "VBN": 4,
+            "VBZ": 2,
+            "VBD": 3,
+            "VBG": 5,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 14,
+            "GPE": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I can't aggregate by calendar hour in dev console is there another way to do this or update the query?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 22,
+        "self_ref_ratio": 0.045454545454545456,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.13636363636363635,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.045454545454545456,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 22
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "My apologies for the confusion. You're correct that the CALENDAR\\_HOUR() function is not available in SOQL. Instead, you can use the Apex programming language to achieve the same goal. Here's an Apex script that groups the contact records by hour and checks if any hour exceeded the limit:\n```apex\nMap<String, Integer> hourlyContactCount = new Map<String, Integer>();\n\nList<Contact> contacts = [SELECT Id, CreatedDate FROM Contact WHERE CreatedDate = LAST_N_DAYS:30];\n\nfor (Contact c : contacts) {\n    DateTime createdDate = c.CreatedDate;\n    String dayHourKey = createdDate.format('yyyy-MM-dd') + ' ' + String.valueOf(createdDate.hour());\n\n    if (!hourlyContactCount.containsKey(dayHourKey)) {\n        hourlyContactCount.put(dayHourKey, 1);\n    } else {\n        hourlyContactCount.put(dayHourKey, hourlyContactCount.get(dayHourKey) + 1);\n    }\n}\n\nSystem.debug('Hourly contact count: ' + hourlyContactCount);\n\nfor (String dayHourKey : hourlyContactCount.keySet()) {\n    if (hourlyContactCount.get(dayHourKey) > 400) {\n        System.debug('Exceeded limit in hour: ' + dayHourKey + ' with ' + hourlyContactCount.get(dayHourKey) + ' contacts');\n    }\n}\n```\nThis Apex script will:\n\n1. Create a map called `hourlyContactCount` to store the count of contacts for each hour.\n2. Query the contacts created in the last 30 days.\n3. Iterate through the contacts and format the created date into a string containing the day and hour.\n4. Update the `hourlyContactCount` map with the contact count for each day and hour.\n5. Output the hourly contact count to the debug log.\n6. Check if any hour exceeded the limit of 400 contacts per hour and output the exceeded hours to the debug log.\n\nYou can run this script in the Salesforce Developer Console's \"Execute Anonymous\" window or in the \"Anonymous Apex\" section of the VSCode Salesforce extension. The script will output the hourly contact count and the hours where the limit was exceeded in the debug log.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.008,
+        "neu": 0.969,
+        "pos": 0.023,
+        "compound": 0.4926
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 3,
+        "token_count": 383,
+        "self_ref_ratio": 0.0026109660574412533,
+        "second_person_ratio": 0.007832898172323759
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.04699738903394256,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0026109660574412533,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.007832898172323759,
+        "token_count": 383
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.529411764705884,
+          "clause_complexity": 0.23529411764705882,
+          "vocabulary_richness": 0.5034013605442177
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBZ": 5,
+            "VB": 11,
+            "VBD": 3,
+            "VBG": 2,
+            "VBN": 4
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 19,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "the debug log truncates can you only show the highest 5 hours?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 13,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.07692307692307693
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.15384615384615385,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.07692307692307693,
+        "token_count": 13
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! You can modify the Apex script to only output the top 5 hours with the highest contact count. Here's the updated script:\n```apex\nMap<String, Integer> hourlyContactCount = new Map<String, Integer>();\n\nList<Contact> contacts = [SELECT Id, CreatedDate FROM Contact WHERE CreatedDate = LAST_N_DAYS:30];\n\nfor (Contact c : contacts) {\n    DateTime createdDate = c.CreatedDate;\n    String dayHourKey = createdDate.format('yyyy-MM-dd') + ' ' + String.valueOf(createdDate.hour());\n\n    if (!hourlyContactCount.containsKey(dayHourKey)) {\n        hourlyContactCount.put(dayHourKey, 1);\n    } else {\n        hourlyContactCount.put(dayHourKey, hourlyContactCount.get(dayHourKey) + 1);\n    }\n}\n\nList<String> sortedKeys = new List<String>(hourlyContactCount.keySet());\nsortedKeys.sort((String a, String b) => hourlyContactCount.get(b) - hourlyContactCount.get(a));\n\nSystem.debug('Top 5 hours with the highest contact count:');\n\nInteger limit = Math.min(sortedKeys.size(), 5);\nfor (Integer i = 0; i < limit; i++) {\n    String dayHourKey = sortedKeys.get(i);\n    System.debug(dayHourKey + ': ' + hourlyContactCount.get(dayHourKey) + ' contacts');\n}\n```\nThis updated script:\n\n1. Creates a list of the map keys called `sortedKeys` and sorts it in descending order based on the contact count.\n2. Calculates the limit (5 or the total number of hours if less than 5) and iterates through the top hours.\n3. Outputs the top 5 hours with the highest contact count to the debug log.\n\nNow, when you run this script, it will only show the top 5 hours with the highest contact count in the debug log, which should help you avoid the log truncation issue.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.01,
+        "neu": 0.918,
+        "pos": 0.072,
+        "compound": 0.8854
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 3,
+        "token_count": 347,
+        "self_ref_ratio": 0.011527377521613832,
+        "second_person_ratio": 0.008645533141210375
+      },
+      "lexical_features": {
+        "adj_adv_freq": 26,
+        "adj_adv_ratio": 0.07492795389048991,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.011527377521613832,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.008645533141210375,
+        "token_count": 347
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 38.55555555555556,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.43902439024390244
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBZ": 6,
+            "VBP": 8,
+            "VBG": 3,
+            "VBN": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 15,
+            "PERSON": 4,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Line: 17, Column: 16\nUnexpected token '('.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 13,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 13
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {
+            "GPE": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Apologies for the syntax error in the script. Unfortunately, you cannot use a lambda expression to sort a list in Apex. Instead, you can create a custom class that implements the `Comparable` interface to sort the data. Here's the updated script:\n```apex\npublic class HourlyCount implements Comparable {\n    public String dayHourKey;\n    public Integer count;\n\n    public HourlyCount(String dayHourKey, Integer count) {\n        this.dayHourKey = dayHourKey;\n        this.count = count;\n    }\n\n    public Integer compareTo(Object obj) {\n        HourlyCount other = (HourlyCount)obj;\n        return other.count - this.count;\n    }\n}\n\nMap<String, Integer> hourlyContactCount = new Map<String, Integer>();\nList<Contact> contacts = [SELECT Id, CreatedDate FROM Contact WHERE CreatedDate = LAST_N_DAYS:30];\n\nfor (Contact c : contacts) {\n    DateTime createdDate = c.CreatedDate;\n    String dayHourKey = createdDate.format('yyyy-MM-dd') + ' ' + String.valueOf(createdDate.hour());\n\n    if (!hourlyContactCount.containsKey(dayHourKey)) {\n        hourlyContactCount.put(dayHourKey, 1);\n    } else {\n        hourlyContactCount.put(dayHourKey, hourlyContactCount.get(dayHourKey) + 1);\n    }\n}\n\nList<HourlyCount> sortedHourlyCounts = new List<HourlyCount>();\n\nfor (String dayHourKey : hourlyContactCount.keySet()) {\n    sortedHourlyCounts.add(new HourlyCount(dayHourKey, hourlyContactCount.get(dayHourKey)));\n}\n\nsortedHourlyCounts.sort();\n\nSystem.debug('Top 5 hours with the highest contact count:');\n\nInteger limit = Math.min(sortedHourlyCounts.size(), 5);\nfor (Integer i = 0; i < limit; i++) {\n    HourlyCount hc = sortedHourlyCounts.get(i);\n    System.debug(hc.dayHourKey + ': ' + hc.count + ' contacts');\n}\n```\nIn this updated script, I've added a custom class called `HourlyCount` that implements the `Comparable` interface. This class contains the day-hour key and the contact count. The `compareTo` method is used for sorting based on the contact count.\n\nThe script now creates a list of `HourlyCount` objects and sorts it using the `sort()` method. The rest of the script remains the same, displaying the top 5 hours with the highest contact count in the debug log.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.019,
+        "neu": 0.958,
+        "pos": 0.023,
+        "compound": -0.1007
+      },
+      "core_lexical": {
+        "self_ref_freq": 5,
+        "second_person_freq": 2,
+        "token_count": 417,
+        "self_ref_ratio": 0.011990407673860911,
+        "second_person_ratio": 0.004796163069544364
+      },
+      "lexical_features": {
+        "adj_adv_freq": 34,
+        "adj_adv_ratio": 0.0815347721822542,
+        "self_ref_freq": 5,
+        "self_ref_ratio": 0.011990407673860911,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.004796163069544364,
+        "token_count": 417
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 52.125,
+          "clause_complexity": 0.125,
+          "vocabulary_richness": 0.44666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBZ": 9,
+            "VBG": 5,
+            "VBP": 7,
+            "VBN": 4
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 28,
+            "PERSON": 5
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can I execute the new script in dev console execute anonymous window?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 13,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.3076923076923077,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 13
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.875
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, you can execute the updated Apex script in the Developer Console's \"Execute Anonymous\" window. Here's a step-by-step guide on how to do this:\n\n1. Open the Developer Console in your Salesforce instance. To do this, click on the gear icon in the upper right corner of the Salesforce interface and select \"Developer Console\" from the menu.\n2. In the Developer Console, click on the \"Debug\" menu in the top toolbar and select \"Open Execute Anonymous Window\" or press Ctrl+E (Cmd+E on Mac).\n3. Copy and paste the updated Apex script provided in the previous response into the \"Enter Apex Code\" text area in the \"Execute Anonymous\" window.\n4. (Optional) Check the \"Open Log\" checkbox at the bottom of the \"Execute Anonymous\" window to automatically open the debug log after the script is executed.\n5. Click the \"Execute\" button at the bottom right corner of the \"Execute Anonymous\" window to run the script.\n6. After the script has finished running, you can view the debug log by going to the \"Logs\" tab at the bottom of the Developer Console. If you checked the \"Open Log\" checkbox, the log should open automatically. Otherwise, you can double-click the latest log to open it.\n7. In the debug log, look for the lines that start with \"USER\\_DEBUG\" to view the script's output. The top 5 hours with the highest contact count will be displayed in these lines.\n\nBy following these steps, you can execute the updated Apex script in the Developer Console's \"Execute Anonymous\" window and view the results in the debug log.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.976,
+        "pos": 0.024,
+        "compound": 0.6486
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 6,
+        "token_count": 325,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.018461538461538463
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.055384615384615386,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.018461538461538463,
+        "token_count": 325
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.25,
+          "clause_complexity": 0.15,
+          "vocabulary_richness": 0.503448275862069
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 17,
+            "VBZ": 3,
+            "VBN": 5,
+            "VBG": 3,
+            "VBD": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 9,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.31555999999999995,
+    "pos": 0.029700000000000004,
+    "neu": 0.9666,
+    "neg": 0.0036999999999999997
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 115,
+    "adj_adv_ratio": 0.06273867975995635,
+    "self_ref_freq": 15,
+    "self_ref_ratio": 0.008183306055646482,
+    "second_person_freq": 26,
+    "second_person_ratio": 0.014184397163120567,
+    "total_tokens": 1833
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 22.27266339869281,
+      "clause_complexity": 0.1576960784313725,
+      "vocabulary_richness": 0.7200604484871214
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 15,
+        "general": 3
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 25,
+        "VB": 58,
+        "VBD": 8,
+        "VBN": 19,
+        "VBZ": 26,
+        "VBG": 18
+      },
+      "named_entities": {
+        "ORGANIZATION": 82,
+        "GPE": 9,
+        "PERSON": 21
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 10
+    },
+    "turn_count": 10,
+    "total_tokens": 1833
+  }
+}

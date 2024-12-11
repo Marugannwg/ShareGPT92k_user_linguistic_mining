@@ -1,0 +1,326 @@
+{
+  "id": "K2hVMdO_41",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Sure, here's an example of how you could move the methods into a library and use it in the main script:\n\nFirst create a new file called `redirects_lib.py` and move the following methods into it:\n```python\nimport os\nfrom dotenv import load_dotenv\nimport requests\nimport mysql.connector\nfrom mysql.connector import Error\nfrom datetime import datetime\n\n# Load environment variables from .env file\nload_dotenv()\n\ndef get_connection():\n    return mysql.connector.connect(\n            host=os.getenv('DB_HOST'),\n            database=os.getenv('DB_NAME'),\n            user=os.getenv('DB_USER'),\n            password=os.getenv('DB_PASSWORD')\n        )\n\ndef scrape_form_fields(response, url_id):\n    form_fields = []\n    for form in response.html.find_all('form'):\n        for input_element in form.find_all('input'):\n            form_fields.append(input_element['name'])\n    connection = get_connection()\n    cursor = connection.cursor()\n    for field in form_fields:\n        insert_query = f\"INSERT INTO form_fields (url_id, field_name, created_at) VALUES({url_id}, '{field}', '{datetime.now()}')\"\n        cursor.execute(insert_query)\n    connection.commit()\n\ndef follow_redirects(url):\n    try:\n        connection = get_connection()\n        cursor = connection.cursor()\n        insert_query = f\"INSERT INTO urls (url, created_at) VALUES('{url}', '{datetime.now()}')\"\n        cursor.execute(insert_query)\n        connection.commit()\n        url_id = cursor.lastrowid\n        print(f\"{url} - URL ID: {url_id}\")\n        start_time = time.time()\n        try:\n            response = requests.get(url, allow_redirects=True, timeout=10)\n            end_time = time.time()\n            response_time = end_time - start_time\n            status = \"Successful\"\n            descriptor = None\n        except requests.exceptions.Timeout as e:\n            end_time = time.time()\n            response_time = end_time - start_time\n            status = \"Failed\"\n            descriptor = e\n        connection = get_connection()\n        cursor = connection.cursor()\n        insert_query = f\"INSERT INTO redirects (url_id, response_time, status, descriptor, created_at) VALUES({url_id}, {response_time}, '{status}', '{descriptor\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.029,
+        "neu": 0.932,
+        "pos": 0.039,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 379,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.002638522427440633
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.0712401055408971,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.002638522427440633,
+        "token_count": 379
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 379.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5647058823529412
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 5,
+            "VBN": 1,
+            "VBP": 3,
+            "VBD": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 10,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here's the continuation of the `redirects_lib.py` file:\n```python\n        insert_query = f\"INSERT INTO redirects (url_id, response_time, status, descriptor, created_at) VALUES({url_id}, {response_time}, '{status}', '{descriptor}', '{datetime.now()}')\"\n        cursor.execute(insert_query)\n        connection.commit()\n        print(f\"{url} - {response_time} - {status}\")\n        if not response.is_redirect:\n            scrape_form_fields(response, url_id)\n```\nThen in the main script `check_redirects.py` you can import the library and use the methods as follows:\n```python\nimport threading\nfrom redirects_lib import follow_redirects\n\nif __name__ == \"__main__\":\n    urls = ['https://example1.com','https://example2.com','https://example3.com']\n    threads = []\n    for url in urls:\n        thread = threading.Thread(target=follow_redirects, args=(url,))\n        thread.start()\n        threads.append(thread)\n    for thread in threads:\n        thread.join()\n    print(\"All threads have completed.\")\n```\nThis way the methods are reusable and can be easily imported to other scripts.\nPlease let me know if you have any other question.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.941,
+        "pos": 0.059,
+        "compound": 0.7184
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 229,
+        "self_ref_ratio": 0.004366812227074236,
+        "second_person_ratio": 0.008733624454148471
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.10480349344978165,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.004366812227074236,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.008733624454148471,
+        "token_count": 229
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 76.33333333333333,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.68
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 7,
+            "VBG": 1,
+            "VBP": 5,
+            "VBN": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can we daemonize check\\_redirects.py? continually looking for new urls in the urls table (once every 5 seconds). when a new one is detected fire off a thread. Let's make sure there's only a maximum number of threads running at any given time. use the \"MAX\\_THREADS\" environment variable to control that.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.045,
+        "neu": 0.887,
+        "pos": 0.068,
+        "compound": 0.0516
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 61,
+        "self_ref_ratio": 0.01639344262295082,
+        "second_person_ratio": 0.01639344262295082
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.14754098360655737,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.01639344262295082,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.01639344262295082,
+        "token_count": 61
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.2,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.9285714285714286
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5,
+            "VBG": 2,
+            "VBZ": 2,
+            "VBN": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, you can daemonize the `check_redirects.py` script to continuously look for new URLs in the `urls` table, and fire off a new thread when a new one is detected.\n\nHere's an example of how you could accomplish this:\n```python\nimport os\nimport threading\nimport time\nfrom redirects_lib import follow_redirects\n\nMAX_THREADS = int(os.getenv('MAX_THREADS', 5))\n\ndef check_urls():\n    while True:\n        connection = get_connection()\n        cursor = connection.cursor()\n        select_query = \"SELECT * FROM urls WHERE status = 'pending' LIMIT 1\"\n        cursor.execute(select_query)\n        url_to_check = cursor.fetchone()\n        if url_to_check:\n            # if there's a pending url to check and thread count is less than MAX_THREADS\n            if threading.active_count() < MAX_THREADS:\n                thread = threading.Thread(target=follow_redirects, args=(url_to_check[1],))\n                thread.start()\n            else:\n                print(f'Thread count is at {threading.active_count()}, waiting to start new thread')\n        else:\n            print(\"No pending URLs to check.\")\n        time.sleep(5)\n\nif __name__ == \"__main__\":\n    check_urls()\n```\nIn this example, the `check_urls()` function is continuously running in an infinite loop, checking for new URLs in the `urls` table with a status of \"pending\" every 5 seconds. Once a new URL is detected, it will check the number of active threads, and if it's less than the maximum number of threads specified in the `MAX_THREADS` environment variable, it will start a new thread to follow the redirects. If the number of active threads is equal to or greater than the maximum, it will wait until a thread completes before starting a new one.\n\nYou can also daemonize the script with python-daemon package, it will allow you to run the script in the background as a daemon process.\nPlease let me know if you have any other question.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.009,
+        "neu": 0.902,
+        "pos": 0.089,
+        "compound": 0.9509
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 5,
+        "token_count": 360,
+        "self_ref_ratio": 0.002777777777777778,
+        "second_person_ratio": 0.013888888888888888
+      },
+      "lexical_features": {
+        "adj_adv_freq": 35,
+        "adj_adv_ratio": 0.09722222222222222,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.002777777777777778,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.013888888888888888,
+        "token_count": 360
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 51.42857142857143,
+          "clause_complexity": 1.4285714285714286,
+          "vocabulary_richness": 0.5966386554621849
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 19,
+            "VBZ": 11,
+            "VBN": 4,
+            "VBG": 9,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.40338,
+    "pos": 0.051000000000000004,
+    "neu": 0.9324,
+    "neg": 0.016599999999999997
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 95,
+    "adj_adv_ratio": 0.0923226433430515,
+    "self_ref_freq": 3,
+    "self_ref_ratio": 0.0029154518950437317,
+    "second_person_freq": 9,
+    "second_person_ratio": 0.008746355685131196,
+    "total_tokens": 1029
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 129.7404761904762,
+      "clause_complexity": 0.6571428571428571,
+      "vocabulary_richness": 0.6924789915966386
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 2,
+        "why": 0,
+        "can_could": 7,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 2
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 21,
+        "VB": 36,
+        "VBN": 9,
+        "VBP": 10,
+        "VBD": 3,
+        "VBG": 12
+      },
+      "named_entities": {
+        "ORGANIZATION": 18,
+        "PERSON": 2
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 4,
+      "it": 1
+    },
+    "turn_count": 5,
+    "total_tokens": 1029
+  }
+}

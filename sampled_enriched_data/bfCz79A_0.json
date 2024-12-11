@@ -1,0 +1,193 @@
+{
+  "id": "bfCz79A_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Given the commit description below, create a new text that will be placed in the README.MD file that explain how to create a new knowledge base advisor in detail.\n------ START OF COMMIT MESSAGE\nImprove Pearl reusability and improve DX\n\nYou'll now be able to create a new Advisor from the knowledgeBase by:\n\nCreating a new file under ~/modules/Advisor/pages. (e.g.: ~/modules/Advisor/pages/benefits/tier.tsx)\nExporting a Module type defining its data and inputs, along with what we currently export (TranslationComponent, queryFragment, etc)\nexport type Module = AdvisorKnowledgeBase<\n { countryBenefits: { collection: CountryBenefits[] } },\n { salaryCurrencyCode: string, tier?: Tier }\n>\nRunning the type generation command: yarn advisor:generate (this will update the generated-types.d.ts file with the new file you created)\n\nYou can create a default translation for when knowledge\\_base is missing by adding an entry to knowledge\\_base/Default.translation.js\n\nFrom now on, you'll be able to use it with full type safety and autosuggest for the field name and for the extraInputs (if exists) on all APIs: onFocusHandler(\"benefits.tier\", { extraInputs: { salaryCurrencyCode: \"USD\" }). Same for createTooltip and createTooltipHandler.\n\nA great advantage is that this new structure will allow scoping under a domain, allowing the hiring advisor to be used more widely for other usecases.\n\n~/modules/Advisor/pages/hiring/probationPeriod\n~/modules/Advisor/pages/onboarding/bankAccount\nI'm also working on making the advisor more standalone, so that it can be used on other pages and contexts easily.\n\n------ END OF COMMIT MESSAGE",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.027,
+        "neu": 0.818,
+        "pos": 0.155,
+        "compound": 0.9793
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 5,
+        "token_count": 283,
+        "self_ref_ratio": 0.007067137809187279,
+        "second_person_ratio": 0.0176678445229682
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.08833922261484099,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.007067137809187279,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.0176678445229682,
+        "token_count": 283
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 31.444444444444443,
+          "clause_complexity": 0.2222222222222222,
+          "vocabulary_richness": 0.7368421052631579
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBN": 4,
+            "VB": 14,
+            "VBZ": 4,
+            "VBG": 10,
+            "VBP": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 7,
+            "GPE": 1,
+            "PERSON": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To create a new knowledge base Advisor, follow these steps:\n\n1. Create a new file under `~/modules/Advisor/pages`. For example, you could create a file called `~/modules/Advisor/pages/benefits/tier.tsx`.\n2. In this new file, export a `Module` type that defines the data and inputs for your Advisor. Here is an example of what this might look like:\n```\nexport type Module = AdvisorknowledgeBase<\n  { countryBenefits: { collection: CountryBenefits[] } },\n  { salaryCurrencyCode: string, tier?: Tier }\n>\n```\n3. Run the type generation command: `yarn advisor:generate`. This will update the `generated-types.d.ts` file with the new file you created.\n4. To create a default translation for when the knowledge base is missing, add an entry to `knowledge_base/Default.translation.js`.\n\nOnce you have completed these steps, you will be able to use your new Advisor with full type safety and autosuggest for the field names and extra inputs (if applicable) in all APIs. For example, you could use `onFocusHandler(\"benefits.tier\", { extraInputs: { salaryCurrencyCode: \"USD\" }})` or `createTooltip(\"benefits.tier\", { extraInputs: { salaryCurrencyCode: \"USD\" }})`.\n\nUsing this new structure will allow you to scope your Advisors under a domain, making it easier to use them for a variety of different use cases. For example, you could create Advisors for hiring (e.g. `~/modules/Advisor/pages/hiring/probationPeriod`) or onboarding (e.g. `~/modules/Advisor/pages/onboarding/bankAccount`).\n\nWe are also working on making the Advisor more standalone, so that it can be easily used on other pages and in different contexts.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.009,
+        "neu": 0.89,
+        "pos": 0.101,
+        "compound": 0.9565
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 11,
+        "token_count": 322,
+        "self_ref_ratio": 0.003105590062111801,
+        "second_person_ratio": 0.034161490683229816
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.07763975155279502,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.003105590062111801,
+        "second_person_freq": 11,
+        "second_person_ratio": 0.034161490683229816,
+        "token_count": 322
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.88888888888889,
+          "clause_complexity": 0.1111111111111111,
+          "vocabulary_richness": 0.6416666666666667
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 4,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 3,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 4
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 19,
+            "VBN": 3,
+            "VBZ": 4,
+            "VBP": 3,
+            "VBD": 1,
+            "VBG": 6
+          },
+          "named_entities": {
+            "PERSON": 2,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.9679,
+    "pos": 0.128,
+    "neu": 0.854,
+    "neg": 0.018
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 50,
+    "adj_adv_ratio": 0.08264462809917356,
+    "self_ref_freq": 3,
+    "self_ref_ratio": 0.0049586776859504135,
+    "second_person_freq": 16,
+    "second_person_ratio": 0.026446280991735537,
+    "total_tokens": 605
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 24.666666666666664,
+      "clause_complexity": 0.16666666666666666,
+      "vocabulary_richness": 0.6892543859649123
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 2,
+        "how": 1,
+        "why": 0,
+        "can_could": 6,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 3,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 4
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBN": 7,
+        "VB": 33,
+        "VBZ": 8,
+        "VBG": 16,
+        "VBP": 6,
+        "VBD": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 8,
+        "GPE": 1,
+        "PERSON": 4
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 605
+  }
+}

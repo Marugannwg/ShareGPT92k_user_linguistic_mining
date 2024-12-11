@@ -1,0 +1,179 @@
+{
+  "id": "6lRHjKJ_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "If we have a union of complex types in an avro schema do we always get member0, member1, etc?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 2,
+        "token_count": 22,
+        "self_ref_ratio": 0.09090909090909091,
+        "second_person_ratio": 0.09090909090909091
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.13636363636363635,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.09090909090909091,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.09090909090909091,
+        "token_count": 22
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "If you define a union of complex types in an Avro schema, the default names for the members of the union will be \"member0\", \"member1\", \"member2\", and so on. However, you can provide custom names for the members of the union by using the Avro union type syntax.\n\nFor example, suppose you have a union of two complex types: a record and an array of integers. By default, the members of the union will be named \"member0\" and \"member1\":\n```json\n{\n  \"type\": \"record\",\n  \"name\": \"myRecord\",\n  \"fields\": [\n    {\"name\": \"myField\", \"type\": [\"null\", {\"type\": \"array\", \"items\": \"int\"}, {\"type\": \"record\", \"name\": \"myNestedRecord\", \"fields\": [{\"name\": \"nestedField\", \"type\": \"string\"}]}]}\n  ]\n}\n```\nIn this example, \"myField\" has a union type of null, array of integers, and a nested record. The default member names are \"member0\" for null, \"member1\" for array of integers, and \"member2\" for the nested record.\n\nHowever, you can provide custom names for the members of the union using the following syntax:\n```json\n{\n  \"type\": \"record\",\n  \"name\": \"myRecord\",\n  \"fields\": [\n    {\"name\": \"myField\", \"type\": [\"null\", {\"type\": \"array\", \"items\": \"int\"}, {\"type\": \"record\", \"name\": \"myNestedRecord\", \"fields\": [{\"name\": \"nestedField\", \"type\": \"string\"}]}], \"default\": null, \"myArray\": {\"type\": \"array\", \"items\": \"int\"}, \"myNested\": {\"type\": \"record\", \"name\": \"myNestedRecord\", \"fields\": [{\"name\": \"nestedField\", \"type\": \"string\"}]}}\n  ]\n}\n```\nIn this example, the custom member names are \"default\" for null, \"myArray\" for array of integers, and \"myNested\" for the nested record.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 492,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.008130081300813009
+      },
+      "lexical_features": {
+        "adj_adv_freq": 14,
+        "adj_adv_ratio": 0.028455284552845527,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.008130081300813009,
+        "token_count": 492
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 82.0,
+          "clause_complexity": 0.16666666666666666,
+          "vocabulary_richness": 0.2867132867132867
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 2,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VB": 12,
+            "VBG": 2,
+            "VBN": 3,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 11
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.0,
+    "pos": 0.0,
+    "neu": 1.0,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 17,
+    "adj_adv_ratio": 0.033073929961089495,
+    "self_ref_freq": 2,
+    "self_ref_ratio": 0.0038910505836575876,
+    "second_person_freq": 6,
+    "second_person_ratio": 0.011673151750972763,
+    "total_tokens": 514
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 52.0,
+      "clause_complexity": 0.5833333333333334,
+      "vocabulary_richness": 0.6433566433566433
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 2,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 2,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 8,
+        "VB": 12,
+        "VBG": 2,
+        "VBN": 3,
+        "VBZ": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 11
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 514
+  }
+}

@@ -1,0 +1,976 @@
+{
+  "id": "1UThDHy_38",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "4. Suppose that the number of calories in a McDonald’s Egg McMuffin is random due to minor differences in portion sizes and preparation. In particular, suppose it is normally distributed with a mean of 290 and a standard deviation of 14. \n\na. Start by calculating the probability that a particular Egg McMuffin will contain less than 300 calories.\n\ni) Sketch a picture showing this probability as an area under a normal curve.\n\n\nii) Use your worksheet to calculate this probability. If you have a scientific calculator, use it to double check your answer. Record the probability rounded to 5 decimals. (Do not convert the probability to a percentage.)\n\nb. Calculate the probability that a particular Egg McMuffin will contain more than 250 calories.\n\ni) Sketch a picture showing this probability as an area under a normal curve.\n\nii) Use your worksheet to calculate this probability. If you have a scientific calculator, use it to double check your answer. Record the probability rounded to 5 decimals. (Do not convert the probability to a percentage.)",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.992,
+        "pos": 0.008,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 6,
+        "token_count": 202,
+        "self_ref_ratio": 0.009900990099009901,
+        "second_person_ratio": 0.0297029702970297
+      },
+      "lexical_features": {
+        "adj_adv_freq": 16,
+        "adj_adv_ratio": 0.07920792079207921,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.009900990099009901,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.0297029702970297,
+        "token_count": 202
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.625,
+          "clause_complexity": 0.125,
+          "vocabulary_richness": 0.5376344086021505
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 19,
+            "VBD": 3,
+            "VBZ": 2,
+            "VBN": 1,
+            "VBG": 3,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "i) To sketch a picture of the normal curve showing the probability that a particular Egg McMuffin will contain less than 300 calories, you would shade the area under the normal curve to the left of 300 calories. This area represents the probability that a randomly selected Egg McMuffin would have less than 300 calories.\n\nii) To calculate this probability in Excel, you can use the NORM.DIST function. In cell A1, you can type \"mean\". In cell A2, type \"290\". In cell B1, type \"standard deviation\" and in cell B2, type \"14\". In cell C1, type \"x\". In cell C2, type \"300\". In cell D1, type \"Pr(x<cutoff)\". In cell D2, you can use the formula =NORM.DIST(C2,A2,B2,TRUE). This will give you the probability that a randomly selected Egg McMuffin would have less than 300 calories, rounded to 5 decimals.\n\ni) To sketch a picture of the normal curve showing the probability that a particular Egg McMuffin will contain more than 250 calories, you would shade the area under the normal curve to the right of 250 calories. This area represents the probability that a randomly selected Egg McMuffin would have more than 250 calories.\n\nii) To calculate this probability in Excel, you can use the formula =1-NORM.DIST(250,A2,B2,TRUE). This will give you the complement of the probability that a randomly selected Egg McMuffin would have less than 250 calories, which is the probability that it would have more than 250 calories, rounded to 5 decimals.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.976,
+        "pos": 0.024,
+        "compound": 0.7184
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 8,
+        "token_count": 314,
+        "self_ref_ratio": 0.006369426751592357,
+        "second_person_ratio": 0.025477707006369428
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.06369426751592357,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.006369426751592357,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.025477707006369428,
+        "token_count": 314
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.933333333333334,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.35135135135135137
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 19,
+            "VBG": 2,
+            "VBZ": 3,
+            "VBN": 4,
+            "VBD": 2
+          },
+          "named_entities": {
+            "PERSON": 4,
+            "GPE": 6,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "When using Excel's NORM.DIST function, which of the following are true? (Check all that apply.)\n\n \nNORM.DIST gives the area under the normal curve to the left of the cutoff value.\n\n \nNORM.DIST give the probability that a normal is less than or equal to the cutoff value.\n\n \nNORM.DIST give the probability that a normal is greater than the cutoff value.\n\n \nNORM.DIST gives the area under the normal curve to the right of the cutoff value.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.82,
+        "pos": 0.18,
+        "compound": 0.9169
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 84,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.10714285714285714,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 84
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.0,
+          "clause_complexity": 0.16666666666666666,
+          "vocabulary_richness": 0.5882352941176471
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 1,
+            "VBP": 4,
+            "VB": 1,
+            "VBZ": 4
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "NORM.DIST gives the area under the normal curve to the left of the cutoff value.\n\nNORM.DIST gives the probability that a normal is less than or equal to the cutoff value.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.858,
+        "pos": 0.142,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 33,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.12121212121212122,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 33
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7142857142857143
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "When using Excel's NORM.DIST function, which argument holds the cutoff value?\n\n \nfirst\n\n \nsecond\n\n \nthird\n\n \nfourth",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.14,
+        "neu": 0.726,
+        "pos": 0.134,
+        "compound": -0.0258
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 18,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.2222222222222222,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 1,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The first argument holds the cutoff value.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.253,
+        "neu": 0.505,
+        "pos": 0.242,
+        "compound": -0.0258
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 8,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.125,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 8
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Which of the following were true when you sketched the picture showing the probability that the Egg McMuffin would have more than 250 calories? (Check all that apply.)\n\n \nThe graph was bell-shaped.\n\n \nEverything to the left of 250 was shaded.\n\n \nThe graph peaked at 14.\n\n \nThe graph peaked at 250.\n\n \nThe graph was skewed-right.\n\n \nThe graph peaked at 290.\n\n \nEverything to the right of 250 was shaded.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.959,
+        "pos": 0.041,
+        "compound": 0.4215
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 78,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.01282051282051282
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.0641025641025641,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.01282051282051282,
+        "token_count": 78
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.666666666666666,
+          "clause_complexity": 0.1111111111111111,
+          "vocabulary_richness": 0.65625
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 9,
+            "VBG": 1,
+            "VB": 2,
+            "VBP": 1,
+            "VBN": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The graph was bell-shaped.\n\nEverything to the right of 250 was shaded.\n\nThe graph peaked at 290.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 20,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.05,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 20
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.666666666666667,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.875
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 3,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "5. A particular hospital’s pediatrics unit has 24 beds. The number of patients in the unit depends upon many factors that can’t be perfectly predicted. Suppose that the number of patients at any point in time is distributed normally with a mean of 19.2 and a standard deviation of 2.5. Suppose we want to find the probability that the number of patients will be at least as many as the number of beds.\n\na. Sketch a picture showing this probability as an area under a normal curve.\n\nb. Use your worksheet to calculate this probability. If you have a scientific calculator, use it to double check your answer. Record the probability rounded to 5 decimals. (Do not convert the probability to a percentage",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.916,
+        "pos": 0.084,
+        "compound": 0.7717
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 4,
+        "token_count": 140,
+        "self_ref_ratio": 0.007142857142857143,
+        "second_person_ratio": 0.02857142857142857
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.08571428571428572,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.007142857142857143,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.02857142857142857,
+        "token_count": 140
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.666666666666666,
+          "clause_complexity": 0.08333333333333333,
+          "vocabulary_richness": 0.7580645161290323
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 13,
+            "VBN": 2,
+            "VBP": 2,
+            "VBG": 1,
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To calculate the probability that the number of patients will be at least as many as the number of beds (24), we need to find the area under the normal curve to the right of 24.\n\nIn Excel, we can use the function `=NORM.DIST(24,19.2,2.5,TRUE)` to find this probability. The first argument is the cutoff value (24), the second argument is the mean (19.2), the third argument is the standard deviation (2.5), and the fourth argument specifies that we want the cumulative distribution function (CDF) for the right-tail of the curve.\n\nThe result is the probability that the number of patients will be less than or equal to 24, so we subtract this value from 1 to find the probability that the number of patients will be greater than 24.\n\nThe final probability is 0.0107, or approximately 1.07%.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.066,
+        "neu": 0.82,
+        "pos": 0.113,
+        "compound": 0.4854
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 4,
+        "token_count": 167,
+        "self_ref_ratio": 0.023952095808383235,
+        "second_person_ratio": 0.023952095808383235
+      },
+      "lexical_features": {
+        "adj_adv_freq": 15,
+        "adj_adv_ratio": 0.08982035928143713,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.023952095808383235,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.023952095808383235,
+        "token_count": 167
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 33.4,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6612903225806451
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBP": 3,
+            "VBZ": 5
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "What was the probability that the pediatric unit would have at least as many patients as beds?\n\nEnter your answer as a number.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.944,
+        "pos": 0.056,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 25,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.04
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.12,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.04,
+        "token_count": 25
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The probability that the pediatric unit would have at least as many patients as beds is 0.00243.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 18,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Which of the following numbers (or references to cells holding these numbers) must we give NORM.DIST in order to have it calculate a probability? (Check all that apply.)\n\n \nthe distribution's mean \n\n \nthe distribution's standard deviation\n\n \nthe distribution's skewness\n\n \nthe distribution's variance\n\n \nthe cutoff value",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.947,
+        "pos": 0.053,
+        "compound": 0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 54,
+        "self_ref_ratio": 0.018518518518518517,
+        "second_person_ratio": 0.018518518518518517
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.037037037037037035,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.018518518518518517,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.018518518518518517,
+        "token_count": 54
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8333333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 1,
+            "VB": 4,
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "the distribution's mean, the distribution's standard deviation, and the cutoff value",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.806,
+        "pos": 0.194,
+        "compound": 0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 15,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.06666666666666667,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8571428571428571
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "What was the probability that the Egg McMuffin would have less than 300 calories?\n\nEnter your answer as a number. Do not include any special symbols, such as commas (,) or percentage symbols (%). Do not convert the probability to a percentage. Round your answer to five decimals.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.046,
+        "neu": 0.928,
+        "pos": 0.026,
+        "compound": -0.2401
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 58,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.034482758620689655
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.08620689655172414,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.034482758620689655,
+        "token_count": 58
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.6,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8260869565217391
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VB": 4,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "0.97755",
+      "language": "unknown",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.27765625000000005,
+    "pos": 0.0810625,
+    "neu": 0.8873125,
+    "neg": 0.0315625
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 101,
+    "adj_adv_ratio": 0.08184764991896272,
+    "self_ref_freq": 10,
+    "self_ref_ratio": 0.008103727714748784,
+    "second_person_freq": 27,
+    "second_person_ratio": 0.02188006482982172,
+    "total_tokens": 1234
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 14.437222222222223,
+      "clause_complexity": 0.06574074074074074,
+      "vocabulary_richness": 0.777244983604298
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 2,
+        "how": 0,
+        "why": 0,
+        "can_could": 6,
+        "general": 6
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 72,
+        "VBD": 20,
+        "VBZ": 24,
+        "VBN": 10,
+        "VBG": 10,
+        "VBP": 16
+      },
+      "named_entities": {
+        "ORGANIZATION": 7,
+        "PERSON": 7,
+        "GPE": 7
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 15,
+      "unknown": 1
+    },
+    "turn_count": 16,
+    "total_tokens": 1234
+  }
+}

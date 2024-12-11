@@ -1,0 +1,175 @@
+{
+  "id": "g5oQBcq_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "how are you",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 3,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.3333333333333333
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.3333333333333333,
+        "token_count": 3
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 3.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Hello! As an artificial intelligence, I don't have feelings or emotions like humans do. However, I am here to help you with any questions or problems you might have to the best of my ability. Is there anything specific I can help you with today?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.046,
+        "neu": 0.65,
+        "pos": 0.304,
+        "compound": 0.9336
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 3,
+        "token_count": 52,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_ratio": 0.057692307692307696
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.1346153846153846,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.057692307692307696,
+        "token_count": 52
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9444444444444444
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VB": 4,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.4668,
+    "pos": 0.152,
+    "neu": 0.825,
+    "neg": 0.023
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 7,
+    "adj_adv_ratio": 0.12727272727272726,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.07272727272727272,
+    "second_person_freq": 4,
+    "second_person_ratio": 0.07272727272727272,
+    "total_tokens": 55
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 8.0,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.4722222222222222
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 1,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 4,
+        "VB": 4,
+        "VBZ": 1
+      },
+      "named_entities": {
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 55
+  }
+}

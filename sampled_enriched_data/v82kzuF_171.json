@@ -1,0 +1,485 @@
+{
+  "id": "v82kzuF_171",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Here is an example of how you could add location-based priority to access local data and agents nearby in the code:\n```python\nimport geopy.distance\n\n# Define the location of the control center\ncontrol_center_location = (37.7749, -122.4194)  # San Francisco, CA\n\n# Define a function to calculate the distance between two points\ndef calculate_distance(location1, location2):\n    return geopy.distance.distance(location1, location2).km\n\n# Define a function to prioritize access to local data and agents\ndef prioritize_by_location(location, data_list, agent_list):\n    # Calculate the distance between the location and each agent\n    agent_distances = []\n    for agent in agent_list:\n        agent_location = agent['location']\n        distance = calculate_distance(location, agent_location)\n        agent_distances.append((agent['name'], distance))\n\n    # Sort the agents by distance\n    agent_distances = sorted(agent_distances, key=lambda x: x[1])\n\n    # Prioritize the agents that are within 10km of the location\n    nearby_agents = [a[0] for a in agent_distances if a[1] <= 10]\n\n    # Filter the data to include only the data that was created by nearby agents\n    nearby_data = [d for d in data_list if d['created_by'] in nearby_agents]\n\n    return nearby_data, nearby_agents\n```\nThis code defines the location of the control center and a function to calculate the distance between two points using the geopy library. It also defines a `prioritize_by_location` function that takes in a location, a list of data, and a list of agents, and returns only the data and agents that are within 10km of the location.\n\nYou could then call this function whenever you need to access data or agents based on location, and it will return only the data and agents that are nearby. For example:\n```python\n# Get the location of the user\nuser_location = (37.7749, -122.4194)  # San Francisco, CA\n\n# Get all the data and agents\nall_data = get_all_data_from_database()\nall_agents = get_all_agents_from_database()\n\n# Prioritize the data and agents based on the user's location\nnearby_data, nearby_agents = prioritize_by_location(user_location, all_data, all_agents)\n\n# Use the nearby data and agents for whatever purposes you need\n```\nThis code gets the location of the user, gets all the data and agents from the database, and then calls the `prioritize_by_location` function to get only the data and agents that are nearby. You could then use the `nearby_data` and `nearby_agents` lists for whatever purposes you need.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.994,
+        "pos": 0.006,
+        "compound": 0.25
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 6,
+        "token_count": 463,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.012958963282937365
+      },
+      "lexical_features": {
+        "adj_adv_freq": 35,
+        "adj_adv_ratio": 0.0755939524838013,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.012958963282937365,
+        "token_count": 463
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 92.6,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.389937106918239
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 3
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 11,
+            "VB": 14,
+            "VBN": 4,
+            "VBP": 10,
+            "VBD": 2,
+            "VBG": 1
+          },
+          "named_entities": {
+            "PERSON": 2,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Let's visualise nearby agents, ambulance, emergency services, police cars etc nearby on the map",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.167,
+        "neu": 0.833,
+        "pos": 0.0,
+        "compound": -0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 18,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9166666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, we can add a feature to visualize nearby agents, ambulance, emergency services, police cars, etc. on the map. To achieve this, we can use the geolocation data of the agents and emergency services and plot their positions on the map.\n\nHere is an example code that shows how we can plot the positions of the agents and emergency services on the map:\n```python\nimport folium\n\n# define the map center\nmap_center = [37.7749, -122.4194]\n\n# create a folium map object\nm = folium.Map(location=map_center, zoom_start=12)\n\n# create a feature group for emergency services\nemergency_services_fg = folium.FeatureGroup(name='Emergency Services')\n\n# create a feature group for agents\nagents_fg = folium.FeatureGroup(name='Agents')\n\n# add emergency services markers to the feature group\nemergency_services_data = [\n    {'name': 'Hospital A', 'location': [37.7849, -122.4064]},\n    {'name': 'Fire Station B', 'location': [37.7599, -122.4148]},\n    {'name': 'Police Station C', 'location': [37.7909, -122.4094]},\n]\n\nfor service in emergency_services_data:\n    folium.Marker(location=service['location'], popup=service['name'], icon=folium.Icon(color='red')).add_to(emergency_services_fg)\n\n# add agent markers to the feature group\nagents_data = [\n    {'name': 'Agent X', 'location': [37.7732, -122.4202]},\n    {'name': 'Agent Y', 'location': [37.7841, -122.4237]},\n    {'name': 'Agent Z', 'location': [37.7765, -122.4083]},\n]\n\nfor agent in agents_data:\n    folium.Marker(location=agent['location'], popup=agent['name'], icon=folium.Icon(color='blue')).add_to(agents_fg)\n\n# add the feature groups to the map\nemergency_services_fg.add_to(m)\nagents_fg.add_to(m)\n\n# add layer control to the map\nfolium.LayerControl().add_to(m)\n\n# display the map\nm\n```\nIn this example code, we first define the center of the map and create a `folium` map object. We then create two feature groups, one for emergency services and one for agents. We add markers to the feature groups by looping through the data for emergency services and agents, and for each item, we create a `Marker` object with the location and name of the service or agent. We also set the icon color to red for emergency services and blue for agents.\n\nAfter adding the markers to the feature groups, we add the feature groups to the map and add a layer control to the map to allow the user to toggle the visibility of the feature groups. Finally, we display the map.\n\nThis example code can be adapted to include additional data for nearby agents, ambulance, emergency services, police cars, etc. and can be used to visualize their positions on the map.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.067,
+        "neu": 0.89,
+        "pos": 0.043,
+        "compound": -0.875
+      },
+      "core_lexical": {
+        "self_ref_freq": 10,
+        "second_person_freq": 10,
+        "token_count": 540,
+        "self_ref_ratio": 0.018518518518518517,
+        "second_person_ratio": 0.018518518518518517
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.03888888888888889,
+        "self_ref_freq": 10,
+        "self_ref_ratio": 0.018518518518518517,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.018518518518518517,
+        "token_count": 540
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 49.09090909090909,
+          "clause_complexity": 0.09090909090909091,
+          "vocabulary_richness": 0.4
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 5,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 19,
+            "VBP": 13,
+            "VBZ": 2,
+            "VBD": 3,
+            "VBN": 3,
+            "VBG": 2
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Add radius and distance of agents for priority access",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, we can add radius and distance of agents for priority access. Here is an example of how it can be implemented:\n```python\nimport math\n\ndef get_agent_distance(agent_lat, agent_lon, user_lat, user_lon):\n    \"\"\"\n    Returns the distance between an agent and a user in kilometers\n    \"\"\"\n    # Earth's radius in kilometers\n    radius = 6371\n\n    # Convert coordinates to radians\n    agent_lat_rad = math.radians(agent_lat)\n    agent_lon_rad = math.radians(agent_lon)\n    user_lat_rad = math.radians(user_lat)\n    user_lon_rad = math.radians(user_lon)\n\n    # Calculate the differences in latitude and longitude\n    lat_diff = user_lat_rad - agent_lat_rad\n    lon_diff = user_lon_rad - agent_lon_rad\n\n    # Calculate the distance between the two points\n    a = math.sin(lat_diff / 2)**2 + math.cos(agent_lat_rad) * math.cos(user_lat_rad) * math.sin(lon_diff / 2)**2\n    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))\n    distance = radius * c\n\n    return distance\n\ndef get_nearby_agents(user_lat, user_lon, agent_database, radius):\n    \"\"\"\n    Returns a list of agents within the specified radius of the user's location\n    \"\"\"\n    nearby_agents = []\n\n    for agent in agent_database:\n        agent_lat = agent[\"lat\"]\n        agent_lon = agent[\"lon\"]\n\n        # Calculate the distance between the agent and the user\n        distance = get_agent_distance(agent_lat, agent_lon, user_lat, user_lon)\n\n        # Check if the agent is within the specified radius\n        if distance <= radius:\n            nearby_agents.append(agent)\n\n    return nearby_agents\n```\nIn this example, we have two functions: `get_agent_distance` and `get_nearby_agents`.\n\n`get_agent_distance` calculates the distance between an agent and a user using the Haversine formula. It takes as input the latitude and longitude of the agent and the user, and returns the distance in kilometers.\n\n`get_nearby_agents` takes as input the user's latitude and longitude, the agent database, and the radius (in kilometers) within which we want to find nearby agents. It iterates through the database and calculates the distance between each agent and the user using the `get_agent_distance` function. If an agent is within the specified radius, it is added to the `nearby_agents` list, which is then returned.\n\nWe can use these functions to prioritize access to nearby agents, emergency services, police cars, and other resources.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.008,
+        "neu": 0.977,
+        "pos": 0.015,
+        "compound": 0.0516
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 4,
+        "token_count": 439,
+        "self_ref_ratio": 0.009111617312072893,
+        "second_person_ratio": 0.009111617312072893
+      },
+      "lexical_features": {
+        "adj_adv_freq": 34,
+        "adj_adv_ratio": 0.0774487471526196,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.009111617312072893,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.009111617312072893,
+        "token_count": 439
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 54.875,
+          "clause_complexity": 0.375,
+          "vocabulary_richness": 0.4552238805970149
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBZ": 15,
+            "VBN": 4,
+            "VBP": 5,
+            "VBD": 1,
+            "VBG": 2
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Make it look Uber like app for the above",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.741,
+        "pos": 0.259,
+        "compound": 0.4201
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here's an example of how the interface for a mobile app with a map view, nearby agents and priority access based on distance could look like:\n```markdown\n ____________________________________________________________________\n|                                                                    |\n|                        MY EMERGENCY APP                             |\n|____________________________________________________________________|\n\n-----------------------------------------------------------------------\n|  MAP  |  SEARCH   |    NOTIFICATIONS    |   PROFILE    |    HELP     |\n-----------------------------------------------------------------------\n\n-----------------------------------------------------------------------\n|                   NEARBY AGENTS & SERVICES                          |\n|                                                                     |\n|            POLICE             |           AMBULANCE                  |\n|                                                                     |\n|         - 0.3 km -            |        - 0.7 km -                    |\n|                                                                     |\n|        John Doe, 2467        |     St. Mary's Hospital, 865          |\n|        Jane Smith, 1594      |     ABC Ambulance Service, 562        |\n|                                                                     |\n|          FIRE DEPT.          |         ROADSIDE ASSISTANCE           |\n|                                                                     |\n|         - 1.2 km -           |          - 2.1 km -                   |\n|                                                                     |\n|     Station 34, 1631         |     ABC Towing, 1079                  |\n|     Station 18, 2647         |     AAA Roadside Assistance, 2093     |\n|_____________________________________________________________________|\n\n-----------------------------------------------------------------------\n|                        PRIORITY ACCESS                               |\n|                                                                       |\n| 1. John Doe - Police - 0.3 km                                         |\n|                                                                       |\n| 2. Jane Smith - Police - 0.5 km                                        |\n|                                                                       |\n| 3. St. Mary's Hospital - Ambulance - 0.7 km                            |\n|                                                                       |\n| 4. Station 34 - Fire Dept. - 1.2 km                                   |\n|                                                                       |\n| 5. ABC Ambulance Service - Ambulance - 1.6 km                          |\n|_______________________________________________________________________|\n```\nThis app would allow users to quickly access emergency services based on their location, with priority given to nearby agents and services. The interface includes a map view, search function, notification center, profile settings and help section. Users can view the nearest police officers, ambulances, fire departments and roadside assistance services on the map, along with their distance and contact information. Additionally, the priority access section shows the top agents and services based on their distance from the user.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.045,
+        "neu": 0.908,
+        "pos": 0.047,
+        "compound": -0.0601
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 468,
+        "self_ref_ratio": 0.002136752136752137,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 15,
+        "adj_adv_ratio": 0.03205128205128205,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.002136752136752137,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 468
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 42.54545454545455,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.541095890410959
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBN": 4,
+            "VB": 4,
+            "VBD": 5
+          },
+          "named_entities": {
+            "ORGANIZATION": 13,
+            "PERSON": 6,
+            "GPE": 4
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.08502857142857143,
+    "pos": 0.05285714285714286,
+    "neu": 0.9061428571428571,
+    "neg": 0.041
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 108,
+    "adj_adv_ratio": 0.05549845837615622,
+    "self_ref_freq": 15,
+    "self_ref_ratio": 0.007708119218910586,
+    "second_person_freq": 20,
+    "second_person_ratio": 0.010277492291880781,
+    "total_tokens": 1946
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 39.301623376623375,
+      "clause_complexity": 0.12370129870129871,
+      "vocabulary_richness": 0.6718462206561256
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 4,
+        "why": 0,
+        "can_could": 13,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 4
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 31,
+        "VB": 48,
+        "VBN": 15,
+        "VBP": 28,
+        "VBD": 11,
+        "VBG": 5
+      },
+      "named_entities": {
+        "PERSON": 10,
+        "ORGANIZATION": 17,
+        "GPE": 5
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 7
+    },
+    "turn_count": 7,
+    "total_tokens": 1946
+  }
+}

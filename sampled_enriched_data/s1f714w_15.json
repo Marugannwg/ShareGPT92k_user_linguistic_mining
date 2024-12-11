@@ -1,0 +1,241 @@
+{
+  "id": "s1f714w_15",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Sure, here's the code to evaluate the performance of the classifiers on the test set and summarize the results in a table:\n```matlab\n% Predict labels using K-means with DCT features\npred_labels_dct_kmeans = predict(kmeans_dct, test_features_dct);\n\n% Predict labels using K-means with PCA features\npred_labels_pca_kmeans = predict(kmeans_pca, test_features_pca);\n\n% Predict labels using K-means with custom features\npred_labels_custom_kmeans = predict(kmeans_custom, test_features_custom);\n\n% Predict labels using SVM with linear kernel and DCT features\npred_labels_dct_svm_linear = predict(svm_linear_dct, test_features_dct);\n\n% Predict labels using SVM with linear kernel and PCA features\npred_labels_pca_svm_linear = predict(svm_linear_pca, test_features_pca);\n\n% Predict labels using SVM with linear kernel and custom features\npred_labels_custom_svm_linear = predict(svm_linear_custom, test_features_custom);\n\n% Predict labels using SVM with RBF kernel and DCT features\npred_labels_dct_svm_rbf = predict(svm_rbf_dct, test_features_dct);\n\n% Predict labels using SVM with RBF kernel and PCA features\npred_labels_pca_svm_rbf = predict(svm_rbf_pca, test_features_pca);\n\n% Predict labels using SVM with RBF kernel and custom features\npred_labels_custom_svm_rbf = predict(svm_rbf_custom, test_features_custom);\n\n% Evaluate performance of K-means with DCT features\nacc_dct_kmeans = sum(pred_labels_dct_kmeans == test_labels) / numel(test_labels);\ntime_dct_kmeans = toc(t_dct_kmeans);\n\n% Evaluate performance of K-means with PCA features\nacc_pca_kmeans = sum(pred_labels_pca_kmeans == test_labels) / numel(test_labels);\ntime_pca_kmeans = toc(t_pca_kmeans);\n\n% Evaluate performance of K-means with custom features\nacc_custom_kmeans = sum(pred_labels_custom_kmeans == test_labels) / numel(test_labels);\ntime_custom_kmeans = toc(t_custom_kmeans);\n\n% Evaluate performance of SVM with linear kernel and DCT features\nacc_dct_svm_linear = sum(pred_labels_dct_svm_linear == test_labels) / numel(test_labels);\ntime_dct_svm_linear = toc(t_dct_svm_linear);\n\n% Evaluate performance of SVM with linear kernel and PCA features\nacc_pca_svm_linear = sum(pred_labels_pca_svm_linear == test_labels) / numel(test_labels);\ntime_pca_svm_linear = toc(t_pca_svm_linear);\n\n% Evaluate performance of SVM with linear kernel and custom features\nacc_custom_svm_linear = sum(pred_labels_custom_svm_linear == test_labels) / numel(test_labels);\ntime_custom_svm_linear = toc(t_custom_svm_linear);\n\n% Evaluate performance of SVM with RBF kernel and DCT features\nacc_dct_svm_rbf = sum(pred_labels_dct_svm_rbf == test_labels) / numel(test_labels);\ntime_dct_svm_rbf = toc(t_dct_svm_rbf);\n\n% Evaluate performance of SVM with RBF kernel and PCA features\nacc_pca_svm_rbf = sum(pred_labels_pca_svm_rbf == test_labels) / numel(test_labels);\ntime_pca_svm_rbf = toc(t_pca_svm_rbf);\n\n% Evaluate performance of SVM with RBF kernel and custom features\nacc_custom_svm_rbf = sum(pred_labels_custom_svm_rbf == test_labels) / numel(test_labels);\ntime_custom_svm_rbf = toc(t_custom_svm_rbf);\n\n% Compute confusion matrices for the\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.006,
+        "neu": 0.987,
+        "pos": 0.007,
+        "compound": 0.0258
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 486,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 48,
+        "adj_adv_ratio": 0.09876543209876543,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 486
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 486.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.16766467065868262
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VB": 5,
+            "VBG": 9,
+            "VBP": 27
+          },
+          "named_entities": {
+            "ORGANIZATION": 40
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "why you stop at : % Compute confusion matrices for the ?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.306,
+        "neu": 0.694,
+        "pos": 0.0,
+        "compound": -0.5267
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 12,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.08333333333333333
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.08333333333333333,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 1,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the confusion. Here's the complete code for generating confusion matrices and computing the accuracy:\n```scss\n%% Classify test set using the trained models\n\n% K-means classifier\ntest_labels_km = zeros(size(test_data, 1), 1);\nfor i = 1:size(test_data, 1)\n    distances = pdist2(test_data(i, :), centroids_km);\n    [~, index] = min(distances);\n    test_labels_km(i) = index;\nend\n\n% SVM classifier\ntest_labels_svm = predict(model_svm, test_data);\n\n% Compute confusion matrices for the classifiers\ncm_km = confusionmat(test_labels, test_labels_km);\ncm_svm = confusionmat(test_labels, test_labels_svm);\n\n% Compute accuracy for the classifiers\naccuracy_km = sum(diag(cm_km)) / sum(cm_km, 'all');\naccuracy_svm = sum(diag(cm_svm)) / sum(cm_svm, 'all');\n\n%% Display results\ndisp(\"K-means classifier:\");\ndisp(\"Confusion matrix:\");\ndisp(cm_km);\ndisp(\"Accuracy: \" + accuracy_km);\ndisp(\"Processing time: \" + elapsed_time_km + \" seconds\");\ndisp(\" \");\ndisp(\"SVM classifier (kernel: \" + kernel + \"):\");\ndisp(\"Confusion matrix:\");\ndisp(cm_svm);\ndisp(\"Accuracy: \" + accuracy_svm);\ndisp(\"Processing time: \" + elapsed_time_svm + \" seconds\");\ndisp(\" \");\n```\nIn this code, we compute the confusion matrices for both the K-means and SVM classifiers using the predicted labels for the test set. We also compute the accuracy for both classifiers by summing the diagonal elements of the confusion matrix and dividing by the total number of samples. Finally, we display the confusion matrices, accuracy, and processing time for both classifiers.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.063,
+        "neu": 0.923,
+        "pos": 0.014,
+        "compound": -0.8484
+      },
+      "core_lexical": {
+        "self_ref_freq": 7,
+        "second_person_freq": 3,
+        "token_count": 363,
+        "self_ref_ratio": 0.01928374655647383,
+        "second_person_ratio": 0.008264462809917356
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.03305785123966942,
+        "self_ref_freq": 7,
+        "self_ref_ratio": 0.01928374655647383,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.008264462809917356,
+        "token_count": 363
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 90.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.44642857142857145
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 8,
+            "VBZ": 1,
+            "VBG": 5,
+            "VB": 3,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.44976666666666665,
+    "pos": 0.007,
+    "neu": 0.868,
+    "neg": 0.125
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 60,
+    "adj_adv_ratio": 0.06968641114982578,
+    "self_ref_freq": 7,
+    "self_ref_ratio": 0.008130081300813009,
+    "second_person_freq": 4,
+    "second_person_ratio": 0.004645760743321719,
+    "total_tokens": 861
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 196.25,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.5380310806957513
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 1,
+        "can_could": 0,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 8,
+        "VB": 8,
+        "VBG": 14,
+        "VBP": 36,
+        "VBN": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 46
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 3
+    },
+    "turn_count": 3,
+    "total_tokens": 861
+  }
+}

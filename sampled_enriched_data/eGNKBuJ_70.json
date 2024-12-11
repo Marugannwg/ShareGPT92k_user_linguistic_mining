@@ -1,0 +1,434 @@
+{
+  "id": "eGNKBuJ_70",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "In the below given code, add top 3 features per category/cluster and annotate it in the plot.\n\nfrom sklearn.feature\\_extraction.text import TfidfVectorizer\nfrom sklearn.decomposition import PCA\nfrom sklearn.cluster import MiniBatchKMeans\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\ntfidf = TfidfVectorizer(analyzer='word',\n min\\_df=5,\n ngram\\_range=(1, 2),\n norm='l2',\n stop\\_words='english')\nvextorized = tfidf.fit\\_transform(df\\_main.requests\\_cleaned\\_joined).toarray()\n\npca = PCA(n\\_components = 9).fit(vextorized)\nX\\_pca = pca.transform(vextorized)\n\nlabels = df\\_main.Category\n\n#sns.scatterplot(X\\_pca[:,0], X\\_pca[:, 1], hue=labels, legend='full',palette=\"Set2\")\n\nkmeans = MiniBatchKMeans(init='k-means++', n\\_clusters=3, max\\_iter=500, n\\_init=10, \n random\\_state=777)\ny\\_pred = kmeans.fit\\_predict(vextorized)\npalette = sns.color\\_palette('bright', len(set(y\\_pred)))\n#sns.scatterplot(X\\_pca[:,0], X\\_pca[:, 1], hue=y\\_pred, legend='full', palette=palette)\nsns.scatterplot(X\\_pca[:,0], X\\_pca[:, 1], hue=labels, legend='full',palette=\"Set2\")\nplt.title('Clustered')",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.981,
+        "pos": 0.019,
+        "compound": 0.2023
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 212,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.08490566037735849,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 212
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 106.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6444444444444445
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBN": 8,
+            "VB": 2,
+            "VBD": 4,
+            "VBP": 2,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's the modified code with top 3 features per category/cluster annotated in the plot:\n```python\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.decomposition import PCA\nfrom sklearn.cluster import MiniBatchKMeans\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\ntfidf = TfidfVectorizer(analyzer='word',\n                         min_df=5,\n                         ngram_range=(1, 2),\n                         norm='l2',\n                        stop_words='english')\nvextorized = tfidf.fit_transform(df_main.requests_cleaned_joined).toarray()\n\npca = PCA(n_components = 9).fit(vextorized)\nX_pca = pca.transform(vextorized)\n\nlabels = df_main.Category\n\nkmeans = MiniBatchKMeans(init='k-means++', n_clusters=3, max_iter=500, n_init=10, \n                         random_state=777)\ny_pred = kmeans.fit_predict(vextorized)\npalette = sns.color_palette('bright', len(set(y_pred)))\nsns.scatterplot(X_pca[:,0], X_pca[:, 1], hue=labels, legend='full',palette=\"Set2\")\n\n# Top 3 features per cluster\nn_clusters = 3\ntop_n = 3\nfeature_names = tfidf.get_feature_names()\ntop_features_idx = kmeans.cluster_centers_.argsort()[:, ::-1][:, :top_n]\n\nfor i in range(n_clusters):\n    cluster_label = f'Cluster {i}'\n    cluster_center = kmeans.cluster_centers_[i]\n    top_features = [feature_names[idx] for idx in top_features_idx[i]]\n    annotation_text = ', '.join(top_features)\n    plt.annotate(annotation_text, xy=(cluster_center[0], cluster_center[1]), \n                 xytext=(cluster_center[0]+0.1, cluster_center[1]+0.1), \n                 fontsize=12, fontweight='bold', color='black', \n                 bbox=dict(facecolor='white', edgecolor='black', boxstyle='round'), \n                 arrowprops=dict(facecolor='black', arrowstyle='->'))\n\nplt.title('Clustered')\nplt.show()\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.974,
+        "pos": 0.026,
+        "compound": 0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 0,
+        "token_count": 308,
+        "self_ref_ratio": 0.012987012987012988,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 29,
+        "adj_adv_ratio": 0.09415584415584416,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.012987012987012988,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 308
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 308.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5892857142857143
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBN": 8,
+            "VBD": 7,
+            "VBP": 9,
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "add slight offset feature in annotated labels to avoid overlapping",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.196,
+        "neu": 0.804,
+        "pos": 0.0,
+        "compound": -0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 10,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.2,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBN": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here's the modified code with an offset added to the annotations:\n```python\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.decomposition import PCA\nfrom sklearn.cluster import MiniBatchKMeans\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\ntfidf = TfidfVectorizer(analyzer='word',\n                         min_df=5,\n                         ngram_range=(1, 2),\n                         norm='l2',\n                        stop_words='english')\nvextorized = tfidf.fit_transform(df_main.requests_cleaned_joined).toarray()\n\npca = PCA(n_components = 9).fit(vextorized)\nX_pca = pca.transform(vextorized)\n\nlabels = df_main.Category\n\nkmeans = MiniBatchKMeans(init='k-means++', n_clusters=3, max_iter=500, n_init=10, \n                         random_state=777)\ny_pred = kmeans.fit_predict(vextorized)\npalette = sns.color_palette('bright', len(set(y_pred)))\n\nsns.scatterplot(X_pca[:,0], X_pca[:, 1], hue=labels, legend='full',palette=\"Set2\")\nplt.title('Clustered')\n\nfor i in range(3):\n    cluster_features = vextorized[y_pred == i]\n    cluster_labels = labels[y_pred == i]\n    top_features = tfidf.get_feature_names()[cluster_features.sum(axis=0).argsort()[::-1][:3]]\n    centroids = kmeans.cluster_centers_\n    plt.annotate(', '.join(top_features), \n                 xy=(centroids[i][0], centroids[i][1]), \n                 xytext=(centroids[i][0]+0.02, centroids[i][1]-0.02),\n                 bbox=dict(boxstyle='round,pad=0.2', fc=palette[i], alpha=0.5),\n                 fontsize=10, color='black', fontweight='bold',\n                 arrowprops=dict(arrowstyle='->', connectionstyle='arc3', color='black'))\n```\nIn this modified version, `plt.annotate()` has been added to the loop to add the top 3 features per cluster to the plot with a slight offset to avoid overlapping. The offset is specified in the `xytext` argument.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.028,
+        "neu": 0.945,
+        "pos": 0.026,
+        "compound": -0.0865
+      },
+      "core_lexical": {
+        "self_ref_freq": 8,
+        "second_person_freq": 0,
+        "token_count": 343,
+        "self_ref_ratio": 0.023323615160349854,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 29,
+        "adj_adv_ratio": 0.08454810495626822,
+        "self_ref_freq": 8,
+        "self_ref_ratio": 0.023323615160349854,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 343
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 171.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.625
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VBD": 5,
+            "VBN": 11,
+            "VBP": 16,
+            "VB": 3,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "For the below given code, do the following:\n\nThe final embeddings column contains embdedding vector of size 300 for each token. Modify this to have embedding vector as an average of no of tokens in the document.\n\ncode:\n\n%%time\n\nimport gensim\nimport pandas as pd\nimport nltk\nfrom nltk.tokenize import word\\_tokenize\nfrom nltk.corpus import stopwords\n\n# Load the dataset\ndata = df\\_pkl.copy()\n\n# Tokenize the text column\n# stop\\_words = set(stopwords.words('english'))\n# data['tokenized\\_text'] = data['text'].apply(lambda x: [word.lower() for word in word\\_tokenize(x) if word.lower() not in stop\\_words])\n\ndata['tokenized\\_text'] = data['requests\\_cleaned']\n\n# Train word2vec model\nmodel = gensim.models.Word2Vec(data['tokenized\\_text'], vector\\_size=300, window=5, min\\_count=1, workers=4)\n\n# Create a dictionary of word embeddings\nembeddings = {word: model.wv[word] for word in model.wv.index\\_to\\_key}\n\n# Add the embeddings column to the dataframe\ndata['embeddings'] = data['tokenized\\_text'].apply(lambda x: [embeddings[word] for word in x if word in embeddings])",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.016,
+        "neu": 0.969,
+        "pos": 0.015,
+        "compound": -0.0258
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 217,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 14,
+        "adj_adv_ratio": 0.06451612903225806,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 217
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 72.33333333333333,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.5555555555555556
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBN": 2,
+            "VBP": 3,
+            "VBZ": 1,
+            "VBG": 2,
+            "VB": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To modify the embedding vector size to be an average of the tokens in the document, you can use the following code:\n```python\n%%time\n\nimport gensim\nimport pandas as pd\nimport nltk\nfrom nltk.tokenize import word_tokenize\nfrom nltk.corpus import stopwords\n\n# Load the dataset\ndata = df_pkl.copy()\n\n# Tokenize the text column\n# stop_words = set(stopwords.words('english'))\n# data['tokenized_text'] = data['text'].apply(lambda x: [word.lower() for word in word_tokenize(x) if word.lower() not in stop_words])\n\ndata['tokenized_text'] = data['requests_cleaned']\n\n# Train word2vec model\nmodel = gensim.models.Word2Vec(data['tokenized_text'], vector_size=300, window=5, min_count=1, workers=4)\n\n# Create a dictionary of word embeddings\nembeddings = {word: model.wv[word] for word in model.wv.index_to_key}\n\n# Modify embeddings to be an average of tokens in document\ndef avg_embedding(embeddings, tokens):\n    return np.mean([embeddings[token] for token in tokens if token in embeddings], axis=0)\n\ndata['embeddings'] = data['tokenized_text'].apply(lambda x: avg_embedding(embeddings, x))\n```\nIn this code, the `avg_embedding` function takes in the embeddings dictionary and the tokens in a document, and returns the average embedding vector for the document. This function is then applied to each document in the dataframe using `data['tokenized_text'].apply(lambda x: avg_embedding(embeddings, x))`, resulting in the `embeddings` column containing the average embedding vectors for each document.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.989,
+        "pos": 0.011,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 305,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.003278688524590164
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.07868852459016394,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.003278688524590164,
+        "token_count": 305
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 152.5,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.45544554455445546
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBG": 5,
+            "VBP": 2,
+            "VBN": 3,
+            "VBD": 1,
+            "VBZ": 3
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.07483333333333332,
+    "pos": 0.016166666666666666,
+    "neu": 0.9436666666666667,
+    "neg": 0.04
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 116,
+    "adj_adv_ratio": 0.08315412186379928,
+    "self_ref_freq": 12,
+    "self_ref_ratio": 0.008602150537634409,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.0007168458781362007,
+    "total_tokens": 1395
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 136.72222222222223,
+      "clause_complexity": 0.27777777777777773,
+      "vocabulary_richness": 0.644955209806695
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBN": 33,
+        "VB": 17,
+        "VBD": 18,
+        "VBP": 32,
+        "VBZ": 13,
+        "VBG": 9
+      },
+      "named_entities": {
+        "ORGANIZATION": 12,
+        "GPE": 2
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 6
+    },
+    "turn_count": 6,
+    "total_tokens": 1395
+  }
+}

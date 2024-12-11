@@ -1,0 +1,187 @@
+{
+  "id": "Gluvt1U_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "const filePath = path.join(directoryPath, fileName);\n if(fs.existsSync(filePath)){\n const fileExtension = path.extname(fileName);\n let fileType = mime.contentType(fileExtension);\n const HEADER = { 'Content-Type':fileType,'Content-Disposition': 'attachment; filename='+fileName};\n const fileStream = fs.createReadStream(filePath);\n callback(null, {\n statusCode: 200,\n headers: HEADER,\n body: fileStream,\n });\n }\nI am getting internal server error this code is deployed on aws lambda function",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.052,
+        "neu": 0.906,
+        "pos": 0.042,
+        "compound": -0.128
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 94,
+        "self_ref_ratio": 0.010638297872340425,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.09574468085106383,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.010638297872340425,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 94
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 94.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.7058823529411765
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBP": 1,
+            "VBG": 1,
+            "VBZ": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 10
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "An internal server error in AWS Lambda can occur due to a variety of reasons, including syntax errors in your code, resource exhaustion, or incorrect permissions.\n\nHowever, based on the code you provided, the issue could be related to the response format. Specifically, the response body in your code is a `ReadStream` object, which is not a valid format for the response body. Instead, you need to read the contents of the file and send them in the response body.\n\nTo do this, you can modify your code as follows:\n```javascript\nconst filePath = path.join(directoryPath, fileName);\nif (fs.existsSync(filePath)) {\n  const fileExtension = path.extname(fileName);\n  let fileType = mime.contentType(fileExtension);\n  const HEADER = {\n    'Content-Type': fileType,\n    'Content-Disposition': `attachment; filename=\"${fileName}\"`,\n  };\n  const fileStream = fs.createReadStream(filePath);\n  let fileContents = Buffer.from('');\n  fileStream.on('data', (chunk) => {\n    fileContents = Buffer.concat([fileContents, chunk]);\n  });\n  fileStream.on('end', () => {\n    callback(null, {\n      statusCode: 200,\n      headers: HEADER,\n      body: fileContents.toString('base64'),\n      isBase64Encoded: true,\n    });\n  });\n} else {\n  callback(null, {\n    statusCode: 404,\n    body: 'File not found',\n  });\n}\n```\nIn this modified code, we read the file contents into a buffer using the `createReadStream()` method, and then send the contents as the response body. Note that the contents are encoded in base64 and the `isBase64Encoded` flag is set to true. This is because API Gateway expects the response body to be base64-encoded when it is returned in binary format.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.033,
+        "neu": 0.934,
+        "pos": 0.033,
+        "compound": 0.0516
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 7,
+        "token_count": 347,
+        "self_ref_ratio": 0.002881844380403458,
+        "second_person_ratio": 0.020172910662824207
+      },
+      "lexical_features": {
+        "adj_adv_freq": 28,
+        "adj_adv_ratio": 0.08069164265129683,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.002881844380403458,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.020172910662824207,
+        "token_count": 347
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 49.57142857142857,
+          "clause_complexity": 0.42857142857142855,
+          "vocabulary_richness": 0.6440677966101694
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 1,
+            "causality": 1,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 13,
+            "VBG": 2,
+            "VBN": 6,
+            "VBD": 2,
+            "VBZ": 8,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 12
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.0382,
+    "pos": 0.037500000000000006,
+    "neu": 0.92,
+    "neg": 0.042499999999999996
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 37,
+    "adj_adv_ratio": 0.08390022675736962,
+    "self_ref_freq": 2,
+    "self_ref_ratio": 0.0045351473922902496,
+    "second_person_freq": 7,
+    "second_person_ratio": 0.015873015873015872,
+    "total_tokens": 441
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 71.78571428571428,
+      "clause_complexity": 0.7142857142857143,
+      "vocabulary_richness": 0.674975074775673
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 3,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 1,
+        "causality": 1,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 15,
+        "VBP": 5,
+        "VBG": 3,
+        "VBZ": 9,
+        "VBN": 7,
+        "VBD": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 22
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 441
+  }
+}

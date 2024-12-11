@@ -1,0 +1,678 @@
+{
+  "id": "OzKozjH_32",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "A company is planning to deploy many software-defined WAN (SD-WAN) sites. The company is using AWS Transit Gateway and has deployed a transit gateway in the required AWS Region. A network engineer needs to deploy the SD-WAN hub virtual appliance into a VPC that is connected to the transit gateway. The solution must support at least 5 Gbps of throughput from the SD-WAN hub virtual appliance to other VPCs that are attached to the transit gateway. Which solution will meet these requirements?\n\nA) Create a new VPC for the SD-WAN hub virtual appliance. Create two IPsec VPN connections between the SD-WAN hub virtual appliance and the transit gateway. Configure BGP over the IPsec VPN connections.\nB) Assign a new CIDR block to the transit gateway. Create a new VPC for the SD-WAN hub virtual appliance. Attach the new VPC to the transit gateway with a VPC attachment. Add a transit gateway Connect attachment. Create a Connect peer and specify the GRE and BGP parameters. Create a route in the appropriate VPC for the SD-WAN hub virtual appliance to route to the transit gateway.\nC) Create a new VPC for the SD-WAN hub virtual appliance. Attach the new VPC to the transit gateway with a VPC attachment. Create two IPsec VPN connections between the SD-WAN hub virtual\nappliance and the transit gateway. Configure BGP over the IPsec VPN connections.\nD) Assign a new CIDR block to the transit Create a new VPC for the SD-WAN hub virtual appliance. Attach the new VPC to the transit gateway with a VPC attachment. Add a transit gateway Connect attachment. Create a Connect peer and specify the VXLAN and BGP parameters. Create a route in the appropriate VPC for the SD-WAN hub virtual appliance to route to the transit gateway.\n\nChoose the single best answer only. Do not provide any explanation.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.017,
+        "neu": 0.853,
+        "pos": 0.13,
+        "compound": 0.9829
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 337,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 31,
+        "adj_adv_ratio": 0.09198813056379822,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 337
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.48,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.33879781420765026
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VBG": 2,
+            "VB": 17,
+            "VBN": 3,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 22,
+            "PERSON": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "B) Assign a new CIDR block to the transit gateway. Create a new VPC for the SD-WAN hub virtual appliance. Attach the new VPC to the transit gateway with a VPC attachment. Add a transit gateway Connect attachment. Create a Connect peer and specify the GRE and BGP parameters. Create a route in the appropriate VPC for the SD-WAN hub virtual appliance to route to the transit gateway.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.038,
+        "neu": 0.82,
+        "pos": 0.142,
+        "compound": 0.7003
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 75,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.08,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 75
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5476190476190477
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 6
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "A company's development team has created a new product recommendation web service. The web service is hosted in a VPC with a CIDR block of 192.168.224.0/19. The company has deployed the web service on Amazon EC2 instances and has configured an Auto Scaling group as the target of a Network Load Balancer (NLB). The company wants to perform testing to determine whether users who receive product recommendations spend more money than users who do not receive product recommendations. The company has a big sales event in 5 days and needs to integrate its existing production environment with the recommendation engine by then. The existing production environment is hosted in a VPC with a CIDR block of\n192.168.128.0/17. A network engineer must integrate the systems by designing a solution that results in the least possible disruption to the existing environments. Which solution will meet these requirements?\n\nA) Create a VPC peering connection between the web service VPC and the existing production VPC. Add a routing rule to the appropriate route table to allow data to flow to 192.168.224.0/19 from the existing production environment and to flow to 192.168.128.0/17 from the web service environment. Configure the relevant security groups and ACLs to allow the systems to communicate.\nB) Ask the development team of the web service to redeploy the web service into the production VPC and integrate the systems there.\nC) Create a VPC endpoint service. Associate the VPC endpoint service with the NLB for the web service. Create an interface VPC endpoint for the web service in the existing production VPC.\nD) Create a transit gateway in the existing production environment. Create attachments to the production VPC and the web service VPC. Configure appropriate routing rules in the transit gateway and VPC route tables for 192.168.224.0/19 and 192.168.128.0/17. Configure the relevant security groups and ACLs to allow the systems to communicate.\n\nChoose the single best answer only. Do not provide any explanation.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.024,
+        "neu": 0.873,
+        "pos": 0.103,
+        "compound": 0.9652
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 349,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.05730659025787966,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 349
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.61904761904762,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5080213903743316
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VBN": 5,
+            "VB": 21,
+            "VBG": 10,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 20,
+            "PERSON": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "A) Create a VPC peering connection between the web service VPC and the existing production VPC. Add a routing rule to the appropriate route table to allow data to flow to 192.168.224.0/19 from the existing production environment and to flow to 192.168.128.0/17 from the web service environment. Configure the relevant security groups and ACLs to allow the systems to communicate.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.871,
+        "pos": 0.129,
+        "compound": 0.743
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 64,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.03125,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 64
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 21.333333333333332,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7352941176470589
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 3,
+            "VB": 7
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "A network engineer must develop an AWS CloudFormation template that can create a virtual private gateway, a customer gateway, a VPN connection, and static routes in a route table. During testing of the template, the network engineer notes that the CloudFormation template has encountered an error and is rolling back. What should the network engineer do to resolve the error?\n\nA) Change the order of resource creation in the CloudFormation template.\nB) Add the DependsOn attribute to the resource declaration for the virtual private gateway. Specify the route table entry resource.\nC) Add a wait condition in the template to wait for the creation of the virtual private gateway\nD) Add the DependsOn attribute to the resource declaration for the route table entry. Specify the virtual private gateway resource.\n\nChoose the single best answer only. Do not provide any explanation.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.036,
+        "neu": 0.878,
+        "pos": 0.086,
+        "compound": 0.7717
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 158,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 17,
+        "adj_adv_ratio": 0.10759493670886076,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 158
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.8,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5421686746987951
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBG": 2,
+            "VBZ": 2,
+            "VBN": 1,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 6
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "C) Add a wait condition in the template to wait for the creation of the virtual private gateway.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.89,
+        "pos": 0.11,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 20,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.15,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 20
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "A company manages resources across VPCs in multiple AWS Regions. The company needs to connect to the resources by using its internal domain name. A network engineer needs to apply the aws.example.com DNS suffix to all resources. What must the network engineer do to meet this requirement?\n\nA) Create an Amazon Route 53 private hosted zone for aws.example.com in each Region that has resources. Associate the private hosted zone with that Region's VPC. In the appropriate private hosted zone, create DNS records for the resources in each Region.\nB) Create one Amazon Route 53 private hosted zone for aws.example.com. Configure the private hosted zone to allow zone transfers with every VPC.\nC) Create one Amazon Route 53 private hosted zone for example.com. Create a single resource record for aws.example.com in the private hosted zone. Apply a multivalue answer routing policy to the record. Add all VPC resources as separate values in the routing policy.\nD) Create one Amazon Route 53 private hosted zone for aws.example.com.Associate the private hosted zone with every VPC that has resources. In the private hosted zone, create DNS records for\nall resources.\n\nChoose the single best answer only. Do not provide any explanation.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.858,
+        "pos": 0.142,
+        "compound": 0.9729
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 221,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 19,
+        "adj_adv_ratio": 0.08597285067873303,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 221
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.4365079365079365
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 10,
+            "VBG": 1,
+            "VBP": 3,
+            "VBD": 9,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 10
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "A) Create an Amazon Route 53 private hosted zone for aws.example.com in each Region that has resources. Associate the private hosted zone with that Region's VPC. In the appropriate private hosted zone, create DNS records for the resources in each Region.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.866,
+        "pos": 0.134,
+        "compound": 0.5994
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 47,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.0851063829787234,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 47
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.666666666666666,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5833333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 2,
+            "VBZ": 1,
+            "VB": 1,
+            "VBN": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "A network engineer needs to standardize a company's approach to centralizing and managing interface VPC endpoints for private communication with AWS services. The company uses AWS Transit Gateway for inter-VPC connectivity between AWS accounts through a hub-and-spoke model. The company's network services team must manage all Amazon Route 53 zones and interface endpoints within a shared\nservices AWS account. The company wants to use this centralized model to provide AWS resources with access to AWS Key Management Service (AWS KMS) without sending traffic over the public internet.\nWhat should the network engineer do to meet these requirements?\n\nA) In the shared services account, create an interface endpoint for AWS KMS. Modify the interface endpoint by disabling the private DNS name. Create a private hosted zone in the shared services\naccount with an alias record that points to the interface endpoint. Associate the private hosted zone with the spoke VPCs in each AWS account.\nB) In the shared services account, create an interface endpoint for AWS KMS. Modify the interface endpoint by disabling the private DNS name. Create a private hosted zone in each spoke AWS\naccount with an alias record that points to the interface endpoint. Associate each private hosted zone with the shared services AWS account.\nC) In each spoke AWS account, create an interface endpoint for AWS KMS. Modify each interface endpoint by disabling the private DNS name. Create a private hosted zone in each spoke AWS\naccount with an alias record that points to each interface endpoint. Associate each private hosted zone with the shared services AWS account.\nD) In each spoke AWS account, create an interface endpoint for AWS KMS. Modify each interface endpoint by disabling the private DNS name. Create a private hosted zone in the shared services\naccount with an alias record that points to each interface endpoint. Associate the private hosted zone with the spoke VPCs in each AWS account.\n\nChoose the single best answer only. Do not provide any explanation.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.035,
+        "neu": 0.855,
+        "pos": 0.11,
+        "compound": 0.9643
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 363,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.06887052341597796,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 363
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.782608695652174,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.323943661971831
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 15,
+            "VBG": 7,
+            "VBZ": 6,
+            "VBN": 7,
+            "VBP": 9,
+            "VBD": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 25,
+            "PERSON": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "B) In the shared services account, create an interface endpoint for AWS KMS. Modify the interface endpoint by disabling the private DNS name. Create a private hosted zone in each spoke AWS account with an alias record that points to the interface endpoint. Associate each private hosted zone with the shared services AWS account.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.051,
+        "neu": 0.802,
+        "pos": 0.147,
+        "compound": 0.5994
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 60,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.06666666666666667,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 60
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5833333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 2,
+            "VBG": 1,
+            "VBN": 2,
+            "VBZ": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.7572300000000001,
+    "pos": 0.1233,
+    "neu": 0.8565999999999999,
+    "neg": 0.0201
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 131,
+    "adj_adv_ratio": 0.07733175914994096,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 1694
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 15.91816563146998,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.5499019309693317
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 3,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 5
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 26,
+        "VBG": 26,
+        "VB": 88,
+        "VBN": 20,
+        "VBP": 29,
+        "VBD": 16
+      },
+      "named_entities": {
+        "ORGANIZATION": 99,
+        "PERSON": 7
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 10
+    },
+    "turn_count": 10,
+    "total_tokens": 1694
+  }
+}

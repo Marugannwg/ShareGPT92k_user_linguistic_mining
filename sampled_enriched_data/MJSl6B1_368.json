@@ -1,0 +1,186 @@
+{
+  "id": "MJSl6B1_368",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "still stuck to the bottom:\nMainScreen:\n MDBoxLayout:\n orientation: 'vertical'\n MDTopAppBar:\n title: \"IRL Gaaaame\"\n elevation: 10\n pos\\_hint: {\"top\": 1}\n left\\_action\\_items: [['menu', lambda x: nav\\_drawer.set\\_state(\"open\")]]\n\n MDNavigationLayout:\n id: nav\\_layout\n elevation: 1\n size\\_hint\\_y: None\n height: self.parent.height - dp(56)\n ScreenManager:\n id: screen\\_manager\n QuestsScreen:\n id: quests\\_screen\n name: \"quests\\_screen\"\n QuestManagementScreen:\n id: \"quest\\_management\\_screen\"\n name: \"quest\\_management\\_screen\"\n RewardsScreen:\n id: rewards\\_screen\n name: \"rewards\\_screen\"\n StatisticsScreen:\n id: statistics\\_screen\n name: \"statistics\\_screen\"\n ProfileScreen:\n id: profile\\_screen\n name: \"profile\\_screen\"\n SettingsScreen:\n id: settings\\_screen\n name: \"settings\\_screen\"\n MDNavigationDrawer:\n id: nav\\_drawer\n\n BoxLayout:\n id: content\\_drawer\n orientation: \"vertical\"\n padding: \"8dp\"\n spacing: \"8dp\"\n\n AnchorLayout:\n anchor\\_x: \"left\"\n size\\_hint\\_y: None\n height: avatar.height\n\n Image:\n id: avatar\n size\\_hint: None, None\n size: \"56dp\", \"56dp\"\n source: \"data/logo/kivy-icon-256.png\"\n\n MDLabel:\n text: \"KivyMD library\"\n font\\_style: \"Button\"\n adaptive\\_height: True\n\n MDLabel:\n text: \"kivydevelopment@gmail.com\"\n font\\_style: \"Caption\"\n adaptive\\_height: True\n\n MDList:\n size\\_hint\\_y: 0.9\n pos\\_hint: {\"top\": 1}\n OneLineListItem:\n text: \"Quests\"\n on\\_press:\n screen\\_manager.current = \"quests\\_screen\"\n nav\\_drawer.set\\_state(\"close\")\n OneLineListItem:\n text: \"Quests Management\"\n on\\_press:\n screen\\_manager.current = \"quest\\_management\\_screen\"\n nav\\_drawer.set\\_state(\"close\")\n OneLineListItem:\n text: \"Rewards\"\n on\\_press:\n screen\\_manager.current = \"rewards\\_screen\"\n nav\\_drawer.set\\_state(\"close\")\n OneLineListItem:\n text: \"Statistics\"\n on\\_press:\n screen\\_manager.current = \"statistics\\_screen\"\n nav\\_drawer.set\\_state(\"close\")\n OneLineListItem:\n text: \"Profile\"\n on\\_press:\n screen\\_manager.current = \"profile\\_screen\"\n nav\\_drawer.set\\_state(\"close\")\n OneLineListItem:\n text: \"Settings\"\n on\\_press:\n screen\\_manager.current = \"settings\\_screen\"\n nav\\_drawer.set\\_state(\"close\")\n\n:\n MDBoxLayout:\n orientation: 'vertical'\n MDTabs:\n id: quest\\_tabs\n on\\_tab\\_switch: app.on\\_tab\\_switch(\\*args)\n Tab:\n title: 'Daily Quests'\n MDBoxLayout:\n orientation: 'vertical'\n MDScrollView:\n MDGridLayout:\n cols: 1\n height: self.minimum\\_height\n MDFlatButton:\n text: 'Quest 1'\n MDFlatButton:\n text: 'Quest 2'\n on\\_release: app.change\\_screen('quest\\_detail')\n Tab:\n title: 'Weekly Quests'\n MDBoxLayout:\n orientation: 'vertical'\n MDScrollView:\n MDGridLayout:\n cols: 1\n height: self.minimum\\_height\n MDFlatButton:\n text: 'Quest 3'\n on\\_release: app.change\\_screen('quest\\_detail')\n MDFlatButton:\n text: 'Quest 4'\n on\\_release: app.change\\_screen('quest\\_detail')\n Tab:\n title: 'Monthly Quests'\n MDBoxLayout:\n orientation: 'vertical'\n MDScrollView:\n MDGridLayout:\n cols: 1\n height: self.minimum\\_height\n MDFlatButton:\n text: 'Quest 5'\n # on\\_release: app.change\\_screen('quest\\_detail')\n MDFlatButton:\n text: 'Quest 6'\n # on\\_release: app.change\\_screen('quest\\_detail')\n Tab:\n title: 'Yearly Quests'\n MDBoxLayout:\n orientation: 'vertical'\n MDScrollView:\n MDGridLayout:\n cols: 1\n height: self.minimum\\_height\n MDFlatButton:\n text: 'Quest 7'\n # on\\_release: app.change\\_screen('quest\\_detail')\n MDFlatButton:\n text: 'Quest 8'\n # on\\_release: app.change\\_screen('quest\\_detail')",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.007,
+        "neu": 0.95,
+        "pos": 0.043,
+        "compound": 0.8519
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 571,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 51,
+        "adj_adv_ratio": 0.0893169877408056,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 571
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 571.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.4146341463414634
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBN": 1,
+            "VB": 1,
+            "VBD": 1,
+            "VBZ": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "PERSON": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "It looks like you are attempting to set the height of the `MDNavigationLayout` to the height of the parent minus the height of the top app bar (`dp(56)`). However, you're trying to set the height before the parent has been rendered and before the parent has a height.\n\nOne solution to fix this is to use a `bind` statement to bind the `height` property of the `MDNavigationLayout` to the height of the parent.\n```\nMDNavigationLayout:\n    id: nav_layout\n    elevation: 1\n    size_hint_y: None\n    height: self.parent.height - dp(56)\n    bind(height=self.parent.height)\n```\nThis will bind the height of the `MDNavigationLayout` to the height of the parent, so when the parent is rendered, the height of the `MDNavigationLayout` will be updated to be the height of the parent minus the height of the top app bar.\n\nAlso, you can use a clock schedule to schedule the height change after the parent layout is rendered.\n```\nClock.schedule_once(lambda dt: self.height = self.parent.height - dp(56))\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.948,
+        "pos": 0.052,
+        "compound": 0.7506
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 208,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.014423076923076924
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.0625,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.014423076923076924,
+        "token_count": 208
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 34.666666666666664,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.4666666666666667
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VBP": 2,
+            "VBG": 2,
+            "VB": 10,
+            "VBN": 5,
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.80125,
+    "pos": 0.0475,
+    "neu": 0.949,
+    "neg": 0.0035
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 64,
+    "adj_adv_ratio": 0.0821566110397946,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 3,
+    "second_person_ratio": 0.0038510911424903724,
+    "total_tokens": 779
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 302.8333333333333,
+      "clause_complexity": 0.3333333333333333,
+      "vocabulary_richness": 0.44065040650406506
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBN": 6,
+        "VB": 11,
+        "VBD": 2,
+        "VBZ": 11,
+        "VBP": 2,
+        "VBG": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 2,
+        "PERSON": 3
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 779
+  }
+}

@@ -1,0 +1,464 @@
+{
+  "id": "b803fL7_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Here is an article fragment, only reply with 'OK': \n Empower your authoring teams with live updates to content within your Next.js website or application. Without leaving Sanity Studio. The next-sanity toolkit enables real-time previews without the need to setup a dedicated preview server.\nWarning\n\nThis guide contains code examples for an older version of Sanity Studio (v2), which is deprecated.\nLearn how to migrate to the new Studio v3 →\nLive Preview with Next.js and Sanity.io: A Complete Guide\nProtip\n\nThis guide was written for Sanity Studio v2 and Next 12. \n\nIt will be rewritten for Next 13 and the most recent conventions in next-sanity.\n\n👉 Until then, you may find the Readme in the next-sanity repository more useful until this guide is updated. \n\nIn this guide we'll cover setting up a new Sanity project, Next.js application and streaming live updates to content. The next-sanity toolkit contains all you'll need to query and display Sanity data. As well as handling your Studio authentication to allow live updates on the frontend.\n\nA serverless function is required to put the app in \"preview mode\", but no additional services. Preview mode runs on the same hosting as your Production app.\n\nThe headline feature of next-sanity is the usePreviewSubscription() hook. It takes a few steps to get just right, so we'll walk through each one individually.\nProtip\n\nThe final code you will assemble is available as a public repository on GitHub. Use it to start, or as a reference while you walk through the guide.\nRequirements\n\nTo follow t",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.017,
+        "neu": 0.956,
+        "pos": 0.027,
+        "compound": 0.1522
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 10,
+        "token_count": 290,
+        "self_ref_ratio": 0.006896551724137931,
+        "second_person_ratio": 0.034482758620689655
+      },
+      "lexical_features": {
+        "adj_adv_freq": 34,
+        "adj_adv_ratio": 0.11724137931034483,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.006896551724137931,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.034482758620689655,
+        "token_count": 290
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.058823529411764,
+          "clause_complexity": 0.058823529411764705,
+          "vocabulary_richness": 0.7272727272727273
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 11,
+            "VB": 21,
+            "VBG": 6,
+            "VBN": 5,
+            "VBD": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 6,
+            "GPE": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "OK",
+      "language": "pt",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.0,
+        "pos": 1.0,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    },
+    {
+      "from": "human",
+      "value": "Here is an article fragment, only reply with 'OK': his tutorial you will need:\n\n Basic knowledge of JavaScript, React, and Next.js (we have a comprehensive video tutorial to help get you started)\n Node.js installed, as well as the Sanity CLI\n Your Next.js web app will need to use GROQ for fetching data from your Sanity.io project\n\nHow it works\n\nNext.js comes with a Preview Mode which sets a browser cookie. When set, we can use this to activate the preview functionality in the usePreviewSubscription() hook. So long as your browser is also authenticated (logged into your Sanity Studio) it will continually replace published content with the latest draft content and rerender the page you're looking at. It will even let you change referenced data and have that updated as well.\n\nYou'll set up a link in your Sanity Studio to a Next.js API Route, which will set the Preview Mode cookie and show the latest version of your content in your Next.js web app, as you edit it.\n\nIf you are not authenticated, the same route will show latest draft content on page load, but will not keep updating as changes are made unless they go through the same link again. This can be a useful link to share with content reviewers.\nInstalling Sanity.io and Next.js\n\n⏩ If you have an existing Sanity + Next.js studio, skip this step\n\nYou can use this guide to add Live Preview to an existing Next.js website, but we will focus on an entirely new project.\n\nLet's start a new project, in a folder my-project\n\nCreate a new folder, in it create a studio folder an",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.935,
+        "pos": 0.065,
+        "compound": 0.9371
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 19,
+        "token_count": 305,
+        "self_ref_ratio": 0.013114754098360656,
+        "second_person_ratio": 0.06229508196721312
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.08852459016393442,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.013114754098360656,
+        "second_person_freq": 19,
+        "second_person_ratio": 0.06229508196721312,
+        "token_count": 305
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 33.888888888888886,
+          "clause_complexity": 0.4444444444444444,
+          "vocabulary_richness": 0.6615384615384615
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 2,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VB": 24,
+            "VBP": 8,
+            "VBN": 9,
+            "VBG": 6
+          },
+          "named_entities": {
+            "PERSON": 4,
+            "ORGANIZATION": 6
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "OK",
+      "language": "pt",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.0,
+        "pos": 1.0,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    },
+    {
+      "from": "human",
+      "value": "Here is an article fragment, only reply with 'OK': d run sanity init inside to start a new Sanity project.\n\nBack in the my-project folder, run npx create-next-app and give it the name web. You should now have a folder structure like this:\n\n/my-project\n- /studio\n- /web\n\nIn separate terminal windows you can now run:\n\n sanity start from the studio folder, and view the studio at http://localhost:3333\n npm run dev from the web folder, and view the frontend at http://localhost:3000\n\nSetting up schemas\n\n⏩ If you already have a document type with slugs, skip this step\n\nIf you've started from a completely blank dataset, we'll need content schemas to have something to view and edit.\n\nLet's create the most basic document schema:\n\n// ./studio/schemas/article.js\n\nexport default {\n name: 'article',\n title: 'Article',\n type: 'document',\n fields: [\n {name: 'title', type: 'string'},\n // Important! Document needs a slug for Next.js to query for.\n {name: 'slug', type: 'slug', options: {source: 'title'}},\n {name: 'content', type: 'text'},\n ],\n}\n\nAnd register it to the studio:\n\n// ./studio/schemas/schema.js\n\nimport createSchema from 'part:@sanity/base/schema-creator'\nimport schemaTypes from 'all:part:@sanity/base/schema-type'\nimport article from './article'\n\nexport default createSchema({\n name: 'default',\n types: schemaTypes.concat([article]),\n})\n\nYour Sanity Studio should look like this, with one Schema to create Documents in.\nYour Sanity Studio should look like this, with one Schema to create Documents in.\nSetting up ne",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.932,
+        "pos": 0.068,
+        "compound": 0.9168
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 7,
+        "token_count": 313,
+        "self_ref_ratio": 0.009584664536741214,
+        "second_person_ratio": 0.022364217252396165
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.07987220447284345,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.009584664536741214,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.022364217252396165,
+        "token_count": 313
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 39.125,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.5826086956521739
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBP": 6,
+            "VB": 16,
+            "VBG": 3,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "OK",
+      "language": "pt",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.0,
+        "pos": 1.0,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    },
+    {
+      "from": "human",
+      "value": "Here is an article fragment, only reply with 'OK': xt/sanity\n\nIn the web folder, install the next/sanity utilities...\n\nnpm install next-sanity\n\n...and follow the guide in the Readme. Come back once you have these files setup:\n\n./web/lib/\n- config.js\n- sanity.js\n- sanity.server.js\n\nAnd with the correct values in an .env.local file for the Sanity Project ID, Dataset, and an API token. The file should look something like this, and you'll need to restart your dev environment to load them.\n\n// ./web/.env.local\n\n// Find these in sanity.json\nNEXT\\_PUBLIC\\_SANITY\\_DATASET='production'\nNEXT\\_PUBLIC\\_SANITY\\_PROJECT\\_ID='...'\n\n// Create this in sanity.io/manage\nSANITY\\_API\\_TOKEN='...'\n\n// Blank for now, we'll get back to this!\nSANITY\\_PREVIEW\\_SECRET='' \n\nTokens and CORS\n\nYou'll need to create an API token in sanity.io/manage and allow CORS from your Next.js website.\n\n Create a \"Read\" token, and save it to SANITY\\_API\\_TOKEN in .env.local\n Add a CORS origin from http://localhost:3000 with Credentials Allowed, so that your front-end can communicate with the Studio.\n\nGenerate a Token for Next.js to read draft content when Preview mode is enabled. Don't forget to setup CORS while you're here!.\nGenerate a Token for Next.js to read draft content when Preview mode is enabled. Don't forget to setup CORS while you're here!.\nGotcha\n\n Don't commit your API tokens to your Git repository.\n You'll need to add these API token environment variables to wherever you deploy your website (Vercel, Netlify, etc).\n You'll also need to add a CORS origin f",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.008,
+        "neu": 0.908,
+        "pos": 0.084,
+        "compound": 0.9425
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 15,
+        "token_count": 286,
+        "self_ref_ratio": 0.0034965034965034965,
+        "second_person_ratio": 0.05244755244755245
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.06993006993006994,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0034965034965034965,
+        "second_person_freq": 15,
+        "second_person_ratio": 0.05244755244755245,
+        "token_count": 286
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.0,
+          "clause_complexity": 0.3076923076923077,
+          "vocabulary_richness": 0.6415094339622641
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 29,
+            "VBP": 6,
+            "VBN": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 12,
+            "GPE": 3,
+            "PERSON": 6
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "OK",
+      "language": "pt",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.0,
+        "pos": 1.0,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    },
+    {
+      "from": "human",
+      "value": "Here is an article fragment, only reply with 'OK': or each front-end domain that you expect to use preview on (example: my-project.com).\n\nReady?\nCreate a page route to display an article\n\nLet's set up a Dynamic Route to display your content.\n\nNote: In the code below, the normal order of functions you'd usually see in a Next.js page has been inverted, so that it reads more easily from top-to-bottom. It still works the same.\n\nRead through the comments below to see exactly what each function is doing:\n\n// ./web/pages/[slug].js\n\nimport React from 'react'\nimport {groq} from 'next-sanity'\n\nimport {usePreviewSubscription} from '../lib/sanity'\nimport {getClient} from '../lib/sanity.server'\n\n/\\*\\*\n \\* Helper function to return the correct version of the document\n \\* If we're in \"preview mode\" and have multiple documents, return the draft\n \\*/\nfunction filterDataToSingleItem(data, preview) {\n if (!Array.isArray(data)) {\n return data\n }\n\n if (data.length === 1) {\n return data[0]\n }\n\n if (preview) {\n return data.find((item) => item.\\_id.startsWith(`drafts.`)) || data[0]\n }\n\n return data[0]\n}\n\n/\\*\\*\n \\* Makes Next.js aware of all the slugs it can expect at this route\n \\*\n \\* See how we've mapped over our found slugs to add a `/` character?\n \\* Idea: Add these in Sanity and enforce them with validation rules :)\n \\* https://www.simeongriggs.dev/nextjs-sanity-slug-patterns\n \\*/\nexport async function getStaticPaths() {\n const allSlugsQuery = groq`\\*[defined(slug.current)][].slug.current`\n const pages = await getClient().fetch(allSlugsQuery",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.925,
+        "pos": 0.075,
+        "compound": 0.9365
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 6,
+        "token_count": 336,
+        "self_ref_ratio": 0.008928571428571428,
+        "second_person_ratio": 0.017857142857142856
+      },
+      "lexical_features": {
+        "adj_adv_freq": 32,
+        "adj_adv_ratio": 0.09523809523809523,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.008928571428571428,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.017857142857142856,
+        "token_count": 336
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 48.0,
+          "clause_complexity": 0.5714285714285714,
+          "vocabulary_richness": 0.6788990825688074
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 2
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VBP": 7,
+            "VB": 12,
+            "VBN": 4,
+            "VBG": 1,
+            "VBD": 3
+          },
+          "named_entities": {
+            "PERSON": 3,
+            "ORGANIZATION": 4,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "OK",
+      "language": "pt",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.0,
+        "pos": 1.0,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.53651,
+    "pos": 0.5319,
+    "neu": 0.46559999999999996,
+    "neg": 0.0025
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 138,
+    "adj_adv_ratio": 0.09019607843137255,
+    "self_ref_freq": 13,
+    "self_ref_ratio": 0.00849673202614379,
+    "second_person_freq": 57,
+    "second_person_ratio": 0.03725490196078431,
+    "total_tokens": 1530
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 32.01454248366013,
+      "clause_complexity": 0.32647777059541766,
+      "vocabulary_richness": 0.6583656801988869
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 3,
+        "why": 0,
+        "can_could": 6,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 3,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 30,
+        "VB": 102,
+        "VBG": 16,
+        "VBN": 22,
+        "VBD": 4,
+        "VBP": 28
+      },
+      "named_entities": {
+        "PERSON": 14,
+        "ORGANIZATION": 31,
+        "GPE": 8
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 5,
+      "pt": 5
+    },
+    "turn_count": 10,
+    "total_tokens": 1530
+  }
+}

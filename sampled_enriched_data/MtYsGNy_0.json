@@ -1,0 +1,296 @@
+{
+  "id": "MtYsGNy_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Today we are going to build simple weighting for assessing the quality of human writing. I will provide a set of samples with a \"yes\" to indicate good quality and a \"no\" to indicate bad quality. I will then provide an unscored sample for you to evaluate as \"yes\" or \"no\".",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.06,
+        "neu": 0.799,
+        "pos": 0.141,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 2,
+        "token_count": 62,
+        "self_ref_ratio": 0.04838709677419355,
+        "second_person_ratio": 0.03225806451612903
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.11290322580645161,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.04838709677419355,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.03225806451612903,
+        "token_count": 62
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.666666666666668,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7916666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBG": 4,
+            "VB": 6
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, I'm happy to help you with that. Please provide me with the samples and the criteria you would like me to use to evaluate the quality of writing.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.64,
+        "pos": 0.36,
+        "compound": 0.91
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 2,
+        "token_count": 33,
+        "self_ref_ratio": 0.09090909090909091,
+        "second_person_ratio": 0.06060606060606061
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.06060606060606061,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.09090909090909091,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.06060606060606061,
+        "token_count": 33
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 6
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Please treat \"~\" as the only separator between samples. I intend to provide 28 samples; please let me know how many you count. Please store the samples in the order I list them. I will send the samples after you acknowledge.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.794,
+        "pos": 0.206,
+        "compound": 0.8225
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 2,
+        "token_count": 48,
+        "self_ref_ratio": 0.08333333333333333,
+        "second_person_ratio": 0.041666666666666664
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.0625,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.08333333333333333,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.041666666666666664,
+        "token_count": 48
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.7619047619047619
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VB": 5,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Okay, I will treat \"~\" as the separator between samples. Please go ahead and provide me with the 28 samples. Once I receive them, I will count and acknowledge them.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.796,
+        "pos": 0.204,
+        "compound": 0.7096
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 0,
+        "token_count": 37,
+        "self_ref_ratio": 0.10810810810810811,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.08108108108108109,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.10810810810810811,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 37
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.333333333333334,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9230769230769231
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5,
+            "VBP": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.757,
+    "pos": 0.22774999999999998,
+    "neu": 0.75725,
+    "neg": 0.015
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 15,
+    "adj_adv_ratio": 0.08333333333333333,
+    "self_ref_freq": 14,
+    "self_ref_ratio": 0.07777777777777778,
+    "second_person_freq": 6,
+    "second_person_ratio": 0.03333333333333333,
+    "total_tokens": 180
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 15.375000000000002,
+      "clause_complexity": 0.0625,
+      "vocabulary_richness": 0.8691620879120878
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 7,
+        "VBG": 4,
+        "VB": 22,
+        "VBD": 1
+      },
+      "named_entities": {
+        "GPE": 2,
+        "PERSON": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 4
+    },
+    "turn_count": 4,
+    "total_tokens": 180
+  }
+}

@@ -1,0 +1,681 @@
+{
+  "id": "MjAGtrr_43",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Here's the `Enqueue` method:\n```csharp\npublic void Enqueue(string line)\n{\n    _lock.EnterWriteLock();\n    try\n    {\n        long itemCount = GetItemCount();\n        int itemsInLastBlock = (int)(itemCount % ItemsPerBlock);\n\n        if (itemsInLastBlock == 0 && _lastBlockNumber - _firstBlockNumber + 1 >= MaxItemCount / ItemsPerBlock)\n        {\n            RemoveOldestBlock();\n        }\n\n        int blockNumber = _lastBlockNumber;\n\n        string dataFilePath = GetDataFilePath(blockNumber);\n        string indexFilePath = GetIndexFilePath(blockNumber);\n\n        using (FileStream dataFileStream = new FileStream(dataFilePath, FileMode.Append, FileAccess.Write, FileShare.None))\n        using (BinaryWriter dataFileWriter = new BinaryWriter(dataFileStream))\n        {\n            dataFileWriter.Write(Encoding.UTF8.GetBytes(line));\n        }\n\n        long dataFileLength = new FileInfo(dataFilePath).Length;\n        long dataFileOffset = dataFileLength - line.Length;\n\n        IndexEntry indexEntry = new IndexEntry\n        {\n            DataFileOffset = dataFileOffset,\n            Timestamp = DateTime.UtcNow\n        };\n\n        using (FileStream indexFileStream = new FileStream(indexFilePath, FileMode.Append, FileAccess.Write, FileShare.None))\n        using (BinaryWriter indexFileWriter = new BinaryWriter(indexFileStream))\n        {\n            indexFileWriter.Write(indexEntry.DataFileOffset);\n            indexFileWriter.Write(indexEntry.Timestamp.Ticks);\n        }\n\n        LoadIndexCache(blockNumber);\n\n        if (itemsInLastBlock == ItemsPerBlock - 1)\n        {\n            _lastBlockNumber++;\n            SaveMetadata();\n        }\n    }\n    finally\n    {\n        _lock.ExitWriteLock();\n    }\n}\n```\nThe `Enqueue` method adds a new item to the queue. It handles the removal of the oldest block if necessary and updates the data and index files accordingly. The method also updates the in-memory index cache and metadata for the queue.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.017,
+        "neu": 0.983,
+        "pos": 0.0,
+        "compound": -0.4404
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 277,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 29,
+        "adj_adv_ratio": 0.10469314079422383,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 277
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 92.33333333333333,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.5339805825242718
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VBG": 7,
+            "VB": 2,
+            "VBP": 1,
+            "VBD": 4
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 32,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Dump the Dequeue method.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.464,
+        "neu": 0.536,
+        "pos": 0.0,
+        "compound": -0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's the `Dequeue` method:\n```csharp\npublic string Dequeue()\n{\n    _lock.EnterWriteLock();\n    try\n    {\n        long itemCount = GetItemCount();\n        if (itemCount == 0)\n        {\n            return null;\n        }\n\n        string line = Seek(0);\n\n        if (_indexCaches[0].Length == 1)\n        {\n            RemoveOldestBlock();\n        }\n        else\n        {\n            IndexEntry[] newIndexCache = new IndexEntry[_indexCaches[0].Length - 1];\n            Array.Copy(_indexCaches[0], 1, newIndexCache, 0, newIndexCache.Length);\n            _indexCaches[0] = newIndexCache;\n            SaveIndexCache(_firstBlockNumber);\n        }\n\n        return line;\n    }\n    finally\n    {\n        _lock.ExitWriteLock();\n    }\n}\n```\nThe `Dequeue` method removes and returns the first item in the queue. It updates the in-memory index cache and the index file on the disk accordingly, and removes the oldest block if necessary.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.03,
+        "neu": 0.97,
+        "pos": 0.0,
+        "compound": -0.4404
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 165,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 14,
+        "adj_adv_ratio": 0.08484848484848485,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 165
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 82.5,
+          "clause_complexity": 1.5,
+          "vocabulary_richness": 0.6428571428571429
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 2,
+            "VBG": 1,
+            "VBD": 1,
+            "VBP": 2
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 9
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Dump Seek and GetItemCount methods.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.394,
+        "neu": 0.606,
+        "pos": 0.0,
+        "compound": -0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 6,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's the `Seek` method:\n```csharp\npublic string Seek(long position)\n{\n    _lock.EnterReadLock();\n    try\n    {\n        long itemCount = GetItemCount();\n        if (position < 0 || position >= itemCount)\n        {\n            return null;\n        }\n\n        int blockNumber = (int)(position / ItemsPerBlock);\n        int itemPositionInBlock = (int)(position % ItemsPerBlock);\n\n        IndexEntry indexEntry = _indexCaches[blockNumber - _firstBlockNumber][itemPositionInBlock];\n\n        string dataFilePath = GetDataFilePath(blockNumber + _firstBlockNumber);\n\n        using (FileStream dataFileStream = new FileStream(dataFilePath, FileMode.Open, FileAccess.Read, FileShare.Read))\n        using (BinaryReader dataFileReader = new BinaryReader(dataFileStream))\n        {\n            dataFileStream.Seek(indexEntry.DataFileOffset, SeekOrigin.Begin);\n            byte[] lineBytes = new byte[dataFileStream.Length - indexEntry.DataFileOffset];\n            dataFileReader.Read(lineBytes, 0, lineBytes.Length);\n\n            return Encoding.UTF8.GetString(lineBytes);\n        }\n    }\n    finally\n    {\n        _lock.ExitReadLock();\n    }\n}\n```\nHere's the `GetItemCount` method:\n```csharp\nprivate long GetItemCount()\n{\n    long itemCount = 0;\n    for (int i = 0; i < _indexCaches.Length; i++)\n    {\n        itemCount += _indexCaches[i].Length;\n    }\n    return itemCount;\n}\n```\nThe `Seek` method retrieves an item at a specific position in the queue. It uses the in-memory index cache to find the item and reads it from the data file.\n\nThe `GetItemCount` method calculates the total number of items in the queue by iterating through the index caches and summing up their lengths.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.991,
+        "pos": 0.009,
+        "compound": 0.1513
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 0,
+        "token_count": 282,
+        "self_ref_ratio": 0.014184397163120567,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.09574468085106383,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.014184397163120567,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 282
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 94.0,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.5
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VB": 7,
+            "VBP": 6,
+            "VBG": 5,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 17
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Dump RemoveOldestBlock method.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.565,
+        "neu": 0.435,
+        "pos": 0.0,
+        "compound": -0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 4,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 4
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 4.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's the `RemoveOldestBlock` method:\n```csharp\nprivate void RemoveOldestBlock()\n{\n    string oldDataFilePath = GetDataFilePath(_firstBlockNumber);\n    string oldIndexFilePath = GetIndexFilePath(_firstBlockNumber);\n\n    File.Delete(oldDataFilePath);\n    File.Delete(oldIndexFilePath);\n\n    IndexEntry[][] newIndexCaches = new IndexEntry[_indexCaches.Length - 1][];\n    Array.Copy(_indexCaches, 1, newIndexCaches, 0, newIndexCaches.Length);\n    _indexCaches = newIndexCaches;\n\n    _firstBlockNumber++;\n    SaveMetadata();\n}\n```\nThe `RemoveOldestBlock` method deletes the oldest data and index files, updates the in-memory index cache array, increments the `_firstBlockNumber`, and saves the updated metadata to the disk.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 121,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.08264462809917356,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 121
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 121.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.725
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VBG": 2,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 11
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Dump LoadMetadata, SaveMetadata and GetMetadataFIlePath methods.",
+      "language": "id",
+      "sentiment": {
+        "neg": 0.342,
+        "neu": 0.658,
+        "pos": 0.0,
+        "compound": -0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's the `LoadMetadata`, `SaveMetadata`, and `GetMetadataFilePath` methods:\n```csharp\nprivate void LoadMetadata()\n{\n    string metadataFilePath = GetMetadataFilePath();\n    if (File.Exists(metadataFilePath))\n    {\n        using (FileStream metadataFileStream = new FileStream(metadataFilePath, FileMode.Open, FileAccess.Read, FileShare.None))\n        using (BinaryReader metadataFileReader = new BinaryReader(metadataFileStream))\n        {\n            _firstBlockNumber = metadataFileReader.ReadInt32();\n            _lastBlockNumber = metadataFileReader.ReadInt32();\n        }\n    }\n    else\n    {\n        _firstBlockNumber = 0;\n        _lastBlockNumber = 0;\n        SaveMetadata();\n    }\n}\n\nprivate void SaveMetadata()\n{\n    string metadataFilePath = GetMetadataFilePath();\n    using (FileStream metadataFileStream = new FileStream(metadataFilePath, FileMode.Create, FileAccess.Write, FileShare.None))\n    using (BinaryWriter metadataFileWriter = new BinaryWriter(metadataFileStream))\n    {\n        metadataFileWriter.Write(_firstBlockNumber);\n        metadataFileWriter.Write(_lastBlockNumber);\n    }\n}\n\nprivate string GetMetadataFilePath()\n{\n    return $\"{_filePrefix}_metadata.bin\";\n}\n```\nThe `LoadMetadata` method reads the metadata file and initializes `_firstBlockNumber` and `_lastBlockNumber` variables. If the metadata file doesn't exist, it sets the variables to 0 and calls `SaveMetadata()` to create a new metadata file.\n\nThe `SaveMetadata` method writes the current `_firstBlockNumber` and `_lastBlockNumber` values to the metadata file.\n\nThe `GetMetadataFilePath` method returns the file path of the metadata file based on the `_filePrefix`.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.969,
+        "pos": 0.031,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 261,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 23,
+        "adj_adv_ratio": 0.08812260536398467,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 261
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 65.25,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.42857142857142855
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VBG": 6,
+            "VBD": 3,
+            "VB": 7,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 20
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Dump the last five methods.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.394,
+        "neu": 0.606,
+        "pos": 0.0,
+        "compound": -0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 6,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here are the last five methods of the `FileBasedQueue` class:\n```csharp\nprivate string GetDataFilePath(int blockNumber)\n{\n    return $\"{_filePrefix}_data_{blockNumber}.bin\";\n}\n\nprivate string GetIndexFilePath(int blockNumber)\n{\n    return $\"{_filePrefix}_index_{blockNumber}.bin\";\n}\n\nprivate void LoadIndexCache(int blockNumber)\n{\n    string indexFilePath = GetIndexFilePath(blockNumber);\n    using (FileStream indexFileStream = new FileStream(indexFilePath, FileMode.OpenOrCreate, FileAccess.Read, FileShare.None))\n    using (BinaryReader indexFileReader = new BinaryReader(indexFileStream))\n    {\n        int itemCount = (int)(indexFileStream.Length / (sizeof(long) + sizeof(long)));\n        IndexEntry[] indexCache = new IndexEntry[itemCount];\n        for (int i = 0; i < itemCount; i++)\n        {\n            indexCache[i].DataFileOffset = indexFileReader.ReadInt64();\n            indexCache[i].Timestamp = new DateTime(indexFileReader.ReadInt64());\n        }\n        _indexCaches[blockNumber - _firstBlockNumber] = indexCache;\n    }\n}\n\nprivate void LoadIndexCaches()\n{\n    int numberOfBlocks = _lastBlockNumber - _firstBlockNumber + 1;\n    _indexCaches = new IndexEntry[numberOfBlocks][];\n\n    for (int blockNumber = _firstBlockNumber; blockNumber <= _lastBlockNumber; blockNumber++)\n    {\n        LoadIndexCache(blockNumber);\n    }\n}\n\nprivate void SaveIndexCache(int blockNumber)\n{\n    string indexFilePath = GetIndexFilePath(blockNumber);\n    using (FileStream indexFileStream = new FileStream(indexFilePath, FileMode.Create, FileAccess.Write, FileShare.None))\n    using (BinaryWriter indexFileWriter = new BinaryWriter(indexFileStream))\n    {\n        IndexEntry[] indexCache = _indexCaches[blockNumber - _firstBlockNumber];\n        for (int i = 0; i < indexCache.Length; i++)\n        {\n            indexFileWriter.Write(indexCache[i].DataFileOffset);\n            indexFileWriter.Write(indexCache[i].Timestamp.Ticks);\n        }\n    }\n}\n```\nThese methods are responsible for creating data and index file paths, loading and saving index caches from/to the disk, and managing the in-memory index caches.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.977,
+        "pos": 0.023,
+        "compound": 0.5423
+      },
+      "core_lexical": {
+        "self_ref_freq": 10,
+        "second_person_freq": 0,
+        "token_count": 357,
+        "self_ref_ratio": 0.028011204481792718,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 43,
+        "adj_adv_ratio": 0.12044817927170869,
+        "self_ref_freq": 10,
+        "self_ref_ratio": 0.028011204481792718,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 357
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 357.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.3865546218487395
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 14,
+            "VB": 7,
+            "VBG": 10,
+            "VBD": 3,
+            "VBN": 1,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 32
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.1373,
+    "pos": 0.0057272727272727275,
+    "neu": 0.7937272727272727,
+    "neg": 0.20054545454545455
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 147,
+    "adj_adv_ratio": 0.09905660377358491,
+    "self_ref_freq": 14,
+    "self_ref_ratio": 0.009433962264150943,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 1484
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 83.30833333333332,
+      "clause_complexity": 0.3333333333333333,
+      "vocabulary_richness": 0.7216963775801583
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 29,
+        "VBG": 31,
+        "VB": 26,
+        "VBP": 25,
+        "VBD": 12,
+        "VBN": 2
+      },
+      "named_entities": {
+        "GPE": 4,
+        "ORGANIZATION": 125,
+        "PERSON": 3
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 10,
+      "id": 1
+    },
+    "turn_count": 11,
+    "total_tokens": 1484
+  }
+}

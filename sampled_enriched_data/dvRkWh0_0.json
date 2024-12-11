@@ -1,0 +1,187 @@
+{
+  "id": "dvRkWh0_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "I'm hiring a unit testing engineer to help write unit tests for our Vue.js/TypeScript project management web app. Write a simple take-home coding assignment that would test their skills.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.912,
+        "pos": 0.088,
+        "compound": 0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 32,
+        "self_ref_ratio": 0.03125,
+        "second_person_ratio": 0.03125
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.0625,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.03125,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.03125,
+        "token_count": 32
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8947368421052632
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBG": 3,
+            "VB": 4
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here is a simple take-home coding assignment that you could use to test a unit testing engineer's skills:\n\nAssignment\n----------\n\nYou are given a simple Vue.js/TypeScript project management web app that allows users to create, edit, and delete project tasks. The app has the following components:\n\n* `Task`: represents a single task, with a `title` and a `description`.\n* `TaskList`: displays a list of tasks, and allows the user to add, edit, and delete tasks.\n* `TaskForm`: a form for creating and editing tasks.\n\nYour task is to write unit tests for these components using the Jest testing framework.\n\nYou should write tests for the following scenarios:\n\n1. Adding a new task:\n\t* Given a task form with valid input, when the user submits the form, a new task should be added to the task list.\n\t* Given a task form with invalid input (e.g. an empty task title), when the user submits the form, a new task should not be added to the task list.\n2. Editing a task:\n\t* Given a task form with valid input, when the user submits the form, the selected task should be updated in the task list.\n\t* Given a task form with invalid input (e.g. an empty task title), when the user submits the form, the selected task should not be updated in the task list.\n3. Deleting a task:\n\t* Given a task in the task list, when the user clicks the delete button, the task should be removed from the task list.\n\nYour tests should cover both the expected behavior of the components (e.g. a new task is added to the task list when the form is submitted) and the edge cases (e.g. the form should not allow the user to submit an empty task title).\n\nYou should use the Vue Test Utils library to mount the components and interact with them in your tests.\n\nSubmission\n----------\n\nPlease submit your solution as a zip file containing the following:\n\n* The modified source code of the project, including your tests.\n* A README file explaining how to run your tests and any assumptions or design choices you made while writing the tests.\n\nEvaluation Criteria\n-------------------\n\nYour solution will be evaluated based on the following criteria:\n\n* Correctness: Does your solution correctly test the expected behavior and edge cases of the components?\n* Code quality: Is the code clean, well-structured, and easy to understand?\n* Test coverage: Does your solution have good test coverage, including both positive and negative test cases?\n\nNote\n----\n\nThis is just a simple example and you may need to adjust it to better fit the needs and requirements of your specific project.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.023,
+        "neu": 0.9,
+        "pos": 0.077,
+        "compound": 0.974
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 16,
+        "token_count": 543,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.029465930018416207
+      },
+      "lexical_features": {
+        "adj_adv_freq": 42,
+        "adj_adv_ratio": 0.07734806629834254,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 16,
+        "second_person_ratio": 0.029465930018416207,
+        "token_count": 543
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.884615384615383,
+          "clause_complexity": 0.2692307692307692,
+          "vocabulary_richness": 0.4793388429752066
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 3
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 17,
+            "VBG": 13,
+            "VB": 32,
+            "VBP": 2,
+            "VBN": 16,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4,
+            "GPE": 1,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.68795,
+    "pos": 0.08249999999999999,
+    "neu": 0.906,
+    "neg": 0.0115
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 44,
+    "adj_adv_ratio": 0.07652173913043478,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0017391304347826088,
+    "second_person_freq": 17,
+    "second_person_ratio": 0.029565217391304348,
+    "total_tokens": 575
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 18.442307692307693,
+      "clause_complexity": 0.1346153846153846,
+      "vocabulary_richness": 0.6870378425402349
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 1,
+        "general": 3
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 3,
+        "VBG": 16,
+        "VB": 36,
+        "VBZ": 17,
+        "VBN": 16,
+        "VBD": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 4,
+        "GPE": 1,
+        "PERSON": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 575
+  }
+}

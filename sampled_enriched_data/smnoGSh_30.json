@@ -1,0 +1,144 @@
+{
+  "id": "smnoGSh_30",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "You are an adept, highly detail oriented grading assistant. Given the instructor code and rubric grade the student code. Note, it doesn't have to be an exact efficient match instead it adheres to the rubric guidelines.\n\nRubric:\n\"\"\"\nGeneral point breakdown\nMain function: 15 points\n- Getting and validating inputs: 5 points\n- Calling square\\_root() correctly: 5 points\n- Printing results correctly: 5 points\nabsolute\\_value() function: 5 points\nsquare\\_root() function: 30 points\n- Having correct two parameters: 10 points\n- Looping against the difference in guesses: 10 points\n- Calculating each next guess: 5 points\n- Returning the best guess: 5 points\nNotes:\nDo take off points for poor variable names. Random unrelated names should lose 5 points. Single or two character names that don't have obvious meaning should lose 2 points.\nTake off 3 points for input and/or 3 points for output messages if they don’t conform to the required messages and continue to provide feedback that more points may be lost in the future.\nMinor typos should typically result in 2 points off each.\nMy solution uses a function to get the user input. That's not required.\nNote that students will lose 40 points if they use math.sqrt() or math.pow(). Another 10 points if they use abs() or math.abs().\n\nSpecific feedback\n-3, user prompt message doesn’t match the required message format. See assignment for the required message format.\n-3, output messages don’t match the required message formats. See assignment for the required message format.\n-50, nothing submitted for this problem.\n-40, can't use math.sqrt(), math.pow(), or any related built-in math functions.\n-10, have to write your own absolute\\_value() function, can't use abs() or math.abs().\n-5, the final estimate is supposed to be printed to 10 decimal places.\n-10, do not use global scope variables (those in the top-level program) inside functions unless they are passed in as parameters.\n-5, the loop in square\\_root() has to use the absolute\\_value() function to make sure the difference in estimates is positive.\n-10, your loop in square\\_root() isn't right. You have to check if the difference between the two most recent estimates is greater than the tolerance and keep looping if so.\n-10, you have to use two variables to track the current estimate and the better estimate each time through the loop so that you can stop the loop when the two estimates are close enough (less than the tolerance).\n-5, have to return the current best estimate, not the previous best estimate.\n-10, have to return the estimate at the end of the square\\_root() function, not print it out in the function.\n\nInstructor Sample Code:\n```\nimport sys\n\ndef get\\_positive\\_float(name):\n float\\_val = float(input(f\"Enter {name}: \"))\n if float\\_val <= 0:\n print(f\"{name} must be positive!\")\n sys.exit()\n return float\\_val\n\ndef absolute\\_value(x):\n if x < 0:\n return -x\n else:\n return x\n\ndef square\\_root(x, tolerance):\n guess = x\n next\\_guess = (x/guess + guess)/2\n while absolute\\_value(guess-next\\_guess) > tolerance:\n guess = next\\_guess\n next\\_guess = (x/guess + guess)/2\n return next\\_guess\n\nx = get\\_positive\\_float(\"x\")\ntolerance = get\\_positive\\_float(\"tolerance\")\n\nroot = square\\_root(x, tolerance)\nprint(f\"Square root = {root:.10f}\")\n```\n\nStudent Code:\n```\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.04,
+        "neu": 0.88,
+        "pos": 0.08,
+        "compound": 0.963
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 6,
+        "token_count": 698,
+        "self_ref_ratio": 0.0014326647564469914,
+        "second_person_ratio": 0.008595988538681949
+      },
+      "lexical_features": {
+        "adj_adv_freq": 84,
+        "adj_adv_ratio": 0.12034383954154727,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0014326647564469914,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.008595988538681949,
+        "token_count": 698
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.06896551724138,
+          "clause_complexity": 0.3448275862068966,
+          "vocabulary_richness": 0.5208333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 16,
+            "VBD": 3,
+            "VBG": 9,
+            "VBN": 7,
+            "VBZ": 11,
+            "VB": 34
+          },
+          "named_entities": {
+            "PERSON": 5,
+            "GPE": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "​",
+      "language": "unknown",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.4815,
+    "pos": 0.04,
+    "neu": 0.94,
+    "neg": 0.02
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 84,
+    "adj_adv_ratio": 0.12034383954154727,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0014326647564469914,
+    "second_person_freq": 6,
+    "second_person_ratio": 0.008595988538681949,
+    "total_tokens": 698
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 24.06896551724138,
+      "clause_complexity": 0.3448275862068966,
+      "vocabulary_richness": 0.5208333333333334
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 3,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 16,
+        "VBD": 3,
+        "VBG": 9,
+        "VBN": 7,
+        "VBZ": 11,
+        "VB": 34
+      },
+      "named_entities": {
+        "PERSON": 5,
+        "GPE": 2
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 1,
+      "unknown": 1
+    },
+    "turn_count": 2,
+    "total_tokens": 698
+  }
+}

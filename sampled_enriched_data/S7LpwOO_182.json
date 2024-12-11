@@ -1,0 +1,194 @@
+{
+  "id": "S7LpwOO_182",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "import React from 'react';\nimport {View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';\nimport {Formik} from 'formik';\nimport \\* as yup from 'yup';\nimport {InputTextField} from '../../components';\nimport {scaleDP} from '../../utils/Utilits';\nimport {CreatePostScreenNavigationProp} from '../../interfaces/Navigation';\nimport {BASE\\_URL, END\\_POINTS} from '../../constants/Strings';\nimport {retrieveData} from '../../services/secureStorage';\n\nconst validationSchema = yup.object().shape({\n title: yup.string().required('Title is required'),\n description: yup.string().required('Description is required'),\n});\ntype Props = {\n navigation: CreatePostScreenNavigationProp;\n};\nconst CreatePostScreen = ({navigation}: Props) => {\n const handleSubmit = async (values: any) => {\n const {title, description} = values;\n const url = `${BASE\\_URL}${END\\_POINTS.CreatePost}`;\n const token = await retrieveData('token');\n const data = {title, description};\n const options = {\n method: 'POST',\n headers: {\n 'Content-Type': 'application/json',\n Authorization: `${token}`,\n },\n body: JSON.stringify(data),\n };\n console.log(options);\n console.log(data);\n fetch(url, options)\n .then(res => {\n console.log(res.json());\n res.json();\n })\n .then((res: any) => {\n console.log(res);\n if (res?.code === 200) {\n navigation.goBack();\n } else {\n Alert.alert('Error', 'Please check Details !');\n }\n })\n .catch(err => console.log(err));\n };\n\n return (\n \n\n {({\n handleChange,\n handleBlur,\n handleSubmit,\n values,\n touched,\n errors,\n }) => (\n \nTitle\nCreate\n )}\n \n\n );\n};\n\nconst styles = StyleSheet.create({\n container: {\n flex: 1,\n alignItems: 'center',\n padding: scaleDP(20),\n },\n title: {\n fontSize: scaleDP(24),\n fontWeight: 'bold',\n marginBottom: scaleDP(20),\n },\n formContainer: {\n width: '100%',\n },\n inputField: {\n height: scaleDP(100),\n width: '100%',\n borderWidth: scaleDP(1),\n borderRadius: scaleDP(5),\n paddingHorizontal: scaleDP(10),\n paddingVertical: scaleDP(0),\n marginBottom: scaleDP(0),\n },\n formHeading: {\n fontWeight: '300',\n fontSize: scaleDP(16),\n marginTop: scaleDP(20),\n color: '#000',\n },\n button: {\n backgroundColor: '#0080ff',\n borderRadius: scaleDP(5),\n paddingVertical: scaleDP(10),\n paddingHorizontal: scaleDP(20),\n marginTop: scaleDP(20),\n },\n buttonText: {\n color: '#fff',\n fontSize: scaleDP(16),\n fontWeight: 'bold',\n textAlign: 'center',\n },\n});\n\nexport default CreatePostScreen;\n\nadd some more functionalities in this page \n-add formik validation for {\n \"firstName\": \"Akhlaq\",\n \"lastName\": \"Ahmad\",\n \"email\": \"akhlaq5@yopmail.com\",\n \"password\": \"5393\",\n \"phoneNumber\": \"9971545058\",\n \"status\": 1,\n \"verified\": true\n}\n-add fields in ui firstName,lastName,email,password,phoneNumber",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.008,
+        "neu": 0.909,
+        "pos": 0.082,
+        "compound": 0.9583
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 679,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 38,
+        "adj_adv_ratio": 0.055964653902798235,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 679
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 339.5,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.5483870967741935
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBP": 8,
+            "VBN": 6,
+            "VB": 8,
+            "VBD": 1,
+            "VBG": 2
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 30,
+            "PERSON": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To add more fields and formik validation for the given data in `CreatePostScreen`, we can follow these steps:\n\n1. Import the `useState` hook from React and the `InputTextField` component from the `../../components` directory.\n2. Define a new state object using `useState` hook to store the form data.\n3. Add a new object for the form validation schema using yup validation library.\n4. Update the `handleSubmit` function to submit the form data to the API using `fetch` method.\n5. Use `InputTextField` component for each field in the form to handle user input.\n6. Update the UI to display the new fields.\n\nHere's the updated code for `CreatePostScreen`:\n```javascript\nimport React, {useState} from 'react';\nimport {\n  View,\n  Text,\n  StyleSheet,\n  TouchableOpacity,\n  Alert,\n} from 'react-native';\nimport {Formik} from 'formik';\nimport * as yup from 'yup';\nimport {InputTextField} from '../../components';\nimport {scaleDP} from '../../utils/Utilits';\nimport {CreatePostScreenNavigationProp} from '../../interfaces/Navigation';\nimport {BASE_URL, END_POINTS} from '../../constants/Strings';\nimport {retrieveData} from '../../services/secureStorage';\n\nconst validationSchema = yup.object().shape({\n  title: yup.string().required('Title is required'),\n  description: yup.string().required('Description is required'),\n  firstName: yup.string().required('First Name is required'),\n  lastName: yup.string().required('Last Name is required'),\n  email: yup.string().email('Invalid email').required('Email is required'),\n  password: yup.string().min(6, 'Password must be at least 6 characters'),\n  phoneNumber: yup\n    .string()\n    .matches(/^[0-9]{10}$/, 'Invalid phone number')\n    .required('Phone Number is required'),\n});\n\ntype Props = {\n  navigation: CreatePostScreenNavigationProp;\n};\n\ntype FormData = {\n  title: string;\n  description: string;\n  firstName: string;\n  lastName: string;\n  email: string;\n  password: string;\n  phoneNumber: string;\n};\n\nconst CreatePostScreen = ({navigation}: Props) => {\n  const [formData, setFormData] = useState<FormData>({\n    title: '',\n    description: '',\n    firstName: '',\n    lastName: '',\n    email: '',\n    password: '',\n    phoneNumber: '',\n  });\n\n  const handleSubmit = async (values: any) => {\n    const {title, description, firstName, lastName, email, password, phoneNumber} =\n      values;\n    const url = `${BASE_URL}${END_POINTS.CreatePost}`;\n    const token = await retrieveData('token');\n    const data = {title, description, firstName, lastName, email, password, phoneNumber};\n    const options = {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        Authorization: `${token}`,\n      },\n      body: JSON.stringify(data),\n    };\n    console.log(options);\n    console.log(data);\n    fetch(url, options)\n      .then(res => {\n        console.log(res.json());\n        res.json();\n      })\n      .then((res: any) => {\n        console.log(res);\n        if (res?.code === 200) {\n          navigation.goBack();\n        } else {\n          Alert.alert('Error', 'Please check Details !');\n        }\n      })\n      .catch(err => console.log(err));\n  };\n\n  return (\n    <View style={styles.container}>\n      <Text style={styles.title}>Create Post</Text>\n      <Formik\n        initialValues={formData}\n        validationSchema={validationSchema}\n        onSubmit={handleSubmit}>\n        {({\n          handleChange,\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.961,
+        "pos": 0.039,
+        "compound": 0.8805
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 737,
+        "self_ref_ratio": 0.0013568521031207597,
+        "second_person_ratio": 0.0013568521031207597
+      },
+      "lexical_features": {
+        "adj_adv_freq": 46,
+        "adj_adv_ratio": 0.06241519674355495,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0013568521031207597,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0013568521031207597,
+        "token_count": 737
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 52.642857142857146,
+          "clause_complexity": 0.07142857142857142,
+          "vocabulary_richness": 0.4583333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 19,
+            "VBN": 12,
+            "VBG": 3,
+            "VBZ": 7,
+            "VBP": 7,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 26,
+            "GPE": 2,
+            "PERSON": 3
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.9194,
+    "pos": 0.0605,
+    "neu": 0.935,
+    "neg": 0.004
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 84,
+    "adj_adv_ratio": 0.059322033898305086,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0007062146892655367,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.0007062146892655367,
+    "total_tokens": 1416
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 196.07142857142858,
+      "clause_complexity": 0.2857142857142857,
+      "vocabulary_richness": 0.5033602150537634
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 11,
+        "VBP": 15,
+        "VBN": 18,
+        "VB": 27,
+        "VBD": 3,
+        "VBG": 5
+      },
+      "named_entities": {
+        "GPE": 3,
+        "ORGANIZATION": 56,
+        "PERSON": 6
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 1416
+  }
+}

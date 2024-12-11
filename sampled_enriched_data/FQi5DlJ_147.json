@@ -1,0 +1,486 @@
+{
+  "id": "FQi5DlJ_147",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "You can create a function that takes the input element's ID as a parameter and use that function to apply the focus and blur event handlers to multiple inputs.\n```javascript\nfunction addErrorHandlers(inputId) {\n    $(\"#\" + inputId).focus(function() {\n        $(this).removeClass(\"error\");\n    });\n\n    $(\"#\" + inputId).blur(function() {\n        if ($(this).val() == \"\") {\n            $(this).addClass(\"error\");\n        }\n    });\n}\n\naddErrorHandlers(\"firstName\");\naddErrorHandlers(\"lastName\");\n//etc.\n```\nYou can also use a loop to iterate over all the inputs that you want to add the functionality to, and call the function for each one.\n```css\nvar inputs = [\"firstName\", \"lastName\", \"email\", \"add1\", \"district\", \"citySelect\", \"postal\", \"phone\"];\n\nfor (var i = 0; i < inputs.length; i++) {\n    addErrorHandlers(inputs[i]);\n}\n```\nThis approach can be useful if you have a large number of inputs that need the same behavior.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.941,
+        "pos": 0.059,
+        "compound": 0.6808
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 4,
+        "token_count": 243,
+        "self_ref_ratio": 0.01646090534979424,
+        "second_person_ratio": 0.01646090534979424
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.03292181069958848,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.01646090534979424,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.01646090534979424,
+        "token_count": 243
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 60.75,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.6984126984126984
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 9,
+            "VBZ": 1,
+            "VBP": 8
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "given this code where would I insert it? \n $(document).ready(function () {\n\n function isValidToken() {\n // Get the token from storage\n var token = sessionStorage.getItem(\"token\");\n\n // If the token does not exist, return false\n if (!token) {\n return false;\n }\n\n // Split the token by '.' to get the header, payload and signature\n var parts = token.split('.');\n\n // If the token is not composed of 3 parts, return false\n if (parts.length !== 3) {\n return false;\n }\n\n // Decode the token and parse it as JSON\n var decoded = JSON.parse(atob(parts[1]));\n\n // Check if the token has expired\n var expiry = decoded.exp;\n if (expiry < Date.now() / 1000) {\n return false;\n }\n\n // If the token is valid and has not expired, return true\n return true;\n }\n\n if (isValidToken()) {// \n // Remove \"d-none\" class from \"Add Actor\" and \"Add Customer\" links\n\n $(\"#Logout\").removeClass(\"d-none\").removeClass(\"disabled\");\n $(\".nav-link.d-none\").removeClass(\"d-none\").removeClass(\"disabled\");\n $(\"#Login\").addClass(\"d-none\").addClass(\"disabled\");\n }\n\n $.ajax({\n type: \"GET\",\n url: \"http://localhost:8081/city\",\n contentType: \"application/json; charset=utf-8\",\n dataType: \"json\",\n success: function (data) {\n\n $(\"#citySelect\").append('<option value=\"\" selected disabled hidden>Select City</option>');\n // Loop through the query results and create an option for each row\n $.each(data, function (i, item) {\n $(\"#citySelect\").append('<option value=\"' + item.city\\_id + '\">' + item.city + '</option>');\n });\n $('#citySelect').select2();\n }\n });\n\n $.ajax({\n type: \"GET\",\n url: \"http://localhost:8081/store\",\n contentType: \"application/json; charset=utf-8\",\n dataType: \"json\",\n success: function (data) {\n\n $(\"#exampleSelect\").append('<option value=\"\" selected disabled hidden>Select Store</option>');\n // Loop through the query results and create an option for each row\n $.each(data, function (i, item) {\n $(\"#storeSelect\").append('<option value=\"' + item.store\\_id + '\">' + item.address + '</option>');\n });\n $('#storeSelect').select2();\n }\n });\n \n\n $(\"#create-post-form\").submit(function (e) {\n e.preventDefault();\n // Check the input for any whitespaces or if it's empty then assign null if empty\n var store\\_id = $(\"#storeSelect\").val()\n var firstName = $(\"#firstName\").val().trim() || null\n \n var lastName = $(\"#lastName\").val().trim() || null\n var email = $(\"#email\").val().trim() || null\n var add1 = $(\"#add1\").val().trim() || null\n var add2 = $(\"#add2\").val().trim() || null\n var district = $(\"#district\").val().trim() || null\n var city = $(\"#citySelect\").val()\n var postal = $(\"#postal\").val().trim() || null\n var phone = $(\"#phone\").val().trim() || null\n\n \n\n $.ajax({\n type: \"POST\",\n url: \"http://localhost:8081/customers\",\n data: {\n firstName: firstName,\n lastName: lastName\n },\n success: function (data) {\n console.log(data)\n console.log(\"Actor added successfully: \" + data);\n $('#successModal').modal('show');\n },\n error: function (xhr, status, error) {\n console.log(\"Error: \" + xhr.responseText);\n $('#errorModal').modal('show');\n }\n });\n });\n\n $(\"#Logout\").click(function () {\n window.sessionStorage.clear();\n \n window.location.replace(\"http://localhost:3001/login.html\");\n });\n\n })",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.029,
+        "neu": 0.892,
+        "pos": 0.08,
+        "compound": 0.9645
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 0,
+        "token_count": 890,
+        "self_ref_ratio": 0.0033707865168539327,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 50,
+        "adj_adv_ratio": 0.056179775280898875,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.0033707865168539327,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 890
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 222.5,
+          "clause_complexity": 2.5,
+          "vocabulary_richness": 0.41346153846153844
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBN": 10,
+            "VB": 8,
+            "VBP": 21,
+            "VBZ": 7,
+            "VBD": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 12,
+            "PERSON": 7
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "You would insert the code for adding the focus and blur event handlers for the input elements within the $(document).ready(function () {...} block, after the code for handling the form submission. It might look something like this:\n```javascript\n$(document).ready(function () {\n\n    // existing code\n\n    $(\"#create-post-form\").submit(function (e) {\n        // existing code\n    });\n    \n    $(\"#firstName, #lastName, #email, #add1, #add2, #district, #postal, #phone\").focus(function() {\n        $(this).removeClass(\"error\");\n    });\n\n    $(\"#firstName, #lastName, #email, #add1, #add2, #district, #postal, #phone\").blur(function() {\n        if ($(this).val() == \"\") {\n            $(this).addClass(\"error\");\n        }\n    });\n});\n```\nThis will add the focus and blur event handlers to all the input elements in the form that you want to validate.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.027,
+        "neu": 0.915,
+        "pos": 0.058,
+        "compound": 0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 224,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.008928571428571428
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.03125,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.008928571428571428,
+        "token_count": 224
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 112.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.5901639344262295
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 4,
+            "VBG": 4,
+            "VBP": 2
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "function addErrorHandlers(inputId) {\n $(\"#\" + inputId + \"\").focus(function () {\n $(this).removeClass(\"border\").removeClass(\"border-danger\");\n });\n\n $(\"#\" + inputId + \"\").blur(function () {\n if ($(this).val() == \"\") {\n $(this).addClass(\"border\").removeClass(\"border-danger\");\n }\n });\n }\n\n addErrorHandlers(\"firstName\");\n addErrorHandlers(\"lastName\");\n\nthis doesn't make the input red when the input is empty",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.043,
+        "neu": 0.957,
+        "pos": 0.0,
+        "compound": -0.2023
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 122,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.01639344262295082,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 122
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 122.0,
+          "clause_complexity": 2.0,
+          "vocabulary_richness": 0.5555555555555556
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBZ": 2,
+            "VB": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "It looks like the problem is with the class names being added and removed.\nIn the blur event handler, you are removing the \"border\" class and not adding the \"border-danger\" class.\n\nIt should be:\n```javascript\n$(\"#\" + inputId + \"\").blur(function () {\n    if ($(this).val() == \"\") {\n        $(this).addClass(\"border-danger\");\n    }\n});\n```\nAlso, in the focus event handler, you are removing the \"border\" class and \"border-danger\" class. It should be just removing \"border-danger\" class.\n```javascript\n$(\"#\" + inputId + \"\").focus(function () {\n    $(this).removeClass(\"border-danger\");\n});\n```\nThis way, when the input is empty and the user clicks out of it, the input will get a red border, and when the user clicks inside the input, the red border will disappear.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.052,
+        "neu": 0.928,
+        "pos": 0.02,
+        "compound": -0.4404
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 200,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.01
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.055,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.01,
+        "token_count": 200
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 40.0,
+          "clause_complexity": 0.6,
+          "vocabulary_richness": 0.574468085106383
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBG": 5,
+            "VBN": 2,
+            "VBP": 5,
+            "VB": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "data: {\n store\\_id: store\\_id,\n firstName: firstName,\n lastName: lastName,\n email: email,\n address: {\n add1: add1,\n add2: add2,\n district: district,\n city: city,\n postal: postal,\n phone: phone\n }\n\nhow do I get the data inside using req.body",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 55,
+        "self_ref_ratio": 0.01818181818181818,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.03636363636363636,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.01818181818181818,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 55
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 55.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5833333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "You can use the `body-parser` middleware in your Node.js server to parse the incoming request and make the data available in the `req.body` object. Here is an example of how to use it:\n```javascript\nconst express = require('express');\nconst bodyParser = require('body-parser');\n\nconst app = express();\n\napp.use(bodyParser.json()); // for parsing application/json\napp.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded\n\napp.post('/your-route', (req, res) => {\n    const store_id = req.body.store_id;\n    const firstName = req.body.firstName;\n    const lastName = req.body.lastName;\n    const email = req.body.email;\n    const add1 = req.body.address.add1;\n    const add2 = req.body.address.add2;\n    const district = req.body.address.district;\n    const city = req.body.address.city;\n    const postal = req.body.address.postal;\n    const phone = req.body.address.phone;\n\n    // your logic here\n});\n\napp.listen(3000, () => {\n    console.log('Server running on port 3000');\n});\n```\nMake sure you have `body-parser` installed in your project. If not, you can install it by running `npm install body-parser` in your project's root directory.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.966,
+        "pos": 0.034,
+        "compound": 0.6249
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 8,
+        "token_count": 221,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.03619909502262444
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.09502262443438914,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.03619909502262444,
+        "token_count": 221
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 73.66666666666667,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.6666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 11,
+            "VBZ": 1,
+            "VBN": 8,
+            "VBG": 4,
+            "VBP": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.2810714285714286,
+    "pos": 0.03585714285714286,
+    "neu": 0.9427142857142857,
+    "neg": 0.02157142857142857
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 101,
+    "adj_adv_ratio": 0.05166240409207161,
+    "self_ref_freq": 8,
+    "self_ref_ratio": 0.004092071611253197,
+    "second_person_freq": 16,
+    "second_person_ratio": 0.008184143222506393,
+    "total_tokens": 1955
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 97.98809523809523,
+      "clause_complexity": 0.9904761904761904,
+      "vocabulary_richness": 0.5831516874232008
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 2,
+        "why": 0,
+        "can_could": 5,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 38,
+        "VBZ": 15,
+        "VBP": 43,
+        "VBN": 20,
+        "VBD": 5,
+        "VBG": 14
+      },
+      "named_entities": {
+        "ORGANIZATION": 20,
+        "PERSON": 7
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 7
+    },
+    "turn_count": 7,
+    "total_tokens": 1955
+  }
+}

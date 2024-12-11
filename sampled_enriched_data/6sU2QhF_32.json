@@ -1,0 +1,189 @@
+{
+  "id": "6sU2QhF_32",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "[ When you write the code, in order to reduce errors, consider the function name, variable name, number of arguments and parameters, etc. ]\nmy updated code is here.\n\nimport bt\nimport pandas as pd\nimport yfinance as yf\nimport pandas\\_datareader as pdr\nimport time\n\nstart\\_time = time.time()\n\ndef get\\_price\\_data(tickers, start\\_date='2005-01-01', end\\_date='2021-09-01'):\n price\\_data = yf.download(tickers, start=start\\_date, end=end\\_date, group\\_by='ticker', auto\\_adjust=True)\n return price\\_data\n\ndef get\\_fundamental\\_data(tickers):\n fundamental\\_data = {}\n for ticker in tickers:\n try:\n stock = pdr.get\\_quote\\_yahoo(ticker)\n pe\\_ratio = stock['trailingPE'][0]\n pb\\_ratio = stock['priceToBook'][0]\n dividend\\_yield = stock['dividendYield'][0]\n fundamental\\_data[ticker] = {'pe\\_ratio': pe\\_ratio, 'pb\\_ratio': pb\\_ratio, 'dividend\\_yield': dividend\\_yield}\n except KeyError:\n print(f\"Error retrieving fundamental data for {ticker}\")\n continue\n return fundamental\\_data\n\ndef custom\\_strategy\\_1(target, data):\n pe\\_ratios = [x['pe\\_ratio'] for x in data.values()]\n median\\_pe = pd.Series(pe\\_ratios).median()\n selected = [ticker for ticker in target.keys() if data[ticker]['pe\\_ratio'] < median\\_pe]\n weights = pd.Series(index=selected, data=1.0/len(selected))\n return weights\n\ndef custom\\_strategy\\_3(target, data):\n dividend\\_yields = [x['dividend\\_yield'] for x in data.values()]\n median\\_dividend\\_yield = pd.Series(dividend\\_yields).median()\n selected = [ticker for ticker in target.keys() if data[ticker]['dividend\\_yield'] > median\\_dividend\\_yield]\n weights = pd.Series(index=selected, data=1.0/len(selected))\n return weights\n\nclass CustomWeighTarget(bt.Algo):\n def \\_\\_init\\_\\_(self, weigh\\_func, target):\n self.weigh\\_func = weigh\\_func\n self.target = target\n\n def \\_\\_call\\_\\_(self, target):\n if target.now in self.target.index:\n w = self.weigh\\_func(target, self.target.loc[target.now])\n else:\n w = pd.Series()\n target.temp['weights'] = w\n return True\n\ntickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'TSLA', 'BRK-B', 'JPM', 'JNJ', 'V', 'PG', 'MA', 'NVDA', 'UNH', 'HD', 'DIS', 'BAC', 'VZ', 'ADBE', 'CMCSA']\n\nprice\\_data = get\\_price\\_data(tickers)\nfundamental\\_data = get\\_fundamental\\_data(tickers)\n\ntickers = list(fundamental\\_data.keys())\n\nstrategy\\_funcs = [custom\\_strategy\\_1, custom\\_strategy\\_3]\nstrategy\\_names = ['Strategy 1', 'Strategy 3']\n\nfreq = 'M'\n\ndef run\\_backtest\\_with\\_rebalance\\_frequency(strategy\\_func, tickers, freq, fundamental\\_data):\n target = bt.merge(\\*[price\\_data[ticker]['Close'] for ticker in tickers]).dropna()\n target.columns = tickers\n \n strategy = bt.Strategy(strategy\\_names[0],\n [bt.algos.RunMonthly(run\\_on\\_end\\_of\\_period=True),\n CustomWeighTarget(strategy\\_func, fundamental\\_data),\n bt.algos.Rebalance()])\n \n portfolio = bt.Backtest(strategy, target, rebalance=True)\n return bt.run(portfolio)\n\nfor strategy\\_func, strategy\\_name in zip(strategy\\_funcs, strategy\\_names):\n stats = run\\_backtest\\_with\\_rebalance\\_frequency(strategy\\_func, tickers, freq, fundamental\\_data)\n print(f\"\\n{strategy\\_name} Backtest Results:\")\n print(stats.display())\n\nexecution\\_time = time.time() - start\\_time\nprint(f\"\\nTotal time for code execution: {execution\\_time:.2f} seconds\")\n\nbut it returns PS C:\\Users\\andy9\\Desktop\\python> & C:/Users/andy9/AppData/Local/Programs/Python/Python310/python.exe c:/Users/andy9/Desktop/python/0326\\_quant\\_ex.py\n[\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*100%\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*] 20 of 20 completed\n\n1 Failed download:\n- FB: No timezone found, symbol may be delisted\nError retrieving fundamental data for AAPL\nError retrieving fundamental data for MSFT\nError retrieving fundamental data for GOOGL\nError retrieving fundamental data for AMZN\nTraceback (most recent call last):\n File \"c:\\Users\\andy9\\Desktop\\python\\0326\\_quant\\_ex.py\", line 57, in \n fundamental\\_data = get\\_fundamental\\_data(tickers)\n File \"c:\\Users\\andy9\\Desktop\\python\\0326\\_quant\\_ex.py\", line 17, in get\\_fundamental\\_data\n stock = pdr.get\\_quote\\_yahoo(ticker)\n File \"C:\\Users\\andy9\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\pandas\\_datareader\\data.py\", line 96, in get\\_quote\\_yahoo\n return YahooQuotesReader(\\*args, \\*\\*kwargs).read()\n File \"C:\\Users\\andy9\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\pandas\\_datareader\\yahoo\\quotes.py\", line 49, in read\n return self.\\_read\\_one\\_data(self.url, self.params(self.symbols))\n File \"C:\\Users\\andy9\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\pandas\\_datareader\\base.py\", line 113, in \\_read\\_one\\_data\n return self.\\_read\\_lines(out)\n File \"C:\\Users\\andy9\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\pandas\\_datareader\\yahoo\\quotes.py\", line 66, in \\_read\\_lines\n data = json.loads(out.read())[\"quoteResponse\"][\"result\"][0]\nIndexError: list index out of range지금 번역하기",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.059,
+        "neu": 0.934,
+        "pos": 0.007,
+        "compound": -0.9718
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 931,
+        "self_ref_ratio": 0.0010741138560687433,
+        "second_person_ratio": 0.0010741138560687433
+      },
+      "lexical_features": {
+        "adj_adv_freq": 58,
+        "adj_adv_ratio": 0.06229860365198711,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0010741138560687433,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0010741138560687433,
+        "token_count": 931
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 310.3333333333333,
+          "clause_complexity": 1.3333333333333333,
+          "vocabulary_richness": 0.4469026548672566
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 22,
+            "VB": 5,
+            "VBZ": 5,
+            "VBD": 10,
+            "VBG": 5,
+            "VBN": 8
+          },
+          "named_entities": {
+            "ORGANIZATION": 11,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The error seems to be caused by the `pdr.get_quote_yahoo(ticker)` function. Since it is causing issues, I suggest switching to using the `yfinance` library to retrieve fundamental data. Here's the updated code:\n```python\nimport bt\nimport pandas as pd\nimport yfinance as yf\nimport time\n\nstart_time = time.time()\n\ndef get_price_data(tickers, start_date='2005-01-01', end_date='2021-09-01'):\n    price_data = yf.download(tickers, start=start_date, end=end_date, group_by='ticker', auto_adjust=True)\n    return price_data\n\ndef get_fundamental_data(tickers):\n    fundamental_data = {}\n    for ticker in tickers:\n        try:\n            stock = yf.Ticker(ticker).info\n            pe_ratio = stock['trailingPE']\n            pb_ratio = stock['priceToBook']\n            dividend_yield = stock['dividendYield']\n            fundamental_data[ticker] = {'pe_ratio': pe_ratio, 'pb_ratio': pb_ratio, 'dividend_yield': dividend_yield}\n        except KeyError:\n            print(f\"Error retrieving fundamental data for {ticker}\")\n            continue\n    return fundamental_data\n\n# ... (rest of the code remains the same)\n\ntickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'FB', 'TSLA', 'BRK-B', 'JPM', 'JNJ', 'V', 'PG', 'MA', 'NVDA', 'UNH', 'HD', 'DIS', 'BAC', 'VZ', 'ADBE', 'CMCSA']\n\nprice_data = get_price_data(tickers)\nfundamental_data = get_fundamental_data(tickers)\n\ntickers = list(fundamental_data.keys())\n\n# ... (rest of the code remains the same)\n```\nNow, the code uses `yfinance` to download both price and fundamental data, which should eliminate the errors.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.03,
+        "neu": 0.97,
+        "pos": 0.0,
+        "compound": -0.6249
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 308,
+        "self_ref_ratio": 0.003246753246753247,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.07142857142857142,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.003246753246753247,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 308
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 102.66666666666667,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5921052631578947
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VB": 6,
+            "VBN": 1,
+            "VBG": 4,
+            "VBP": 6
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.79835,
+    "pos": 0.0035,
+    "neu": 0.952,
+    "neg": 0.0445
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 80,
+    "adj_adv_ratio": 0.0645682001614205,
+    "self_ref_freq": 2,
+    "self_ref_ratio": 0.0016142050040355124,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.0008071025020177562,
+    "total_tokens": 1239
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 206.5,
+      "clause_complexity": 0.6666666666666666,
+      "vocabulary_richness": 0.5195039590125756
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 28,
+        "VB": 11,
+        "VBZ": 12,
+        "VBD": 10,
+        "VBG": 9,
+        "VBN": 9
+      },
+      "named_entities": {
+        "ORGANIZATION": 12,
+        "PERSON": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 1239
+  }
+}

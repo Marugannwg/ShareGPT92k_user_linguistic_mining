@@ -1,0 +1,612 @@
+{
+  "id": "AGOAwOo_25",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "I apologize for the confusion. It seems I misunderstood your requirement. Let's update the `nameConverter.js` file to properly handle input names in the \"Lastname, Firstname\" format:\n```javascript\nfunction parseName(name) {\n    const nameParts = name.split(/[\\s,]+/).filter(part => part.length > 0);\n    if (name.includes(',')) {\n        // Lastname, Firstname format\n        const lastname = nameParts.shift();\n        return `${nameParts.join(' ')} ${lastname}`;\n    } else {\n        // Firstname Lastname format\n        return name;\n    }\n}\n\nfunction convertNames(names, nameFormat) {\n    const inputNames = names.split(/[\\n;,]+/).map(name => name.trim()).filter(name => name.length > 0);\n    const outputNames = inputNames.map(name => {\n        const parsedName = parseName(name);\n        if (nameFormat === 'last_first') {\n            const nameParts = parsedName.split(' ');\n            return `${nameParts.pop()}, ${nameParts.join(' ')}`;\n        } else {\n            return parsedName;\n        }\n    });\n\n    return outputNames.join('; ');\n}\n\nmodule.exports = {\n    convertNames\n};\n```\nThis updated implementation should now work correctly for both \"Firstname Lastname\" and \"Lastname, Firstname\" input formats.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.033,
+        "neu": 0.957,
+        "pos": 0.01,
+        "compound": -0.4939
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 1,
+        "token_count": 258,
+        "self_ref_ratio": 0.007751937984496124,
+        "second_person_ratio": 0.003875968992248062
+      },
+      "lexical_features": {
+        "adj_adv_freq": 23,
+        "adj_adv_ratio": 0.08914728682170543,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.007751937984496124,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.003875968992248062,
+        "token_count": 258
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 86.0,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.49295774647887325
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBZ": 4,
+            "VBD": 1,
+            "VB": 7,
+            "VBN": 1
+          },
+          "named_entities": {
+            "PERSON": 3,
+            "ORGANIZATION": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can we have the copy to clipboard button only appear after the names have been converted",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 16,
+        "self_ref_ratio": 0.0625,
+        "second_person_ratio": 0.0625
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.125,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0625,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0625,
+        "token_count": 16
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBP": 1,
+            "VBN": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "To make the \"Copy to Clipboard\" button appear only after the names have been converted, you can add some JavaScript code to toggle the visibility of the button. Update the `index.html` file with the following changes:\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <!-- ... -->\n</head>\n<body>\n    <!-- ... -->\n    <script>\n        document.querySelector('form').addEventListener('submit', async (e) => {\n            e.preventDefault();\n            const response = await fetch('/convert', {\n                method: 'POST',\n                headers: { 'Content-Type': 'application/json' },\n                body: JSON.stringify({ \n                    names: document.querySelector('#names').value,\n                    nameFormat: document.querySelector('#nameFormat').value\n                }),\n            });\n\n            const result = await response.text();\n            document.querySelector('#output').value = result;\n            document.querySelector('#copyBtn').style.display = 'block'; // Show the \"Copy to Clipboard\" button\n        });\n\n        document.querySelector('#copyBtn').addEventListener('click', () => {\n            const output = document.querySelector('#output');\n            output.select();\n            document.execCommand('copy');\n        });\n\n        // Hide the \"Copy to Clipboard\" button initially\n        document.querySelector('#copyBtn').style.display = 'none';\n    </script>\n</body>\n</html>\n```\nThe changes include:\n\n1. Adding `document.querySelector('#copyBtn').style.display = 'none';` at the end of the script to initially hide the \"Copy to Clipboard\" button.\n2. Adding `document.querySelector('#copyBtn').style.display = 'block';` after updating the `#output` textarea value to show the \"Copy to Clipboard\" button when the names have been converted.\n\nNow, the \"Copy to Clipboard\" button will only appear after the names have been converted.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.052,
+        "neu": 0.921,
+        "pos": 0.027,
+        "compound": -0.7074
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 376,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0026595744680851063
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.05851063829787234,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0026595744680851063,
+        "token_count": 376
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 62.666666666666664,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.5056179775280899
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 9,
+            "VBP": 11,
+            "VBN": 7,
+            "VBZ": 1,
+            "VBG": 3
+          },
+          "named_entities": {
+            "PERSON": 6,
+            "ORGANIZATION": 9
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Add a reset button below the copy to clipboard button to reset everything",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 13,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.07692307692307693,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 13
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.75
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To add a \"Reset\" button below the \"Copy to Clipboard\" button and make it reset everything, update the `index.html` file with the following changes:\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <!-- ... -->\n</head>\n<body>\n    <!-- ... -->\n    <div class=\"controls\">\n        <select id=\"nameFormat\" class=\"form-select mb-3\">\n            <option value=\"first_last\" selected>Firstname Lastname</option>\n            <option value=\"last_first\">Lastname, Firstname</option>\n        </select>\n        <button type=\"submit\" class=\"btn btn-primary\">Convert</button>\n        <button id=\"copyBtn\" class=\"btn btn-secondary\">Copy to Clipboard</button>\n        <button id=\"resetBtn\" class=\"btn btn-danger\">Reset</button> <!-- Add Reset button -->\n    </div>\n    <!-- ... -->\n    <script>\n        // ... (existing code)\n\n        // Add event listener for the Reset button\n        document.querySelector('#resetBtn').addEventListener('click', () => {\n            document.querySelector('#names').value = '';\n            document.querySelector('#output').value = '';\n            document.querySelector('#copyBtn').style.display = 'none';\n        });\n\n        // Hide the \"Copy to Clipboard\" button initially\n        document.querySelector('#copyBtn').style.display = 'none';\n    </script>\n</body>\n</html>\n```\nThe changes include:\n\n1. Adding a new \"Reset\" button with the ID `resetBtn` below the \"Copy to Clipboard\" button in the HTML.\n2. Adding an event listener for the \"Reset\" button to clear the input and output textareas and hide the \"Copy to Clipboard\" button.\n\nNow, there will be a \"Reset\" button below the \"Copy to Clipboard\" button that resets everything when clicked.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.009,
+        "neu": 0.962,
+        "pos": 0.029,
+        "compound": 0.5553
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 371,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.05929919137466307,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 371
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 74.2,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.49
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBP": 8,
+            "VBN": 1,
+            "VBD": 3,
+            "VBG": 3,
+            "VBZ": 2
+          },
+          "named_entities": {
+            "PERSON": 11,
+            "ORGANIZATION": 8
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "The reset button should only appear after names have been converted, and when clicked the Reset button and Copy to Clipboard button should not be visibile",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 27,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 27
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 27.0,
+          "clause_complexity": 2.0,
+          "vocabulary_richness": 0.75
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBP": 1,
+            "VBN": 2,
+            "VBD": 1
+          },
+          "named_entities": {
+            "PERSON": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To make the \"Reset\" button appear only after the names have been converted and hide both the \"Reset\" and \"Copy to Clipboard\" buttons when clicked, update the `index.html` file with the following changes:\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <!-- ... -->\n</head>\n<body>\n    <!-- ... -->\n    <div class=\"controls\">\n        <select id=\"nameFormat\" class=\"form-select mb-3\">\n            <option value=\"first_last\" selected>Firstname Lastname</option>\n            <option value=\"last_first\">Lastname, Firstname</option>\n        </select>\n        <button type=\"submit\" class=\"btn btn-primary\">Convert</button>\n        <button id=\"copyBtn\" class=\"btn btn-secondary\">Copy to Clipboard</button>\n        <button id=\"resetBtn\" class=\"btn btn-danger\">Reset</button>\n    </div>\n    <!-- ... -->\n    <script>\n        document.querySelector('form').addEventListener('submit', async (e) => {\n            e.preventDefault();\n            const response = await fetch('/convert', {\n                method: 'POST',\n                headers: { 'Content-Type': 'application/json' },\n                body: JSON.stringify({ \n                    names: document.querySelector('#names').value,\n                    nameFormat: document.querySelector('#nameFormat').value\n                }),\n            });\n\n            const result = await response.text();\n            document.querySelector('#output').value = result;\n            document.querySelector('#copyBtn').style.display = 'block';\n            document.querySelector('#resetBtn').style.display = 'block'; // Show the \"Reset\" button\n        });\n\n        document.querySelector('#copyBtn').addEventListener('click', () => {\n            const output = document.querySelector('#output');\n            output.select();\n            document.execCommand('copy');\n        });\n\n        document.querySelector('#resetBtn').addEventListener('click', () => {\n            document.querySelector('#names').value = '';\n            document.querySelector('#output').value = '';\n            document.querySelector('#copyBtn').style.display = 'none';\n            document.querySelector('#resetBtn').style.display = 'none'; // Hide the \"Reset\" button\n        });\n\n        // Hide the \"Copy to Clipboard\" and \"Reset\" buttons initially\n        document.querySelector('#copyBtn').style.display = 'none';\n        document.querySelector('#resetBtn').style.display = 'none';\n    </script>\n</body>\n</html>\n```\nThe changes include:\n\n1. Adding `document.querySelector('#resetBtn').style.display = 'block';` after updating the `#output` textarea value to show the \"Reset\" button when the names have been converted.\n2. Adding `document.querySelector('#resetBtn').style.display = 'none';` in the \"Reset\" button's click event handler to hide the \"Reset\" button when clicked.\n3. Adding `document.querySelector('#resetBtn').style.display = 'none';` at the end of the script to initially hide the \"Reset\" button.\n\nNow, the \"Reset\" button will only appear after the names have been converted, and both the \"Reset\" and \"Copy to Clipboard\" buttons will be hidden when the \"Reset\" button is clicked.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.059,
+        "neu": 0.918,
+        "pos": 0.024,
+        "compound": -0.8735
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 638,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 34,
+        "adj_adv_ratio": 0.05329153605015674,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 638
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 91.14285714285714,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.4244604316546763
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 10,
+            "VBP": 21,
+            "VBN": 12,
+            "VBD": 3,
+            "VBZ": 2,
+            "VBG": 4
+          },
+          "named_entities": {
+            "PERSON": 7,
+            "ORGANIZATION": 16
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "The copy to clipboard and reset buttons are still visible after clicking reset, they should hide again",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.096,
+        "neu": 0.904,
+        "pos": 0.0,
+        "compound": -0.1779
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 18,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.8888888888888888
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBP": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the oversight. To make the \"Copy to Clipboard\" and \"Reset\" buttons hide after clicking the \"Reset\" button, you should update the `index.html` file as follows:\n```html\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <!-- ... -->\n</head>\n<body>\n    <!-- ... -->\n    <script>\n        document.querySelector('form').addEventListener('submit', async (e) => {\n            e.preventDefault();\n            const response = await fetch('/convert', {\n                method: 'POST',\n                headers: { 'Content-Type': 'application/json' },\n                body: JSON.stringify({ \n                    names: document.querySelector('#names').value,\n                    nameFormat: document.querySelector('#nameFormat').value\n                }),\n            });\n\n            const result = await response.text();\n            document.querySelector('#output').value = result;\n            document.querySelector('#copyBtn').style.display = 'block';\n            document.querySelector('#resetBtn').style.display = 'block'; // Show the \"Reset\" button\n        });\n\n        document.querySelector('#copyBtn').addEventListener('click', () => {\n            const output = document.querySelector('#output');\n            output.select();\n            document.execCommand('copy');\n        });\n\n        document.querySelector('#resetBtn').addEventListener('click', () => {\n            document.querySelector('#names').value = '';\n            document.querySelector('#output').value = '';\n            setTimeout(() => {\n                document.querySelector('#copyBtn').style.display = 'none';\n                document.querySelector('#resetBtn').style.display = 'none'; // Hide the \"Reset\" button\n            }, 0);\n        });\n\n        // Hide the \"Copy to Clipboard\" and \"Reset\" buttons initially\n        document.querySelector('#copyBtn').style.display = 'none';\n        document.querySelector('#resetBtn').style.display = 'none';\n    </script>\n</body>\n</html>\n```\nThe only change made here is wrapping the hiding of the \"Copy to Clipboard\" and \"Reset\" buttons in a `setTimeout` function with a delay of 0 milliseconds in the click event handler for the \"Reset\" button. This ensures that the hiding operation is added to the end of the event queue, resolving the issue with the buttons not being hidden after clicking \"Reset\".\n\nNow, the \"Copy to Clipboard\" and \"Reset\" buttons should hide correctly after clicking the \"Reset\" button.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.077,
+        "neu": 0.889,
+        "pos": 0.035,
+        "compound": -0.8795
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 484,
+        "self_ref_ratio": 0.002066115702479339,
+        "second_person_ratio": 0.002066115702479339
+      },
+      "lexical_features": {
+        "adj_adv_freq": 26,
+        "adj_adv_ratio": 0.05371900826446281,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.002066115702479339,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.002066115702479339,
+        "token_count": 484
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 121.0,
+          "clause_complexity": 0.75,
+          "vocabulary_richness": 0.5233644859813084
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 16,
+            "VB": 5,
+            "VBG": 6,
+            "VBZ": 5,
+            "VBN": 4
+          },
+          "named_entities": {
+            "PERSON": 4,
+            "ORGANIZATION": 12
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.28632222222222226,
+    "pos": 0.013888888888888888,
+    "neu": 0.9501111111111111,
+    "neg": 0.036222222222222225
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 136,
+    "adj_adv_ratio": 0.061790095411176735,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.001817355747387551,
+    "second_person_freq": 4,
+    "second_person_ratio": 0.001817355747387551,
+    "total_tokens": 2201
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 56.55661375661376,
+      "clause_complexity": 0.8092592592592592,
+      "vocabulary_richness": 0.6472543922813152
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 2,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 63,
+        "VBZ": 14,
+        "VBD": 8,
+        "VB": 48,
+        "VBN": 29,
+        "VBG": 17
+      },
+      "named_entities": {
+        "PERSON": 33,
+        "ORGANIZATION": 49
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 9
+    },
+    "turn_count": 9,
+    "total_tokens": 2201
+  }
+}

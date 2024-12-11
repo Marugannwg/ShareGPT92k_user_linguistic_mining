@@ -1,0 +1,665 @@
+{
+  "id": "9eRkobA_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "This HTML shows a row of linked text. how can I modify it to add some linked text underneath as a heading, that works on mobile and desktop?\n\n[About](/about/)  \n\n[Case Studies](/case-studies/)  \n\n[Template Library](/template-library/)  \n\n[Knowledge Centre](/knowledge-centre/)  \n\n[Process 101](/process-101/)  \n\n[Support](https://docs.beslick.com/en/)  \n\n[Training](/training)  \n\n[Partners](/partners/)  \n\n[Careers](/careers)",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 91,
+        "self_ref_ratio": 0.01098901098901099,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.054945054945054944,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.01098901098901099,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 91
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 30.333333333333332,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9259259259259259
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VBN": 2,
+            "VB": 4,
+            "VBP": 1,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 4
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To add some linked text underneath as a heading, you can wrap the current links inside a container element, such as a `<div>` or an `<ul>`, and then add the heading as another element inside that container. Here's an example:\n```php\n<div class=\"allwidgets\">\n  <div class=\"footerleft\">\n    <h4>Links</h4>\n    <ul>\n      <li><a href=\"/about/\">About</a></li>\n      <li><a href=\"/case-studies/\">Case Studies</a></li>\n      <li><a href=\"/template-library/\">Template Library</a></li>\n      <li><a href=\"/knowledge-centre/\">Knowledge Centre</a></li>\n      <li><a href=\"/process-101/\">Process 101</a></li>\n      <li><a href=\"https://docs.beslick.com/en/\">Support</a></li>\n      <li><a href=\"/training\">Training</a></li>\n      <li><a href=\"/partners/\">Partners</a></li>\n      <li><a href=\"/careers\">Careers</a></li>\n    </ul>\n  </div>\n</div>\n```\nIn this example, the heading \"Links\" is added as an `<h4>` element inside the container, and the links are wrapped in a `<ul>` element with each link in a `<li>` element. This creates a list of links with a heading that will work on both mobile and desktop. You can style the heading and links using CSS to match the design of your site.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.983,
+        "pos": 0.017,
+        "compound": 0.3346
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 334,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.008982035928143712
+      },
+      "lexical_features": {
+        "adj_adv_freq": 19,
+        "adj_adv_ratio": 0.05688622754491018,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.008982035928143712,
+        "token_count": 334
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 83.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5875
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5,
+            "VBN": 3,
+            "VBZ": 12,
+            "VBP": 4,
+            "VBG": 3
+          },
+          "named_entities": {
+            "PERSON": 3,
+            "ORGANIZATION": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "ok, actually each of those is a heading and underneath each heading would be item 1, item 2, item 3, item 4",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 26,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.11538461538461539,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 26
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7142857142857143
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "If you want to add multiple sections with headings and items, you can use nested containers to organize the content. Here's an example of how you can modify the HTML code to achieve this:\n```php\n<div class=\"allwidgets\">\n  <div class=\"footerleft\">\n    <div>\n      <h4>About</h4>\n      <ul>\n        <li>Item 1</li>\n        <li>Item 2</li>\n        <li>Item 3</li>\n      </ul>\n    </div>\n    <div>\n      <h4>Case Studies</h4>\n      <ul>\n        <li>Item 1</li>\n        <li>Item 2</li>\n        <li>Item 3</li>\n      </ul>\n    </div>\n    <div>\n      <h4>Template Library</h4>\n      <ul>\n        <li>Item 1</li>\n        <li>Item 2</li>\n        <li>Item 3</li>\n      </ul>\n    </div>\n    <!-- and so on for other headings -->\n  </div>\n</div>\n```\nIn this example, each section is wrapped in a `<div>` container, which contains a heading `<h4>` and a list `<ul>` with multiple items `<li>`. You can add more sections by copying the same pattern, and modify the headings and items as needed.\n\nNote that you may need to adjust the CSS styling to achieve the desired layout and spacing of the sections and items.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.975,
+        "pos": 0.025,
+        "compound": 0.4003
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 291,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.01718213058419244
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.061855670103092786,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.01718213058419244,
+        "token_count": 291
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 72.75,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.5157894736842106
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VB": 11,
+            "VBZ": 12,
+            "VBN": 3,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "will this put each header into columns next to each other?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 12,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.25,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "No, the code I provided will display each section vertically, one after the other. If you want to display the sections in columns next to each other, you can use CSS to style the container and the sections to achieve a multi-column layout.\n\nHere's an example of how you can modify the CSS to display the sections in two columns:\n```css\n.allwidgets {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.footerleft {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  width: 100%;\n  max-width: 800px; /* adjust the max-width as needed */\n}\n\n.footerleft > div {\n  flex-basis: calc(50% - 10px); /* adjust the width of each column */\n  margin-bottom: 20px;\n}\n\n@media screen and (max-width: 767px) {\n  .footerleft > div {\n    flex-basis: 100%;\n  }\n}\n```\nIn this example, the `.allwidgets` container is set to a `flex` display with `flex-wrap: wrap`, which allows the sections to wrap into multiple columns when there is not enough horizontal space. The `.footerleft` container is set to a `flex` display with `flex-direction: row` and `justify-content: space-between`, which aligns the sections in two columns with some space between them.\n\nThe `.footerleft > div` selector targets each section container and sets the `flex-basis` to `calc(50% - 10px)`, which sets the width of each column to 50% minus 10 pixels of margin between them. The `margin-bottom` property adds some space between the sections.\n\nFinally, the `@media` rule targets screens with a maximum width of 767 pixels (i.e., mobile screens) and sets the `flex-basis` of each section to 100%, which makes the sections stack vertically on small screens.\n\nYou can adjust the CSS values as needed to achieve the desired layout and spacing.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.978,
+        "pos": 0.022,
+        "compound": 0.6249
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 4,
+        "token_count": 366,
+        "self_ref_ratio": 0.00546448087431694,
+        "second_person_ratio": 0.01092896174863388
+      },
+      "lexical_features": {
+        "adj_adv_freq": 39,
+        "adj_adv_ratio": 0.10655737704918032,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.00546448087431694,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.01092896174863388,
+        "token_count": 366
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 45.75,
+          "clause_complexity": 0.375,
+          "vocabulary_richness": 0.5203252032520326
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 2,
+            "VB": 11,
+            "VBP": 4,
+            "VBZ": 12,
+            "VBN": 5
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "ok, how would that change if I wanted it to be six columns on desktop, and 1 column on mobile?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 23,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.043478260869565216,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 23
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "To achieve a layout with six columns on desktop and one column on mobile, you can modify the CSS to use a combination of media queries and grid layout.\n\nHere's an example of how you can modify the CSS:\n```css\n.allwidgets {\n  display: grid;\n  grid-template-columns: repeat(6, 1fr);\n  gap: 20px;\n}\n\n.footerleft > div {\n  grid-column: span 2;\n}\n\n@media screen and (max-width: 767px) {\n  .allwidgets {\n    grid-template-columns: 1fr;\n  }\n\n  .footerleft > div {\n    grid-column: span 1;\n  }\n}\n```\nIn this example, the `.allwidgets` container is set to a grid layout with six columns using the `grid-template-columns` property. The `1fr` value means that each column should take up an equal fraction of the available horizontal space. The `gap` property adds some space between the columns.\n\nThe `.footerleft > div` selector targets each section container and sets the `grid-column` property to `span 2`, which means each section should occupy two columns in the grid. This will result in a six-column layout on desktop.\n\nThe `@media` rule targets screens with a maximum width of 767 pixels and modifies the grid layout to have only one column using `grid-template-columns: 1fr`. The `.footerleft > div` selector is also modified to set the `grid-column` property to `span 1`, which means each section should occupy one column in the grid. This will result in a one-column layout on mobile.\n\nYou can adjust the CSS values as needed to achieve the desired layout and spacing.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.97,
+        "pos": 0.03,
+        "compound": 0.7351
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 303,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.009900990099009901
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.08250825082508251,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.009900990099009901,
+        "token_count": 303
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 30.3,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5210084033613446
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 15,
+            "VBZ": 10,
+            "VBD": 2,
+            "VBN": 4,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "ok, going back to the html code, how can i create a li class that removes the bullet points?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.896,
+        "pos": 0.104,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 22,
+        "self_ref_ratio": 0.045454545454545456,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.09090909090909091,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.045454545454545456,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 22
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 1,
+            "VB": 2,
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To remove the bullet points from a list, you can use CSS to set the `list-style-type` property of the list to `none`. Here's an example of how you can modify the HTML code to create a list without bullet points:\n```php\n<div class=\"allwidgets\">\n  <div class=\"footerleft\">\n    <div>\n      <h3>About</h3>\n      <ul class=\"no-bullet\">\n        <li><a href=\"/about/\">Link 1</a></li>\n        <li><a href=\"/about/\">Link 2</a></li>\n        <li><a href=\"/about/\">Link 3</a></li>\n      </ul>\n    </div>\n    <div>\n      <h3>Case Studies</h3>\n      <ul class=\"no-bullet\">\n        <li><a href=\"/case-studies/\">Link 1</a></li>\n        <li><a href=\"/case-studies/\">Link 2</a></li>\n        <li><a href=\"/case-studies/\">Link 3</a></li>\n      </ul>\n    </div>\n    <div>\n      <h3>Template Library</h3>\n      <ul class=\"no-bullet\">\n        <li><a href=\"/template-library/\">Link 1</a></li>\n        <li><a href=\"/template-library/\">Link 2</a></li>\n        <li><a href=\"/template-library/\">Link 3</a></li>\n      </ul>\n    </div>\n    <div>\n      <h3>Knowledge Centre</h3>\n      <ul class=\"no-bullet\">\n        <li><a href=\"/knowledge-centre/\">Link 1</a></li>\n        <li><a href=\"/knowledge-centre/\">Link 2</a></li>\n        <li><a href=\"/knowledge-centre/\">Link 3</a></li>\n      </ul>\n    </div>\n    <div>\n      <h3>Process 101</h3>\n      <ul class=\"no-bullet\">\n        <li><a href=\"/process-101/\">Link 1</a></li>\n        <li><a href=\"/process-101/\">Link 2</a></li>\n        <li><a href=\"/process-101/\">Link 3</a></li>\n      </ul>\n    </div>\n    <div>\n      <h3>Support</h3>\n      <ul class=\"no-bullet\">\n        <li><a href=\"https://docs.beslick.com/en/\">Link 1</a></li>\n        <li><a href=\"https://docs.beslick.com/en/\">Link 2</a></li>\n        <li><a href=\"https://docs.beslick.com/en/\">Link 3</a></li>\n      </ul>\n    </div>\n    <div>\n      <h3>Training</h3>\n      <ul class=\"no-bullet\">\n        <li><a href=\"/training/\">Link 1</a></li>\n        <li><a href=\"/training/\">Link 2</a></li>\n        <li><a href=\"/training/\">Link 3</a></li>\n      </ul>\n    </div>\n    <div>\n      <h3>Partners</h3>\n      <ul class=\"no-bullet\">\n        <li><a href=\"/partners/\">Link 1</a></li>\n        <li><a href=\"/partners/\">Link 2</a></li>\n        <li><a href=\"/partners/\">Link 3</a></li>\n      </ul>\n    </div\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.988,
+        "pos": 0.012,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 692,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.002890173410404624
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.01878612716763006,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.002890173410404624,
+        "token_count": 692
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 346.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.2835820895522388
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5,
+            "VBZ": 17,
+            "VBP": 18,
+            "VBD": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.26413000000000003,
+    "pos": 0.021,
+    "neu": 0.9790000000000001,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 128,
+    "adj_adv_ratio": 0.05925925925925926,
+    "self_ref_freq": 5,
+    "self_ref_ratio": 0.0023148148148148147,
+    "second_person_freq": 17,
+    "second_person_ratio": 0.00787037037037037,
+    "total_tokens": 2160
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 69.16333333333333,
+      "clause_complexity": 0.1625,
+      "vocabulary_richness": 0.7068416810061466
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 7,
+        "why": 0,
+        "can_could": 15,
+        "general": 4
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 70,
+        "VBN": 17,
+        "VB": 57,
+        "VBP": 30,
+        "VBG": 9,
+        "VBD": 8
+      },
+      "named_entities": {
+        "ORGANIZATION": 18,
+        "PERSON": 8
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 10
+    },
+    "turn_count": 10,
+    "total_tokens": 2160
+  }
+}

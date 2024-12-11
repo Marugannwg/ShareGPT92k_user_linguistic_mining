@@ -1,0 +1,192 @@
+{
+  "id": "yqY4P93_4",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "// pages/admin/inventory.tsx\n\nimport { CategoryDD, PriceDD } from \"@components/Admin/Dropdown\";\nimport AdminLayout from \"@components/Admin/Layout/AdminLayout\";\nimport Image from \"next/image\";\nimport { useEffect, useState } from \"react\";\nimport IndividualInventory from \"@components/Admin/IndividualInventory\";\nimport { RootState } from \"store\";\nimport { useDispatch, useSelector } from \"react-redux\";\nimport { addInventory } from \"store/inventorySlice\";\nimport { cloneDeep } from \"lodash\";\n\nInventoryPage.getLayout = function getLayout(page: any) {\n return {page};\n};\nexport default function InventoryPage() {\n const inventories = useSelector((state: RootState) => state.inventory.value)\n const [searchInput, setSearchInput] = useState(\"\");\n const [filteredInventory, setFilteredInventory] = useState(inventories);\n\n useEffect(() => {\n setFilteredInventory(inventories)\n }, [inventories])\n\n const [toggleCategory, setToggleCategory] = useState(false);\n const [togglePrice, setTogglePrice] = useState(false);\n\n const [filterCategory, setFilterCategory] = useState();\n const [filterPrice, setFilterPrice] = useState();\n\n const [currSort, setCurrSort] = useState();\n const [descending, setDescending] = useState(1);\n const sortData = (sortVar: any) => {\n let flag: any;\n if (sortVar == currSort) flag = descending;\n else {\n setDescending(1);\n flag = 1;\n }\n let temp = cloneDeep(filteredInventory);\n const compareFn = (a: any, b: any) => {\n if (sortVar !==\"price\" && sortVar !==\"discounted\\_price\") {\n if (a[sortVar] < b[sortVar]) {\n a[sortVar] = String(a[sortVar]);\n b[sortVar] = String(b[sortVar]);\n\n return flag \\* -1;\n }\n\n if (a[sortVar] > b[sortVar]) {\n a[sortVar] = String(a[sortVar]);\n b[sortVar] = String(b[sortVar]);\n\n return flag \\* 1;\n }\n } else if (sortVar === \"price\" || sortVar === \"discounted\\_price\") {\n if (a.price[0][sortVar] < b.price[0][sortVar]) {\n a.price[0][sortVar] = String(a.price[0][sortVar]);\n b.price[0][sortVar] = String(b.price[0][sortVar]);\n\n return flag \\* -1;\n }\n\n if (a.price[0][sortVar] > b.price[0][sortVar]) {\n a.price[0][sortVar] = String(a.price[0][sortVar]);\n b.price[0][sortVar] = String(b.price[0][sortVar]);\n\n return flag \\* 1;\n }\n } \n\n return 0;\n };\n\n temp = temp.sort(compareFn);\n setFilteredInventory(temp);\n };\n\n const filter = () => {\n let temp = inventories;\n let search = searchInput.toLowerCase();\n temp = temp.filter((inventory) => {\n return inventory.name.toLocaleLowerCase().includes(search);\n });\n if (filterPrice) {\n temp = temp.filter((inventory) => {\n let USDprice = inventory.price.find((price) => price.currency === \"USD\")\n if(!USDprice) return\n return USDprice.price > filterPrice[0] && USDprice.price < filterPrice[1];\n });\n }\n // if(filterCategory){\n // console.log(\"Aaaa\")\n // temp = temp.filter(order => {\n // return order.status[filterCategory?.id] === filterCategory?.value\n // })\n // }\n\n setFilteredInventory(temp);\n };\n useEffect(() => {\n filter();\n }, [searchInput, filterPrice]);\n\n const tableHeader = [\n {\n id: \"id\",\n name: \"SKU\",\n width: \"w-[117px]\",\n },\n {\n id: \"name\",\n name: \"Product Name\",\n width: \"w-[295px]\",\n },\n {\n id: \"country\",\n name: \"Country\",\n width: \"w-[121px]\",\n },\n {\n id: \"colour\",\n name: \"Colour\",\n width: \"w-[121px]\",\n },\n {\n id: \"pieces\",\n name: \"Pieces\",\n width: \"w-[121px]\",\n },\n {\n id: \"cost\",\n name: \"Cost (USD)\",\n width: \"w-[110px]\",\n },\n {\n id: \"price\",\n name: \"Regular Price\",\n width: \"w-[120px]\",\n },\n {\n id: \"price\",\n name: `Regular Price (USD)`,\n width: \"w-[112px]\",\n },\n {\n id: \"discounted\\_price\",\n name: \"Discounted Price\",\n width: \"w-[119px]\",\n },\n {\n id: \"discounted\\_price\",\n name: \"Discounted Price (USD)\",\n width: \"w-[123px]\",\n },\n {\n id: \"barcode\",\n name: \"Barcode\",\n width: \"w-[132px]\",\n },\n ];\n\n const dispatch = useDispatch()\n const handleAddInventory = () => {\n dispatch(addInventory(\"\"))\n }\n\n return (\n \n \n \n Orders\n\n \n \n \n setSearchInput(e.target.value)}\n />\n \n \n setToggleCategory((prev) => !prev)}\n className=\"w-[248px] h-full border-product-gray flex flex-row gap-x-[7px] items-center justify-center\">\n Category\n\n {/\\* {toggleCategory && } \\*/}\n \n \n setTogglePrice((prev) => !prev)}\n className=\"w-[248px] h-full border-product-gray flex flex-row gap-x-[7px] items-center justify-center\">\n Order Price\n \n Add Inventory\n \n\n \n \n \n {tableHeader.map((header, index) => (\n {\n setCurrSort(header.id);\n sortData(header.id);\n setDescending((prev) => prev \\* -1);\n }}\n key={index}\n className={`flex flex-row items-center gap-x-[6px] h-[43px] ${header.width}`}>\n {header.name}\n {\n \n }\n \n ))}\n \n \n \n \n \n {filteredInventory.map((inventory, index) => (\n item === inventory)} />\n ))}\n \n\n\n );\n}",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.992,
+        "pos": 0.008,
+        "compound": 0.4456
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 1222,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 116,
+        "adj_adv_ratio": 0.09492635024549918,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 1222
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 1222.0,
+          "clause_complexity": 10.0,
+          "vocabulary_richness": 0.2996941896024465
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 2
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 27,
+            "VBP": 14,
+            "VBZ": 15,
+            "VBD": 12,
+            "VBN": 11,
+            "VBG": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 50,
+            "PERSON": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "This is a Next.js component for an admin inventory management page. It includes functionalities such as searching, filtering by category, and filtering by price. Additionally, it allows the user to sort the inventory items by various attributes and add new inventory items.\n\nThe main structure of the component is as follows:\n\n1. Imports: The component imports necessary dependencies, including React hooks, Redux hooks, custom components, and the inventory store.\n2. getLayout: The InventoryPage component is wrapped in the AdminLayout, which provides a consistent layout for all admin pages.\n3. InventoryPage: The main functional component that contains the logic for the inventory management page.\n4. State variables and hooks:\n\t* `searchInput`, `filteredInventory`, and related hooks are used for searching and filtering the inventory items.\n\t* `toggleCategory` and `togglePrice` manage the visibility of category and price filters.\n\t* `filterCategory` and `filterPrice` store the selected category and price filter values.\n\t* `currSort`, `descending`, and related hooks are used to store the current sorting state of the inventory items.\n\t* Redux hooks are used to fetch the inventory items from the store and add new items.\n5. Functions:\n\t* `sortData`, `filter`, and related functions are used for sorting, searching, and filtering the inventory items.\n\t* `handleAddInventory` is used to add a new inventory item.\n6. JSX structure: The main structure includes a search bar, filter dropdowns, an \"Add Inventory\" button, and a table for displaying the inventory items.\n7. CSS classes: The component uses utility classes provided by Tailwind CSS for styling.\n\nThe InventoryPage component provides a comprehensive interface for managing inventory items on an admin dashboard, with various options for searching, filtering, sorting, and adding items.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.983,
+        "pos": 0.017,
+        "compound": 0.5719
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 350,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 28,
+        "adj_adv_ratio": 0.08,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 350
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.909090909090908,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5428571428571428
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 13,
+            "VBG": 16,
+            "VB": 12,
+            "VBN": 8,
+            "VBP": 4
+          },
+          "named_entities": {
+            "PERSON": 4,
+            "ORGANIZATION": 3,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.50875,
+    "pos": 0.0125,
+    "neu": 0.9875,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 144,
+    "adj_adv_ratio": 0.0916030534351145,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 1572
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 618.9545454545455,
+      "clause_complexity": 5.0,
+      "vocabulary_richness": 0.4212756662297946
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 39,
+        "VBP": 18,
+        "VBZ": 28,
+        "VBD": 12,
+        "VBN": 19,
+        "VBG": 19
+      },
+      "named_entities": {
+        "ORGANIZATION": 53,
+        "PERSON": 6,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 1572
+  }
+}

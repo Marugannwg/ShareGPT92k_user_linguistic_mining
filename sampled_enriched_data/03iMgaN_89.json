@@ -1,0 +1,449 @@
+{
+  "id": "03iMgaN_89",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Certainly. Here is an example of how you can fine-tune a Whisper model for transcribing audio in a new language, where the new language is based on the characters \"x\" and \"y\" and the tokenizer does not support these characters, and extract the embeddings from the last layer for each unit of meaning (e.g., \"x\" or \"y\") while freezing the weights of all layers except the last layer:\n```\n# Import necessary libraries\nimport torch\nfrom torch.utils.data import DataLoader, TensorDataset\nfrom transformers import WhisperModel, WhisperTokenizer\n\n# Load the training data\naudio_paths = ['path/to/audio1.wav', 'path/to/audio2.wav', ...]\ntranscriptions = ['x y x y', 'y x y x', ...]\n\n# Tokenize the transcriptions\ntokenized_transcriptions = [tokenizer.encode(transcription) for transcription in transcriptions]\n\n# Pad the tokenized transcriptions\npadded_tokenized_transcriptions = pad_sequences(tokenized_transcriptions, padding='post')\n\n# Convert the padded tokenized transcriptions to tensors\ntranscription_tensors = torch.tensor(padded_tokenized_transcriptions).long()\n\n# Load the audio and convert it to tensors\naudio_tensors = [whisper_utils.load_audio(audio_path) for audio_path in audio_paths]\n\n# Create a dataset and a dataloader\ndataset = TensorDataset(audio_tensors, transcription_tensors)\ndataloader = DataLoader(dataset, batch_size=32, shuffle=True)\n\n# Initialize the model and the optimizer\nmodel = WhisperModel(hidden_size=768, embedding_size=768)\noptimizer = Adam(model.parameters(), lr=0.001)\n\n# Set the requires_grad attribute of all layers except the last layer to False\nfor name, param in model.named_parameters():\n    if 'output_layer' not in name:\n        param.requires_grad = False\n\n# Train the model\nfor epoch in range(num_epochs):\n    for audio_tensor, transcription_tensor in dataloader:\n        # Clear the gradients\n        optimizer.zero_grad()\n\n        # Forward pass\n        encoded_audio = model(audio_tensor)[0]\n        logits = model.generate(encoded_audio, labels=\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.015,
+        "neu": 0.937,
+        "pos": 0.049,
+        "compound": 0.8147
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 336,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.002976190476190476
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.08035714285714286,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.002976190476190476,
+        "token_count": 336
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 168.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.5961538461538461
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VB": 5,
+            "VBG": 2,
+            "VBN": 1,
+            "VBP": 11
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "please continue from your last sentence",
+      "language": "fr",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.526,
+        "pos": 0.474,
+        "compound": 0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly. Here is the rest of the code example for fine-tuning a Whisper model for transcribing audio in a new language and extracting the embeddings from the last layer for each unit of meaning (e.g., \"x\" or \"y\"), while freezing the weights of all layers except the last layer:\n```\ntranscription_tensor)\n\n        # Compute the loss\n        loss = F.cross_entropy(logits.view(-1, logits.size(-1)), transcription_tensor.view(-1))\n\n        # Backward pass\n        loss.backward()\n\n        # Update the model weights\n        optimizer.step()\n\n# Save the trained model and tokenizer\ntorch.save(model.state_dict(), 'trained_model.pt')\ntorch.save(tokenizer, 'trained_tokenizer')\n\n# Load the trained model and tokenizer\nmodel = WhisperModel(hidden_size=768, embedding_size=768)\nmodel.load_state_dict(torch.load('trained_model.pt'))\nmodel.eval()\ntokenizer = torch.load('trained_tokenizer')\n\n# Load the audio and transcription for which you want to extract the embeddings\naudio_path = 'path/to/audio.wav'\ntranscription = 'x y x y'\n\n# Tokenize the transcription\ntokenized_transcription = tokenizer.encode(transcription)\n\n# Load and preprocess the audio\naudio_tensor = whisper_utils.load_audio(audio_path)\n\n# Extract the embeddings from the last layer for each unit of meaning (e.g., \"x\" or \"y\")\nencoded_audio = model(audio_tensor)[0]\nlast_layer_output = model.last_layer(encoded_audio)[0]\noutput = model.generate(last_layer_output, labels=tokenized_transcription)\noutput_tokens = output[0].argmax(dim=1).tolist()\noutput_text = tokenizer.decode(output_tokens)\nprint(output_text)  # prints \"x y x y\"\n\nunit_of_meaning_embeddings = []\nfor i, token in enumerate(output_tokens):\n    if token == tokenizer.vocab['x']:\n        unit_of_meaning_embeddings.append(last_layer_output[:, i])\n    elif token == tokenizer.vocab['y']:\n        unit_of_meaning_embeddings.append(last_layer_output[:, i])\n\n# You can use the unit_of_meaning_embeddings list to perform further analysis or comparison\n```\nThis code fine-tunes a Whisper model for transcribing audio in a new language, where the new language is based on the characters \"x\" and \"y\" and the tokenizer does not support these",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.033,
+        "neu": 0.939,
+        "pos": 0.028,
+        "compound": -0.092
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 2,
+        "token_count": 387,
+        "self_ref_ratio": 0.007751937984496124,
+        "second_person_ratio": 0.00516795865633075
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.06201550387596899,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.007751937984496124,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.00516795865633075,
+        "token_count": 387
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 193.5,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.51
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VBG": 5,
+            "VBP": 7,
+            "VB": 8,
+            "VBD": 1,
+            "VBN": 3
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "show me a possible option to do with nit\\_of\\_meaning\\_embeddings",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly. Here are a few examples of what you can do with the `unit_of_meaning_embeddings` list, which contains the embeddings for each unit of meaning (e.g., \"x\" or \"y\") extracted from the last layer of the model:\n\n1. You can concatenate the embeddings to form a single embedding for the entire sequence of units of meaning. This can be useful if you want to perform further analysis or comparison on the sequence as a whole. For example:\n```\n# Concatenate the embeddings to form a single embedding for the entire sequence\nsequence_embedding = torch.cat(unit_of_meaning_embeddings, dim=0)\n```\n1. You can calculate the pairwise distance between the embeddings using a distance metric such as cosine similarity or Euclidean distance. This can be useful if you want to compare the similarity or dissimilarity between different units of meaning. For example:\n```\n# Calculate the pairwise cosine similarity between the embeddings\ncosine_similarities = []\nfor i in range(len(unit_of_meaning_embeddings)):\n    for j in range(i+1, len(unit_of_meaning_embeddings)):\n        cosine_similarities.append(F.cosine_similarity(unit_of_meaning_embeddings[i], unit_of_meaning_embeddings[j]))\n\n# Calculate the pairwise Euclidean distance between the embeddings\neuclidean_distances = []\nfor i in range(len(unit_of_meaning_embeddings)):\n    for j in range(i+1, len(unit_of_meaning_embeddings)):\n        euclidean_distances.append(torch.norm(unit_of_meaning_embeddings[i] - unit_of_meaning_embeddings[j]))\n```\n1. You can use the embeddings as input to a downstream task, such as classification or clustering. For example:\n```\n# Use the embeddings as input to a classifier\nclassifier = SomeClassifier(input_size=embedding_size, output_size=num_classes)\npredictions = classifier(unit_of_meaning_embeddings)\n\n# Use the embeddings as input to a clustering algorithm\nclustering_model = SomeClusteringModel(input_size=embedding_size, num_clusters=num_clusters)\ncluster_assignments = clustering_model(unit_of_meaning_embeddings)\n```\nI hope these examples give you some ideas for what you can do with the `unit_of_meaning_embeddings` list. Let me know if you have any further questions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.95,
+        "pos": 0.05,
+        "compound": 0.8934
+      },
+      "core_lexical": {
+        "self_ref_freq": 8,
+        "second_person_freq": 9,
+        "token_count": 374,
+        "self_ref_ratio": 0.0213903743315508,
+        "second_person_ratio": 0.02406417112299465
+      },
+      "lexical_features": {
+        "adj_adv_freq": 32,
+        "adj_adv_ratio": 0.0855614973262032,
+        "self_ref_freq": 8,
+        "self_ref_ratio": 0.0213903743315508,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.02406417112299465,
+        "token_count": 374
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 34.0,
+          "clause_complexity": 0.2727272727272727,
+          "vocabulary_richness": 0.5225225225225225
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 2,
+            "how": 0,
+            "why": 0,
+            "can_could": 7,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 5,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 12,
+            "VB": 18,
+            "VBZ": 1,
+            "VBD": 1,
+            "VBG": 3,
+            "VBN": 2
+          },
+          "named_entities": {
+            "GPE": 1,
+            "LOCATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "how can you use it with logistic regression?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.1111111111111111
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.1111111111111111,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_speech_act": 1,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure. Here is an example of how you can use the `unit_of_meaning_embeddings` list as input to a logistic regression classifier in PyTorch:\n```\nimport torch.nn as nn\n\n# Define the logistic regression model\nclass LogisticRegression(nn.Module):\n    def __init__(self, input_size, output_size):\n        super(LogisticRegression, self).__init__()\n        self.linear = nn.Linear(input_size, output_size)\n\n    def forward(self, x):\n        return self.linear(x)\n\n# Initialize the model\nmodel = LogisticRegression(input_size=embedding_size, output_size=num_classes)\n\n# Define the loss function and the optimizer\nloss_fn = nn.CrossEntropyLoss()\noptimizer = torch.optim.SGD(model.parameters(), lr=0.01)\n\n# Convert the unit_of_meaning_embeddings list to a tensor\nunit_of_meaning_embeddings_tensor = torch.stack(unit_of_meaning_embeddings, dim=0)\n\n# Convert the labels to a tensor\nlabels_tensor = torch.tensor([0, 1, 0, 1])  # assume that \"x\" corresponds to class 0 and \"y\" corresponds to class 1\n\n# Train the model\nfor epoch in range(num_epochs):\n    # Clear the gradients\n    optimizer.zero_grad()\n\n    # Forward pass\n    logits = model(unit_of_meaning_embeddings_tensor)\n    loss = loss_fn(logits, labels_tensor)\n\n    # Backward pass\n    loss.backward()\n\n    # Update the model weights\n    optimizer.step()\n```\nThis code defines a logistic regression model with an input size equal to the size of the embeddings and an output size equal to the number of classes (in this case, 2). It then trains the model on the `unit_of_meaning_embeddings_tensor` tensor and the corresponding labels using a cross-entropy loss and stochastic gradient descent (SGD) optimization.\n\nI hope this helps. Let me know if you have any",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.03,
+        "neu": 0.883,
+        "pos": 0.087,
+        "compound": 0.8957
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 2,
+        "token_count": 302,
+        "self_ref_ratio": 0.006622516556291391,
+        "second_person_ratio": 0.006622516556291391
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.08940397350993377,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.006622516556291391,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.006622516556291391,
+        "token_count": 302
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 60.4,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.6095238095238096
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 7,
+            "VBP": 6,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.41337142857142856,
+    "pos": 0.0982857142857143,
+    "neu": 0.8907142857142858,
+    "neg": 0.011142857142857144
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 112,
+    "adj_adv_ratio": 0.07904022582921666,
+    "self_ref_freq": 14,
+    "self_ref_ratio": 0.009880028228652082,
+    "second_person_freq": 15,
+    "second_person_ratio": 0.01058574453069866,
+    "total_tokens": 1417
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 78.98333333333333,
+      "clause_complexity": 0.4121212121212121,
+      "vocabulary_richness": 0.7063666963666964
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 2,
+        "how": 3,
+        "why": 0,
+        "can_could": 11,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 5,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 17,
+        "VB": 41,
+        "VBG": 11,
+        "VBN": 6,
+        "VBP": 36,
+        "VBD": 2
+      },
+      "named_entities": {
+        "GPE": 5,
+        "ORGANIZATION": 7,
+        "PERSON": 3,
+        "LOCATION": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 6,
+      "fr": 1
+    },
+    "turn_count": 7,
+    "total_tokens": 1417
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "id": "EyZcTYA_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "please give me first 20 Anki flashcards for below content:\n```md\nVery basic tsc usage\nI guess I have to learn TypeScript now.\nHere's how I got started in as few steps as possible, with the help of Get Started With Typescript in 2019 by Robert Cooper.\nInstallation using npm\nI created a new project:\nmkdir -p ~/Dropbox/Learning-TypeScript/first-typescript\ncd ~/Dropbox/Learning-TypeScript/first-typescript\nThen installed the TypeScript compiler:\nnpm install --save-dev typescript\nUsing --global instead of --save-dev would have installed in globally, but I'm not ready for that kind of commitment yet!\nApparently I need a tsconfig.json file. Running this command creates one for me containing some suggested defaults:\n% ./node\\_modules/.bin/tsc --init\nNext step: create a .ts file to start testing it out. I put the following in greetings.ts:\nconst greeting = (person: string) => { console.log(\"Hello \" + person); };\ngreeting(\"Simon\");\nNext, compile it! Thanks to npm install --save-dev typescript the tsc compiler is now available here:\n% ./node\\_modules/.bin/tsc\nRun without any arguments it seeks out the tsconfig.json file, compiles any .ts files and produces matching .js files.\nThat seems to have worked:\n% node greetings.js Good day Simon % cat greetings.js \"use strict\"; var greeting = function (person) { console.log(\"Good day \" + person); }; greeting(\"Simon\");\nRunning tsc --watch\nThe --watch command continues to run and automatically compiles files when they are saved:\n% ./node\\_modules/.bin/tsc --watch\n[9:32:44 AM] Starting compilation in watch mode...\n[9:32:44 AM] Found 0 errors. Watching for file changes.\nI changed the last line of my greetings.ts file to greeting(1) (a type error) to see what happened:\n[9:33:56 AM] File change detected. Starting incremental compilation...\ngreetings.ts:5:10 - error TS2345: Argument of type 'number' is not assignable to parameter of type 'string'. 5 greeting(1);\n[9:33:56 AM] Found 1 error. Watching for file changes.\nUsing npx\nTip from @Benjie: you can use npx to avoid the ./node\\_modules/.bin prefix.\nI had thought that npx installed and ran a new global version, but it turns out it will notice your node\\_modules folder and run from that instead if one exists:\n% npx tsc --watch\nRunning this in Visual Studio Code\nVSCode has built-in TypeScript support. Hit Shift+Command+B and select the tsc: watch option and it runs that watch command in a embedded terminal pane inside the editor itself.\n\" https://diigo.com/0rowgj\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.053,
+        "neu": 0.852,
+        "pos": 0.095,
+        "compound": 0.9379
+      },
+      "core_lexical": {
+        "self_ref_freq": 12,
+        "second_person_freq": 2,
+        "token_count": 484,
+        "self_ref_ratio": 0.024793388429752067,
+        "second_person_ratio": 0.004132231404958678
+      },
+      "lexical_features": {
+        "adj_adv_freq": 53,
+        "adj_adv_ratio": 0.10950413223140495,
+        "self_ref_freq": 12,
+        "self_ref_ratio": 0.024793388429752067,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.004132231404958678,
+        "token_count": 484
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.470588235294116,
+          "clause_complexity": 0.11764705882352941,
+          "vocabulary_richness": 0.6666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 2,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 18,
+            "VBP": 7,
+            "VBZ": 15,
+            "VBD": 11,
+            "VBN": 7,
+            "VBG": 17
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 6,
+            "GPE": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "| Front | Back |\n| --- | --- |\n| What is the topic of the content? | Very basic tsc usage |\n| What prompted the author to learn TypeScript? | \"I guess I have to learn TypeScript now.\" |\n| What did the author use to get started with TypeScript? | Get Started With Typescript in 2019 by Robert Cooper |\n| How did the author install TypeScript? | `npm install --save-dev typescript` |\n| What would have happened if the author used `--global` instead of `--save-dev`? | It would have installed TypeScript globally |\n| What command did the author run to create a `tsconfig.json` file? | `./node_modules/.bin/tsc --init` |\n| What did the `tsconfig.json` file contain after it was created? | Some suggested defaults |\n| What is the file extension for TypeScript files? | `.ts` |\n| What did the author put in the `greetings.ts` file? | `const greeting = (person: string) => { console.log(\"Hello \" + person); }; greeting(\"Simon\");` |\n| What command did the author run to compile the TypeScript code? | `./node_modules/.bin/tsc` |\n| What does the `tsc` compiler do when it is run without any arguments? | It seeks out the `tsconfig.json` file, compiles any `.ts` files, and produces matching `.js` files. |\n| What did the `greetings.js` file contain after it was compiled? | `\"use strict\"; var greeting = function (person) { console.log(\"Good day \" + person); }; greeting(\"Simon\");` |\n| What command did the author run to continue compiling files automatically when they are saved? | `./node_modules/.bin/tsc --watch` |\n| What is the purpose of the `--watch` command? | It continues to run and automatically compiles files when they are saved |\n| What happened when the author changed the last line of the `greetings.ts` file to `greeting(1)`? | A type error occurred |\n| What is the error message that was displayed when the author ran `greeting(1)`? | `Argument of type 'number' is not assignable to parameter of type 'string'.` |\n| What is the purpose of using `npx`? | It allows running a package without having to install it globally |\n| What command did the author run to use `npx` to run the `tsc` command? | `npx tsc --watch` |\n| How can the author run the `tsc` watch command in Visual Studio Code? | Hit Shift+Command+B and select the `tsc: watch` option |",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.019,
+        "neu": 0.934,
+        "pos": 0.047,
+        "compound": 0.8597
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 530,
+        "self_ref_ratio": 0.0037735849056603774,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 47,
+        "adj_adv_ratio": 0.08867924528301886,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.0037735849056603774,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 530
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.09090909090909,
+          "clause_complexity": 0.36363636363636365,
+          "vocabulary_richness": 0.5202312138728323
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 17,
+            "how": 2,
+            "why": 0,
+            "can_could": 1,
+            "general": 19
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 40,
+            "VBZ": 17,
+            "VBD": 18,
+            "VBP": 5,
+            "VBN": 11,
+            "VBG": 9
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "PERSON": 5,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "## 1. good, use give me flashcards in #markdown-table-format :\n```md\n| Front | Back |\n| --- | --- |\n| What is the topic of the content? | Very basic tsc usage |\n| What prompted the author to learn TypeScript? | \"I guess I have to learn TypeScript now.\" |\n| What did the author use to get started with TypeScript? | Get Started With Typescript in 2019 by Robert Cooper |\n| How did the author install TypeScript? | `npm install --save-dev typescript` |\n| What would have happened if the author used `--global` instead of `--save-dev`? | It would have installed TypeScript globally |\n| What command did the author run to create a `tsconfig.json` file? | `./node\\_modules/.bin/tsc --init` |\n| What did the `tsconfig.json` file contain after it was created? | Some suggested defaults |\n| What is the file extension for TypeScript files? | `.ts` |\n| What did the author put in the `greetings.ts` file? | `const greeting = (person: string) => { console.log(\"Hello \" + person); }; greeting(\"Simon\");` |\n| What command did the author run to compile the TypeScript code? | `./node\\_modules/.bin/tsc` |\n| What does the `tsc` compiler do when it is run without any arguments? | It seeks out the `tsconfig.json` file, compiles any `.ts` files, and produces matching `.js` files. |\n| What did the `greetings.js` file contain after it was compiled? | `\"use strict\"; var greeting = function (person) { console.log(\"Good day \" + person); }; greeting(\"Simon\");` |\n| What command did the author run to continue compiling files automatically when they are saved? | `./node\\_modules/.bin/tsc --watch` |\n| What is the purpose of the `--watch` command? | It continues to run and automatically compiles files when they are saved |\n| What happened when the author changed the last line of the `greetings.ts` file to `greeting(1)`? | A type error occurred |\n| What is the error message that was displayed when the author ran `greeting(1)`? | `Argument of type 'number' is not assignable to parameter of type 'string'.` |\n| What is the purpose of using `npx`? | It allows running a package without having to install it globally |\n| What command did the author run to use `npx` to run the `tsc` command? | `npx tsc --watch` |\n| How can the author run the `tsc` watch command in Visual Studio Code? | Hit Shift+Command+B and select the `tsc: watch` option |\n```\n\n## 2. but I want you give me in #h5-heading-listing-markdown-format question (front) in h5 heading , answer (back) is content below h5 heading , and append this tag to end of question #flashcard",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.012,
+        "neu": 0.949,
+        "pos": 0.039,
+        "compound": 0.7986
+      },
+      "core_lexical": {
+        "self_ref_freq": 5,
+        "second_person_freq": 1,
+        "token_count": 588,
+        "self_ref_ratio": 0.008503401360544218,
+        "second_person_ratio": 0.0017006802721088435
+      },
+      "lexical_features": {
+        "adj_adv_freq": 52,
+        "adj_adv_ratio": 0.08843537414965986,
+        "self_ref_freq": 5,
+        "self_ref_ratio": 0.008503401360544218,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0017006802721088435,
+        "token_count": 588
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.727272727272727,
+          "clause_complexity": 0.36363636363636365,
+          "vocabulary_richness": 0.5257731958762887
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 17,
+            "how": 2,
+            "why": 0,
+            "can_could": 1,
+            "general": 19
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 45,
+            "VBZ": 18,
+            "VBD": 18,
+            "VBP": 6,
+            "VBN": 11,
+            "VBG": 9
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "PERSON": 5,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "#flashcard\n\n##### What is the topic of the content?\n\n###### Very basic tsc usage\n\n---\n\n##### What prompted the author to learn TypeScript?\n\n###### \"I guess I have to learn TypeScript now.\"\n\n---\n\n##### What did the author use to get started with TypeScript?\n\n###### Get Started With Typescript in 2019 by Robert Cooper\n\n---\n\n##### How did the author install TypeScript?\n\n###### `npm install --save-dev typescript`\n\n---\n\n##### What would have happened if the author used `--global` instead of `--save-dev`?\n\n###### It would have installed TypeScript globally\n\n---\n\n##### What command did the author run to create a `tsconfig.json` file?\n\n###### `./node_modules/.bin/tsc --init`\n\n---\n\n##### What did the `tsconfig.json` file contain after it was created?\n\n###### Some suggested defaults\n\n---\n\n##### What is the file extension for TypeScript files?\n\n###### `.ts`\n\n---\n\n##### What did the author put in the `greetings.ts` file?\n\n###### `const greeting = (person: string) => { console.log(\"Hello \" + person); }; greeting(\"Simon\");`\n\n---\n\n##### What command did the author run to compile the TypeScript code?\n\n###### `./node_modules/.bin/tsc`\n\n---\n\n##### What does the `tsc` compiler do when it is run without any arguments?\n\n###### It seeks out the `tsconfig.json` file, compiles any `.ts` files, and produces matching `.js` files.\n\n---\n\n##### What did the `greetings.js` file contain after it was compiled?\n\n###### `\"use strict\"; var greeting = function (person) { console.log(\"Good day \" + person); }; greeting(\"Simon\");`\n\n---\n\n##### What command did the author run to continue compiling files automatically when they are saved?\n\n###### `./node_modules/.bin/tsc --watch`\n\n---\n\n##### What is the purpose of the `--watch` command?\n\n###### It continues to run and automatically compiles files when they are saved\n\n---\n\n##### What happened when the author changed the last line of the `greetings.ts` file to `greeting(1)`?\n\n###### A type error occurred\n\n---\n\n##### What is the error message that was displayed when the author ran `greeting(1)`?\n\n###### `Argument of type 'number' is not assignable to parameter of type 'string'.`\n\n---\n\n##### What is the purpose of using `npx`?\n\n###### It allows running a package without having to install it globally\n\n---\n\n##### What command did the author run to use `npx` to run the `tsc` command?\n\n###### `npx tsc --watch`\n\n---\n\n##### How can the author run the `tsc` watch command in Visual Studio Code?\n\n###### Hit Shift+Command+B and select the `tsc: watch` option",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.019,
+        "neu": 0.933,
+        "pos": 0.048,
+        "compound": 0.8597
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 708,
+        "self_ref_ratio": 0.002824858757062147,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 32,
+        "adj_adv_ratio": 0.04519774011299435,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.002824858757062147,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 708
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 32.18181818181818,
+          "clause_complexity": 0.36363636363636365,
+          "vocabulary_richness": 0.5174418604651163
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 17,
+            "how": 2,
+            "why": 0,
+            "can_could": 1,
+            "general": 19
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 14,
+            "VBD": 19,
+            "VB": 17,
+            "VBP": 5,
+            "VBN": 10,
+            "VBG": 9
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "PERSON": 6,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.863975,
+    "pos": 0.05725000000000001,
+    "neu": 0.917,
+    "neg": 0.02575
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 184,
+    "adj_adv_ratio": 0.07965367965367966,
+    "self_ref_freq": 21,
+    "self_ref_ratio": 0.00909090909090909,
+    "second_person_freq": 3,
+    "second_person_ratio": 0.0012987012987012987,
+    "total_tokens": 2310
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 27.86764705882353,
+      "clause_complexity": 0.30213903743315507,
+      "vocabulary_richness": 0.557528234220226
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 52,
+        "how": 7,
+        "why": 0,
+        "can_could": 4,
+        "general": 57
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 3,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 120,
+        "VBP": 23,
+        "VBZ": 64,
+        "VBD": 66,
+        "VBN": 39,
+        "VBG": 44
+      },
+      "named_entities": {
+        "ORGANIZATION": 30,
+        "PERSON": 22,
+        "GPE": 5
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 4
+    },
+    "turn_count": 4,
+    "total_tokens": 2310
+  }
+}

@@ -1,0 +1,193 @@
+{
+  "id": "sEApyJP_18",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Modify the below given code by replotting the POS tag counts sorted in decreasing order:\n\ncode:\n\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport nltk\nfrom nltk.corpus import stopwords\nfrom nltk.tokenize import word\\_tokenize\nfrom nltk.probability import FreqDist\nfrom wordcloud import WordCloud\n\n# Load the text data set as a Pandas DataFrame\ndf = pd.read\\_csv(\"cleaned\\_df\\_20.csv\", encoding='ISO-8859-1')\n\n# 1. Descriptive statistics\nprint(df.describe(include='object'))\n\nprint(\"\\n\")\nprint(\"=======================================================\")\nprint(\"\\n\")\n\ndf['text\\_data']=df['Description']\n\n# 2. Word count, word length, character count, and length\n\nprint('Description variable: Word count, word length, character count, and length')\nprint(\"\\n\")\ndf['word\\_count'] = df['text\\_data'].apply(lambda x: len(str(x).split()))\ndf['word\\_length'] = df['text\\_data'].apply(lambda x: np.mean([len(word) for word in x.split()]))\ndf['char\\_count'] = df['text\\_data'].apply(lambda x: len(str(x)))\n#df['length'] = df['text\\_data'].apply(lambda x: len(str(x).split()))\nprint(df[['word\\_count', 'word\\_length', 'char\\_count']].describe())\n\nprint(\"\\n\\n\")\nprint(\"=======================================================\")\nprint(\"\\n\")\n\n# 3. Part of speech tagging and counts\n\nprint('Part of speech tagging and counts for Description variable')\nprint(\"\\n\")\nnltk.download('averaged\\_perceptron\\_tagger')\ndf['pos\\_tags'] = df['text\\_data'].apply(lambda x: nltk.pos\\_tag(word\\_tokenize(x)))\ntag\\_counts = {}\nfor row in df['pos\\_tags']:\n for word, tag in row:\n if tag not in tag\\_counts:\n tag\\_counts[tag] = 1\n else:\n tag\\_counts[tag] += 1\nprint(tag\\_counts)\n\n# plot POS tag counts\nplt.figure(figsize=(12, 6))\nplt.bar(tag\\_counts.keys(), tag\\_counts.values(), color='green')\nplt.title('Part of Speech Tagging and Counts')\nplt.xlabel('POS Tag')\nplt.ylabel('Count')\nplt.xticks(rotation=45, ha='right')\nplt.show()\n\nprint(\"\\n\")\nprint(\"=======================================================\")\nprint(\"\\n\")\n\n# 4. 20 most common words and plot\n\nstop\\_words = set(stopwords.words('english'))\ndf['text\\_data'] = df['text\\_data'].apply(lambda x: ' '.join([word for word in x.split() if word.lower() not in stop\\_words]))\nfdist = FreqDist(df['text\\_data'].str.cat(sep=' ').split())\nprint('20 most common words for Description variable ')\nprint(\"\\n\")\nprint(fdist.most\\_common(20))\nprint(\"\\n\")\nprint('20 most common Words distribution plot for Description variable ')\n\n# plot 20 most common words\nplt.figure(figsize=(12, 6))\nplt.bar([x[0] for x in fdist.most\\_common(20)], [x[1] for x in fdist.most\\_common(20)], color='green')\nplt.title('20 Most Common Words Distribution')\nplt.xlabel('Words')\nplt.ylabel('Count')\nplt.xticks(rotation=45)\nplt.show()\n\nprint(\"\\n\")\nprint(\"=======================================================\")\n\n# 5. Rare words distribution and plot\nrare\\_words = fdist.hapaxes()\nprint('count of rare word: {}'.format(len(rare\\_words)))\nprint(\"\\n\")\nprint('Rare words distribution plot for Description variable ')\nfdist\\_rare = FreqDist(rare\\_words)\n\n# plot rare words distribution\nplt.figure(figsize=(12, 6))\nplt.bar([x[0] for x in fdist\\_rare.most\\_common(20)], [x[1] for x in fdist\\_rare.most\\_common(20)], color='green')\nplt.xticks(rotation=90)\nplt.title(\"Rare words distribution plot for Description variable\")\nplt.xlabel(\"Words\")\nplt.ylabel(\"Frequency\")\nplt.show()\n\nprint(\"\\n\")\nprint(\"=======================================================\")\n\n# 6. Word and character counts by category\nprint('Word and character counts by category for Description variable ')\nprint(\"\\n\")\ncategory\\_counts = df.groupby('Category').agg({'word\\_count': 'sum', 'char\\_count': 'sum'})\n\n# plot word and character counts by category\ncategory\\_counts.plot(kind='bar', rot=0, color=['green', 'orange'])\nplt.title(\"Word and Character Counts by Category for Description variable\")\nplt.xlabel(\"Category\")\nplt.ylabel(\"Count\")\nplt.xticks(rotation=45, ha='right')\nplt.show()\n\nprint(\"\\n\")\nprint(\"=======================================================\")\nprint(\"\\n\")\n\n# 7. Word cloud for each category\nprint('Category wise Wordcloud ')\nprint(\"\\n\")\n\ncategories = df['Category'].unique()\n\n# create subplots for wordclouds\n#fig, axs = plt.subplots(nrows=1, ncols=len(categories), figsize=(20, 8))\n\n# for i, category in enumerate(categories):\n# text = ' '.join(df[df['Category'] == category]['text\\_data'].tolist())\n# wordcloud = WordCloud(width = 800, height = 800,\n# background\\_color ='white',\n# stopwords = stop\\_words,\n# min\\_font\\_size = 10).generate(text)\n# axs[i].imshow(wordcloud) \n# axs[i].axis(\"off\") \n# axs[i].set\\_title(category)\n# plt.tight\\_layout(pad=0)\n# plt.show()\n\nfor i in range(0, len(categories), 2):\n plt.figure(figsize=(10, 8))\n for j, category in enumerate(categories[i:i+2]):\n plt.subplot(1, 2, j+1)\n text = ' '.join(df[df['Category'] == category]['text\\_data'].tolist())\n wordcloud = WordCloud(width=1000, height=600, background\\_color='white', stopwords=stop\\_words, min\\_font\\_size=10).generate(text)\n plt.imshow(wordcloud)\n plt.axis('off')\n plt.tight\\_layout(pad=2.25)\n plt.title(category)\n\nplt.show()",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.985,
+        "pos": 0.015,
+        "compound": 0.765
+      },
+      "core_lexical": {
+        "self_ref_freq": 7,
+        "second_person_freq": 0,
+        "token_count": 1224,
+        "self_ref_ratio": 0.005718954248366013,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 81,
+        "adj_adv_ratio": 0.0661764705882353,
+        "self_ref_freq": 7,
+        "self_ref_ratio": 0.005718954248366013,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 1224
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 153.0,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.25
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBN": 4,
+            "VBG": 2,
+            "VBD": 4,
+            "VBZ": 3,
+            "VBP": 10
+          },
+          "named_entities": {
+            "ORGANIZATION": 11,
+            "GPE": 2,
+            "PERSON": 5
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To modify the code for replotting the POS tag counts sorted in decreasing order, we can sort the dictionary `tag_counts` in descending order based on the tag count values using the `sorted` function and pass the `reverse=True` argument. We can then plot the sorted dictionary as a bar chart.\n\nHere is the modified code:\n```scss\n# 3. Part of speech tagging and counts\n\nprint('Part of speech tagging and counts for Description variable')\nprint(\"\\n\")\nnltk.download('averaged_perceptron_tagger')\ndf['pos_tags'] = df['text_data'].apply(lambda x: nltk.pos_tag(word_tokenize(x)))\ntag_counts = {}\nfor row in df['pos_tags']:\n    for word, tag in row:\n        if tag not in tag_counts:\n            tag_counts[tag] = 1\n        else:\n            tag_counts[tag] += 1\n\n# sort tag_counts in descending order\nsorted_tag_counts = dict(sorted(tag_counts.items(), key=lambda item: item[1], reverse=True))\n\n# plot POS tag counts\nplt.figure(figsize=(12, 6))\nplt.bar(sorted_tag_counts.keys(), sorted_tag_counts.values(), color='green')\nplt.title('Part of Speech Tagging and Counts')\nplt.xlabel('POS Tag')\nplt.ylabel('Count')\nplt.xticks(rotation=45, ha='right')\nplt.show()\n```\nIn this modified code, we first sort the dictionary `tag_counts` in descending order using the `sorted` function and pass the `reverse=True` argument. The resulting sorted dictionary is stored in `sorted_tag_counts`.\n\nWe then plot the sorted dictionary using the `plt.bar` function to create a bar chart of POS tag counts sorted in decreasing order. The rest of the code for setting the plot title, x and y labels, and rotating the x-tick labels is the same as before.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.023,
+        "neu": 0.956,
+        "pos": 0.022,
+        "compound": -0.0516
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 4,
+        "token_count": 345,
+        "self_ref_ratio": 0.011594202898550725,
+        "second_person_ratio": 0.011594202898550725
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.07246376811594203,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.011594202898550725,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.011594202898550725,
+        "token_count": 345
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 49.285714285714285,
+          "clause_complexity": 0.2857142857142857,
+          "vocabulary_richness": 0.4434782608695652
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBG": 12,
+            "VBN": 5,
+            "VBZ": 5,
+            "VBP": 3,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 2
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.3567,
+    "pos": 0.0185,
+    "neu": 0.9704999999999999,
+    "neg": 0.0115
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 106,
+    "adj_adv_ratio": 0.06755895474824729,
+    "self_ref_freq": 11,
+    "self_ref_ratio": 0.007010834926704908,
+    "second_person_freq": 4,
+    "second_person_ratio": 0.0025493945188017845,
+    "total_tokens": 1569
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 101.14285714285714,
+      "clause_complexity": 0.26785714285714285,
+      "vocabulary_richness": 0.3467391304347826
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 2,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 10,
+        "VBN": 9,
+        "VBG": 14,
+        "VBD": 6,
+        "VBZ": 8,
+        "VBP": 13
+      },
+      "named_entities": {
+        "ORGANIZATION": 14,
+        "GPE": 2,
+        "PERSON": 7
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 1569
+  }
+}

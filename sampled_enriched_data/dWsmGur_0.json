@@ -1,0 +1,777 @@
+{
+  "id": "dWsmGur_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "I have to work on an AI project. From now on, I will explain the project I have to do.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 0,
+        "token_count": 23,
+        "self_ref_ratio": 0.13043478260869565,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.043478260869565216,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.13043478260869565,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 23
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 3
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, I'm here to help you. Please go ahead and explain your AI project.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.601,
+        "pos": 0.399,
+        "compound": 0.743
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 18,
+        "self_ref_ratio": 0.05555555555555555,
+        "second_person_ratio": 0.1111111111111111
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.05555555555555555,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.1111111111111111,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 4
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "The data is divided into two parts. \n1. Training data: train.csv\n2. Test data: test.csv\nThe train.csv file consists of 3 columns of 'id', 'text' and 'label', and the test.csv file consists of 2 columns of 'id' and 'text'",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 51,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 51
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBN": 1,
+            "VBG": 1,
+            "VB": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Thanks for explaining the structure of your data. What is the goal of your AI project? What do you want to achieve with this data?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.835,
+        "pos": 0.165,
+        "compound": 0.5514
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 28,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.10714285714285714
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.10714285714285714,
+        "token_count": 28
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.333333333333334,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 2,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 2
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 1,
+            "VBZ": 1,
+            "VBP": 1,
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Label consists of a total of 8, and the text column consists of news article data.\nMy goal is to predict test.csv and get the result in submission.csv that consists 'id' and 'label'\nIt is single-label, multiclass classification problem",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.066,
+        "neu": 0.934,
+        "pos": 0.0,
+        "compound": -0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 43,
+        "self_ref_ratio": 0.023255813953488372,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.06976744186046512,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.023255813953488372,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 43
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 21.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8888888888888888
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VB": 3
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I understand. It sounds like you have a supervised learning problem, where you want to train an AI model on the training data to predict the label of news articles in the test data.\n\nTo start with, you can preprocess the text data by cleaning it, removing stop words, and converting the text into numerical vectors. After that, you can train a machine learning model such as logistic regression, decision tree, random forest, or a neural network on the preprocessed text data and the corresponding labels.\n\nOnce you have trained the model, you can evaluate its performance on the test data using metrics such as accuracy, precision, recall, and F1 score. Finally, you can use the trained model to predict the labels of the news articles in the test data and save the results in a submission.csv file with 'id' and 'label' columns.\n\nI hope this helps! Let me know if you have any questions or need further assistance.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.029,
+        "neu": 0.894,
+        "pos": 0.078,
+        "compound": 0.807
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 8,
+        "token_count": 182,
+        "self_ref_ratio": 0.016483516483516484,
+        "second_person_ratio": 0.04395604395604396
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.07142857142857142,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.016483516483516484,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.04395604395604396,
+        "token_count": 182
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.75,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.7654320987654321
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 2,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 6,
+            "VBZ": 1,
+            "VBN": 2,
+            "VB": 12,
+            "VBG": 5
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I want to train GPT2Model to classify 8 labels",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.86,
+        "pos": 0.14,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Great! Using a pre-trained language model such as GPT-2 to classify text data can be a very effective approach. Here are the general steps you can follow:\n\n1. Load the pre-trained GPT-2 model and tokenizer from a library such as Hugging Face's Transformers.\n2. Preprocess your text data by encoding the text into numerical representations using the tokenizer.\n3. Split your training data into training and validation sets. Use the training set to train the GPT-2 model and the validation set to monitor the model's performance and prevent overfitting.\n4. Fine-tune the pre-trained GPT-2 model on your training data. During fine-tuning, the GPT-2 model will learn to classify your text data into the 8 labels.\n5. Evaluate the performance of your model on the validation set using metrics such as accuracy, precision, recall, and F1 score.\n6. Once you are satisfied with the performance of your model, use it to predict the labels of the news articles in the test data and save the results in a submission.csv file with 'id' and 'label' columns.\n\nNote that fine-tuning a large language model like GPT-2 can be computationally expensive and may require a lot of computing resources. Also, make sure to properly tune the hyperparameters of the model during training to achieve the best results.\n\nI hope this helps! Let me know if you have any questions or need further assistance.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.869,
+        "pos": 0.131,
+        "compound": 0.9847
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 9,
+        "token_count": 260,
+        "self_ref_ratio": 0.007692307692307693,
+        "second_person_ratio": 0.03461538461538462
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.08461538461538462,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.007692307692307693,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.03461538461538462,
+        "token_count": 260
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.05,
+          "vocabulary_richness": 0.7033898305084746
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 3,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 8,
+            "VB": 23,
+            "VBP": 4,
+            "VBN": 3
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Im going to use GPU",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 1,
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Great, using a GPU can significantly speed up the training process for large models like GPT-2.\n\nTo train your GPT-2 model on a GPU, you will need to make sure that you have the necessary software and hardware installed. Here are the general steps:\n\n1. Install the necessary software such as CUDA, cuDNN, and PyTorch or TensorFlow on your machine.\n2. Load the pre-trained GPT-2 model and tokenizer from a library such as Hugging Face's Transformers.\n3. Preprocess your text data by encoding the text into numerical representations using the tokenizer. Convert the encoded data into PyTorch or TensorFlow tensors and move them to the GPU using functions such as `.to('cuda')`.\n4. Split your training data into training and validation sets. Use the training set to train the GPT-2 model and the validation set to monitor the model's performance and prevent overfitting.\n5. Fine-tune the pre-trained GPT-2 model on your training data. During fine-tuning, the GPT-2 model will learn to classify your text data into the 8 labels. Use GPU-optimized optimizer such as AdamW with learning rate schedule for optimal training\n6. Evaluate the performance of your model on the validation set using metrics such as accuracy, precision, recall, and F1 score.\n7. Once you are satisfied with the performance of your model, use it to predict the labels of the news articles in the test data and save the results in a submission.csv file with 'id' and 'label' columns.\n\nMake sure to properly tune the hyperparameters of the model during training to achieve the best results. You can use libraries like PyTorch Lightning or TensorFlow-Keras for easier model training and optimization.\n\nI hope this helps! Let me know if you have any questions or need further assistance.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.86,
+        "pos": 0.14,
+        "compound": 0.9908
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 13,
+        "token_count": 331,
+        "self_ref_ratio": 0.006042296072507553,
+        "second_person_ratio": 0.03927492447129909
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.0755287009063444,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.006042296072507553,
+        "second_person_freq": 13,
+        "second_person_ratio": 0.03927492447129909,
+        "token_count": 331
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.391304347826088,
+          "clause_complexity": 0.043478260869565216,
+          "vocabulary_richness": 0.6688741721854304
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 5,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 8,
+            "VB": 26,
+            "VBP": 5,
+            "VBN": 4
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 11,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you give me a simple code for this project",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 10,
+        "self_ref_ratio": 0.1,
+        "second_person_ratio": 0.1
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.1,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here's some sample code to get you started with fine-tuning GPT-2 for multiclass classification:\n```scss\nimport torch\nimport pandas as pd\nfrom transformers import GPT2Tokenizer, GPT2Model, GPT2PreTrainedModel, AdamW, get_linear_schedule_with_warmup\n\n# Load the pre-trained GPT-2 model and tokenizer\ntokenizer = GPT2Tokenizer.from_pretrained('gpt2')\nmodel = GPT2Model.from_pretrained('gpt2')\n\n# Define your own GPT-2 model for classification\nclass GPT2ForClassification(GPT2PreTrainedModel):\n    def __init__(self, config):\n        super(GPT2ForClassification, self).__init__(config)\n        self.transformer = GPT2Model(config)\n        self.classifier = torch.nn.Linear(config.hidden_size, 8)\n        self.init_weights()\n\n    def forward(self, input_ids, attention_mask):\n        hidden_states = self.transformer(input_ids, attention_mask=attention_mask)[0]\n        pooled_output = hidden_states.mean(dim=1)\n        logits = self.classifier(pooled_output)\n        return logits\n\n# Load your training and validation data\ntrain_df = pd.read_csv('train.csv')\nval_df = pd.read_csv('val.csv')\n\n# Encode your text data into numerical representations using the tokenizer\ntrain_encodings = tokenizer(train_df['text'].tolist(), truncation=True, padding=True)\nval_encodings = tokenizer(val_df['text'].tolist(), truncation=True, padding=True)\n\n# Convert the encoded data into PyTorch tensors and move them to the GPU\ntrain_inputs = torch.tensor(train_encodings['input_ids']).to('cuda')\ntrain_masks = torch.tensor(train_encodings['attention_mask']).to('cuda')\ntrain_labels = torch.tensor(train_df['label'].tolist()).to('cuda')\n\nval_inputs = torch.tensor(val_encodings['input_ids']).to('cuda')\nval_masks = torch.tensor(val_encodings['attention_mask']).to('cuda')\nval_labels = torch.tensor(val_df['label'].tolist()).to('cuda')\n\n# Define your own GPT-2 model for classification\nmodel = GPT2ForClassification.from_pretrained('gpt2')\n\n# Define your optimizer and learning rate schedule\noptimizer = AdamW(model.parameters(), lr=5e-5)\nscheduler = get_linear_schedule_with_warmup(optimizer, num_warmup_steps=0, num_training_steps=len(train_inputs)*3)\n\n# Fine-tune the pre-trained GPT-2 model on your training data\nmodel.train()\nfor epoch in range(3):\n    for i in range(0, len(train_inputs), 32):\n        inputs = train_inputs[i:i+32]\n        masks = train_masks[i:i+32]\n        labels = train_labels[i:i+32]\n        \n        optimizer.zero_grad()\n        outputs = model(inputs, masks)\n        loss = torch.nn.functional.cross_entropy(outputs, labels)\n        loss.backward()\n        optimizer.step()\n        scheduler.step()\n\n# Evaluate the performance of your model on the validation set\nmodel.eval()\nval_outputs = model(val_inputs, val_masks)\nval_preds = torch.argmax(val_outputs, axis=1)\nval_acc = (val_preds == val_labels).float().mean()\n\n# Use your model to predict the labels of the news articles in the test data\ntest_df = pd.read_csv('test.csv')\ntest_encodings = tokenizer(test_df['text'].tolist(), truncation=True, padding=True)\ntest_inputs = torch.tensor(test_encodings['input_ids']).to('cuda')\ntest_masks = torch.tensor(test_encodings['attention_mask']).to('cuda')\n\nmodel.eval()\ntest_outputs = model(test_inputs, test_masks)\ntest_preds = torch.argmax\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.008,
+        "neu": 0.956,
+        "pos": 0.036,
+        "compound": 0.8016
+      },
+      "core_lexical": {
+        "self_ref_freq": 7,
+        "second_person_freq": 9,
+        "token_count": 586,
+        "self_ref_ratio": 0.011945392491467578,
+        "second_person_ratio": 0.015358361774744027
+      },
+      "lexical_features": {
+        "adj_adv_freq": 42,
+        "adj_adv_ratio": 0.07167235494880546,
+        "self_ref_freq": 7,
+        "self_ref_ratio": 0.011945392491467578,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.015358361774744027,
+        "token_count": 586
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 293.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5897435897435898
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VB": 4,
+            "VBN": 3,
+            "VBP": 29,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 10
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.37948333333333334,
+    "pos": 0.09075,
+    "neu": 0.9007499999999999,
+    "neg": 0.008583333333333333
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 110,
+    "adj_adv_ratio": 0.07115135834411385,
+    "self_ref_freq": 21,
+    "self_ref_ratio": 0.013583441138421734,
+    "second_person_freq": 45,
+    "second_person_ratio": 0.02910737386804657,
+    "total_tokens": 1546
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 35.93538647342995,
+      "clause_complexity": 0.0286231884057971,
+      "vocabulary_richness": 0.8319162705632069
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 2,
+        "how": 0,
+        "why": 0,
+        "can_could": 10,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 10,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 49,
+        "VB": 82,
+        "VBZ": 18,
+        "VBN": 13,
+        "VBG": 26
+      },
+      "named_entities": {
+        "PERSON": 2,
+        "GPE": 3,
+        "ORGANIZATION": 24
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 12
+    },
+    "turn_count": 12,
+    "total_tokens": 1546
+  }
+}

@@ -1,0 +1,722 @@
+{
+  "id": "kJYK2xq_109",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "This error occurs because the data type of the `snapshot_date` is `datetime64`, while the `days` value is of type `float64`, and they cannot be promoted to a common `DType`. To resolve this error, we can convert the `days` value to an integer using the `astype()` method.\n\nHere's the updated code:\n```python\nimport pandas as pd\nimport numpy as np\nimport datetime as dt\nfrom sklearn.cluster import KMeans\nfrom django.shortcuts import render\n\ndef cluster_analysis(request):\n    # Load the RFM data\n    data_raw = pd.read_excel('D:/Ram/DS/Pilot_Projects/Retail-Product/Ref/Data/Online Retail.xlsx', sheet_name='Online Retail', nrows=1000)\n\n    data = data_raw.copy()\n\n    # Create a new variable 'TotalSum'\n    data['TotalSum'] = data['UnitPrice'] * data['Quantity']\n\n    snapshot_date = max(data.InvoiceDate) + dt.timedelta(days=1)\n    rfm = data.groupby(['CustomerID'], as_index=False).agg({\n    'InvoiceDate': lambda x: (snapshot_date - x.max()).days.astype(int),\n    'InvoiceNo': 'count',\n    'TotalSum': 'sum'}).rename(columns = {'InvoiceDate': 'Recency', 'InvoiceNo': 'Frequency','TotalSum': 'MonetaryValue'})\n\n    # Perform K-means clustering with 5 clusters\n    kmeans = KMeans(n_clusters=5, random_state=1)\n    kmeans.fit(rfm[['Recency', 'Frequency', 'MonetaryValue']])\n\n    # Add the cluster labels to the RFM data\n    rfm['cluster'] = kmeans.labels_\n\n    # Calculate the mean RFM values for each cluster\n    cluster_means = rfm.groupby('cluster')[['Recency', 'Frequency', 'MonetaryValue']].mean()\n\n    # Render the cluster analysis template with the cluster means data\n    return render(request, 'cluster_analysis.html', {'cluster_means': cluster_means})\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.042,
+        "neu": 0.883,
+        "pos": 0.075,
+        "compound": 0.6644
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 338,
+        "self_ref_ratio": 0.0029585798816568047,
+        "second_person_ratio": 0.0029585798816568047
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.07396449704142012,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0029585798816568047,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0029585798816568047,
+        "token_count": 338
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 112.66666666666667,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.6666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 6,
+            "VB": 5,
+            "VBN": 1,
+            "VBG": 2,
+            "VBP": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 2,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Exception Type: AttributeError at /cluster\\_analysis/\nException Value: 'int' object has no attribute 'astype'",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.141,
+        "neu": 0.705,
+        "pos": 0.154,
+        "compound": 0.0516
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 17,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 17
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8571428571428571
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "This error is because the 'Recency' column in the `rfm` dataframe is of integer data type and doesn't have the `astype()` method. You can try converting it to a float data type before clustering. Here's the revised code:\n```python\nimport pandas as pd\nimport datetime as dt\nfrom sklearn.cluster import KMeans\n\ndef cluster_analysis(request):\n    # Load the RFM data\n    data_raw = pd.read_excel('D:/Ram/DS/Pilot_Projects/Retail-Product/Ref/Data/Online Retail.xlsx', sheet_name='Online Retail', nrows=1000)\n\n    data = data_raw[data_raw['InvoiceNo'].str.startswith('C') == False].drop_duplicates()\n\n    # Create a new variable 'TotalSum'\n    data['TotalSum'] = data['UnitPrice'] * data['Quantity']\n\n    snapshot_date = max(data.InvoiceDate) + dt.timedelta(days=1)\n    rfm = data.groupby(['CustomerID'],as_index=False).agg({\n    'InvoiceDate': lambda x: (snapshot_date - x.max()).days,\n    'InvoiceNo': 'count',\n    'TotalSum': 'sum'}).rename(columns = {'InvoiceDate': 'Recency', 'InvoiceNo': 'Frequency','TotalSum': 'MonetaryValue'})\n\n    # Convert 'Recency' to float data type\n    rfm['Recency'] = rfm['Recency'].astype(float)\n\n    # Perform K-means clustering with 5 clusters\n    kmeans = KMeans(n_clusters=5, random_state=1)\n    kmeans.fit(rfm[['Recency', 'Frequency', 'MonetaryValue']])\n\n    # Add the cluster labels to the RFM data\n    rfm['cluster'] = kmeans.labels_\n\n    # Calculate the mean RFM values for each cluster\n    cluster_means = rfm.groupby('cluster')[['Recency', 'Frequency', 'MonetaryValue']].mean()\n\n    # Render the cluster analysis template with the cluster means data\n    return render(request, 'cluster_analysis.html', {'cluster_means': cluster_means})\n```\nNote that the line `rfm['Recency'] = rfm['Recency'].astype(float)` converts the 'Recency' column to a float data type.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.014,
+        "neu": 0.961,
+        "pos": 0.025,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 374,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.00267379679144385
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.05614973262032086,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.00267379679144385,
+        "token_count": 374
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 124.66666666666667,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.5824175824175825
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 9,
+            "VB": 5,
+            "VBG": 3,
+            "VBP": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 4,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "snapshot\\_date = max(data.InvoiceDate) + dt.timedelta(days=1)\n\nException Type: ValueError at /cluster\\_analysis/\nException Value: max() arg is an empty sequence",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.089,
+        "neu": 0.792,
+        "pos": 0.119,
+        "compound": 0.1531
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 28,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.03571428571428571,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 28
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "It seems like the `InvoiceDate` column is not present in the `data_raw` dataframe or it does not have any values.\n\nYou can try printing the `data_raw` dataframe and checking if the `InvoiceDate` column is present and has non-null values. If it is not present, you need to check the column name in your data source and modify the code accordingly. If it has null values, you can drop those rows or fill the missing values with an appropriate value.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.072,
+        "neu": 0.784,
+        "pos": 0.144,
+        "compound": 0.7537
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 93,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.043010752688172046
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.12903225806451613,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.043010752688172046,
+        "token_count": 93
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.25,
+          "clause_complexity": 0.75,
+          "vocabulary_richness": 0.7352941176470589
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VB": 6,
+            "VBG": 2,
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Exception Type: TemplateSyntaxError at /cluster\\_analysis/\nException Value: Could not parse the remainder: '['Recency']' from 'values['Recency']'",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.854,
+        "pos": 0.146,
+        "compound": 0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 28,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.07142857142857142,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 28
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.875
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "This error occurs when Django's template language encounters an invalid syntax while parsing a template.\n\nTo fix this issue, you need to check the code in the template where the error is occurring and ensure that you are using the correct syntax for accessing the values. It seems like you might be trying to access the value of a dictionary key with the wrong syntax.\n\nFor example, if you have a dictionary `values` with a key `'Recency'`, the correct syntax to access its value in a Django template would be `{{ values.Recency }}`. Using square brackets like `{{ values['Recency'] }}` might result in a syntax error.\n\nDouble-check your template code and ensure that you are using the correct syntax to access values.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.078,
+        "neu": 0.761,
+        "pos": 0.161,
+        "compound": 0.872
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 6,
+        "token_count": 149,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.040268456375838924
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.08053691275167785,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.040268456375838924,
+        "token_count": 149
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.833333333333332,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.5483870967741935
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 2
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBG": 7,
+            "VB": 8,
+            "VBP": 5
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "verify my code and correct it",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 6,
+        "self_ref_ratio": 0.16666666666666666,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.16666666666666666,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, please share your code for me to review and help you correct it.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.513,
+        "pos": 0.487,
+        "compound": 0.8176
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 16,
+        "self_ref_ratio": 0.0625,
+        "second_person_ratio": 0.125
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.125,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0625,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.125,
+        "token_count": 16
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "def cluster\\_analysis(request):\n # Load the RFM data\n data\\_raw = pd.read\\_excel('D:/Ram/DS/Pilot\\_Projects/Retail-Product/Ref/Data/Online Retail.xlsx', sheet\\_name='Online Retail', nrows=1000)\n\n data\\_raw.drop\\_duplicates(inplace = True)\n\n # below code giving blank dataframe\n # data = data\\_raw[data\\_raw['InvoiceNo'].str.startswith('C') == False]\n \n data = data\\_raw[~data\\_raw.InvoiceNo.str.startswith('C', na=False)]\n \n\n data.to\\_csv(r\"D:\\Ram\\DS\\Pilot\\_Projects\\Retail-Product\\Django\\myproj\\data.csv\")\n\n # Create a new variable 'TotalSum'\n data['TotalSum'] = data['UnitPrice'] \\* data['Quantity']\n \n\n snapshot\\_date = max(data.InvoiceDate) + dt.timedelta(days=1)\n rfm = data.groupby(['CustomerID'],as\\_index=False).agg({\n 'InvoiceDate': lambda x: (snapshot\\_date - x.max()).days,\n 'InvoiceNo': 'count',\n 'TotalSum': 'sum'}).rename(columns = {'InvoiceDate': 'Recency', 'InvoiceNo': 'Frequency','TotalSum': 'MonetaryValue'})\n\n # Convert 'Recency' to float data type\n rfm['Recency'] = rfm['Recency'].astype(float)\n\n # Perform K-means clustering with 5 clusters\n kmeans = KMeans(n\\_clusters=5, random\\_state=1)\n kmeans.fit(rfm[['Recency', 'Frequency', 'MonetaryValue']])\n\n # Add the cluster labels to the RFM data\n rfm['cluster'] = kmeans.labels\\_\n\n # Calculate the mean RFM values for each cluster\n cluster\\_means = rfm.groupby('cluster')[['Recency', 'Frequency', 'MonetaryValue']].mean()\n\n # Render the cluster analysis template with the cluster means data\n return render(request, 'cluster\\_analysis.html', {'cluster\\_means': cluster\\_means})",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.929,
+        "pos": 0.071,
+        "compound": 0.8402
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 308,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.07142857142857142,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 308
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 308.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.640625
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VBG": 2,
+            "VBP": 4,
+            "VB": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 4,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Your code looks fine now. However, you might want to remove the nrows parameter from the pd.read\\_excel() function if you want to analyze the entire dataset. Additionally, you can consider using a try-except block to handle any exceptions that may arise during data processing.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.061,
+        "neu": 0.846,
+        "pos": 0.093,
+        "compound": -0.128
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 51,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0784313725490196
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.11764705882352941,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.0784313725490196,
+        "token_count": 51
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.9583333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 6,
+            "VBP": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.42161818181818184,
+    "pos": 0.13409090909090907,
+    "neu": 0.8207272727272727,
+    "neg": 0.04518181818181818
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 103,
+    "adj_adv_ratio": 0.07315340909090909,
+    "self_ref_freq": 3,
+    "self_ref_ratio": 0.002130681818181818,
+    "second_person_freq": 18,
+    "second_person_ratio": 0.01278409090909091,
+    "total_tokens": 1408
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 64.12878787878789,
+      "clause_complexity": 0.26515151515151514,
+      "vocabulary_richness": 0.7876242412710629
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 6,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 1,
+        "causality": 2,
+        "hedging": 4
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 34,
+        "VB": 38,
+        "VBN": 1,
+        "VBG": 17,
+        "VBP": 17
+      },
+      "named_entities": {
+        "ORGANIZATION": 12,
+        "PERSON": 13,
+        "GPE": 6
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 11
+    },
+    "turn_count": 11,
+    "total_tokens": 1408
+  }
+}

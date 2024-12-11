@@ -1,0 +1,503 @@
+{
+  "id": "d5coxeo_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Give a kivy gui for a dnd character sheet with experience points, progress bar, skill points (call them impulse points) and able to import an avatar",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.899,
+        "pos": 0.101,
+        "compound": 0.4215
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 30,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 30
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 30.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8888888888888888
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is a basic example of a Kivy GUI for a DND character sheet with experience points, a progress bar, and skill points (which I will refer to as \"impulse points\"):\n```\n# Import necessary modules\nimport kivy\nfrom kivy.app import App\nfrom kivy.uix.label import Label\nfrom kivy.uix.gridlayout import GridLayout\nfrom kivy.uix.textinput import TextInput\nfrom kivy.uix.button import Button\nfrom kivy.uix.image import Image\nfrom kivy.uix.progressbar import ProgressBar\n\n# Create a class for the character sheet\nclass CharacterSheet(GridLayout):\n    def __init__(self, **kwargs):\n        # Set the number of columns in the grid layout\n        super(CharacterSheet, self).__init__(cols=2, **kwargs)\n\n        # Add a label and text input for the character's name\n        self.add_widget(Label(text=\"Name: \"))\n        self.name = TextInput(multiline=False)\n        self.add_widget(self.name)\n\n        # Add a label and text input for the character's experience points\n        self.add_widget(Label(text=\"Experience Points: \"))\n        self.experience_points = TextInput(multiline=False)\n        self.add_widget(self.experience_points)\n\n        # Add a progress bar to show the character's progress towards the next level\n        self.add_widget(Label(text=\"Level Progress: \"))\n        self.level_progress = ProgressBar()\n        self.add_widget(self.level_progress)\n\n        # Add a label and text input for the character's impulse points\n        self.add_widget(Label(text=\"Impulse Points: \"))\n        self.impulse_points = TextInput(multiline=False)\n        self.add_widget(self.impulse_points)\n\n        # Add a button to import an avatar image\n        self.import_avatar_button = Button(text=\"Import Avatar\")\n        self.import_avatar_button.bind(on_press=self.import_avatar)\n        self.add_widget(self.import_avatar_button)\n\n        # Add an image widget to display the imported avatar\n        self.avatar = Image()\n        self.add_widget(self.avatar)\n\n    def import_avatar(self, instance):\n        # Add code here to open a file selection dialog and import the selected image file\n        pass\n\n# Create the main app class\nclass CharacterSheetApp(App):\n    def build(self):\n        return CharacterSheet()\n\n# Run the app\nif __name__ == \"__main__\":\n    CharacterSheetApp().run()\n```\nThis code creates a character sheet with text input fields for the character's name, experience points, and impulse points, as well as a progress bar to show the character's progress towards the next level. It also includes a button to import an avatar image, which will be displayed in an `Image` widget.\n\nNote that the `import_avatar` function currently does not do anything, so you will need to add code to open a file selection dialog and import the selected image file. You can use the `kivy.uix.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.922,
+        "pos": 0.078,
+        "compound": 0.9702
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 475,
+        "self_ref_ratio": 0.002105263157894737,
+        "second_person_ratio": 0.004210526315789474
+      },
+      "lexical_features": {
+        "adj_adv_freq": 33,
+        "adj_adv_ratio": 0.06947368421052631,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.002105263157894737,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.004210526315789474,
+        "token_count": 475
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 118.75,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.3862433862433862
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 15,
+            "VBP": 2,
+            "VBN": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "GPE": 6,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Import the import\\_avatar functionality",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 4,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 4
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 4.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To import an avatar image in the `import_avatar` function, you can use the `kivy.uix.filechooser.FileChooserController` class to open a file selection dialog and allow the user to select an image file. Here is an example of how you could modify the `import_avatar` function to do this:\n```\nfrom kivy.uix.filechooser import FileChooserController\n\nclass CharacterSheet(GridLayout):\n    # ...\n\n    def import_avatar(self, instance):\n        # Open a file selection dialog\n        file_chooser = FileChooserController()\n        file_chooser.open()\n\n        # Get the selected file path\n        file_path = file_chooser.selection[0]\n\n        # Load the selected image file\n        self.avatar.source = file_path\n```\nThis code opens a file selection dialog using the `FileChooserController` class and gets the selected file path. It then sets the `source` attribute of the `avatar` `Image` widget to the selected file path, which will display the selected image in the widget.\n\nNote that this code assumes that the user has selected a single file, and it will raise an exception if no file is selected or multiple files are selected. You may want to add additional error handling to handle these cases.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.028,
+        "neu": 0.953,
+        "pos": 0.018,
+        "compound": -0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 210,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.014285714285714285
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.03333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.014285714285714285,
+        "token_count": 210
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 42.0,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.5795454545454546
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 15,
+            "VBZ": 7,
+            "VBP": 2,
+            "VBN": 8,
+            "VBD": 1,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Combine the 2 code snippets",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is the complete code combining the two snippets:\n```\nimport kivy\nfrom kivy.app import App\nfrom kivy.uix.label import Label\nfrom kivy.uix.gridlayout import GridLayout\nfrom kivy.uix.textinput import TextInput\nfrom kivy.uix.button import Button\nfrom kivy.uix.image import Image\nfrom kivy.uix.progressbar import ProgressBar\nfrom kivy.uix.filechooser import FileChooserController\n\nclass CharacterSheet(GridLayout):\n    def __init__(self, **kwargs):\n        super(CharacterSheet, self).__init__(cols=2, **kwargs)\n\n        self.add_widget(Label(text=\"Name: \"))\n        self.name = TextInput(multiline=False)\n        self.add_widget(self.name)\n\n        self.add_widget(Label(text=\"Experience Points: \"))\n        self.experience_points = TextInput(multiline=False)\n        self.add_widget(self.experience_points)\n\n        self.add_widget(Label(text=\"Level Progress: \"))\n        self.level_progress = ProgressBar()\n        self.add_widget(self.level_progress)\n\n        self.add_widget(Label(text=\"Impulse Points: \"))\n        self.impulse_points = TextInput(multiline=False)\n        self.add_widget(self.impulse_points)\n\n        self.import_avatar_button = Button(text=\"Import Avatar\")\n        self.import_avatar_button.bind(on_press=self.import_avatar)\n        self.add_widget(self.import_avatar_button)\n\n        self.avatar = Image()\n        self.add_widget(self.avatar)\n\n    def import_avatar(self, instance):\n        file_chooser = FileChooserController()\n        file_chooser.open()\n        file_path = file_chooser.selection[0]\n        self.avatar.source = file_path\n\nclass CharacterSheetApp(App):\n    def build(self):\n        return CharacterSheet()\n\nif __name__ == \"__main__\":\n    CharacterSheetApp().run()\n```\nThis code creates a character sheet with text input fields for the character's name, experience points, and impulse points, as well as a progress bar to show the character's progress towards the next level. It also includes a button to import an avatar image, which will be displayed in an `Image` widget when the button is pressed. When the button is pressed, a file selection dialog is opened using the `FileChooserController` class, and the selected image file is loaded and displayed in the `avatar` `Image` widget.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.939,
+        "pos": 0.061,
+        "compound": 0.891
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 350,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.06285714285714286,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 350
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 116.66666666666667,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.4827586206896552
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VBG": 2,
+            "VBN": 9,
+            "VBP": 2,
+            "VB": 5,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "GPE": 6,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Add error handling",
+      "language": "da",
+      "sentiment": {
+        "neg": 0.574,
+        "neu": 0.426,
+        "pos": 0.0,
+        "compound": -0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To add error handling to the `import_avatar` function, you can check the length of the `selection` attribute of the `FileChooserController` object to see if a file was actually selected. If no file was selected, you can display an error message to the user. If multiple files were selected, you can display a warning message to the user and only use the first selected file.\n\nHere is an example of how you could modify the `import_avatar` function to add this error handling:\n```\nimport kivy\nfrom kivy.app import App\nfrom kivy.uix.label import Label\nfrom kivy.uix.gridlayout import GridLayout\nfrom kivy.uix.textinput import TextInput\nfrom kivy.uix.button import Button\nfrom kivy.uix.image import Image\nfrom kivy.uix.progressbar import ProgressBar\nfrom kivy.uix.filechooser import FileChooserController\nfrom kivy.uix.popup import Popup\n\nclass CharacterSheet(GridLayout):\n    def __init__(self, **kwargs):\n        super(CharacterSheet, self).__init__(cols=2, **kwargs)\n\n        self.add_widget(Label(text=\"Name: \"))\n        self.name = TextInput(multiline=False)\n        self.add_widget(self.name)\n\n        self.add_widget(Label(text=\"Experience Points: \"))\n        self.experience_points = TextInput(multiline=False)\n        self.add_widget(self.experience_points)\n\n        self.add_widget(Label(text=\"Level Progress: \"))\n        self.level_progress = ProgressBar()\n        self.add_widget(self.level_progress)\n\n        self.add_widget(Label(text=\"Impulse Points: \"))\n        self.impulse_points = TextInput(multiline=False)\n        self.add_widget(self.impulse_points)\n\n        self.import_avatar_button = Button(text=\"Import Avatar\")\n        self.import_avatar_button.bind(on_press=self.import_avatar)\n        self.add_widget(self.import_avatar_button)\n\n        self.avatar = Image()\n        self.add_widget(self.avatar)\n\n    def import_avatar(self, instance):\n        file_chooser = FileChooserController()\n        file_chooser.open()\n\n        # Check if a file was selected\n        if not file_chooser.selection:\n            # Display an error message if no file was selected\n            error_popup = Popup(title=\"Error\", content=Label(text=\"No file was selected\"), size_hint=(None, None), size=(400, 200))\n            error_popup.open()\n            return\n\n        # Check if multiple files were selected\n        if len(file_chooser.selection) > 1:\n            # Display a warning message if multiple files were selected and only use the first file\n            warning_popup = Popup(title=\"Warning\", content=Label(text=\"Multiple files were selected. Only the first file will be used.\"), size_hint=(None, None), size=(400, 200))\n            warning_popup.open()\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.077,
+        "neu": 0.913,
+        "pos": 0.011,
+        "compound": -0.9395
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 433,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.009237875288683603
+      },
+      "lexical_features": {
+        "adj_adv_freq": 29,
+        "adj_adv_ratio": 0.06697459584295612,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.009237875288683603,
+        "token_count": 433
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 72.16666666666667,
+          "clause_complexity": 1.5,
+          "vocabulary_richness": 0.4148148148148148
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 11,
+            "VBG": 2,
+            "VBD": 9,
+            "VBN": 13,
+            "VBZ": 3,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "GPE": 8,
+            "PERSON": 4
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.06742500000000001,
+    "pos": 0.033624999999999995,
+    "neu": 0.8815,
+    "neg": 0.08487499999999999
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 94,
+    "adj_adv_ratio": 0.062375580623755804,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0006635700066357001,
+    "second_person_freq": 9,
+    "second_person_ratio": 0.005972130059721301,
+    "total_tokens": 1507
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 55.511904761904766,
+      "clause_complexity": 0.42142857142857143,
+      "vocabulary_richness": 0.6788930235974571
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 2,
+        "why": 0,
+        "can_could": 7,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 2
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 50,
+        "VBZ": 22,
+        "VBP": 8,
+        "VBN": 32,
+        "VBD": 11,
+        "VBG": 6
+      },
+      "named_entities": {
+        "ORGANIZATION": 27,
+        "GPE": 20,
+        "PERSON": 10
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 7,
+      "da": 1
+    },
+    "turn_count": 8,
+    "total_tokens": 1507
+  }
+}

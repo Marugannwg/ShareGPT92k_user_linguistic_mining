@@ -1,0 +1,171 @@
+{
+  "id": "5WGlyC6_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Good morning",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.256,
+        "pos": 0.744,
+        "compound": 0.4404
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 2,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.5,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 2
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 2.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Good morning! How can I assist you today?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.687,
+        "pos": 0.313,
+        "compound": 0.4926
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 10,
+        "self_ref_ratio": 0.1,
+        "second_person_ratio": 0.1
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.1,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.4665,
+    "pos": 0.5285,
+    "neu": 0.47150000000000003,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 2,
+    "adj_adv_ratio": 0.16666666666666666,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.08333333333333333,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.08333333333333333,
+    "total_tokens": 12
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 3.5,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 1.0
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 1,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 1
+      },
+      "named_entities": {
+        "GPE": 2
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 12
+  }
+}

@@ -1,0 +1,365 @@
+{
+  "id": "V3MF1wN_11",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Certainly! Here is an example of how you could create an HTML form that includes a button that, when clicked, initiates the process of adding a new contact to the user's default address book application:\n```\n<!DOCTYPE html>\n<html>\n  <body>\n    <form>\n      <label for=\"name\">Name:</label><br>\n      <input type=\"text\" id=\"name\" value=\"Joe Gleason\"><br>\n      <label for=\"phone\">Phone:</label><br>\n      <input type=\"tel\" id=\"phone\" value=\"810-580-9197\"><br>\n      <label for=\"email\">Email:</label><br>\n      <input type=\"email\" id=\"email\" value=\"Jgleason68@gmail.com\"><br>\n      <label for=\"description\">Description:</label><br>\n      <input type=\"text\" id=\"description\" value=\"This is Joe with Genus\"><br><br>\n      <button type=\"button\" onclick=\"addContact()\">Add Contact</button>\n    </form> \n  </body>\n</html>\n```\nThis code defines an HTML form with input fields for the contact name, phone number, email address, and description, as well as a button that, when clicked, will call the `addContact()` function. You can then define the `addContact()` function in JavaScript to extract the values from the form inputs and initiate the process of adding the contact to the address book:\n```\nfunction addContact() {\n  // Get the form input values\n  const name = document.getElementById('name').value;\n  const phone = document.getElementById('phone').value;\n  const email = document.getElementById('email').value;\n  const description = document.getElementById('description').value;\n\n  // Create a new contact using the Web Contacts API\n  const contact = new Contact();\n  contact.name = new ContactName(null, name.split(' ')[1], name.split(' ')[0]);\n  contact.phoneNumbers = [new ContactField('mobile', phone)];\n  contact.emails = [new ContactField('personal', email)];\n  contact.description = description;\n\n  // Save the contact\n  contact.save().then(\n    () => console.log('Contact saved!', contact),\n    (error: any) => console.error('Error saving contact.', error)\n  );\n}\n```\nKeep in mind that this example uses the Web Contacts API, which is an experimental API that is not widely supported by web browsers. It may not work in all browsers, and is not available on mobile devices.\n\nI hope this helps! Let me know if you have any other questions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.025,
+        "neu": 0.878,
+        "pos": 0.097,
+        "compound": 0.959
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 533,
+        "self_ref_ratio": 0.00375234521575985,
+        "second_person_ratio": 0.005628517823639775
+      },
+      "lexical_features": {
+        "adj_adv_freq": 36,
+        "adj_adv_ratio": 0.0675422138836773,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.00375234521575985,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.005628517823639775,
+        "token_count": 533
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 66.625,
+          "clause_complexity": 0.375,
+          "vocabulary_richness": 0.47928994082840237
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 9,
+            "VB": 12,
+            "VBN": 4,
+            "VBG": 4,
+            "VBP": 14
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "PERSON": 6
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can you help me create an app that would update the address book on iphone",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.73,
+        "pos": 0.27,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 15,
+        "self_ref_ratio": 0.06666666666666667,
+        "second_person_ratio": 0.06666666666666667
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.06666666666666667,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.06666666666666667,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! Here is an example of how you could create an app that updates the address book on an iOS device using the `Contacts` framework:\n\n1. First, you will need to create a new project in Xcode, the Integrated Development Environment (IDE) for iOS development.\n2. In your project's `ViewController` class, import the `Contacts` framework and add a method to update a contact in the address book:\n```\nimport UIKit\nimport Contacts\n\nclass ViewController: UIViewController {\n  func updateContact() {\n    // Fetch the contact to be updated\n    let store = CNContactStore()\n    let contactId = \"YOUR_CONTACT_ID\"\n    let keysToFetch = [CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey]\n    let contact = try! store.unifiedContact(withIdentifier: contactId, keysToFetch: keysToFetch)\n\n    // Update the contact's phone number\n    let newPhoneNumber = CNPhoneNumber(stringValue: \"123-456-7890\")\n    let newPhoneNumberLabel = CNLabeledValue(label: CNLabelPhoneNumberMobile, value: newPhoneNumber)\n    contact.phoneNumbers = [newPhoneNumberLabel]\n\n    // Save the updated contact\n    let request = CNSaveRequest()\n    request.update(contact)\n    try! store.execute(request)\n  }\n}\n```\n1. Add a button to your app's user interface, and configure it to call the `updateContact()` method when it is tapped:\n```\nclass ViewController: UIViewController {\n  @IBOutlet weak var updateButton: UIButton!\n\n  override func viewDidLoad() {\n    super.viewDidLoad()\n    updateButton.addTarget(self, action: #selector(updateContact), for: .touchUpInside)\n  }\n\n  // The updateContact() method goes here\n}\n```\n1. Finally, don't forget to include the `Contacts` framework in your app's `Info.plist` file and request permission from the user to access their contacts. You can do this by adding a `NSContactsUsageDescription` key to your `Info.plist` file and providing a reason for why your app needs access to the user's contacts.\n\nI hope this helps! Let me know if you have any other questions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.011,
+        "neu": 0.908,
+        "pos": 0.081,
+        "compound": 0.9463
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 9,
+        "token_count": 368,
+        "self_ref_ratio": 0.005434782608695652,
+        "second_person_ratio": 0.024456521739130436
+      },
+      "lexical_features": {
+        "adj_adv_freq": 28,
+        "adj_adv_ratio": 0.07608695652173914,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.005434782608695652,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.024456521739130436,
+        "token_count": 368
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.307692307692307,
+          "clause_complexity": 0.15384615384615385,
+          "vocabulary_richness": 0.6158940397350994
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 1,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VB": 23,
+            "VBG": 3,
+            "VBN": 3,
+            "VBP": 5
+          },
+          "named_entities": {
+            "ORGANIZATION": 16,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "would this allow me add entries to the user phone book,",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.84,
+        "pos": 0.16,
+        "compound": 0.2263
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 12,
+        "self_ref_ratio": 0.08333333333333333,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.08333333333333333,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, the code example I provided earlier demonstrates how you can use the `Contacts` framework to add new entries to the user's address book on an iOS device.\n\nTo add a new contact, you can create a new `CNContact` object and populate it with the desired contact information, then use the `CNContactStore` class to save the contact to the device. Here is an example of how you could do this:\n```\nimport Contacts\n\nfunc addContact() {\n  // Create a new Contact object\n  let contact = CNMutableContact()\n  contact.givenName = \"Joe\"\n  contact.familyName = \"Gleason\"\n  contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: \"810-580-9197\"))]\n  contact.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: \"jgleason68@gmail.com\" as NSString)]\n  contact.note = \"This is Joe with Genus\"\n\n  // Save the contact\n  let store = CNContactStore()\n  let saveRequest = CNSaveRequest()\n  saveRequest.add(contact, toContainerWithIdentifier: nil)\n  try! store.execute(saveRequest)\n}\n```\nKeep in mind that you will need to include the `Contacts` framework in your app's `Info.plist` file and request permission from the user to access their contacts. You can do this by adding a `NSContactsUsageDescription` key to your `Info.plist` file and providing a reason for why your app needs access to the user's contacts.\n\nI hope this helps! Let me know if you have any other questions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.877,
+        "pos": 0.123,
+        "compound": 0.9741
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 9,
+        "token_count": 278,
+        "self_ref_ratio": 0.01079136690647482,
+        "second_person_ratio": 0.03237410071942446
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.08633093525179857,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.01079136690647482,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.03237410071942446,
+        "token_count": 278
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 39.714285714285715,
+          "clause_complexity": 0.14285714285714285,
+          "vocabulary_richness": 0.6666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 1,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VBZ": 4,
+            "VB": 17,
+            "VBN": 1,
+            "VBP": 6,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 4
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.7383200000000001,
+    "pos": 0.1462,
+    "neu": 0.8465999999999999,
+    "neg": 0.007200000000000001
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 88,
+    "adj_adv_ratio": 0.07296849087893864,
+    "self_ref_freq": 9,
+    "self_ref_ratio": 0.007462686567164179,
+    "second_person_freq": 22,
+    "second_person_ratio": 0.01824212271973466,
+    "total_tokens": 1206
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 32.3293956043956,
+      "clause_complexity": 0.13434065934065936,
+      "vocabulary_richness": 0.7523701294460337
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 4,
+        "why": 2,
+        "can_could": 9,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 3
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 18,
+        "VB": 57,
+        "VBN": 8,
+        "VBG": 9,
+        "VBP": 25,
+        "VBD": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 30,
+        "PERSON": 10,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 5
+    },
+    "turn_count": 5,
+    "total_tokens": 1206
+  }
+}

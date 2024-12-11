@@ -1,0 +1,130 @@
+{
+  "id": "AoTGK6x_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "blub",
+      "language": "da",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I'm sorry, I don't understand what you mean by \"blub.\" Could you please provide more context or clarify your question?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.06,
+        "neu": 0.833,
+        "pos": 0.106,
+        "compound": 0.25
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 27,
+        "self_ref_ratio": 0.07407407407407407,
+        "second_person_ratio": 0.1111111111111111
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.07407407407407407,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.1111111111111111,
+        "token_count": 27
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VB": 3
+          },
+          "named_entities": {}
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.125,
+    "pos": 0.053,
+    "neu": 0.9165,
+    "neg": 0.03
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 3,
+    "adj_adv_ratio": 0.1111111111111111,
+    "self_ref_freq": 2,
+    "self_ref_ratio": 0.07407407407407407,
+    "second_person_freq": 3,
+    "second_person_ratio": 0.1111111111111111,
+    "total_tokens": 27
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 13.5,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 1.0
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 4,
+        "VB": 3
+      },
+      "named_entities": {}
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "da": 1,
+      "en": 1
+    },
+    "turn_count": 2,
+    "total_tokens": 27
+  }
+}

@@ -1,0 +1,741 @@
+{
+  "id": "kpbFxvR_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "explain ELK mappings",
+      "language": "tl",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "ELK (Elasticsearch, Logstash, Kibana) is a collection of open-source tools used for log analysis and visualization. In ELK, mappings refer to the way in which data is indexed and stored in Elasticsearch. They define how fields in the documents should be treated, such as their data types, whether they are searchable, and if they should be included in the \\_source field. Mapping also defines the analyzers and filters that are used for full-text search. Creating appropriate mappings is important for ensuring that data can be searched and analyzed efficiently in Elasticsearch.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.908,
+        "pos": 0.092,
+        "compound": 0.7783
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 104,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.07692307692307693,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 104
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.8,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.8444444444444444
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBN": 7,
+            "VBP": 4,
+            "VB": 3,
+            "VBG": 2
+          },
+          "named_entities": {
+            "GPE": 5,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "how to check the mappings of a particular index",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "In Elasticsearch, you can check the mappings of a particular index by using the `GET` request on the `_mapping` endpoint for that index. The endpoint should be in the following format: `<elasticsearch_url>/<index_name>/_mapping`.\n\nYou can also check the mapping for all the indexes by sending a `GET` request to `<elasticsearch_url>/_mapping`\n\nYou can also use the API provided by kibana, on kibana's dev tools, by sending a GET request to the same endpoints.\n\nYou can also use the command-line tool `curl` to check the mappings of a particular index by running the following command:\n```\ncurl -X GET <elasticsearch_url>/<index_name>/_mapping\n```\nFor example, if your Elasticsearch server is running on `http://localhost:9200` and the index you want to check the mappings for is called `myindex`, you would run the following command:\n```\ncurl -X GET http://localhost:9200/myindex/_mapping\n```\nThis will return a JSON object containing the mappings for the `myindex` index.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.991,
+        "pos": 0.009,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 7,
+        "token_count": 202,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.034653465346534656
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.06435643564356436,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.034653465346534656,
+        "token_count": 202
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 50.5,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.5428571428571428
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 14,
+            "VBG": 10,
+            "VBN": 2,
+            "VBP": 2,
+            "VBZ": 2
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can i change the mapping of an index ?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, you can change the mapping of an index in Elasticsearch. However, it's worth noting that changing the mapping of an existing index can have implications on the data stored in it and on your existing queries and visualizations.\n\nTo change the mapping of an index, you can use the `PUT` request on the `_mapping` endpoint for that index. The endpoint should be in the following format: `<elasticsearch_url>/<index_name>/_mapping`.\nYou should provide the new mapping in the request body in JSON format.\n\nIt is also important to note that, Changing the mapping of a field that already contains data will cause Elasticsearch to reindex the entire field. This can be a time-consuming process and may cause a significant amount of indexing and query performance degradation, it's recommended to create a new index with the desired mapping and reindex the data from the old index to the new index.\n\nYou can also use the command-line tool `curl` to change the mapping of an index by running the following command:\n```\ncurl -X PUT <elasticsearch_url>/<index_name>/_mapping -H 'Content-Type: application/json' -d '<new_mapping_json>'\n```\nFor example, if your Elasticsearch server is running on `http://localhost:9200`, the index you want to change the mapping for is called `myindex` and you want to update the mapping to include a new field called `newfield`, you would run the following command:\n```\ncurl -X PUT http://localhost:9200/myindex/_mapping -H 'Content-Type: application/json' -d '{\"properties\": {\"newfield\": {\"type\": \"text\"}}}'\n```\nThis will update the mapping for the `myindex` index to include a new field called `newfield` with the data type of `text`.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.013,
+        "neu": 0.924,
+        "pos": 0.063,
+        "compound": 0.8126
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 9,
+        "token_count": 346,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.02601156069364162
+      },
+      "lexical_features": {
+        "adj_adv_freq": 28,
+        "adj_adv_ratio": 0.08092485549132948,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.02601156069364162,
+        "token_count": 346
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 43.25,
+          "clause_complexity": 0.125,
+          "vocabulary_richness": 0.512
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 5,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 24,
+            "VBZ": 6,
+            "VBG": 9,
+            "VBN": 6,
+            "VBP": 2
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "difference between put and post in Elasticsearch query ?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "In Elasticsearch, the `PUT` and `POST` methods are used to create or update documents in an index. However, there are some differences in how they are used and what they do.\n\nThe `PUT` method is used to create a new document or update an existing one at a specific location. When you use `PUT`, you need to specify the unique `_id` of the document in the endpoint. If a document with the same `_id` already exists, it will be replaced by the new document. If the document does not exist, it will be created.\n\nThe `POST` method is used to create a new document in an index. When you use `POST`, Elasticsearch will automatically assign a unique `_id` to the new document. If a document with the same `_id` already exists, it will be updated.\n\nIn summary, `PUT` is used to create a new document or update an existing one, specifying the unique `_id`, while `POST` is used to create a new document and let Elasticsearch to generate the unique `_id` for it.\n\nAnother important thing to note is that, `PUT` request is idempotent, which means that sending the same `PUT` request multiple times will have the same effect as sending it once, whereas `POST` request is not idempotent. This means that sending the same `POST` request multiple times will create multiple documents with different `_id`s.\n\nIt's also worth noting that, for updating a document, it's recommended to use the Update API that uses a `POST` request, by specifying the `_update` endpoint and providing the partial update in the request body.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.926,
+        "pos": 0.074,
+        "compound": 0.9337
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 335,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.008955223880597015
+      },
+      "lexical_features": {
+        "adj_adv_freq": 40,
+        "adj_adv_ratio": 0.11940298507462686,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.008955223880597015,
+        "token_count": 335
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.76923076923077,
+          "clause_complexity": 0.46153846153846156,
+          "vocabulary_richness": 0.4603174603174603
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 25,
+            "VBP": 7,
+            "VBN": 10,
+            "VBZ": 15,
+            "VBG": 10
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can i export these chats as a document ?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "It depends on the platform you are using to interact with me. Some platforms may provide an option to export the conversation as a document, while others may not.\n\nIf the platform you are using does not provide an option to export the conversation, you can copy and paste the text of the conversation into a document manually. If you need to export the conversation in a specific format, such as PDF or Word, you can use a text editor or word processing software to open the copied text and then save the document in the desired format.\n\nIf the platform you are using provides an option to export the conversation, you can check the settings or documentation to find out how to do it.\n\nPlease let me know if you need help with anything else.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.928,
+        "pos": 0.072,
+        "compound": 0.8519
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 8,
+        "token_count": 147,
+        "self_ref_ratio": 0.013605442176870748,
+        "second_person_ratio": 0.05442176870748299
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.061224489795918366,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.013605442176870748,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.05442176870748299,
+        "token_count": 147
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.5,
+          "clause_complexity": 0.8333333333333334,
+          "vocabulary_richness": 0.6451612903225806
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBP": 5,
+            "VBG": 3,
+            "VB": 18
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can you please elaborate what is idempotent",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.723,
+        "pos": 0.277,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 7,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.14285714285714285
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.14285714285714285,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.14285714285714285,
+        "token_count": 7
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 7.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure. In computer science, idempotence is a property of an operation where applying the operation multiple times has the same effect as applying it once. In other words, an idempotent operation is one that can be repeated any number of times without changing the result.\n\nFor example, if you perform a `GET` request to retrieve a resource, it does not change the state of the resource or the server, so performing the same `GET` request multiple times will always return the same result. The `GET` request is said to be idempotent.\n\nAnother example, in database systems, operations such as `SELECT`, `READ` are considered idempotent, because they do not change the state of the data they retrieve, so they can be executed multiple times without changing the data.\n\nOn the other hand, operations such as `INSERT`, `UPDATE`, `DELETE` are not idempotent, because they change the state of the data, so executing them multiple times will have different effects.\n\nIn HTTP, for example, the `GET` method is idempotent, meaning that multiple identical requests should have the same effect as a single request, whereas `POST`, `PUT` and `DELETE` methods are not idempotent, as they change the state of the server.\n\nIdempotence is an important property in distributed systems, it helps to avoid unwanted side-effects, and makes the system more predictable and robust.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.018,
+        "neu": 0.922,
+        "pos": 0.061,
+        "compound": 0.83
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 275,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0036363636363636364
+      },
+      "lexical_features": {
+        "adj_adv_freq": 36,
+        "adj_adv_ratio": 0.13090909090909092,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0036363636363636364,
+        "token_count": 275
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 30.555555555555557,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.6
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 4,
+            "contrast": 0,
+            "causality": 2,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 9,
+            "VBG": 7,
+            "VB": 15,
+            "VBN": 3,
+            "VBP": 8,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.3834916666666666,
+    "pos": 0.05399999999999999,
+    "neu": 0.9435000000000002,
+    "neg": 0.0025833333333333333
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 136,
+    "adj_adv_ratio": 0.09366391184573003,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.0027548209366391185,
+    "second_person_freq": 29,
+    "second_person_ratio": 0.01997245179063361,
+    "total_tokens": 1452
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 21.67043512043512,
+      "clause_complexity": 0.2002913752913753,
+      "vocabulary_richness": 0.7822527579946935
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 2,
+        "how": 4,
+        "why": 0,
+        "can_could": 18,
+        "general": 3
+      },
+      "discourse_markers": {
+        "elaboration": 8,
+        "contrast": 2,
+        "causality": 2,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 40,
+        "VBN": 28,
+        "VBP": 28,
+        "VB": 105,
+        "VBG": 41,
+        "VBD": 1
+      },
+      "named_entities": {
+        "GPE": 11,
+        "ORGANIZATION": 9,
+        "PERSON": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "tl": 1,
+      "en": 11
+    },
+    "turn_count": 12,
+    "total_tokens": 1452
+  }
+}

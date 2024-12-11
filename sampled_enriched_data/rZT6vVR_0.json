@@ -1,0 +1,436 @@
+{
+  "id": "rZT6vVR_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Need you act as a senior developer. \nwe use AWS, angular with EC2. We have a coaching tool that places images on screen of particpants and uses webRTC for communications, we will aso be adding lines from twilio for VOIP.\n\nwe currently have API for google and have trasncription working. and use GPT to analyze call. \n\nI have a few questions",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 5,
+        "second_person_freq": 5,
+        "token_count": 68,
+        "self_ref_ratio": 0.07352941176470588,
+        "second_person_ratio": 0.07352941176470588
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.058823529411764705,
+        "self_ref_freq": 5,
+        "self_ref_ratio": 0.07352941176470588,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.07352941176470588,
+        "token_count": 68
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.333333333333334,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.96875
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 6,
+            "VBZ": 2,
+            "VB": 4,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 6
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Of course, I'll be glad to help you as a senior developer with your questions related to AWS, Angular, EC2, WebRTC, Twilio, and GPT. Please feel free to ask your questions and I'll do my best to provide you with the information you need.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.716,
+        "pos": 0.284,
+        "compound": 0.9382
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 5,
+        "token_count": 54,
+        "self_ref_ratio": 0.05555555555555555,
+        "second_person_ratio": 0.09259259259259259
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.05555555555555555,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.05555555555555555,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.09259259259259259,
+        "token_count": 54
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 27.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9545454545454546
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBN": 2,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4,
+            "PERSON": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "We would like to give the moderator (care coach) the option to use their built in PC system or a service like google. \n\nthe question i have is if the participant, a patient is using a mobile device, we find the webspeech not to be stable. can the care coach, perosn on the PC, take the inbound webrtc signal from the patient and run it thorugh their local pc to transcription ?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.024,
+        "neu": 0.834,
+        "pos": 0.142,
+        "compound": 0.8595
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 2,
+        "token_count": 80,
+        "self_ref_ratio": 0.0375,
+        "second_person_ratio": 0.025
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.05,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.0375,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.025,
+        "token_count": 80
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.666666666666668,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.8378378378378378
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBN": 1,
+            "VBP": 2,
+            "VBZ": 2,
+            "VBG": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, it is possible for the care coach (moderator) to take the inbound WebRTC audio stream from the patient (participant) and process it through their local PC for transcription using the Web Speech API or another service like Google Cloud Speech-to-Text. Here's an outline of how you could implement this:\n\n1. Establish a WebRTC connection between the care coach's PC and the patient's mobile device.\n2. Capture the inbound audio stream from the patient's device at the care coach's PC.\n3. Process the captured audio stream through the Web Speech API or another transcription service (such as Google Cloud Speech-to-Text) on the care coach's PC.\n4. Display the transcription results to the care coach in real-time.\n\nKeep in mind that using the Web Speech API on the care coach's PC might still be subject to the same browser compatibility limitations mentioned earlier. If you decide to use a service like Google Cloud Speech-to-Text, you'll need to configure the care coach's PC to stream the audio data to the service, receive the transcription results, and display them in real-time.\n\nIt's worth noting that processing the audio stream and transcription on the care coach's PC could increase the load on their system, potentially affecting performance. Be sure to test this implementation thoroughly to ensure it works smoothly across different devices and network conditions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.828,
+        "pos": 0.172,
+        "compound": 0.9904
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 257,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.011673151750972763
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.07003891050583658,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.011673151750972763,
+        "token_count": 257
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 19.76923076923077,
+          "clause_complexity": 0.07692307692307693,
+          "vocabulary_richness": 0.5746268656716418
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 3
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 17,
+            "VBG": 5,
+            "VBN": 1,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "PERSON": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I am guessing there is a code check we can perform to see if the PC an handle transcriptoin. \n\nUsing angular how would we do the following\ncheck to see if it's available and working \ncapture inbound audio and convert to text as well as the carecoach",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.956,
+        "pos": 0.044,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 2,
+        "token_count": 49,
+        "self_ref_ratio": 0.061224489795918366,
+        "second_person_ratio": 0.04081632653061224
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.12244897959183673,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.061224489795918366,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.04081632653061224,
+        "token_count": 49
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.5,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.9130434782608695
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBG": 3,
+            "VBZ": 2,
+            "VB": 5
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To check if the Web Speech API is available and working in Angular, you can create a simple utility function that verifies the presence of the required API interfaces. Here's an example of how you might implement this in Angular:\n```typescript\nimport { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class SpeechRecognitionService {\n  isSpeechRecognitionAvailable(): boolean {\n    return 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;\n  }\n}\n```\nThis `isSpeechRecognitionAvailable` function checks if either `webkitSpeechRecognition` or `SpeechRecognition` is present in the `window` object, returning `true` if either is available, and `false` otherwise.\n\nTo capture inbound audio and transcribe both the care coach's and the patient's voices using the Web Speech API, you can follow these steps:\n\n1. Obtain the remote audio stream from the patient's device via WebRTC.\n2. Create an `AudioContext` and connect the remote audio stream to it.\n3. Create a `MediaStreamAudioSourceNode` to use the remote audio stream as an audio source.\n4. Set up the `SpeechRecognition` object with proper event listeners for `result` and `error` events.\n\nHere's an example of how you might implement this in Angular:\n```typescript\nimport { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class SpeechRecognitionService {\n  private recognition: any;\n\n  constructor() {\n    if ('webkitSpeechRecognition' in window) {\n      this.recognition = new webkitSpeechRecognition();\n    } else if ('SpeechRecognition' in window) {\n      this.recognition = new SpeechRecognition();\n    }\n\n    if (this.recognition) {\n      this.recognition.continuous = true;\n      this.recognition.interimResults = true;\n      this.recognition.lang = 'en-US'; // Set the language you want to use\n    }\n  }\n\n  isSpeechRecognitionAvailable(): boolean {\n    return !!this.recognition;\n  }\n\n  startRecognition(remoteStream: MediaStream): void {\n    if (!this.recognition) {\n      console.error('SpeechRecognition is not available.');\n      return;\n    }\n\n    const audioContext = new AudioContext();\n    const source = audioContext.createMediaStreamSource(remoteStream);\n    source.connect(audioContext.destination);\n\n    this.recognition.onresult = (event: any) => {\n      const transcript = event.results[event.resultIndex][0].transcript;\n      console.log('Transcript:', transcript);\n    };\n\n    this.recognition.onerror = (error: any) => {\n      console.error('Error:', error);\n    };\n\n    this.recognition.start();\n  }\n\n  stopRecognition(): void {\n    if (this.recognition) {\n      this.recognition.stop();\n    }\n  }\n}\n```\nThis example sets up a simple Angular service to handle speech recognition. You can inject this service into your components and call the `startRecognition` method with the remote audio stream obtained from the patient's device via WebRTC. The `stopRecognition` method can be used to stop the transcription process.\n\nPlease note that this example uses the Web Speech API, which may not work consistently across all browsers and devices. You may need to adapt the code to use a different transcription service, like Google Cloud Speech-to-Text, for better compatibility and performance.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.024,
+        "neu": 0.91,
+        "pos": 0.066,
+        "compound": 0.938
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 9,
+        "token_count": 582,
+        "self_ref_ratio": 0.001718213058419244,
+        "second_person_ratio": 0.015463917525773196
+      },
+      "lexical_features": {
+        "adj_adv_freq": 55,
+        "adj_adv_ratio": 0.09450171821305842,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.001718213058419244,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.015463917525773196,
+        "token_count": 582
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 34.23529411764706,
+          "clause_complexity": 0.47058823529411764,
+          "vocabulary_richness": 0.5756097560975609
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 4,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 2
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 27,
+            "VBZ": 12,
+            "VBG": 3,
+            "VBP": 5,
+            "VBN": 3
+          },
+          "named_entities": {
+            "GPE": 5,
+            "ORGANIZATION": 5,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.66655,
+    "pos": 0.118,
+    "neu": 0.874,
+    "neg": 0.008
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 90,
+    "adj_adv_ratio": 0.08256880733944955,
+    "self_ref_freq": 15,
+    "self_ref_ratio": 0.013761467889908258,
+    "second_person_freq": 26,
+    "second_person_ratio": 0.023853211009174313,
+    "total_tokens": 1090
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 23.91742081447964,
+      "clause_complexity": 0.31347410759175465,
+      "vocabulary_richness": 0.8040688987355606
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 4,
+        "why": 0,
+        "can_could": 8,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 5
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 17,
+        "VBZ": 22,
+        "VB": 66,
+        "VBG": 14,
+        "VBN": 7,
+        "VBD": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 18,
+        "PERSON": 5,
+        "GPE": 6
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 6
+    },
+    "turn_count": 6,
+    "total_tokens": 1090
+  }
+}

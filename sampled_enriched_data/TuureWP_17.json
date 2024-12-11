@@ -1,0 +1,1638 @@
+{
+  "id": "TuureWP_17",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "The correct answers are:\n\n* An XML manifest file\n* A driveset CSV file\n\nBefore you prepare the drives for an Azure Import/Export job, you need to create two files:\n\n1. An XML manifest file: This file describes the data that you want to import or export, including the type of data, the file paths, and the storage account and container to use. You can create this file manually or by using the AzCopy command-line tool.\n2. A driveset CSV file: This file lists the drives that you will use for the import or export job, including the drive letter, the volume label, and the location of the manifest file. You can create this file manually or by using the Azure Import/Export Tool.\n\nTherefore, the correct answers are:\n\n* An XML manifest file\n* A driveset CSV file",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.946,
+        "pos": 0.054,
+        "compound": 0.6808
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 6,
+        "token_count": 157,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.03821656050955414
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.05732484076433121,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.03821656050955414,
+        "token_count": 157
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.428571428571427,
+          "clause_complexity": 0.14285714285714285,
+          "vocabulary_richness": 0.5333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBZ": 4,
+            "VB": 7,
+            "VBG": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Question 27 of 50\nSingle choice question\nYou have a Recovery Service vault that\nyou use to test backups. The test\nbackups contain two protected virtual\nmachines.\nYou need to delete the Recovery\nServices vault.\nWhat should you do first?\nSelect the correct answer\nFrom the Recovery Service vault, delete the backup data\nModify the disaster recovery properties of each virtual machine\nModify the locks of each virtual machine\nFrom the Recovery Service vault, stop the backup of each backup item",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.072,
+        "neu": 0.894,
+        "pos": 0.033,
+        "compound": -0.5267
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 87,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.04597701149425287
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.06896551724137931,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.04597701149425287,
+        "token_count": 87
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.4,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6274509803921569
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VB": 6
+          },
+          "named_entities": {
+            "ORGANIZATION": 4
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Before you can delete a Recovery Service vault, you must unregister the items that are protected by the vault.\n\nTherefore, the correct answer is:\n\nFrom the Recovery Service vault, delete the backup data\n\nYou should first delete the backup data from the Recovery Service vault. This will unregister the protected virtual machines and other items from the vault. After you have deleted the backup data, you can then delete the Recovery Service vault.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.924,
+        "pos": 0.076,
+        "compound": 0.7003
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 82,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.06097560975609756
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.07317073170731707,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.06097560975609756,
+        "token_count": 82
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.5,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.4473684210526316
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBP": 2,
+            "VBN": 2,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Question 28 of 50\nSingle choice question\nYou have an Azure subscription\nnamed Subscription1.\nYou have 5 TB of data that you need\nto transter to Subscription1.\nYou plan to use an Azure\nImport/Export job.\nWhat can you use as the destination\nof the imported data?\nSelect the correct answer\nA virtual machine\nAn Azure Cosmos DB database\nAzure File Storage\nThe Azure File Sync Storage Sync Service",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 72,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.06944444444444445
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.013888888888888888,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.06944444444444445,
+        "token_count": 72
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.4,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7380952380952381
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBN": 2,
+            "VB": 3,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 2,
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The correct answer is:\n\nAzure File Storage\n\nYou can use Azure File Storage as the destination of the imported data. Azure Import/Export supports importing data to Azure File Storage using hard disk drives (HDDs) that you prepare and then ship to Azure.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.032,
+        "neu": 0.911,
+        "pos": 0.057,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 47,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0425531914893617
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.06382978723404255,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.0425531914893617,
+        "token_count": 47
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 2,
+            "VBN": 1,
+            "VBG": 2,
+            "VBP": 1
+          },
+          "named_entities": {
+            "PERSON": 4,
+            "ORGANIZATION": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Same question with these options\nSelect the correct answer \nAn Azure Cosmos DB database\nAzure Blob Storage\nAzure Data Lake Store\nThe Azure File Sync Storage Sync Service",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 28,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.03571428571428571,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 28
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7727272727272727
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 2,
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The correct answer is:\n\nAzure Blob Storage\n\nYou can use Azure Blob Storage as the destination of the imported data. Azure Import/Export supports importing data to Azure Blob Storage using hard disk drives (HDDs) that you prepare and then ship to Azure.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.032,
+        "neu": 0.911,
+        "pos": 0.057,
+        "compound": 0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 47,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0425531914893617
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.06382978723404255,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.0425531914893617,
+        "token_count": 47
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 2,
+            "VBN": 1,
+            "VBG": 2,
+            "VBP": 1
+          },
+          "named_entities": {
+            "PERSON": 4,
+            "ORGANIZATION": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Question 30 of 50\nSingle choice question\nYou have an Azure subscription\nnamed Subscription1.\nYou deploy a Linux virtual machine\nnamed VM1 to Subscription1\nYou need to monitor the metrics and\nthe logs of VM1.\nWhat should you use?\nSelect the correct answer\nAzure HDInsight\nLinux Diagnostic Extension (LAD) 3.0\nAzure Analysis Services\nThe Azure Performance Diagnostics extension",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 63,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.06349206349206349
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.031746031746031744,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.06349206349206349,
+        "token_count": 63
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7692307692307693
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBN": 2,
+            "VB": 3
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 4,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Linux Diagnostic Extension (LAD) 3.0",
+      "language": "fr",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    },
+    {
+      "from": "human",
+      "value": "Question 32 of 50\nSingle choice question\nYou have an Azure virtual machine\nnamed VM1 that runs Windows Server\n2019.\nYou save VM1 as a template named\nTemplate1 to the Azure Resource\nManager library.\nYou plan to deploy a virtual machine\nnamed VM2 from Template1.\nWhat can you configure during the\ndeployment of VM2?\nSelect the correct answer\noperating system\nadministrator username\nVirtual machine size\nresource group",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.954,
+        "pos": 0.046,
+        "compound": 0.4939
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 71,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.056338028169014086
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.04225352112676056,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.056338028169014086,
+        "token_count": 71
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.2,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7391304347826086
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBN": 3,
+            "VBZ": 1,
+            "VB": 2,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "PERSON": 2,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "You can configure the following during the deployment of VM2 from Template1:\n\n* Administrator username\n\nSo the correct answer is: administrator username",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 24,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.041666666666666664
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.041666666666666664,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.041666666666666664,
+        "token_count": 24
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8181818181818182
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBG": 1,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "You have an Azure subscription that\ncontains an Azure virtual machine\nnamed VM1. VM1 runs a financial\nreporting app named App1 that\ndoes not support multiple active\ninstances. At the end of each month, CPU\nusage for VM1 peaks when App1 runs.\nYou need to create a scheduled\nrunbook to increase the processor\npertormance of VM1 at the end of\neach month.\nWhat task should you include in the\nrunbook?\nSelect the correct answer\nAdd the Azure Performance Diagnostics agent to VM1.\nModify the VM size property of VM1\nAdd VM1 to a scale set.\nAdd a Desired State Configuration (DSC) extension to VM1",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.041,
+        "neu": 0.9,
+        "pos": 0.059,
+        "compound": 0.2462
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 114,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.02631578947368421
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.05263157894736842,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.02631578947368421,
+        "token_count": 114
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.25,
+          "clause_complexity": 0.125,
+          "vocabulary_richness": 0.7384615384615385
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBZ": 4,
+            "VBN": 2,
+            "VB": 7
+          },
+          "named_entities": {
+            "ORGANIZATION": 10,
+            "PERSON": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The correct answer is \"Modify the VM size property of VM1\". By increasing the size of the virtual machine, it will have access to more processing power and memory, which can improve the performance of App1 during its peak usage at the end of each month. A runbook can be created in Azure Automation to automate the process of resizing the virtual machine at a specific time each month.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.932,
+        "pos": 0.068,
+        "compound": 0.5994
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 76,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.09210526315789473,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 76
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.333333333333332,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8823529411764706
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBG": 2,
+            "VB": 4,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "You have an Azure virtual machine\nnamed VM1 that runs Windows\nServer 2019.\nYou sign in to VM1 as a user named\nUser1 and perform the following\nactions:\nCreate files on drive C.\nCreate files on drive D.\nModify the screen şaver timeout.\nChange the desktop background\nYou plan to redeploy VM1\nWhich changes will be lost after you\nredeploy VM1?\nthe modified screen saver timeout\nthe new desktop background\nthe new files on drive D\nthe new files on drive C",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.027,
+        "neu": 0.924,
+        "pos": 0.049,
+        "compound": 0.2263
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 86,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.046511627906976744
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.08139534883720931,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.046511627906976744,
+        "token_count": 86
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 21.5,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.6470588235294118
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBN": 3,
+            "VBZ": 1,
+            "VB": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 4,
+            "PERSON": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "All changes made by the User1 on VM1, including the new files on drive C and D, will be lost after redeploying VM1 because the redeployment process creates a new VM from the VHD of the original VM, discarding any temporary or permanent changes made to the original VM. The default settings for the screen saver timeout and desktop background will be restored as well.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.055,
+        "neu": 0.792,
+        "pos": 0.153,
+        "compound": 0.7351
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 70,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.11428571428571428,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 70
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 35.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.8055555555555556
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBN": 4,
+            "VBG": 3,
+            "VB": 2,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "But these are the only available option to choose from\nthe modified screen saver timeout\nthe new desktop background\nthe new files on drive D\nthe new files on drive C",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 31,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.16129032258064516,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 31
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 31.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7647058823529411
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 1,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "In that case, the correct answer would be: the new files on drive C and the new files on drive D.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 24,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.125,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 24
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7272727272727273
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "You have an Azure virtual machine\nnamed VM1 that runs Windowvs\nServer 2016.\nYou need to create an alert in Azure\nwhen more than two error events are\nlogged to the System event log on\nVM1 within an hour.\nSolution: You create an Azure Log\nAnalytics workspace and contigure\nthe data settings. You add the\nMicrosoft Monitoring Agent VM\nextensiIon to VM1. You create an\nalert in Azure Monitor and specity\nthe Log Analytics Workspace as the\nSource.\nDoes this meet the goal?\nselect the correct answer\nTrue\nFalse",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.03,
+        "neu": 0.812,
+        "pos": 0.158,
+        "compound": 0.8701
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 96,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.052083333333333336
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.03125,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.052083333333333336,
+        "token_count": 96
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.714285714285714,
+          "clause_complexity": 0.14285714285714285,
+          "vocabulary_richness": 0.7818181818181819
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 6,
+            "VBN": 2,
+            "VBZ": 2,
+            "VB": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "PERSON": 3,
+            "GPE": 3,
+            "LOCATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "True",
+      "language": "vi",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.0,
+        "pos": 1.0,
+        "compound": 0.4215
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    },
+    {
+      "from": "human",
+      "value": "What about this Solution: You create an Azure storage account and contigure shared access signatures (SASS). You install the Microsoft Monitoring Agent on VM1. You create an alert in Azure Monitor and specify the storage account as the source.\nDoes this meet the goal",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.773,
+        "pos": 0.227,
+        "compound": 0.8564
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 50,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.06
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.06,
+        "token_count": 50
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.84
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBN": 1,
+            "VB": 2,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "False.\n\nThis solution does not meet the goal because it configures an alert based on activity in Azure Storage, not on events logged in the System event log on VM1.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.862,
+        "pos": 0.138,
+        "compound": 0.5423
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 33,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.09090909090909091,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 33
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.5,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 1,
+            "VBN": 2
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Question 38 of 50\nSingle choice question\nYou have a deployment template\nnamed Template1 that is used to\ndeploy 10 Azure web apps.\nYou need to identify what to deploy\nbefore you deploy Template1. The\nsolution must minimize Azure costs.\nWhat should you identify?\nSelect the correct answer\nfive Azure Application Gateways\none App Service plan\n10 App Service plans\none Azure Traffic Manager",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.965,
+        "pos": 0.035,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 68,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.058823529411764705
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.014705882352941176,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.058823529411764705,
+        "token_count": 68
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.6,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.7391304347826086
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 2,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBN": 2,
+            "VBZ": 2,
+            "VB": 6
+          },
+          "named_entities": {
+            "PERSON": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "The correct answer is one App Service plan. By using a single App Service plan, you can host multiple web apps on a single set of compute resources, minimizing Azure costs. If you used 10 App Service plans, you would be paying for 10 separate sets of compute resources.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 55,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.05454545454545454
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.12727272727272726,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.05454545454545454,
+        "token_count": 55
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.333333333333332,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.7352941176470589
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VBG": 3,
+            "VB": 2,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Question 40 of 50\nSingle choice question\nYou need to deploy an Azure virtual\nmachine scale set that contains five\ninstances as quickly as possible.\nWhat should you do?\nSelect the correct answer\nDeploy five virtual machines. Modify the Availability Zones settings for each virtual machine\nDeploy five virtual machines. Modify the Size setting for each virtual machine\nDeploy one virtual machine scale set that is set to VM (virtual machines) orchestration mode\nDeploy one virtual machine scale set that is set to ScaleSetVM orchestration mode",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 92,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.021739130434782608
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.13043478260869565,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.021739130434782608,
+        "token_count": 92
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.4,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5161290322580645
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 5,
+            "VBZ": 3,
+            "VBN": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Deploy one virtual machine scale set that is set to VM (virtual machines) orchestration mode. This will allow you to deploy a group of identical VMs and manage them as a single resource, with automatic scaling capabilities.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.95,
+        "pos": 0.05,
+        "compound": 0.2263
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 42,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.023809523809523808
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.11904761904761904,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.023809523809523808,
+        "token_count": 42
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 21.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8695652173913043
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBN": 1,
+            "VB": 3
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Question 42 of 50\nYou plan to automate the deployment\nof a virtual machine scale set that uses\nthe Windows Server 2016 Datacenter\nImage.\nYou need to ensure that when the\nScale set virtual machines are\nprovisioned, they have web server\nComponents installed.\nWhich two actions should you\npertorm?\nEach correct answer presents part of\nthe solution\nSelect the correct answer(s)\nUpload a configuration script\nCreate an automation account\nModify the extensionProfile section of the Azure Resource Manager template\nCreate a new virtual scale set in the Azure portal",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.903,
+        "pos": 0.097,
+        "compound": 0.7964
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 96,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.03125
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.07291666666666667,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.03125,
+        "token_count": 96
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.0,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.8103448275862069
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VB": 4,
+            "VBZ": 2,
+            "VBD": 1,
+            "VBN": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Correct answers are:\n\n* Upload a configuration script\n* Modify the extensionProfile section of the Azure Resource Manager template\n\nExplanation: To ensure that web server components are installed when the scale set virtual machines are provisioned, you can use the Azure Resource Manager (ARM) template to modify the extensionProfile section of the template and specify a custom script extension that installs the components. You can also upload the configuration script that installs the components and specify its location in the extensionProfile section of the template. The automation account and creating a new virtual scale set are not required to achieve this goal.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.954,
+        "pos": 0.046,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 110,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.01818181818181818
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.01818181818181818,
+        "token_count": 110
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 36.666666666666664,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.6333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VB": 7,
+            "VBN": 5,
+            "VBZ": 2,
+            "VBG": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 6
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.30810370370370377,
+    "pos": 0.08899999999999998,
+    "neu": 0.9002592592592592,
+    "neg": 0.010703703703703703
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 120,
+    "adj_adv_ratio": 0.06972690296339337,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 63,
+    "second_person_ratio": 0.03660662405578152,
+    "total_tokens": 1721
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 21.17904761904762,
+      "clause_complexity": 0.1510952380952381,
+      "vocabulary_richness": 0.7307949685717827
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 9,
+        "how": 0,
+        "why": 0,
+        "can_could": 14,
+        "general": 10
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 4,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 54,
+        "VBZ": 37,
+        "VB": 85,
+        "VBG": 19,
+        "VBN": 41,
+        "VBD": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 72,
+        "PERSON": 26,
+        "GPE": 21,
+        "LOCATION": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 25,
+      "fr": 1,
+      "vi": 1
+    },
+    "turn_count": 27,
+    "total_tokens": 1721
+  }
+}

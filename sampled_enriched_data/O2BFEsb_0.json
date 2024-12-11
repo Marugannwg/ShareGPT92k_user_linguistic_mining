@@ -1,0 +1,186 @@
+{
+  "id": "O2BFEsb_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "class Connection:\n\n \\_source\\_traceback = None\n \\_transport = None\n\n def \\_\\_init\\_\\_(\n self,\n connector: \"BaseConnector\",\n key: \"ConnectionKey\",\n protocol: ResponseHandler,\n loop: asyncio.AbstractEventLoop,\n ) -> None:\n self.\\_key = key\n self.\\_connector = connector\n self.\\_loop = loop\n self.\\_protocol: Optional[ResponseHandler] = protocol\n self.\\_callbacks: List[Callable[[], None]] = []\n\n if loop.get\\_debug():\n self.\\_source\\_traceback = traceback.extract\\_stack(sys.\\_getframe(1))\n\n def \\_\\_repr\\_\\_(self) -> str:\n return f\"Connection<{self.\\_key}>\"\n\n def \\_\\_del\\_\\_(self, \\_warnings: Any = warnings) -> None:\n if self.\\_protocol is not None:\n if PY\\_36:\n kwargs = {\"source\": self}\n else:\n kwargs = {}\n \\_warnings.warn(f\"Unclosed connection {self!r}\", ResourceWarning, \\*\\*kwargs)\n if self.\\_loop.is\\_closed():\n return\n\n self.\\_connector.\\_release(self.\\_key, self.\\_protocol, should\\_close=True)\n\n context = {\"client\\_connection\": self, \"message\": \"Unclosed connection\"}\n if self.\\_source\\_traceback is not None:\n context[\"source\\_traceback\"] = self.\\_source\\_traceback\n self.\\_loop.call\\_exception\\_handler(context)\n\n @property\n def loop(self) -> asyncio.AbstractEventLoop:\n warnings.warn(\n \"connector.loop property is deprecated\", DeprecationWarning, stacklevel=2\n )\n return self.\\_loop\n\n @property\n def transport(self) -> Optional[asyncio.Transport]:\n if self.\\_protocol is None:\n return None\n return self.\\_protocol.transport\n\n @property\n def protocol(self) -> Optional[ResponseHandler]:\n return self.\\_protocol\n\n def add\\_callback(self, callback: Callable[[], None]) -> None:\n if callback is not None:\n self.\\_callbacks.append(callback)\n\n def \\_notify\\_release(self) -> None:\n callbacks, self.\\_callbacks = self.\\_callbacks[:], []\n\n for cb in callbacks:\n with suppress(Exception):\n cb()\n\n def close(self) -> None:\n self.\\_notify\\_release()\n\n if self.\\_protocol is not None:\n self.\\_connector.\\_release(self.\\_key, self.\\_protocol, should\\_close=True)\n self.\\_protocol = None\n\n def release(self) -> None:\n self.\\_notify\\_release()\n\n if self.\\_protocol is not None:\n self.\\_connector.\\_release(\n self.\\_key, self.\\_protocol, should\\_close=self.\\_protocol.should\\_close\n )\n self.\\_protocol = None\n\n @property\n def closed(self) -> bool:\n return self.\\_protocol is None or not self.\\_protocol.is\\_connected()",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.022,
+        "neu": 0.978,
+        "pos": 0.0,
+        "compound": -0.5707
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 420,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.047619047619047616,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 420
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 420.0,
+          "clause_complexity": 9.0,
+          "vocabulary_richness": 0.3504273504273504
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 9,
+            "VB": 1,
+            "VBN": 4,
+            "VBD": 2,
+            "VBP": 2
+          },
+          "named_entities": {
+            "PERSON": 4,
+            "ORGANIZATION": 3
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "This is a class definition for an `Connection` object. It appears to be used to handle connections to a server and includes methods for initializing, closing, and releasing connections. The `__init__` method is used to set up the connection with a connector, key, protocol, and event loop. The `__del__` method is used to issue a warning if the connection is not closed before being deleted. The `close` and `release` methods are used to close or release the connection, respectively. The `closed` property returns whether the connection is closed or not. The class also has a `_notify_release` method that is used to notify callbacks when the connection is released.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.022,
+        "neu": 0.957,
+        "pos": 0.022,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 135,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.05925925925925926,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 135
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 19.285714285714285,
+          "clause_complexity": 0.42857142857142855,
+          "vocabulary_richness": 0.660377358490566
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 10,
+            "VB": 7,
+            "VBN": 9,
+            "VBG": 2,
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.28535,
+    "pos": 0.011,
+    "neu": 0.9675,
+    "neg": 0.022
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 28,
+    "adj_adv_ratio": 0.05045045045045045,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 555
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 219.64285714285714,
+      "clause_complexity": 4.714285714285714,
+      "vocabulary_richness": 0.5054023544589582
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 19,
+        "VB": 8,
+        "VBN": 13,
+        "VBD": 2,
+        "VBP": 3,
+        "VBG": 2
+      },
+      "named_entities": {
+        "PERSON": 4,
+        "ORGANIZATION": 3
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 555
+  }
+}

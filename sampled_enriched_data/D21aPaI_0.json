@@ -1,0 +1,668 @@
+{
+  "id": "D21aPaI_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Typescript Teachin, let teach me typescript from zero to hero in an easy to understand way with realtime examples",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.723,
+        "pos": 0.277,
+        "compound": 0.7579
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 20,
+        "self_ref_ratio": 0.05,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.05,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.05,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 20
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9166666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 4
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, I'd be happy to help you learn TypeScript from scratch! Let's get started!\n\nTypeScript is a statically typed, object-oriented programming language that builds on JavaScript. It was created by Microsoft and has been gaining popularity due to its ability to catch errors during the development process and provide improved type safety and readability to JavaScript code.\n\nHere are the basics of TypeScript that you need to know to get started:\n\n1. Types: TypeScript allows you to specify the type of a variable. For example, you can declare a variable as a string or number type:\n```typescript\nlet message: string = \"Hello, world!\";\nlet count: number = 42;\n```\n2. Interfaces: TypeScript allows you to define an interface, which specifies the structure of an object. For example, you can define an interface for a person:\n```css\ninterface Person {\n  firstName: string;\n  lastName: string;\n  age: number;\n}\n\nlet person: Person = {\n  firstName: \"John\",\n  lastName: \"Doe\",\n  age: 32\n};\n```\n3. Classes: TypeScript also allows you to define classes, which can be used to create objects. For example, you can define a class for a car:\n```typescript\nclass Car {\n  make: string;\n  model: string;\n  year: number;\n\n  constructor(make: string, model: string, year: number) {\n    this.make = make;\n    this.model = model;\n    this.year = year;\n  }\n\n  honk(): void {\n    console.log(\"Beep beep!\");\n  }\n}\n\nlet car = new Car(\"Toyota\", \"Camry\", 2020);\ncar.honk(); // Output: \"Beep beep!\"\n```\n4. Functions: TypeScript also allows you to define functions, which can accept parameters and return values. For example:\n```typescript\nfunction add(a: number, b: number): number {\n  return a + b;\n}\n\nlet result = add(2, 3);\nconsole.log(result); // Output: 5\n```\nThese are the basics of TypeScript, but there's much more to learn! If you have any specific questions or want to learn about more advanced features, feel free to ask!",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.005,
+        "neu": 0.866,
+        "pos": 0.128,
+        "compound": 0.9767
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 10,
+        "token_count": 438,
+        "self_ref_ratio": 0.00228310502283105,
+        "second_person_ratio": 0.0228310502283105
+      },
+      "lexical_features": {
+        "adj_adv_freq": 23,
+        "adj_adv_ratio": 0.05251141552511415,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.00228310502283105,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.0228310502283105,
+        "token_count": 438
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.764705882352942,
+          "clause_complexity": 0.058823529411764705,
+          "vocabulary_richness": 0.5659340659340659
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 5,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 4,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 31,
+            "VBD": 2,
+            "VBZ": 10,
+            "VBN": 8,
+            "VBG": 1,
+            "VBP": 6
+          },
+          "named_entities": {
+            "ORGANIZATION": 11,
+            "PERSON": 6
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "ok, please start from the begining with baby-steps",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.753,
+        "pos": 0.247,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, let's start with the basics!\n\n1. Variables: In TypeScript, you can declare variables just like in JavaScript, but with the added ability to specify their type. Here's an example:\n```csharp\nlet message: string = \"Hello, world!\";\n```\nIn this example, `message` is a variable of type `string`. You can also declare variables of type `number`, `boolean`, `any`, and many others.\n\n2. Constants: In TypeScript, you can also declare constants using the `const` keyword. Constants are similar to variables, but their value cannot be changed once it's set. Here's an example:\n```typescript\nconst PI: number = 3.14;\n```\n3. Basic Data Types: TypeScript supports several basic data types, including:\n* `string`: used to represent text values, such as names or addresses\n* `number`: used to represent numeric values, such as heights or ages\n* `boolean`: used to represent values that are either true or false\n\nHere are some examples of each data type in TypeScript:\n```typescript\nlet name: string = \"John Doe\";\nlet age: number = 32;\nlet isMarried: boolean = true;\n```\n4. Arrays: In TypeScript, you can create arrays to store multiple values. You can specify the type of values that the array will hold using square brackets `[]`. Here's an example:\n```less\nlet numbers: number[] = [1, 2, 3, 4, 5];\n```\nIn this example, `numbers` is an array of type `number`.\n\n5. Tuples: Tuples are similar to arrays, but they allow you to store values of different types. Here's an example:\n```typescript\nlet person: [string, number] = [\"John Doe\", 32];\n```\nIn this example, `person` is a tuple that contains a string and a number.\n\nThese are the basics of TypeScript! Once you understand these concepts, you'll be ready to move on to more advanced features such as interfaces, classes, and functions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.807,
+        "pos": 0.193,
+        "compound": 0.9953
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 8,
+        "token_count": 433,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.018475750577367205
+      },
+      "lexical_features": {
+        "adj_adv_freq": 39,
+        "adj_adv_ratio": 0.09006928406466513,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.018475750577367205,
+        "token_count": 433
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.789473684210527,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5174418604651163
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 5,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 3,
+            "contrast": 3,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 18,
+            "VBZ": 12,
+            "VBG": 3,
+            "VBP": 9,
+            "VBN": 6
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 3,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "please go ahead",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.465,
+        "pos": 0.535,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 3,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.3333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 3
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 3.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Okay, let's move on to the next set of concepts in TypeScript.\n\n6. Interfaces: In TypeScript, you can use interfaces to define a blueprint for objects. An interface defines the structure of an object, including the properties and methods it should have. Here's an example:\n```typescript\ninterface Person {\n  firstName: string;\n  lastName: string;\n  age: number;\n  sayHello(): void;\n}\n\nlet person: Person = {\n  firstName: \"John\",\n  lastName: \"Doe\",\n  age: 32,\n  sayHello(): void {\n    console.log(`Hello, my name is ${this.firstName} ${this.lastName}`);\n  }\n};\n\nperson.sayHello();\n// Output: Hello, my name is John Doe\n```\nIn this example, `Person` is an interface that defines a person object. The object `person` implements the `Person` interface and has the properties and method defined by the interface.\n\n7. Classes: In TypeScript, you can use classes to create objects that have properties and methods. Here's an example:\n```typescript\nclass Car {\n  make: string;\n  model: string;\n  year: number;\n\n  constructor(make: string, model: string, year: number) {\n    this.make = make;\n    this.model = model;\n    this.year = year;\n  }\n\n  honk(): void {\n    console.log(\"Beep beep!\");\n  }\n}\n\nlet car = new Car(\"Toyota\", \"Camry\", 2020);\ncar.honk();\n// Output: Beep beep!\n```\nIn this example, `Car` is a class that represents a car. The `constructor` method is called when you create a new instance of the class, and it sets the values of the `make`, `model`, and `year` properties. The `honk` method simply outputs a string to the console.\n\n8. Functions: In TypeScript, you can define functions to perform specific tasks. Functions can accept parameters and return values. Here's an example:\n```typescript\nfunction add(a: number, b: number): number {\n  return a + b;\n}\n\nlet result = add(2, 3);\nconsole.log(result);\n// Output: 5\n```\nIn this example, the `add` function takes two parameters, `a` and `b`, both of type `number`, and returns their sum as a `number`. The function is called with the arguments `2` and `3`, and the result is logged to the console.\n\nThese are the basics of TypeScript! With this knowledge, you can start building your own TypeScript projects and taking advantage of its features for improved type safety and readability. Let me know if you have any questions or if you'd like to learn about more advanced topics!",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.007,
+        "neu": 0.894,
+        "pos": 0.099,
+        "compound": 0.9768
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 8,
+        "token_count": 555,
+        "self_ref_ratio": 0.005405405405405406,
+        "second_person_ratio": 0.014414414414414415
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.03963963963963964,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.005405405405405406,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.014414414414414415,
+        "token_count": 555
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.428571428571427,
+          "clause_complexity": 0.14285714285714285,
+          "vocabulary_richness": 0.4854368932038835
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 5,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 22,
+            "VBZ": 17,
+            "VBG": 3,
+            "VBN": 7,
+            "VBP": 5
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 6,
+            "PERSON": 11
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "ok, let list all topics with sub-topics and then explain each with examples and code",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 16,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.0625,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 16
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here's a list of advanced topics in TypeScript along with their sub-topics:\n\n1. Types:\n\t* Union Types\n\t* Intersection Types\n\t* Type Aliases\n\t* Type Inference\n\t* Nullable Types\n\t* Literal Types\n\t* Tuple Types\n\t* Enums\n2. Functions:\n\t* Optional and Default Parameters\n\t* Rest Parameters\n\t* Function Overloading\n\t* Higher-Order Functions\n\t* Recursion\n\t* Arrow Functions\n3. Classes:\n\t* Class Inheritance\n\t* Method Overriding\n\t* Access Modifiers\n\t* Getters and Setters\n\t* Abstract Classes\n\t* Interface Implementation\n4. Generics:\n\t* Introduction to Generics\n\t* Generic Types\n\t* Constraints\n\t* Usage with Classes, Interfaces, and Functions\n5. Decorators:\n\t* Introduction to Decorators\n\t* Class Decorators\n\t* Property Decorators\n\t* Method Decorators\n\t* Parameter Decorators\n6. Modules:\n\t* Introduction to Modules\n\t* Export and Import\n\t* Namespaces\n\t* External Modules\n7. Advanced Topics:\n\t* Advanced Types:\n\t\t+ Mapped Types\n\t\t+ Conditional Types\n\t\t+ Index Types\n\t* Advanced Functions:\n\t\t+ Async and Await\n\t\t+ Destructuring\n\t\t+ Spread Operator\n\t* Advanced Classes:\n\t\t+ Mixins\n\t\t+ Singleton Pattern\n\nLet me know if you want me to explain a specific topic in depth or if you want me to explain all the topics from the list.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.917,
+        "pos": 0.083,
+        "compound": 0.8908
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 2,
+        "token_count": 216,
+        "self_ref_ratio": 0.013888888888888888,
+        "second_person_ratio": 0.009259259259259259
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.046296296296296294,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.013888888888888888,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.009259259259259259,
+        "token_count": 216
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.0,
+          "clause_complexity": 0.2222222222222222,
+          "vocabulary_richness": 0.6551724137931034
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 3,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "PERSON": 15
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "please explain all topics one by one in depth. when capacity of one conversation exhausts, stop and start next conversation till all topics are explained with examples",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.141,
+        "neu": 0.784,
+        "pos": 0.075,
+        "compound": -0.25
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 29,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.034482758620689655,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 29
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.5,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.7777777777777778
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBP": 1,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Let's start with the first topic, Types.\n\n1. Types:\n\t* Union Types: Union types are a way of representing a value that can be one of several types. You can define a union type by using the `|` operator. For example:\n```typescript\nlet value: string | number;\nvalue = \"hello\";\nconsole.log(value); // Output: hello\nvalue = 42;\nconsole.log(value); // Output: 42\n```\nIn this example, the `value` variable can hold either a string or a number.\n\n* Intersection Types: Intersection types are a way of combining multiple types into one. You can define an intersection type by using the `&` operator. For example:\n```css\ninterface A {\n  a: string;\n}\n\ninterface B {\n  b: number;\n}\n\ntype C = A & B;\n\nlet c: C = {\n  a: \"hello\",\n  b: 42,\n};\nconsole.log(c); // Output: { a: 'hello', b: 42 }\n```\nIn this example, the `C` type is an intersection of the `A` and `B` interfaces, meaning that a value of type `C` must have both a string property `a` and a number property `b`.\n\n* Type Aliases: Type aliases are a way of giving a new name to a type. You can define a type alias using the `type` keyword. For example:\n```typescript\ntype StringOrNumber = string | number;\n\nlet value: StringOrNumber;\nvalue = \"hello\";\nconsole.log(value); // Output: hello\nvalue = 42;\nconsole.log(value); // Output: 42\n```\nIn this example, the `StringOrNumber` type alias is defined to be a union of `string` and `number`. The `value` variable is then declared to be of type `StringOrNumber`.\n\n* Type Inference: TypeScript can automatically infer the type of a value based on its initial value. For example:\n```javascript\nlet value = \"hello\";\nconsole.log(typeof value); // Output: string\nvalue = 42;\nconsole.log(typeof value); // Output: number\n```\nIn this example, the type of the `value` variable is inferred to be `string` when it is assigned the value `\"hello\"`, and then it is inferred to be `number` when it is assigned the value `42`.\n\n* Nullable Types: By default, TypeScript assumes that variables cannot be `null` or `undefined`. To allow a variable to be `null` or `undefined`, you can use the `null` and `undefined` types. For example:\n```typescript\nlet value: string | null = null;\nconsole.log(value); // Output: null\nvalue = \"hello\";\nconsole.log(value); // Output: hello\n```\nIn this example, the `value` variable is declared to be of type `string` or `null`. It is initially assigned the value `null`, and then it is assigned the value `\"hello\"`.\n\n* Literal Types: Literal types are types that represent specific values, such as strings, numbers, or booleans. For example:\n```javascript\nlet value: \"hello\" = \"hello\";\nconsole.log(value); // Output: hello\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.836,
+        "pos": 0.164,
+        "compound": 0.996
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 673,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.005943536404160475
+      },
+      "lexical_features": {
+        "adj_adv_freq": 47,
+        "adj_adv_ratio": 0.06983655274888559,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.005943536404160475,
+        "token_count": 673
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 32.04761904761905,
+          "clause_complexity": 0.09523809523809523,
+          "vocabulary_richness": 0.2903225806451613
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 7,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 7,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBG": 12,
+            "VB": 21,
+            "VBZ": 16,
+            "VBN": 20,
+            "VBD": 1
+          },
+          "named_entities": {
+            "PERSON": 12,
+            "ORGANIZATION": 3,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.59799,
+    "pos": 0.18009999999999998,
+    "neu": 0.8045,
+    "neg": 0.0153
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 145,
+    "adj_adv_ratio": 0.06061872909698997,
+    "self_ref_freq": 8,
+    "self_ref_ratio": 0.0033444816053511705,
+    "second_person_freq": 32,
+    "second_person_ratio": 0.013377926421404682,
+    "total_tokens": 2392
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 19.353037004275393,
+      "clause_complexity": 0.1019140989729225,
+      "vocabulary_richness": 0.7208752258485774
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 22,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 14,
+        "contrast": 4,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 106,
+        "VBD": 3,
+        "VBZ": 56,
+        "VBN": 42,
+        "VBG": 20,
+        "VBP": 28
+      },
+      "named_entities": {
+        "PERSON": 48,
+        "ORGANIZATION": 32,
+        "GPE": 3
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 10
+    },
+    "turn_count": 10,
+    "total_tokens": 2392
+  }
+}

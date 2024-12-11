@@ -1,0 +1,800 @@
+{
+  "id": "RibGKEp_13",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Here's an ASCII diagram of a 4-wheeled holonomic robot with wheel labels (FR, FL, BL, BR) and the angles that each wheel is facing:\n```scss\n   FL (135°)     FR (45°)\n      o------o\n      |\\    /|\n      | \\  / |\n      |  \\/  |\n      |  /\\  |\n      | /  \\ |\n      o------o\n   BL (225°)     BR (-45°)\n```\nIn this diagram, each wheel is labeled with the angle it is facing relative to the robot's forward direction. For example, the front-right wheel (FR) is facing at an angle of 45 degrees relative to the robot's forward direction, and the back-left wheel (BL) is facing at an angle of 225 degrees relative to the robot's forward direction. These angles are important when calculating the speeds of each wheel based on the desired linear velocity and angle of movement of the robot.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.943,
+        "pos": 0.057,
+        "compound": 0.7865
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 173,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 17,
+        "adj_adv_ratio": 0.09826589595375723,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 173
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 57.666666666666664,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.5
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 6,
+            "VBG": 5,
+            "VBN": 3,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "per your definition, FL and BR should be 45, FR and BL should be -45 though?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.788,
+        "pos": 0.212,
+        "compound": 0.6166
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 19,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.05263157894736842
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.05263157894736842,
+        "token_count": 19
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 19.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "You're correct, I apologize for the mistake. Here's an updated ASCII diagram with the corrected angles for the wheels:\n```scss\n   FL (-45°)     FR (45°)\n      o------o\n      |\\    /|\n      | \\  / |\n      |  \\/  |\n      |  /\\  |\n      | /  \\ |\n      o------o\n   BL (135°)     BR (-135°)\n```\nIn this diagram, each wheel is labeled with the angle it is facing relative to the robot's forward direction. The front-left wheel (FL) is facing at an angle of -45 degrees relative to the robot's forward direction, the front-right wheel (FR) is facing at an angle of 45 degrees relative to the robot's forward direction, the back-left wheel (BL) is facing at an angle of 135 degrees relative to the robot's forward direction, and the back-right wheel (BR) is facing at an angle of -135 degrees relative to the robot's forward direction.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.017,
+        "neu": 0.946,
+        "pos": 0.038,
+        "compound": 0.4648
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 182,
+        "self_ref_ratio": 0.005494505494505495,
+        "second_person_ratio": 0.005494505494505495
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.10989010989010989,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.005494505494505495,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.005494505494505495,
+        "token_count": 182
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 60.666666666666664,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.4098360655737705
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBZ": 7,
+            "VBN": 1,
+            "VBG": 5
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can you add an arrow showing where you think the forward direction is? also, change the diagram such that the wheel's angle is shown in the diagram, not just indicated as a number",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.961,
+        "pos": 0.039,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 37,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.05405405405405406
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.13513513513513514,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.05405405405405406,
+        "token_count": 37
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBG": 1,
+            "VBP": 2,
+            "VBZ": 2,
+            "VBN": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here's an updated ASCII diagram with an arrow indicating the forward direction and each wheel's angle depicted in the diagram:\n```scss\n  FL (-45°)      FR (45°)\n      o----->\n      |      |\n      |      |\n      |      |\n      |      |\n      |      |\n      <-----o\n  BL (135°)      BR (-135°)\n```\nIn this diagram, the forward direction of the robot is indicated by the arrow. The angle of each wheel relative to the forward direction is shown in the diagram, with the wheel label and angle indicated next to each wheel. The front-left wheel (FL) is facing at an angle of -45 degrees relative to the forward direction, the front-right wheel (FR) is facing at an angle of 45 degrees relative to the forward direction, the back-left wheel (BL) is facing at an angle of 135 degrees relative to the forward direction, and the back-right wheel (BR) is facing at an angle of -135 degrees relative to the forward direction.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.958,
+        "pos": 0.042,
+        "compound": 0.7667
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 190,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.10526315789473684,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 190
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 47.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.37142857142857144
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VBG": 5,
+            "VBN": 3,
+            "VBD": 1,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "bruh",
+      "language": "cs",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I'm sorry if the diagram doesn't meet your expectations. Can you please provide more specific instructions on how you would like the diagram to be modified? I'm here to help.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.037,
+        "neu": 0.747,
+        "pos": 0.216,
+        "compound": 0.7351
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 36,
+        "self_ref_ratio": 0.05555555555555555,
+        "second_person_ratio": 0.08333333333333333
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.1388888888888889,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.05555555555555555,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.08333333333333333,
+        "token_count": 36
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.9230769230769231
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VBZ": 1,
+            "VB": 6,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "ok, imagine a top view of the holonomic robot, use '/' or '\\' to indicate which way the wheels are angled at, the indicate with one arrow where the front i.e. forward direction of the robot is in the diagram",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.956,
+        "pos": 0.044,
+        "compound": 0.2023
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 46,
+        "self_ref_ratio": 0.021739130434782608,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.06521739130434782,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.021739130434782608,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 46
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8947368421052632
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBP": 2,
+            "VBN": 1,
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's a top-view ASCII diagram of a 4-wheeled holonomic robot with wheel angles and the forward direction indicated:\n```scss\n  FL (-45°) /    FR (45°) \\\n    o-----> o <-----o\n    |       |       |\n    |       |       |\n    |       |       |\n    |       |       |\n    o <-----o -----> o\n  BL (135°) \\    BR (-135°) /\n```\nIn this diagram, the forward direction of the robot is indicated by the arrow. The angle of each wheel relative to the forward direction is shown in the diagram, with the wheel label and angle indicated next to each wheel. The slashes (`/` or `\\`) represent the direction that each wheel is angled at. The front-left wheel (FL) is facing at an angle of -45 degrees relative to the forward direction, the front-right wheel (FR) is facing at an angle of 45 degrees relative to the forward direction, the back-left wheel (BL) is facing at an angle of 135 degrees relative to the forward direction, and the back-right wheel (BR) is facing at an angle of -135 degrees relative to the forward direction.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.01,
+        "neu": 0.967,
+        "pos": 0.023,
+        "compound": 0.4995
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 223,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.10762331838565023,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 223
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 55.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.375
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VBD": 2,
+            "VBP": 5,
+            "VB": 1,
+            "VBN": 3,
+            "VBG": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "ok with all these updated angles update the code from above",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.82,
+        "pos": 0.18,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 11,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 11
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBN": 1,
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is the updated C++ code for calculating the individual wheel speeds for a 4-wheeled holonomic robot, given the desired linear velocity, angle of movement, and angular velocity:\n```c\n#include <cmath>\n\nconst float wheelbase = 0.15;  // wheelbase in meters\nconst float trackwidth = 0.15; // trackwidth in meters\n\nfloat FLSpeed, FRSpeed, BLSpeed, BRSpeed;\n\nvoid calculateWheelSpeeds(float V, float theta, float omega) {\n  // Calculate speeds for each wheel\n  FLSpeed = V * cos(theta + (M_PI / 4)) - omega * wheelbase / 2;\n  FRSpeed = V * cos(theta - (M_PI / 4)) + omega * wheelbase / 2;\n  BLSpeed = V * cos(theta + (M_PI / 4)) + omega * wheelbase / 2;\n  BRSpeed = V * cos(theta - (M_PI / 4)) - omega * wheelbase / 2;\n}\n```\nIn this code, `V` represents the desired linear velocity, `theta` represents the angle of movement, and `omega` represents the angular velocity of the robot. The wheel speeds for the front-left wheel (FL), front-right wheel (FR), back-left wheel (BL), and back-right wheel (BR) are stored in the variables `FLSpeed`, `FRSpeed`, `BLSpeed`, and `BRSpeed` respectively. The function `calculateWheelSpeeds` takes the `V`, `theta`, and `omega` as inputs, and calculates the wheel speeds based on the provided equations. Note that `M_PI` is a constant defined in the `cmath` library representing the mathematical constant pi.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.97,
+        "pos": 0.03,
+        "compound": 0.6808
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 315,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 38,
+        "adj_adv_ratio": 0.12063492063492064,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 315
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 78.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.44274809160305345
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VBG": 2,
+            "VBN": 4,
+            "VBP": 6,
+            "VB": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 13
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "add user input for V, theta and omega and output for each wheelspeed. also why does your code not use the trackwidth variable anymore?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 27,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.037037037037037035
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.14814814814814814,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.037037037037037035,
+        "token_count": 27
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 1,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's an updated version of the code with user input for `V`, `theta`, and `omega`, and output for each wheel speed:\n```c\n#include <iostream>\n#include <cmath>\n\nconst float wheelbase = 0.15;  // wheelbase in meters\nconst float trackwidth = 0.15; // trackwidth in meters\n\nfloat FLSpeed, FRSpeed, BLSpeed, BRSpeed;\n\nvoid calculateWheelSpeeds(float V, float theta, float omega) {\n  // Calculate speeds for each wheel\n  FLSpeed = V * cos(theta + (M_PI / 4)) - omega * wheelbase / 2;\n  FRSpeed = V * cos(theta - (M_PI / 4)) + omega * wheelbase / 2;\n  BLSpeed = V * cos(theta + (M_PI / 4)) + omega * wheelbase / 2;\n  BRSpeed = V * cos(theta - (M_PI / 4)) - omega * wheelbase / 2;\n}\n\nint main() {\n  float V, theta, omega;\n\n  std::cout << \"Enter the desired linear velocity (V): \";\n  std::cin >> V;\n\n  std::cout << \"Enter the angle of movement (theta): \";\n  std::cin >> theta;\n\n  std::cout << \"Enter the angular velocity (omega): \";\n  std::cin >> omega;\n\n  calculateWheelSpeeds(V, theta, omega);\n\n  std::cout << \"FL speed: \" << FLSpeed << \" m/s\" << std::endl;\n  std::cout << \"FR speed: \" << FRSpeed << \" m/s\" << std::endl;\n  std::cout << \"BL speed: \" << BLSpeed << \" m/s\" << std::endl;\n  std::cout << \"BR speed: \" << BRSpeed << \" m/s\" << std::endl;\n\n  return 0;\n}\n```\nIn this code, the user is prompted to input the desired linear velocity (`V`), angle of movement (`theta`), and angular velocity (`omega`). The function `calculateWheelSpeeds` is called with these inputs, and the resulting wheel speeds for the front-left wheel (FL), front-right wheel (FR), back-left wheel (BL), and back-right wheel (BR) are stored in the variables `FLSpeed`, `FRSpeed`, `BLSpeed`, and `BRSpeed` respectively. The wheel speeds are then printed to the console.\n\nThe trackwidth is not used in this code because it is not needed in these calculations. The formula for calculating the wheel speeds only requires the wheelbase of the robot.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.98,
+        "pos": 0.02,
+        "compound": 0.6808
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 517,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 46,
+        "adj_adv_ratio": 0.08897485493230174,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 517
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 103.4,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.35555555555555557
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 15,
+            "VBP": 9,
+            "VB": 4,
+            "VBN": 6,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 17
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.4466384615384615,
+    "pos": 0.0693076923076923,
+    "neu": 0.925846153846154,
+    "neg": 0.004923076923076923
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 182,
+    "adj_adv_ratio": 0.10247747747747747,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.0022522522522522522,
+    "second_person_freq": 8,
+    "second_person_ratio": 0.0045045045045045045,
+    "total_tokens": 1776
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 41.72777777777778,
+      "clause_complexity": 0.07222222222222223,
+      "vocabulary_richness": 0.6838096152230392
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 1,
+        "can_could": 2,
+        "general": 4
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 1,
+        "causality": 1,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 56,
+        "VBG": 24,
+        "VBN": 26,
+        "VBP": 34,
+        "VB": 21,
+        "VBD": 3
+      },
+      "named_entities": {
+        "ORGANIZATION": 41
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 12,
+      "cs": 1
+    },
+    "turn_count": 13,
+    "total_tokens": 1776
+  }
+}

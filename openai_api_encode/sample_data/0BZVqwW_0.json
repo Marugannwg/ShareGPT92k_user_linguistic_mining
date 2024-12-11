@@ -1,0 +1,741 @@
+{
+  "id": "0BZVqwW_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "How does process intelligence or process mining work?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.693,
+        "pos": 0.307,
+        "compound": 0.4767
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Process mining is a technique used to analyze and improve business processes. It uses data from various systems, such as enterprise resource planning (ERP) and workflow management systems, to create a visual representation of the process and identify bottlenecks, inefficiencies, and areas for improvement. The process mining software analyzes the data to discover the underlying process models, which can be used to identify inefficiencies, non-compliant behavior and potential areas for improvement. Additionally, process mining can also be used to verify if the process is being executed as defined in the process model and to monitor the process in real-time.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.896,
+        "pos": 0.104,
+        "compound": 0.875
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 112,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.08035714285714286,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 112
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.0,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.7017543859649122
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBN": 5,
+            "VB": 9,
+            "VBG": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "How can I write code to do process mining?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 10,
+        "self_ref_ratio": 0.1,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "There are several software tools and libraries available for process mining, such as ProM, Disco, and Apromore, which provide pre-built functionality for process discovery and conformance checking. These tools also provide APIs that you can use to integrate process mining into your own code.\n\nIf you prefer to write your own code from scratch, you will need to use a programming language such as Python or R, and make use of libraries such as pandas for data manipulation, and libraries for process mining such as pm4py and pyprocessminer.\n\nHere's an example of how you might use the pm4py library in Python to perform process discovery on an event log:\n```\nfrom pm4py.objects.log.importer.xes import factory as xes_importer\nfrom pm4py.algo.discovery.alpha import factory as alpha_miner\n\n# import event log from a XES file\nlog = xes_importer.apply(\"path/to/event_log.xes\")\n\n# run the alpha miner to discover a process model\nmodel = alpha_miner.apply(log)\n\n# print the discovered process model\nprint(model)\n```\nThis is just a basic example, and there are many other features and options that you can use when performing process mining. To get more advanced functionality, you will need to learn about the specific process mining libraries and tools that you are using, and explore the documentation and examples provided.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.011,
+        "neu": 0.978,
+        "pos": 0.011,
+        "compound": 0.024
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 9,
+        "token_count": 235,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.03829787234042553
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.09361702127659574,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.03829787234042553,
+        "token_count": 235
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 47.0,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.6190476190476191
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 4,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 8,
+            "VB": 14,
+            "VBZ": 2,
+            "VBG": 2,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 2,
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "How can I use machine learning to do process mining?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 11,
+        "self_ref_ratio": 0.09090909090909091,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.09090909090909091,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 11
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Machine learning can be used in various ways to enhance process mining. Some of the ways include:\n\n1. **Outlier Detection**: Machine learning algorithms can be used to identify unusual or abnormal behavior in the process, which can indicate bottlenecks or inefficiencies.\n2. **Process Prediction**: Machine learning models can be trained on historical process data to predict future process outcomes, such as the completion time of a task or the likelihood of a case being delayed.\n3. **Clustering**: Clustering algorithms can be used to group similar process instances together, which can reveal underlying patterns and structures in the process.\n4. **Anomaly Detection**: Machine learning techniques such as One-class SVM, Autoencoder, and Isolation Forest can be used to detect anomalies in process data.\n5. **Process Optimization**: Machine learning models can be used to optimize process parameters such as resource allocation and task priority, by identifying the factors that have the greatest impact on process performance.\n\nTo use machine learning for process mining, you will need to have a good understanding of the process mining techniques and machine learning algorithms. Additionally, you will need to have access to a large amount of process data that can be used to train and test your machine learning models. A programming language such as Python, which has a lot of machine learning libraries available like scikit-learn, Tensorflow, PyTorch, etc. It will also be helpful to have experience working with large datasets and data preprocessing.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.018,
+        "neu": 0.91,
+        "pos": 0.072,
+        "compound": 0.9274
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 291,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.010309278350515464
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.09278350515463918,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.010309278350515464,
+        "token_count": 291
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 19.4,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.647887323943662
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 9,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 4,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 28,
+            "VBN": 8,
+            "VBP": 2,
+            "VBG": 10,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "GPE": 3,
+            "ORGANIZATION": 5,
+            "PERSON": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Where can I get code for task mining",
+      "language": "da",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "There are several libraries and tools available for task mining, such as BPMN Simulator, Disco, and ProM, which provide pre-built functionality for task mining. These tools also provide APIs that you can use to integrate task mining into your own code.\n\nIf you prefer to write your own code from scratch, you will need to use a programming language such as Python or R, and make use of libraries for natural language processing (NLP) such as NLTK and spaCy, and libraries for data manipulation such as pandas.\n\nHere's an example of how you might use the NLTK library in Python to extract information about tasks from an email dataset:\n```\nimport pandas as pd\nimport nltk\nfrom nltk.tokenize import word_tokenize\n\n# import the email dataset into a pandas dataframe\nemails = pd.read_csv(\"path/to/email_dataset.csv\")\n\n# extract the body of the emails\nemail_bodies = emails['body']\n\n# tokenize the email bodies\nemail_tokens = [word_tokenize(body) for body in email_bodies]\n\n# extract the named entities from the email bodies\nemail_entities = [nltk.ne_chunk(token) for token in email_tokens]\n\n# extract the tasks from the named entities\ntasks = []\nfor entities in email_entities:\n    for entity in entities:\n        if type(entity) == nltk.tree.Tree:\n            if entity.label() == \"TASK\":\n                tasks.append(entity)\n\n# print the extracted tasks\nprint(tasks)\n```\nThis is just a basic example, and there are many other features and options that you can use when performing task mining. To get more advanced functionality, you will need to learn about the specific NLP and data manipulation libraries that you are using, and explore the documentation and examples provided.\nIt's also important to mention that the above example uses a dataset of emails, task mining can be performed on other types of data sources such as chat logs and calendar entries by using similar techniques.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.015,
+        "neu": 0.963,
+        "pos": 0.022,
+        "compound": 0.2944
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 9,
+        "token_count": 353,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.025495750708215296
+      },
+      "lexical_features": {
+        "adj_adv_freq": 40,
+        "adj_adv_ratio": 0.11331444759206799,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.025495750708215296,
+        "token_count": 353
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 58.833333333333336,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.5616438356164384
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 5,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 12,
+            "VB": 19,
+            "VBZ": 7,
+            "VBN": 4,
+            "VBG": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 2,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you some examples of discovery and analysis in process intelligence",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.763,
+        "pos": 0.237,
+        "compound": 0.4767
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 11,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.09090909090909091
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.09090909090909091,
+        "token_count": 11
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here are a few examples of discovery and analysis in process intelligence:\n\n1. **Process Discovery**: Process discovery is the process of automatically discovering process models from event logs. This can be done using techniques such as process mining, which uses data from systems such as enterprise resource planning (ERP) and workflow management systems to create a visual representation of the process and identify bottlenecks, inefficiencies, and areas for improvement.\n2. **Conformance Checking**: Conformance checking is the process of comparing an actual event log with a process model to determine if the process is being executed as defined in the process model. This can be done using techniques such as aligning, which uses data from systems such as enterprise resource planning (ERP) and workflow management systems to determine if the process is being executed as defined in the process model and to monitor the process in real-time.\n3. **Process Optimization**: Process optimization is the process of identifying ways to improve the performance of a process. This can be done using techniques such as simulation, which uses data from systems such as enterprise resource planning (ERP) and workflow management systems to identify the factors that have the greatest impact on process performance and to optimize process parameters such as resource allocation and task priority.\n4. **Anomaly Detection**: Anomaly detection is the process of identifying unusual or abnormal behavior in the process, which can indicate bottlenecks or inefficiencies. This can be done using machine learning algorithms such as One-class SVM, Autoencoder, and Isolation Forest.\n5. **Process Prediction**: Process prediction is the process of using historical process data to predict future process outcomes, such as the completion time of a task or the likelihood of a case being delayed. This can be done using machine learning models such as Random Forest and Neural Networks.\n\nThese are just a few examples of discovery and analysis techniques that can be used in process intelligence. The specific techniques and methods used will depend on the goals of the analysis, the data available, and the complexity of the process.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.013,
+        "neu": 0.907,
+        "pos": 0.08,
+        "compound": 0.9735
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 403,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 34,
+        "adj_adv_ratio": 0.08436724565756824,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 403
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.705882352941178,
+          "clause_complexity": 0.11764705882352941,
+          "vocabulary_richness": 0.5
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 7,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 10,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VB": 21,
+            "VBZ": 10,
+            "VBG": 15,
+            "VBN": 12
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 2,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Those are technique are there examples you can share?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.784,
+        "pos": 0.216,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 10,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.1
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.1,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here are a few examples of how these techniques can be applied in practice:\n\n1. **Process Discovery**: A company that manufactures automobiles wants to improve its production process. They use process mining to analyze data from their ERP system, which contains information about the tasks that are performed and the resources that are used during the production process. The process mining software creates a visual representation of the process, which shows that there is a bottleneck in the assembly line. By identifying this bottleneck, the company can make changes to the production process to improve efficiency and reduce costs.\n2. **Conformance Checking**: A retail company wants to ensure that its customer service process is being executed as defined in the process model. They use conformance checking to compare data from its customer service system with the process model. The conformance checking software detects that customer service representatives are deviating from the process model by skipping certain steps in the process. By identifying these deviations, the company can take action to correct the problem and improve the customer experience.\n3. **Process Optimization**: A logistics company wants to optimize its warehouse operations. They use simulation to analyze data from their warehouse management system, which contains information about the tasks that are performed and the resources that are used during the warehouse operations. The simulation software identifies that the layout of the warehouse is not optimal and that certain tasks are taking longer than expected. By identifying these issues, the company can make changes to the layout of the warehouse and the tasks that are performed, in order to improve efficiency and reduce costs.\n4. **Anomaly Detection**: A bank wants to detect any unusual or abnormal behavior in its loan processing process. They use machine learning algorithms to analyze data from its loan processing system. The anomaly detection algorithm identifies that certain loans are taking longer than expected to be processed, indicating a potential bottleneck or inefficiency in the process. By identifying this anomaly, the bank can take action to correct the problem and improve the loan processing process.\n5. **Process Prediction**: A healthcare company wants to predict how long it will take for a patient to be discharged from the hospital. They use machine learning models to analyze data from its electronic health record (EHR) system. The prediction algorithm predicts the discharge time based on factors such as the patient's diagnosis, the treatments that are being administered, and the patient's vital signs. By making these predictions, the company can plan for the discharge process and improve the patient's experience.\n\nThese are just a few examples of how these techniques can be applied in practice. Depending on the specifics of the problem, data and the complexity of the process, different techniques can be more suitable for different scenarios. Additionally, these techniques can be combined to achieve better results.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.02,
+        "neu": 0.889,
+        "pos": 0.091,
+        "compound": 0.9854
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 551,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 33,
+        "adj_adv_ratio": 0.05989110707803993,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 551
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 19.678571428571427,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5133079847908745
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 9,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 16,
+            "VB": 37,
+            "VBN": 16,
+            "VBZ": 16,
+            "VBG": 15
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.4440916666666668,
+    "pos": 0.09499999999999999,
+    "neu": 0.8985833333333334,
+    "neg": 0.006416666666666667
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 166,
+    "adj_adv_ratio": 0.08316633266533066,
+    "self_ref_freq": 2,
+    "self_ref_ratio": 0.001002004008016032,
+    "second_person_freq": 23,
+    "second_person_ratio": 0.011523046092184368,
+    "total_tokens": 1996
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 22.510707919531452,
+      "clause_complexity": 0.1303921568627451,
+      "vocabulary_richness": 0.7585128317603188
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 8,
+        "why": 0,
+        "can_could": 36,
+        "general": 4
+      },
+      "discourse_markers": {
+        "elaboration": 25,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 2
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 41,
+        "VB": 132,
+        "VBN": 46,
+        "VBG": 46,
+        "VBP": 44
+      },
+      "named_entities": {
+        "GPE": 8,
+        "ORGANIZATION": 32,
+        "PERSON": 9
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 11,
+      "da": 1
+    },
+    "turn_count": 12,
+    "total_tokens": 1996
+  }
+}

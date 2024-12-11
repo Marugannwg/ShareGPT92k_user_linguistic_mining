@@ -1,0 +1,189 @@
+{
+  "id": "g7tJDGQ_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "!Here is a sample program that demonstrates how to print out the amount of VAC bans and the last VAC ban date of a Steam user using their Steam64ID in C#:\n\nThis content may violate our content policy. If you believe this to be in error, please submit your feedback — your input will aid our research in this area.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.144,
+        "neu": 0.822,
+        "pos": 0.034,
+        "compound": -0.8172
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 66,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.07575757575757576
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.045454545454545456,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.07575757575757576,
+        "token_count": 66
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 33.0,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.9333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 6,
+            "VBG": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is an example of how you can use the Steam Web API to retrieve information about a user's VAC bans and the date of the last VAC ban:\n```\nusing System;\nusing System.Net;\nusing Newtonsoft.Json;\n\nnamespace SteamVACBans\n{\n    class Program\n    {\n        static void Main(string[] args)\n        {\n            // Replace this with the Steam64ID of the user you want to get information about\n            long steam64ID = 1234567890;\n\n            // Use the Steam Web API to get information about the user's VAC bans\n            string apiUrl = \"https://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=YOUR_API_KEY&steamids=\" + steam64ID;\n            using (WebClient client = new WebClient())\n            {\n                string json = client.DownloadString(apiUrl);\n                dynamic data = JsonConvert.DeserializeObject(json);\n\n                // Print out the number of VAC bans and the date of the last VAC ban\n                int vacBans = data.players[0].NumberOfVACBans;\n                DateTime lastBanDate = DateTime.Parse((string)data.players[0].DaysSinceLastBan);\n                Console.WriteLine(\"Number of VAC bans: \" + vacBans);\n                Console.WriteLine(\"Last VAC ban date: \" + lastBanDate.ToString(\"yyyy-MM-dd\"));\n            }\n        }\n    }\n}\n```\nThis code makes a request to the Steam Web API to retrieve information about the user with the specified Steam64ID. It then parses the JSON response to extract the number of VAC bans and the date of the last VAC ban.\n\nNote that you will need to replace `YOUR_API_KEY` with your own Steam Web API key, which you can obtain by following the instructions on the Steam Web API documentation page (<https://developer.valvesoftware.com/wiki/Steam_Web_API>).",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.063,
+        "neu": 0.909,
+        "pos": 0.028,
+        "compound": -0.8979
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 296,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.016891891891891893
+      },
+      "lexical_features": {
+        "adj_adv_freq": 19,
+        "adj_adv_ratio": 0.06418918918918919,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.016891891891891893,
+        "token_count": 296
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 98.66666666666667,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.49586776859504134
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 10,
+            "VBG": 9,
+            "VBP": 5,
+            "VBN": 2
+          },
+          "named_entities": {
+            "PERSON": 5,
+            "ORGANIZATION": 12,
+            "GPE": 3
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.85755,
+    "pos": 0.031,
+    "neu": 0.8654999999999999,
+    "neg": 0.1035
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 22,
+    "adj_adv_ratio": 0.06077348066298342,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 10,
+    "second_person_ratio": 0.027624309392265192,
+    "total_tokens": 362
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 65.83333333333334,
+      "clause_complexity": 0.25,
+      "vocabulary_richness": 0.7146005509641873
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 2,
+        "why": 0,
+        "can_could": 2,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 6,
+        "VB": 16,
+        "VBG": 10,
+        "VBP": 6,
+        "VBN": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 13,
+        "GPE": 4,
+        "PERSON": 5
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 362
+  }
+}

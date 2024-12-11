@@ -1,0 +1,209 @@
+{
+  "id": "3p6Kt96_3",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "To create an Azure Function that saves a new JSON file into a folder called \"Environment Artifacts\" in the root of the repo, follow these steps:\n\n1. Create a new Azure Function with a Python HTTP trigger:\n```arduino\nfunc init SaveArtifactEnvironmentFile --worker-runtime python\ncd SaveArtifactEnvironmentFile\nfunc new --name SaveArtifactEnvironmentFile --template \"HTTP trigger\" --authlevel \"function\"\n```\n2. Add the necessary imports and the code to the `__init__.py` file:\n```python\nimport logging\nimport os\nimport json\nimport git\nfrom datetime import datetime\nfrom azure.identity import DefaultAzureCredential\nfrom azure.keyvault.secrets import SecretClient\nfrom azure.core.exceptions import ResourceNotFoundError\nimport azure.functions as func\n\ndef main(req: func.HttpRequest) -> func.HttpResponse:\n    logging.info('Python HTTP trigger function processed a request.')\n\n    # Get the parameters from the request\n    repository_url = req.params.get('repository')\n    environment_name = req.params.get('environment_name')\n    artifact_tag_name = req.params.get('artifact_tag_name')\n\n    if not repository_url or not environment_name or not artifact_tag_name:\n        return func.HttpResponse(\"Please provide 'repository', 'environment_name', and 'artifact_tag_name' parameters.\", status_code=400)\n\n    try:\n        # Authenticate with Azure Key Vault\n        credential = DefaultAzureCredential()\n        key_vault_url = os.environ[\"KEY_VAULT_URL\"]\n        secret_client = SecretClient(vault_url=key_vault_url, credential=credential)\n\n        # Get the Git access token from the Key Vault\n        git_access_token = secret_client.get_secret(\"git-access-token\").value\n\n    except ResourceNotFoundError:\n        return func.HttpResponse(\"Git access token not found in Key Vault.\", status_code=400)\n    except Exception as e:\n        return func.HttpResponse(f\"Error while fetching access token from Key Vault: {str(e)}\", status_code=500)\n\n    try:\n        # Clone the repository\n        repo_dir = \"temp_repo\"\n        git.Repo.clone_from(repository_url, repo_dir, branch=\"master\", depth=1, env={\"GIT_TERMINAL_PROMPT\": \"0\", \"GIT_ASKPASS\": \"echo\", \"GIT_USERNAME\": \"\", \"GIT_PASSWORD\": git_access_token})\n\n        # Create the JSON object\n        environment_data = {\n            \"Apps\": [\n                {\n                    \"App\": \"YIBASE\",\n                    \"Branch\": \"230320001\",\n                    \"Tag\": \"230320001.001\"\n                },\n                {\n                    \"App\": \"YACSRM\",\n                    \"Branch\": \"230320001\",\n                    \"Tag\": \"230320001.001\"\n                },\n                # ... Add all other app objects here\n            ],\n            \"datetime_created\": datetime.utcnow().isoformat() + \"Z\",\n            \"environment\": environment_name,\n            \"Tenant Id\": \"baa9bca8-3d3f-4f3d-a2e2-0c62c51e1d15\",\n            \"Artifact URL\": f\"https://mystorageaccount.blob.core.windows.net/mycontainer/{artifact_tag_name}.zip\"\n        }\n\n        # Save the JSON file\n        environment_artifacts_dir = os.path.join(repo_dir, \"Environment Artifacts\")\n        os.makedirs(environment_artifacts_dir, exist_ok=True)\n        environment_file_path = os.path.join(environment_artifacts_dir, f\"{artifact_tag_name}.json\")\n        with open(environment_file_path, \"w\") as f:\n            json.dump(environment_data, f, indent=4)\n\n        # Commit and push the changes\n        repo = git.Repo(repo_dir)\n        repo.git.add(A=True)\n        repo\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.962,
+        "pos": 0.038,
+        "compound": 0.8658
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 550,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 32,
+        "adj_adv_ratio": 0.05818181818181818,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 550
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 91.66666666666667,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.5617283950617284
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 12,
+            "VBZ": 3,
+            "VBN": 3,
+            "VBP": 11,
+            "VBG": 2,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 14,
+            "PERSON": 6,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": ".git.commit(m=\"Add new environment JSON file.\")\nrepo.git.push(\"origin\", \"master\")\n```python\nexcept Exception as e:\n    return func.HttpResponse(f\"Error while processing the Git repository: {str(e)}\", status_code=500)\nfinally:\n    # Clean up the cloned repository\n    if os.path.exists(repo_dir):\n        shutil.rmtree(repo_dir)\n\nreturn func.HttpResponse(\"Environment JSON file successfully created and pushed to the master branch.\", status_code=200)\n```\n\n```css\n\n3. Add the following environment variable to your `local.settings.json` file:\n```json\n{\n  \"IsEncrypted\": false,\n  \"Values\": {\n    \"AzureWebJobsStorage\": \"<your_storage_connection_string>\",\n    \"FUNCTIONS_WORKER_RUNTIME\": \"python\",\n    \"KEY_VAULT_URL\": \"<your_key_vault_url>\"\n  }\n}\n\n```\nReplace `<your_storage_connection_string>` with your Azure Storage connection string and `<your_key_vault_url>` with the URL of your Azure Key Vault.\n\nNow, you have an Azure Function that takes the Git repository name, Environment Name, and Artifact Tag Name as input parameters and saves a new JSON file into a folder called \"Environment Artifacts\" in the root of the Git repository.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.922,
+        "pos": 0.078,
+        "compound": 0.8625
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 228,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.017543859649122806
+      },
+      "lexical_features": {
+        "adj_adv_freq": 17,
+        "adj_adv_ratio": 0.07456140350877193,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.017543859649122806,
+        "token_count": 228
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 45.6,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.6794871794871795
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 3,
+            "VBN": 5,
+            "VB": 1,
+            "VBP": 1,
+            "VBZ": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.5761,
+    "pos": 0.03866666666666666,
+    "neu": 0.9613333333333333,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 49,
+    "adj_adv_ratio": 0.06298200514138817,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 4,
+    "second_person_ratio": 0.005141388174807198,
+    "total_tokens": 778
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 68.63333333333334,
+      "clause_complexity": 0.3666666666666667,
+      "vocabulary_richness": 0.620607787274454
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 13,
+        "VBZ": 5,
+        "VBN": 8,
+        "VBP": 12,
+        "VBG": 5,
+        "VBD": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 20,
+        "PERSON": 7,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2,
+      "it": 1
+    },
+    "turn_count": 3,
+    "total_tokens": 778
+  }
+}

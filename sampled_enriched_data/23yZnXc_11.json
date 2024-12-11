@@ -1,0 +1,618 @@
+{
+  "id": "23yZnXc_11",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Sure! To update the input field with type=\"submit\" to be a button, you can simply replace the `input` element with a `button` element:\n```\n<button\n  type=\"submit\"\n  disabled={!formik.isValid || !formik.dirty}\n  className=\"rounded-r-full border border-brown bg-green p-3 font-bold text-offwhite shadow-sm shadow-black transition duration-150 ease-in-out hover:bg-dullgreen active:bg-dullergreen disabled:opacity-50\"\n>\n  Own now!\n</button>\n```\nTo make this button reset the field when clicked, you can bind the `resetForm` method to the button's `onClick` event:\n```\n<button\n  type=\"button\"\n  onClick={resetForm}\n  className=\"rounded-r-full border border-brown bg-green p-3 font-bold text-offwhite shadow-sm shadow-black transition duration-150 ease-in-out hover:bg-dullgreen active:bg-dullergreen disabled:opacity-50\"\n>\n  Own now!\n</button>\n```\nThis will reset the form values to their initial values when the button is clicked.\n\nHere is the updated code with the changes applied:\n```\nimport { useFormikContext } from 'formik';\n\n{(formik: FormikComputedProps<FormValues>) => (\n  <Form className=\"flex\">\n    <Field\n      type=\"text\"\n      name=\"email\"\n      className=\"rounded-l-full border border-brown bg-white p-3 font-semibold shadow-sm shadow-black outline-none md:w-2/5\"\n      placeholder=\"your@email.com\"\n      id=\"email\"\n    />\n    <ErrorMessage\n      className=\"text-hotred\"\n      component=\"div\"\n      name=\"email\"\n    />\n\n    <button\n      type=\"button\"\n      onClick={resetForm}\n      className=\"rounded-r-full border border-brown bg-green p-3 font-bold text-offwhite shadow-sm shadow-black transition duration-150 ease-in-out hover:bg-dullgreen active:bg-dullergreen disabled:opacity-50\"\n    >\n      Own now!\n    </button>\n  </Form>\n)}\n```\nKeep in mind that this is just one way to update the input field with type=\"submit\" to be a button and make that button reset the field when clicked, and the specific implementation will depend on your requirements and the structure of your code.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.961,
+        "pos": 0.039,
+        "compound": 0.8346
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 359,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.013927576601671309
+      },
+      "lexical_features": {
+        "adj_adv_freq": 78,
+        "adj_adv_ratio": 0.21727019498607242,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.013927576601671309,
+        "token_count": 359
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 59.833333333333336,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.5268817204301075
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 15,
+            "VBP": 4,
+            "VBN": 4,
+            "VBZ": 3
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "My IDE says there is a type error with the onClick={resetForm} part of this code. Can you fix it for me?\nexport function SignupForm2() {\n const { resetForm } = useFormikContext();\n\n return (\n \n \n {(formik: FormikComputedProps) => (\n\n \n \n \n\n \n Own Now!\n \n \n )}\n \n \n )\n}",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.068,
+        "neu": 0.932,
+        "pos": 0.0,
+        "compound": -0.4574
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 1,
+        "token_count": 59,
+        "self_ref_ratio": 0.03389830508474576,
+        "second_person_ratio": 0.01694915254237288
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.06779661016949153,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.03389830508474576,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.01694915254237288,
+        "token_count": 59
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9411764705882353
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 2,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "The error you are seeing is likely caused by the fact that the `resetForm` method is being passed to the `onClick` event of the submit button, which is not expected to receive a function as its value.\n\nTo fix this error, you can bind the `resetForm` method to the `onClick` event of a separate button, rather than the submit button. This will allow you to reset the form values when the button is clicked, without affecting the form submission process.\n\nHere is an example of how you could do this:\n```\nimport { useFormikContext } from 'formik';\n\nexport function SignupForm2() {\n  const { resetForm } = useFormikContext<FormValues>();\n\n  return (\n    <div className=\"rounded-lg p-2\">\n      <Formik\n        initialValues={{\n          email: '',\n        }}\n        validationSchema={SignupSchema}\n        onSubmit={submitForm}\n      >\n        {(formik: FormikComputedProps<FormValues>) => (\n          <Form className=\"flex\">\n            <Field\n              type=\"text\"\n              name=\"email\"\n              className=\"rounded-l-full border border-brown bg-white p-3 font-semibold shadow-sm shadow-black outline-none md:w-2/5\"\n              placeholder=\"your@email.com\"\n              id=\"email\"\n            />\n            <ErrorMessage\n              className=\"text-hotred\"\n              component=\"div\"\n              name=\"email\"\n            />\n\n            <button\n              type=\"submit\"\n              disabled={!formik.isValid || !formik.dirty}\n              className=\"rounded-r-full border border-brown bg-green p-3 font-bold text-offwhite shadow-sm shadow-black transition duration-150 ease-in-out hover:bg-dullgreen active:bg-dullergreen disabled:opacity-50\"\n            >\n              Own Now!\n            </button>\n            <button\n              type=\"button\"\n              onClick={resetForm}\n              className=\"rounded-r-full border border-brown bg-green p-3 font-bold text-offwhite shadow-sm shadow-black transition duration-150 ease-in-out hover:bg-dullgreen active:bg-dullergreen disabled:opacity-50\"\n            >\n              Reset\n            </button>\n          </Form>\n        )}\n      </Formik>\n    </div>\n  );\n}\n```\nIn this example, the `resetForm` method is bound to the `onClick` event of a separate button, which allows you to reset the form values when the button is clicked without affecting the form submission process.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.024,
+        "neu": 0.933,
+        "pos": 0.043,
+        "compound": 0.5791
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 6,
+        "token_count": 378,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.015873015873015872
+      },
+      "lexical_features": {
+        "adj_adv_freq": 63,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.015873015873015872,
+        "token_count": 378
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 75.6,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.5333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBG": 4,
+            "VBZ": 8,
+            "VBN": 6,
+            "VB": 11
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you add the resetForm to this function?\nasync function submitForm(values: FormValues): Promise {\n const { email } = values;\n try {\n const payload = {\n email\\_address: email,\n };\n\n const response = await fetch(\"/api/subscribe\", {\n method: \"POST\",\n headers: {\n \"Content-Type\": \"application/json\",\n },\n body: JSON.stringify(payload),\n });\n const result = await response.json();\n console.log(result);\n } catch (err) {\n console.error(err);\n return false\n }\n return true\n}",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.843,
+        "pos": 0.157,
+        "compound": 0.8225
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 109,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.009174311926605505
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.05504587155963303,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.009174311926605505,
+        "token_count": 109
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 54.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6944444444444444
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "To add the `resetForm` function to this function, you will need to modify the function to have access to the Formik context and the `resetForm` method. Here is one way you could do this:\n\n1. Import the `useFormikContext` hook from Formik. This hook allows you to access the Formik context, including the `resetForm` method, from within a form component.\n```\nimport { useFormikContext } from 'formik';\n```\n1. Use the `useFormikContext` hook to access the Formik context and the `resetForm` method.\n```\nconst { resetForm } = useFormikContext<FormValues>();\n```\n1. Call the `resetForm` method after the form has been successfully submitted.\n```\nresetForm();\n```\nHere is the updated code with the `resetForm` function added:\n```\nimport { useFormikContext } from 'formik';\n\nasync function submitForm(values: FormValues): Promise<boolean> {\n  const { resetForm } = useFormikContext<FormValues>();\n  const { email } = values;\n  try {\n    const payload = {\n      email_address: email,\n    };\n\n    const response = await fetch('/api/subscribe', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify(payload),\n    });\n    const result = await response.json();\n    console.log(result);\n  } catch (err) {\n    console.error(err);\n    return false;\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.952,
+        "pos": 0.048,
+        "compound": 0.7717
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 280,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.010714285714285714
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.06428571428571428,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.010714285714285714,
+        "token_count": 280
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 31.11111111111111,
+          "clause_complexity": 0.1111111111111111,
+          "vocabulary_richness": 0.5
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 14,
+            "VBZ": 4,
+            "VBG": 1,
+            "VBN": 3,
+            "VBD": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 4,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "My IDE produces the error below in {} when I use your code example. Can you fix it?\n\n{React Hook \"useFormikContext\" is called in function \"submitForm\" that is neither a React function component nor a custom React Hook function. React component names must start with an uppercase letter. React Hook names must start with the word \"use\".}",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.046,
+        "neu": 0.954,
+        "pos": 0.0,
+        "compound": -0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 2,
+        "token_count": 71,
+        "self_ref_ratio": 0.028169014084507043,
+        "second_person_ratio": 0.028169014084507043
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.056338028169014086,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.028169014084507043,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.028169014084507043,
+        "token_count": 71
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.2,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.6285714285714286
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBP": 1,
+            "VB": 3,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "PERSON": 4
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "The error you are seeing is likely caused by the fact that you are trying to use the `useFormikContext` hook outside of a React function component. The `useFormikContext` hook can only be used inside a function component or a custom hook.\n\nTo fix this error, you will need to move the `useFormikContext` hook and the `resetForm` function to a React function component or a custom hook. Here is an example of how you could do this:\n```\nimport { useFormikContext } from 'formik';\n\nfunction MyForm() {\n  const { resetForm } = useFormikContext<FormValues>();\n\n  const handleSubmit = async (values: FormValues) => {\n    try {\n      const payload = {\n        email_address: values.email,\n      };\n\n      const response = await fetch('/api/subscribe', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(payload),\n      });\n      const result = await response.json();\n      console.log(result);\n      resetForm();\n    } catch (err) {\n      console.error(err);\n    }\n  };\n\n  return (\n    <Formik\n      initialValues={{\n        email: '',\n      }}\n      onSubmit={handleSubmit\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.038,
+        "neu": 0.927,
+        "pos": 0.036,
+        "compound": -0.3237
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 225,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.017777777777777778
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.08,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.017777777777777778,
+        "token_count": 225
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 56.25,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5972222222222222
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBG": 2,
+            "VBZ": 2,
+            "VBN": 2,
+            "VB": 9
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Can you update that so that resetForm is passed in to the original function instead of using the MyForm function?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.892,
+        "pos": 0.108,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 21,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.047619047619047616
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.14285714285714285,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.047619047619047616,
+        "token_count": 21
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 21.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8888888888888888
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBZ": 1,
+            "VBN": 1,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! To pass the `resetForm` function to the `submitForm` function, you can modify the `submitForm` function to accept a `resetForm` argument, and pass the `resetForm` function as an argument when calling the `submitForm` function.\n\nHere is an example of how you could do this:\n```\nimport { useFormikContext } from 'formik';\n\nasync function submitForm(values: FormValues, resetForm: () => void): Promise<boolean> {\n  try {\n    const payload = {\n      email_address: values.email,\n    };\n\n    const response = await fetch('/api/subscribe', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify(payload),\n    });\n    const result = await response.json();\n    console.log(result);\n    resetForm();\n  } catch (err) {\n    console.error(err);\n    return false;\n  }\n  return true;\n}\n\nfunction MyForm() {\n  const { resetForm } = useFormikContext<FormValues>();\n\n  return (\n    <Formik\n      initialValues={{\n        email: '',\n      }}\n      validationSchema={SignupSchema}\n      onSubmit={(values: FormValues) => submitForm(values, resetForm)}\n    >\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.037,
+        "neu": 0.885,
+        "pos": 0.079,
+        "compound": 0.5848
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 230,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.008695652173913044
+      },
+      "lexical_features": {
+        "adj_adv_freq": 15,
+        "adj_adv_ratio": 0.06521739130434782,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.008695652173913044,
+        "token_count": 230
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 76.66666666666667,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.5428571428571428
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBP": 4,
+            "VBG": 1,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.3031,
+    "pos": 0.05666666666666667,
+    "neu": 0.9198888888888889,
+    "neg": 0.023666666666666666
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 209,
+    "adj_adv_ratio": 0.12066974595842957,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.0023094688221709007,
+    "second_person_freq": 25,
+    "second_person_ratio": 0.014434180138568129,
+    "total_tokens": 1732
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 44.87901234567901,
+      "clause_complexity": 0.17160493827160495,
+      "vocabulary_richness": 0.6503750723706447
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 3,
+        "why": 0,
+        "can_could": 13,
+        "general": 4
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 4
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 68,
+        "VBP": 17,
+        "VBN": 17,
+        "VBZ": 24,
+        "VBG": 9,
+        "VBD": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 23,
+        "GPE": 1,
+        "PERSON": 4
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 9
+    },
+    "turn_count": 9,
+    "total_tokens": 1732
+  }
+}

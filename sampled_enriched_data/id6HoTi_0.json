@@ -1,0 +1,184 @@
+{
+  "id": "id6HoTi_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "generate SQL for `I want to find the most dislike posts` for the table `facebook\\_posts`\ntable schema:\n| name | type |\n|---|---|\n| post\\_id | UUID |\n| like\\_count | integer |\n| love\\_count | integer |\n| dislike\\_count | inetger |\n| content | text |",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.058,
+        "neu": 0.916,
+        "pos": 0.026,
+        "compound": -0.3804
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 57,
+        "self_ref_ratio": 0.017543859649122806,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.08771929824561403,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.017543859649122806,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 57
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 57.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8823529411764706
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is an example of an SQL query that would find the most disliked posts in the `facebook_posts` table:\n```\nSELECT post_id, dislike_count\nFROM facebook_posts\nORDER BY dislike_count DESC\nLIMIT 1;\n```\nThis query will select the `post_id` and `dislike_count` columns from the `facebook_posts` table, sort the results by `dislike_count` in descending order, and return only the top (most disliked) post.\n\nYou can adjust the `LIMIT` clause to return more than one post if you want to see more than the most disliked post. For example, `LIMIT 10` would return the top 10 most disliked posts.\n\nYou can also add a `WHERE` clause to filter the results based on specific criteria. For example, you could use a `WHERE` clause to only consider posts that were made within a certain date range, or that contain a certain keyword.\n```\nSELECT post_id, dislike_count\nFROM facebook_posts\nWHERE content LIKE '%keyword%' AND created_at BETWEEN '2022-01-01' AND '2022-12-31'\nORDER BY dislike_count DESC\nLIMIT 10;\n```\nThis query would find the top 10 most disliked posts that contain the keyword \"keyword\" and were created between January 1, 2022 and December 31, 2022.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.073,
+        "neu": 0.848,
+        "pos": 0.079,
+        "compound": -0.4276
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 235,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.01702127659574468
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.10638297872340426,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.01702127659574468,
+        "token_count": 235
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 39.166666666666664,
+          "clause_complexity": 0.16666666666666666,
+          "vocabulary_richness": 0.5384615384615384
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 2,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 12,
+            "VBG": 1,
+            "VBN": 4,
+            "VBP": 3,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 8
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.404,
+    "pos": 0.0525,
+    "neu": 0.882,
+    "neg": 0.0655
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 30,
+    "adj_adv_ratio": 0.10273972602739725,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.003424657534246575,
+    "second_person_freq": 4,
+    "second_person_ratio": 0.0136986301369863,
+    "total_tokens": 292
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 48.08333333333333,
+      "clause_complexity": 0.08333333333333333,
+      "vocabulary_richness": 0.7104072398190044
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 3,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 2,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 5,
+        "VB": 13,
+        "VBZ": 2,
+        "VBG": 1,
+        "VBN": 4,
+        "VBD": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 9
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 292
+  }
+}

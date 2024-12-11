@@ -1,0 +1,411 @@
+{
+  "id": "oKPwUbM_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "From now on you are a security expert, skilled in writing terraform code, have in depth knowledge of CIS compliance. You will reply to further questions with code only without any explanations. My first command is for you to write terraform code to create an S3 bucket",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.909,
+        "pos": 0.091,
+        "compound": 0.5423
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 3,
+        "token_count": 51,
+        "self_ref_ratio": 0.0196078431372549,
+        "second_person_ratio": 0.058823529411764705
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.0784313725490196,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0196078431372549,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.058823529411764705,
+        "token_count": 51
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8695652173913043
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VBN": 1,
+            "VBG": 1,
+            "VB": 3,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "```\nresource \"aws_s3_bucket\" \"bucket\" {\n  bucket = \"my-bucket\"\n  acl    = \"private\"\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 23,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.08695652173913043,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 23
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "A CIS compliant S3 bucket",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "```\nresource \"aws_s3_bucket\" \"bucket\" {\n  bucket = \"my-bucket\"\n  acl    = \"private\"\n\n  versioning {\n    enabled = true\n  }\n\n  server_side_encryption_configuration {\n    rule {\n      apply_server_side_encryption_by_default {\n        sse_algorithm = \"AES256\"\n      }\n    }\n  }\n\n  lifecycle {\n    prevent_destroy = true\n  }\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.862,
+        "pos": 0.138,
+        "compound": 0.6808
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 49,
+        "self_ref_ratio": 0.02040816326530612,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.14285714285714285,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.02040816326530612,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 49
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 49.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8333333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Add a lambda function with permissions to access this bucket",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 10,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "```\nresource \"aws_s3_bucket\" \"bucket\" {\n  bucket = \"my-bucket\"\n  acl    = \"private\"\n\n  versioning {\n    enabled = true\n  }\n\n  server_side_encryption_configuration {\n    rule {\n      apply_server_side_encryption_by_default {\n        sse_algorithm = \"AES256\"\n      }\n    }\n  }\n\n  lifecycle {\n    prevent_destroy = true\n  }\n}\n\nresource \"aws_iam_role\" \"iam_for_lambda\" {\n  name = \"iam_for_lambda\"\n\n  assume_role_policy = <<EOF\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"lambda.amazonaws.com\"\n      },\n      \"Effect\": \"Allow\",\n      \"Sid\": \"\"\n    }\n  ]\n}\nEOF\n}\n\nresource \"aws_iam_policy\" \"s3_access\" {\n  name = \"s3_access\"\n  path = \"/\"\n\n  policy = <<EOF\n{\n    \"Version\": \"2012-10-17\",\n    \"Statement\": [\n        {\n            \"Sid\": \"VisualEditor0\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"s3:GetBucketLocation\",\n                \"s3:ListBucket\"\n            ],\n            \"Resource\": [\n                \"arn:aws:s3:::my-bucket\"\n            ]\n        },\n        {\n            \"Sid\": \"VisualEditor1\",\n            \"Effect\": \"Allow\",\n            \"Action\": [\n                \"s3:PutObject\",\n                \"s3:GetObject\",\n                \"s3:DeleteObject\"\n            ],\n            \"Resource\": [\n                \"arn:aws:s3:::my-bucket/*\"\n            ]\n        }\n    ]\n}\nEOF\n}\n\nresource \"aws_iam_role_policy_attachment\" \"lambda_to_s3\" {\n  role       = aws_iam_role.iam_for_lambda.name\n  policy_arn = aws_iam_policy.s3_access.arn\n}\n\nresource \"aws_lambda_function\" \"lambda_function\" {\n  filename      = \"function.zip\"\n  function_name = \"my_function\"\n  role          = aws_iam_role.iam_for_lambda.arn\n  handler       = \"exports.handler\"\n  runtime       = \"nodejs12.x\"\n\n  environment {\n    variables = {\n      foo = \"bar\"\n    }\n  }\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.933,
+        "pos": 0.067,
+        "compound": 0.8519
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 0,
+        "token_count": 339,
+        "self_ref_ratio": 0.008849557522123894,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 22,
+        "adj_adv_ratio": 0.06489675516224189,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.008849557522123894,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 339
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 339.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5753424657534246
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 9,
+            "VBG": 1,
+            "VBP": 1,
+            "VBZ": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 4
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.3458333333333334,
+    "pos": 0.04933333333333334,
+    "neu": 0.9506666666666667,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 36,
+    "adj_adv_ratio": 0.07547169811320754,
+    "self_ref_freq": 6,
+    "self_ref_ratio": 0.012578616352201259,
+    "second_person_freq": 3,
+    "second_person_ratio": 0.006289308176100629,
+    "total_tokens": 477
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 73.83333333333333,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.8463735027463436
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 3,
+        "VBN": 1,
+        "VBG": 3,
+        "VB": 17,
+        "VBZ": 5
+      },
+      "named_entities": {
+        "ORGANIZATION": 7
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 6
+    },
+    "turn_count": 6,
+    "total_tokens": 477
+  }
+}

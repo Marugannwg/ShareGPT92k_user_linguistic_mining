@@ -1,0 +1,501 @@
+{
+  "id": "x5iwfyV_295",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Here's a modified version of the `Tournament` class with a new function `select_winner_simple` that takes in two teams and selects a winner using the win probability and the historical upset rates:\n```python\nclass Tournament:\n\n    # ... (previous code)\n\n    def select_winner_simple(self, team1: Team, team2: Team):\n        seed1, seed2 = team1.team_seed, team2.team_seed\n        historical_upset_rate = self.historical_upset_rate(seed1, seed2)\n\n        team1_is_better_score = team1.ken_pom_score > team2.ken_pom_score\n        better_team = team1 if team1_is_better_score else team2\n        worse_team = team2 if team1_is_better_score else team1\n\n        statistical = self.calculate_win_probability(worse_team, better_team)\n\n        # Noise is added by using historical upset rates rather than team specific KenPom scores\n        probability = (1 - self.noise) * statistical + self.noise * historical_upset_rate\n\n        # If a random number is less than the probability of an upset, return the underdog\n        if np.random.rand() < probability:\n            return worse_team\n        # Otherwise, return the favorite\n        else:\n            return better_team\n```\nThe new `select_winner_simple` function takes in two `Team` objects and computes the upset probability using the historical upset rates and the win probability. It then selects a winner based on these probabilities.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.07,
+        "neu": 0.826,
+        "pos": 0.105,
+        "compound": 0.8176
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 209,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 32,
+        "adj_adv_ratio": 0.15311004784688995,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 209
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 104.5,
+          "clause_complexity": 2.0,
+          "vocabulary_richness": 0.5465116279069767
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 10,
+            "VBG": 3,
+            "VB": 2,
+            "VBN": 2,
+            "VBP": 2
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "from this code extract a method is\\_upset(a,b) whic returns true if a beating b would be an upset\n\n def select\\_winner(self, i, round\\_win\\_counts, upset\\_rates):\n # Calculate the probability of an upset based on historical seed win rates\n i\\_team = self.teams[i]\n j\\_team = self.teams[i + 1]\n i\\_is\\_better\\_score = i\\_team.ken\\_pom\\_score > j\\_team.ken\\_pom\\_score\n better\\_index = i if i\\_is\\_better\\_score else i + 1\n worse\\_index = i + 1 if i\\_is\\_better\\_score else i\n historical = upset\\_rates[(i, i + 1)]\n statistical = self.calculate\\_win\\_probability(\n self.teams[worse\\_index],\n self.teams[better\\_index]\n )\n\n # noise is added by using historical upset rates rather than team specific kenpom scores\n probability = (1 - self.noise) \\* statistical + self.noise \\* historical\n\n # If a random number is less than the probability of an upset, return the underdog\n if np.random.rand() < probability:\n index = i + 1 if i\\_is\\_better\\_score else i\n upset = True\n # Otherwise, return the favorite\n else:\n index = i if round\\_win\\_counts[i] > round\\_win\\_counts[i + 1] else i + 1\n upset = False\n\n return index, upset",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.115,
+        "neu": 0.81,
+        "pos": 0.074,
+        "compound": -0.7579
+      },
+      "core_lexical": {
+        "self_ref_freq": 21,
+        "second_person_freq": 0,
+        "token_count": 211,
+        "self_ref_ratio": 0.0995260663507109,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 37,
+        "adj_adv_ratio": 0.17535545023696683,
+        "self_ref_freq": 21,
+        "self_ref_ratio": 0.0995260663507109,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 211
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 211.0,
+          "clause_complexity": 7.0,
+          "vocabulary_richness": 0.5571428571428572
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBN": 3,
+            "VBP": 22,
+            "VBZ": 4,
+            "VBG": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's a new method `is_upset` extracted from the given code:\n```python\nclass Tournament:\n\n    # ... (previous code)\n\n    def is_upset(self, a: Team, b: Team):\n        seed_a, seed_b = a.team_seed, b.team_seed\n        historical_upset_rate = self.historical_upset_rate(seed_a, seed_b)\n\n        a_is_better_score = a.ken_pom_score > b.ken_pom_score\n        better_team = a if a_is_better_score else b\n        worse_team = b if a_is_better_score else a\n\n        statistical = self.calculate_win_probability(worse_team, better_team)\n\n        # Noise is added by using historical upset rates rather than team specific KenPom scores\n        probability = (1 - self.noise) * statistical + self.noise * historical_upset_rate\n\n        # If a random number is less than the probability of an upset, return True\n        if np.random.rand() < probability:\n            return True\n        # Otherwise, return False\n        else:\n            return False\n```\nThe `is_upset` function takes two `Team` objects, `a` and `b`, and determines if `a` beating `b` would be considered an upset. It returns `True` if it's an upset and `False` otherwise.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.086,
+        "neu": 0.851,
+        "pos": 0.063,
+        "compound": -0.5719
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 198,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.10606060606060606,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 198
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 99.0,
+          "clause_complexity": 3.0,
+          "vocabulary_richness": 0.6417910447761194
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 10,
+            "VB": 4,
+            "VBN": 4,
+            "VBG": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "PERSON": 4,
+            "ORGANIZATION": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "write an instance function in team that compares self to another team and returns is\\_better then use is\\_better for is\\_upset",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 20,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 20
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBZ": 1,
+            "VBP": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's an instance method `is_better_than` added to the `Team` class, and the updated `is_upset` function that uses the new method:\n```python\nclass Team:\n    # ... (previous code)\n\n    def is_better_than(self, other_team):\n        return self.ken_pom_score > other_team.ken_pom_score\n\nclass Tournament:\n    # ... (previous code)\n\n    def is_upset(self, a: Team, b: Team):\n        seed_a, seed_b = a.team_seed, b.team_seed\n        historical_upset_rate = self.historical_upset_rate(seed_a, seed_b)\n\n        a_is_better = a.is_better_than(b)\n        better_team = a if a_is_better else b\n        worse_team = b if a_is_better else a\n\n        statistical = self.calculate_win_probability(worse_team, better_team)\n\n        # Noise is added by using historical upset rates rather than team specific KenPom scores\n        probability = (1 - self.noise) * statistical + self.noise * historical_upset_rate\n\n        # If a random number is less than the probability of an upset, return True\n        if np.random.rand() < probability:\n            return True\n        # Otherwise, return False\n        else:\n            return False\n```\nNow, the `is_upset` function uses the `is_better_than` method to compare the KenPom scores of the two teams, which simplifies the code and makes it more readable.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.032,
+        "neu": 0.926,
+        "pos": 0.042,
+        "compound": 0.1779
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 216,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 216
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 216.0,
+          "clause_complexity": 4.0,
+          "vocabulary_richness": 0.56
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 11,
+            "VBN": 2,
+            "VB": 3,
+            "VBG": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "PERSON": 4,
+            "ORGANIZATION": 2,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "clean this method up\n\n @staticmethod\n def get\\_midpoint\\_win\\_rate(seed1, seed2):\n if seed1 == seed2:\n return 0.5\n\n lower\\_seed, higher\\_seed = sorted((seed1, seed2))\n\n left\\_tuple\\_win\\_rate = None\n right\\_tuple\\_win\\_rate = None\n\n for (lower, higher), win\\_rate in HISTORICAL\\_SEED\\_WIN\\_RATES.items():\n if lower == lower\\_seed:\n left\\_tuple\\_win\\_rate = win\\_rate\n if higher == higher\\_seed:\n right\\_tuple\\_win\\_rate = win\\_rate\n if lower == higher\\_seed:\n right\\_tuple\\_win\\_rate = 1 - win\\_rate\n if higher == lower\\_seed:\n left\\_tuple\\_win\\_rate = 1 - win\\_rate\n\n if left\\_tuple\\_win\\_rate is None or right\\_tuple\\_win\\_rate is None:\n raise ValueError(f\"Win rate data not available for seeds {seed1} and {seed2}\")\n\n win\\_rate = (left\\_tuple\\_win\\_rate + right\\_tuple\\_win\\_rate) / 2\n return win\\_rate",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.046,
+        "neu": 0.906,
+        "pos": 0.048,
+        "compound": 0.0485
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 129,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.09302325581395349,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 129
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 129.0,
+          "clause_complexity": 6.0,
+          "vocabulary_richness": 0.5833333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 6,
+            "VBN": 2,
+            "VBD": 1,
+            "VBP": 3,
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's a cleaned-up version of the `get_midpoint_win_rate` method:\n```python\n    @staticmethod\n    def get_midpoint_win_rate(seed1, seed2):\n        if seed1 == seed2:\n            return 0.5\n\n        lower_seed, higher_seed = sorted((seed1, seed2))\n\n        left_tuple_win_rate = None\n        right_tuple_win_rate = None\n\n        for (lower, higher), win_rate in HISTORICAL_SEED_WIN_RATES.items():\n            if (lower, higher) == (lower_seed, higher_seed):\n                left_tuple_win_rate = win_rate\n                right_tuple_win_rate = win_rate\n            elif (lower, higher) == (higher_seed, lower_seed):\n                left_tuple_win_rate = 1 - win_rate\n                right_tuple_win_rate = 1 - win_rate\n\n            if left_tuple_win_rate is not None and right_tuple_win_rate is not None:\n                break\n\n        if left_tuple_win_rate is None or right_tuple_win_rate is None:\n            raise ValueError(f\"Win rate data not available for seeds {seed1} and {seed2}\")\n\n        win_rate = (left_tuple_win_rate + right_tuple_win_rate) / 2\n        return win_rate\n```\nThis version of the method simplifies the logic within the loop by checking for both the `(lower_seed, higher_seed)` and `(higher_seed, lower_seed)` tuples at once, and breaks out of the loop once both win rates have been found.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.03,
+        "neu": 0.931,
+        "pos": 0.039,
+        "compound": 0.3156
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 209,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.09569377990430622,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 209
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 209.0,
+          "clause_complexity": 4.0,
+          "vocabulary_richness": 0.6111111111111112
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 9,
+            "VBN": 4,
+            "VBD": 2,
+            "VBP": 5,
+            "VB": 1,
+            "VBG": 1
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.004257142857142856,
+    "pos": 0.05299999999999999,
+    "neu": 0.8928571428571429,
+    "neg": 0.054142857142857145
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 148,
+    "adj_adv_ratio": 0.12416107382550336,
+    "self_ref_freq": 21,
+    "self_ref_ratio": 0.01761744966442953,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 1192
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 141.21428571428572,
+      "clause_complexity": 3.7142857142857144,
+      "vocabulary_richness": 0.6285557106100568
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 51,
+        "VBG": 7,
+        "VB": 15,
+        "VBN": 17,
+        "VBP": 35,
+        "VBD": 4
+      },
+      "named_entities": {
+        "PERSON": 11,
+        "ORGANIZATION": 6,
+        "GPE": 2
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 7
+    },
+    "turn_count": 7,
+    "total_tokens": 1192
+  }
+}

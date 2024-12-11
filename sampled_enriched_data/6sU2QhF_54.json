@@ -1,0 +1,191 @@
+{
+  "id": "6sU2QhF_54",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "that code returns PS C:\\Users\\andy9\\Desktop\\python> & C:/Users/andy9/AppData/Local/Programs/Python/Python310/python.exe c:/Users/andy9/Desktop/python/0326\\_quant\\_ex.py\nGot error from yahoo api for ticker FB, Error: {'code': 'Not Found', 'description': 'No data found, symbol may be delisted'}\n- FB: No timezone found, symbol may be delisted\nError fetching fundamental data for FB: 'NoneType' object has no attribute 'items'\nAAPL - Market Cap: 2535459389440, P/E Ratio: 26.932774\nMSFT - Market Cap: 2088507015168, P/E Ratio: 30.865788\nGOOGL - Market Cap: 1354071015424, P/E Ratio: 22.15126\nAMZN - Market Cap: 1005567541248, P/E Ratio: N/A\n Open High Low Close Volume Dividends Stock Splits Adj Close\n Date\nAAPL 2023-03-01 00:00:00-05:00 146.830002 147.229996 145.009995 145.309998 55479000.0 0.0 0.0 NaN\n 2023-03-02 00:00:00-05:00 144.380005 146.710007 143.899994 145.910004 52238100.0 0.0 0.0 NaN\n 2023-03-03 00:00:00-05:00 148.039993 151.110001 147.330002 151.029999 70668500.0 0.0 0.0 NaN\n 2023-03-06 00:00:00-05:00 153.789993 156.300003 153.460007 153.830002 87558000.0 0.0 0.0 NaN\n 2023-03-07 00:00:00-05:00 153.699997 154.029999 151.130005 151.600006 56182000.0 0.0 0.0 NaN\n... ... ... ... ... ... ... ... ...\nAMZN 2023-03-20 00:00:00-04:00 98.410004 98.480003 95.699997 97.709999 62388900.0 0.0 0.0 NaN\n 2023-03-21 00:00:00-04:00 98.139999 100.849998 98.000000 100.610001 58597300.0 0.0 0.0 NaN\n 2023-03-22 00:00:00-04:00 100.449997 102.099998 98.610001 98.699997 57475400.0 0.0 0.0 NaN\n 2023-03-23 00:00:00-04:00 100.430000 101.059998 97.620003 98.709999 57559300.0 0.0 0.0 NaN\n 2023-03-24 00:00:00-04:00 98.070000 98.300003 96.400002 98.129997 56095400.0 0.0 0.0 NaN\n\n[72 rows x 8 columns]\nbut FB has changed META officially so from now, META is replacing FB지금 번역하기",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.046,
+        "neu": 0.954,
+        "pos": 0.0,
+        "compound": -0.743
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 260,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 26,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 260
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 260.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6022727272727273
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBN": 4,
+            "VB": 2,
+            "VBD": 2,
+            "VBG": 2,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 19,
+            "PERSON": 9
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I see, the ticker symbol for Facebook has changed to 'META'. Let's update the stock\\_list in the code to include 'META' instead of 'FB':\n```python\nimport yfinance as yf\nimport pandas as pd\nfrom datetime import datetime\n\ndef download_data(stock, start, end):\n    try:\n        stock_info = yf.Ticker(stock)\n        stock_data = stock_info.history(start=start, end=end)\n        return stock_data\n    except Exception as e:\n        print(f\"Error downloading data for {stock}: {e}\")\n        return None\n\ndef get_fundamental_data(stock):\n    try:\n        stock_info = yf.Ticker(stock)\n        stock_info_dict = stock_info.info\n        return stock_info_dict\n    except Exception as e:\n        print(f\"Error fetching fundamental data for {stock}: {e}\")\n        return None\n\nstock_list = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META']\nstart_date = '2023-03-01'\nend_date = '2023-03-25'\n\nstocks_data = {}\n\nfor stock in stock_list:\n    stock_data = download_data(stock, start_date, end_date)\n    if stock_data is not None:\n        stocks_data[stock] = stock_data\n\nstocks_fundamentals = {}\n\nfor stock in stock_list:\n    stock_fundamentals = get_fundamental_data(stock)\n    if stock_fundamentals is not None:\n        stocks_fundamentals[stock] = stock_fundamentals\n\nfor stock, fundamentals in stocks_fundamentals.items():\n    market_cap = fundamentals.get('marketCap', 'N/A')\n    pe_ratio = fundamentals.get('trailingPE', 'N/A')\n    print(f\"{stock} - Market Cap: {market_cap}, P/E Ratio: {pe_ratio}\")\n\nstocks_data_combined = pd.concat(stocks_data.values(), keys=stocks_data.keys())\nprint(stocks_data_combined)\n```\nThis updated code replaces 'FB' with 'META' in the stock\\_list.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 307,
+        "self_ref_ratio": 0.003257328990228013,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.06840390879478828,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.003257328990228013,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 307
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 153.5,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.5194805194805194
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 7,
+            "VBZ": 3,
+            "VBN": 2,
+            "VB": 7,
+            "VBG": 2,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 1,
+            "PERSON": 2
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.3715,
+    "pos": 0.0,
+    "neu": 0.977,
+    "neg": 0.023
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 47,
+    "adj_adv_ratio": 0.08289241622574955,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.001763668430335097,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 567
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 206.75,
+      "clause_complexity": 0.5,
+      "vocabulary_richness": 0.5608766233766234
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 7,
+        "VBN": 6,
+        "VB": 9,
+        "VBD": 4,
+        "VBG": 4,
+        "VBP": 8
+      },
+      "named_entities": {
+        "ORGANIZATION": 20,
+        "PERSON": 11
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 567
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "id": "DPzcHaQ_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Here's some documentation:\nPage:\nPage ID\nselect core\\_page.id as page\\_id from core\\_page\nDate and Time [Created/Updated]\n {{variation}} choice of variations\n datetime\\_format{ value } choice of formats\nFirst Created\nselect datetime\\_format{ core\\_page.created\\_at } as created\\_at from core\\_page\nLast Updated\nselect datetime\\_format{ core\\_page.updated\\_at } as updated\\_at from core\\_page\nTitle\nselect core\\_page.title as title from core\\_page\nShort Name\nselect core\\_page.name as name from core\\_page\nAdmin Notes\nselect notes as notes from core\\_page\nPage Type\n string-choice\\_format{ value } choice of formats\nselect string-choice\\_format{ core\\_page.type } as type from core\\_page\nTags\n string-tags\\_format{ value } choice of formats\nselect string-tags\\_format{ ( select group\\_concat( core\\_tag.name order by core\\_tag.name separator ', ' ) from core\\_page\\_tags join core\\_tag on core\\_page\\_tags.tag\\_id = core\\_tag.id where core\\_page\\_tags.page\\_id = core\\_page.id ) } as tags from core\\_page\nTarget Groups\n {{variation}} choice of variations\nID\nselect if( core\\_page.type = 'Call', ( select group\\_concat( page\\_target.targetgroup\\_id separator ', ' ) from core\\_callpage\\_target\\_groups as page\\_target where page\\_target.callpage\\_id = core\\_page.id ), if( core\\_page.type = 'Letter', ( select group\\_concat( page\\_target.targetgroup\\_id separator ', ' ) from core\\_letterpage\\_target\\_groups as page\\_target where page\\_target.letterpage\\_id = core\\_page.id ), if( core\\_page.type = 'Petition', ( select group\\_concat( page\\_target.targetgroup\\_id separator ', ' ) from core\\_petitionpage\\_target\\_groups as page\\_target where page\\_target.petitionpage\\_id = core\\_page.id ), if( core\\_page.type = 'Whipcount', ( select group\\_concat( page\\_target.targetgroup\\_id separator ', ' ) from core\\_whipcountpage\\_target\\_groups as page\\_target where page\\_target.whipcountpage\\_id = core\\_page.id ), null ) ) ) ) as target\\_id from core\\_page\nName\nselect if( core\\_page.type = 'Call', ( select group\\_concat( core\\_targetgroup.name separator ', ' ) from core\\_callpage\\_target\\_groups as page\\_target join core\\_targetgroup on page\\_target.targetgroup\\_id = core\\_targetgroup.id where page\\_target.callpage\\_id = core\\_page.id ), if( core\\_page.type = 'Letter', ( select group\\_concat( core\\_targetgroup.name separator ', ' ) from core\\_letterpage\\_target\\_groups as page\\_target join core\\_targetgroup on page\\_target.targetgroup\\_id = core\\_targetgroup.id where page\\_target.letterpage\\_id = core\\_page.id ), if( core\\_page.type = 'Petition', ( select group\\_concat( core\\_targetgroup.name separator ', ' ) from core\\_petitionpage\\_target\\_groups as page\\_target join core\\_targetgroup on page\\_target.targetgroup\\_id = core\\_targetgroup.id where page\\_target.petitionpage\\_id = core\\_page.id ), if( core\\_page.type = 'Whipcount', ( select group\\_concat( core\\_targetgroup.name separator ', ' ) from core\\_whipcountpage\\_target\\_groups as page\\_target join core\\_targetgroup on page\\_target.targetgroup\\_id = core\\_targetgroup.id where page\\_target.whipcountpage\\_id = core\\_page.id ), null ) ) ) ) as target\\_name from core\\_page\nName and ID\nselect if( core\\_page.type = 'Call', ( select group\\_concat( concat( core\\_targetgroup.name, ' (', core\\_targetgroup.id, ')' ) separator ', ' ) from core\\_callpage\\_target\\_groups as page\\_target join core\\_targetgroup on page\\_target.targetgroup\\_id = core\\_targetgroup.id where page\\_target.callpage\\_id = core\\_page.id ), if( core\\_page.type = 'Letter', ( select group\\_concat( concat( core\\_targetgroup.name, ' (', core\\_targetgroup.id, ')' ) separator ', ' ) from core\\_letterpage\\_target\\_groups as page\\_target join core\\_targetgroup on page\\_target.targetgroup\\_id = core\\_targetgroup.id where page\\_target.letterpage\\_id = core\\_page.id ), if( core\\_page.type = 'Petition', ( select group\\_concat( concat( core\\_targetgroup.name, ' (', core\\_targetgroup.id, ')' ) separator ', ' ) from core\\_petitionpage\\_target\\_groups as page\\_target join core\\_targetgroup on page\\_target.targetgroup\\_id = core\\_targetgroup.id where page\\_target.petitionpage\\_id = core\\_page.id ), if( core\\_page.type = 'Whipcount', ( select group\\_concat( concat( core\\_targetgroup.name, ' (', core\\_targetgroup.id, ')' ) separator ', ' ) from core\\_whipcountpage\\_target\\_groups as page\\_target join core\\_targetgroup on page\\_target.targetgroup\\_id = core\\_targetgroup.id where page\\_target.whipcountpage\\_id = core\\_page.id ), null ) ) ) ) as target\\_name\\_id from core\\_page\n\nHere's a sql script:\nselect core\\_user.email as \"user\\_email\"\nfrom core\\_user\ngroup by core\\_user.id\nEdit the SQL script to return all email addresses that have taken action of a page where the page short name contains \"sticker\"",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.946,
+        "pos": 0.054,
+        "compound": 0.9719
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 652,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 51,
+        "adj_adv_ratio": 0.07822085889570553,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 652
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 652.0,
+          "clause_complexity": 12.0,
+          "vocabulary_richness": 0.3418803418803419
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBP": 5,
+            "VBD": 1,
+            "VB": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 7
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's the updated SQL script:\n```vbnet\nSELECT DISTINCT core_user.email AS \"user_email\"\nFROM core_user\nJOIN action ON core_user.id = action.user_id\nJOIN core_page ON action.page_id = core_page.id\nWHERE core_page.name LIKE '%sticker%'\n```\nThis will return all email addresses of users who have taken an action on any page with a short name containing the word \"sticker\". The `JOIN` clause is used to connect the `core_user` table with the `action` and `core_page` tables. The `WHERE` clause is used to filter only those records where the short name of the page contains the word \"sticker\". The `DISTINCT` keyword is used to remove any duplicate email addresses from the result set.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.894,
+        "pos": 0.106,
+        "compound": 0.9008
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 137,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.06569343065693431,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 137
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 34.25,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.673469387755102
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VB": 3,
+            "VBP": 1,
+            "VBN": 4,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 6
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.93635,
+    "pos": 0.08,
+    "neu": 0.9199999999999999,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 60,
+    "adj_adv_ratio": 0.07604562737642585,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 789
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 343.125,
+      "clause_complexity": 6.0,
+      "vocabulary_richness": 0.507674864817722
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 8,
+        "VBP": 6,
+        "VBD": 1,
+        "VB": 4,
+        "VBN": 5,
+        "VBG": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 9,
+        "PERSON": 7
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 789
+  }
+}

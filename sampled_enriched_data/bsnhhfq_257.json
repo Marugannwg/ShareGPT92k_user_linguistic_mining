@@ -1,0 +1,1389 @@
+{
+  "id": "bsnhhfq_257",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "I'm sorry, I'm not sure what you mean. Can you please provide more context or clarify what attribute you are referring to?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.133,
+        "neu": 0.774,
+        "pos": 0.094,
+        "compound": 0.0098
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 3,
+        "token_count": 27,
+        "self_ref_ratio": 0.07407407407407407,
+        "second_person_ratio": 0.1111111111111111
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.14814814814814814,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.07407407407407407,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.1111111111111111,
+        "token_count": 27
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 2,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VB": 3,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Ok now lets test your knowledge so you can improve even more en the ezsgame library. Write a simple bouncing call game",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.789,
+        "pos": 0.211,
+        "compound": 0.6557
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 23,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.08695652173913043
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.30434782608695654,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.08695652173913043,
+        "token_count": 23
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 3,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here is an example of a simple bouncing ball game using the ezsgame library:\n```python\nfrom ezsgame import *\n\n# Create a window\nwindow = Window(title=\"Bouncing Ball Game\")\n\n# Create a ball object\nball = Object(pos=(250, 250), size=(50, 50), color=\"red\")\n\n# Set the ball's speed\nball.speed = [5, 5]\n\n# Define the update function\ndef update():\n    ball.move()\n    if ball.pos[0] >= window.size[0] - ball.size[0] or ball.pos[0] <= 0:\n        ball.speed[0] = -ball.speed[0]\n    if ball.pos[1] >= window.size[1] - ball.size[1] or ball.pos[1] <= 0:\n        ball.speed[1] = -ball.speed[1]\n\n# Add the update function to the event handler\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.933,
+        "pos": 0.067,
+        "compound": 0.6705
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 172,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.11627906976744186,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 172
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 172.0,
+          "clause_complexity": 2.0,
+          "vocabulary_richness": 0.5
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VBG": 3,
+            "VBD": 3,
+            "VBN": 1,
+            "VBP": 4,
+            "VB": 4
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "You going fine, but theres a mistake, the ball doesnt have a speed attribute and as I told the Object class should not be instantiated directly sinse it does not have a draw method",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.085,
+        "neu": 0.877,
+        "pos": 0.038,
+        "compound": -0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 36,
+        "self_ref_ratio": 0.027777777777777776,
+        "second_person_ratio": 0.027777777777777776
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.1388888888888889,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.027777777777777776,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.027777777777777776,
+        "token_count": 36
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 36.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 1,
+            "VBZ": 2,
+            "VBP": 1,
+            "VBD": 1,
+            "VB": 2,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "```python\nimport pygame as pg\nfrom ezsgame import Object, add_event\n\nclass Ball(Object):\n    def __init__(self, x, y, radius, color):\n        super().__init__(x, y)\n        self.radius = radius\n        self.color = color\n        self.speed_x = 5\n        self.speed_y = 5\n\n    def draw(self):\n        pg.draw.circle(pg.display.get_surface(), self.color, (int(self.x), int(self.y)), self.radius)\n\n    @add_event(\"MOUSEMOTION\")\n    def follow_mouse(self, event):\n        self.x, self.y = event.pos\n\nclass Game:\n    def __init__(self):\n        pg.init()\n        self.screen = pg.display.set_mode((600, 400))\n        self.ball = Ball(300, 200, 20, (255, 0, 0))\n        self.running = True\n\n    def mainloop(self):\n        while self.running:\n            for event in pg.event.get():\n                if event.type == pg.QUIT:\n                    self.running = False\n\n            self.ball.update()\n            self.screen.fill((255, 255, 255))\n            self.ball.draw()\n            pg.display.flip()\n\nif __name__ == \"__main__\":\n    game = Game()\n    game.mainloop()\n    pg.quit()\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.972,
+        "pos": 0.028,
+        "compound": 0.4215
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 208,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.04326923076923077,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 208
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 208.0,
+          "clause_complexity": 3.0,
+          "vocabulary_richness": 0.5555555555555556
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBD": 2,
+            "VBG": 2,
+            "VBN": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "PERSON": 2,
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "wow this is a neat code but there are some mistakes. 1. events do can passed kwargs even though most of them do not, but pos is not one of them if you want to get the mouse pos you can use the \"get\\_mouse\\_pos\" method. I really don't know wy you created a Game class, but seems insterings it also awasome that you created you own object.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.044,
+        "neu": 0.823,
+        "pos": 0.133,
+        "compound": 0.5574
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 5,
+        "token_count": 75,
+        "self_ref_ratio": 0.013333333333333334,
+        "second_person_ratio": 0.06666666666666667
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.12,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.013333333333333334,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.06666666666666667,
+        "token_count": 75
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.0,
+          "clause_complexity": 0.3333333333333333,
+          "vocabulary_richness": 0.9310344827586207
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 4,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBP": 6,
+            "VB": 6,
+            "VBD": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Thank you! I'll keep that in mind for future reference and make sure to use the `get_mouse_pos` method instead of passing `pos` as a keyword argument to the event. And regarding the Game class, I created it as a container for all the game's objects and logic, as well as to handle the game loop and events. I can see how that may not be necessary, but I wanted to demonstrate how one can structure their code using ezsgame.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.021,
+        "neu": 0.897,
+        "pos": 0.082,
+        "compound": 0.4574
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 1,
+        "token_count": 92,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_ratio": 0.010869565217391304
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.09782608695652174,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.010869565217391304,
+        "token_count": 92
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9473684210526315
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBG": 3,
+            "VBD": 2
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Amazing, now fix your code so I can give you a grade",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.743,
+        "pos": 0.257,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 13,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_ratio": 0.15384615384615385
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.07692307692307693,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.15384615384615385,
+        "token_count": 13
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 1
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Thank you for the feedback. I will make sure to fix the mistakes in my code and make sure that the ball object has a speed attribute, use the \"get\\_mouse\\_pos\" method instead of passing the pos through kwargs, and not instantiate the Object class directly.\n```python\nimport ezsgame\n\nclass Ball(ezsgame.Object):\n    def __init__(self, pos, speed):\n        super().__init__(pos)\n        self.speed = speed\n        self.color = (255, 255, 255)\n\n    def update(self):\n        self.pos[0] += self.speed[0]\n        self.pos[1] += self.speed[1]\n        if self.pos[0] > ezsgame.WIDTH or self.pos[0] < 0:\n            self.speed[0] = -self.speed[0]\n        if self.pos[1] > ezsgame.HEIGHT or self.pos[1] < 0:\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.026,
+        "neu": 0.901,
+        "pos": 0.073,
+        "compound": 0.5574
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 1,
+        "token_count": 156,
+        "self_ref_ratio": 0.01282051282051282,
+        "second_person_ratio": 0.00641025641025641
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.01282051282051282,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.00641025641025641,
+        "token_count": 156
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 52.0,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.5660377358490566
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5,
+            "VBZ": 4,
+            "VBP": 5,
+            "VBG": 1,
+            "VBD": 6
+          },
+          "named_entities": {
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "This is wrong.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.608,
+        "neu": 0.392,
+        "pos": 0.0,
+        "compound": -0.4767
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 4,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.25,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 4
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 4.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize, can you please specify what is wrong with my code so I can fix it?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.149,
+        "neu": 0.673,
+        "pos": 0.178,
+        "compound": -0.1027
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 1,
+        "token_count": 19,
+        "self_ref_ratio": 0.15789473684210525,
+        "second_person_ratio": 0.05263157894736842
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.05263157894736842,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.15789473684210525,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.05263157894736842,
+        "token_count": 19
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 19.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 3,
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "ezsgame doenst have a WIDTH attribute and as I told you is better to import everyhing for a cleaner sintax",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.796,
+        "pos": 0.204,
+        "compound": 0.5574
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 20,
+        "self_ref_ratio": 0.05,
+        "second_person_ratio": 0.05
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.05,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.05,
+        "token_count": 20
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBD": 1,
+            "VBZ": 1,
+            "VB": 1,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Here is the corrected code:\n```python\nfrom ezsgame import Game, Object, add_event\n\nclass Ball(Object):\n    def __init__(self, x, y, r):\n        super().__init__(x, y)\n        self.r = r\n        self.speed_x = 2\n        self.speed_y = 2\n\n    def draw(self):\n        pg.draw.circle(pg.display.get_surface(), (255, 255, 255), (self.x, self.y), self.r)\n\n    def move(self):\n        self.x += self.speed_x\n        self.y += self.speed_y\n        if self.x > pg.display.get_surface().get_width() - self.r or self.x < self.r:\n            self.speed_x = -self.speed_x\n        if self.y > pg.display.get_surface().get_height() - self.r or self.y < self.r:\n            self.speed_y = -self.speed_y\n\nclass Game(Game):\n    def __init__(self):\n        super().__init__()\n        self.ball = Ball(50, 50, 20)\n        add_event(pg.MOUSEMOTION, self.on_mouse_move)\n\n    def on_mouse_move(self, pos):\n        self.ball.x = pos[0]\n        self.ball.y = pos[1]\n\n    def update(self):\n        self.ball.move()\n\nif __name__ == '__main__':\n    game = Game()\n    game.run()\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 210,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.04285714285714286,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 210
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 210.0,
+          "clause_complexity": 3.0,
+          "vocabulary_richness": 0.48
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBD": 4,
+            "VB": 1,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Theres no Game class in ezsgame, and you're using the add\\_event wrong. Your first attemp was very good the only thing that seemed to be wrong was the event callback",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.223,
+        "neu": 0.692,
+        "pos": 0.085,
+        "compound": -0.6378
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 33,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.06060606060606061
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.18181818181818182,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.06060606060606061,
+        "token_count": 33
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9285714285714286
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBP": 1,
+            "VBG": 1,
+            "VBD": 3,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize, I misunderstood the instructions. I will make sure to use the correct syntax and elements of the ezsgame library in my future examples. Thank you for pointing out my mistakes.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.129,
+        "neu": 0.709,
+        "pos": 0.163,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 5,
+        "second_person_freq": 1,
+        "token_count": 36,
+        "self_ref_ratio": 0.1388888888888889,
+        "second_person_ratio": 0.027777777777777776
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.05555555555555555,
+        "self_ref_freq": 5,
+        "self_ref_ratio": 0.1388888888888889,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.027777777777777776,
+        "token_count": 36
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBD": 1,
+            "VB": 2,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Try again",
+      "language": "tl",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "```python\nimport ezsgame as ez\nfrom ezsgame import Circle, add_event\n\nclass Ball(Circle):\n    def __init__(\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.848,
+        "pos": 0.152,
+        "compound": 0.3612
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 24,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 24
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7272727272727273
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "PERSON": 1,
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "We alredy talked about why you have to import everything.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 11,
+        "self_ref_ratio": 0.09090909090909091,
+        "second_person_ratio": 0.18181818181818182
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.09090909090909091,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.18181818181818182,
+        "token_count": 11
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 1,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VBD": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Here's an example of how to create a simple bouncing ball game using the ezsgame library:\n```python\nimport ezsgame as ez\nfrom ezsgame import Ball, Rect\n\ndef bouncing_ball():\n    # Initialize game window\n    ez.init(500,\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.874,
+        "pos": 0.126,
+        "compound": 0.5574
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 46,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.10869565217391304,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 46
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 46.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7727272727272727
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 2,
+            "VBG": 2
+          },
+          "named_entities": {
+            "PERSON": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Same mistake as before/",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.444,
+        "neu": 0.556,
+        "pos": 0.0,
+        "compound": -0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 4,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.25,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 4
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 4.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is an example of creating a simple bouncing ball game using the ezsgame library:\n```python\nimport ezsgame\nfrom ezsgame import *\n\nclass Ball(Object):\n    def __init__(self\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.922,
+        "pos": 0.078,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 37,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.13513513513513514,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 37
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 37.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7894736842105263
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBG": 3,
+            "VB": 1
+          },
+          "named_entities": {
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Better but the first line is meaningless",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.356,
+        "neu": 0.463,
+        "pos": 0.181,
+        "compound": -0.4404
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 7,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.42857142857142855,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 7
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 7.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "```python\nimport ezsgame as ez\n\nclass Ball(ez.Object):\n    def __init__(self, pos, size, speed, color):\n        super().__init__(pos, size)\n        self.speed = speed\n        self.color = color\n        \n    def update(self):\n        self.pos[0] += self.speed[0]\n        self.pos[1] += self.speed[1]\n\n        if self.pos[0] < 0 or self.pos[0] > ez.WIDTH - self.size[0]:\n            self.speed[0] = -self.speed[0]\n        if self.pos[1] < 0 or self.pos[1] > ez.HEIGHT - self.size[1]:\n            self.speed[1] = -self.speed[1]\n        \n    def draw(self):\n        ez.draw_rect(self.pos, self.size, self.color)\n\nball = Ball([ez.WIDTH/2, ez.HEIGHT/2], [50, 50], [3, 2], ez.RED)\n\n@ez.add_event\ndef on_key_down(event, keys):\n    if event.key == ez.K_SPACE:\n        ball.speed[0] = -ball.speed[0]\n        ball.speed[1] = -ball.speed[1]\n\nez.run()\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.971,
+        "pos": 0.029,
+        "compound": 0.3612
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 200,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 15,
+        "adj_adv_ratio": 0.075,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 200
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 200.0,
+          "clause_complexity": 3.0,
+          "vocabulary_richness": 0.4230769230769231
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBD": 6,
+            "VBZ": 7,
+            "VBP": 2
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.1620217391304348,
+    "pos": 0.0947391304347826,
+    "neu": 0.8089130434782611,
+    "neg": 0.09643478260869565
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 129,
+    "adj_adv_ratio": 0.08878183069511356,
+    "self_ref_freq": 21,
+    "self_ref_ratio": 0.014452856159669649,
+    "second_person_freq": 22,
+    "second_person_ratio": 0.015141087405368204,
+    "total_tokens": 1453
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 52.93181818181818,
+      "clause_complexity": 0.5909090909090909,
+      "vocabulary_richness": 0.846414465048852
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 3,
+        "how": 3,
+        "why": 1,
+        "can_could": 9,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 7,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 29,
+        "VB": 51,
+        "VBG": 20,
+        "VBZ": 32,
+        "VBD": 32,
+        "VBN": 4
+      },
+      "named_entities": {
+        "PERSON": 6,
+        "GPE": 15,
+        "ORGANIZATION": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 22,
+      "tl": 1
+    },
+    "turn_count": 23,
+    "total_tokens": 1453
+  }
+}

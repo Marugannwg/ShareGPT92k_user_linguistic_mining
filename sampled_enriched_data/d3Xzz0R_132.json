@@ -1,0 +1,909 @@
+{
+  "id": "d3Xzz0R_132",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "you cannot use the last executed name to find the current task. the definitionname maybe duplicative. But there is hint for you, the executedtask is sequence. task will execute task then routing task. if there is no routing task, it will execute next task next array",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.059,
+        "neu": 0.941,
+        "pos": 0.0,
+        "compound": -0.4215
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 53,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.03773584905660377
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.16981132075471697,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.03773584905660377,
+        "token_count": 53
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.6,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.68
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 4,
+            "VBZ": 3,
+            "VBG": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's an updated implementation of `getCurrentTask` that takes into account the executed task sequence:\n```go\nfunc getCurrentTask(ctx context.Context, session *Session) (*Task, error) {\n\tif len(session.Tasks) == 0 {\n\t\treturn nil, errors.New(\"No tasks found in session\")\n\t}\n\n\tif len(session.ExecutedTask) == 0 {\n\t\treturn &session.Tasks[0], nil\n\t}\n\n\t// Get the index of the last executed task in the session's Tasks array\n\tlastExecutedTask := session.ExecutedTask[len(session.ExecutedTask) - 1]\n\tlastExecutedTaskIndex := -1\n\tfor i, task := range session.Tasks {\n\t\tif task.DefinitionName == lastExecutedTask {\n\t\t\tlastExecutedTaskIndex = i\n\t\t\tbreak\n\t\t}\n\t}\n\n\tif lastExecutedTaskIndex == -1 {\n\t\treturn nil, fmt.Errorf(\"Task %s not found in session tasks\", lastExecutedTask)\n\t}\n\n\t// If there are routing tasks for the last executed task, return the first routing task\n\tif len(session.Tasks[lastExecutedTaskIndex].Routing) > 0 {\n\t\treturn &session.Tasks[lastExecutedTaskIndex].Routing[0], nil\n\t}\n\n\t// If the last executed task was the last task in the Tasks array, return nil\n\tif lastExecutedTaskIndex == len(session.Tasks) - 1 {\n\t\treturn nil, nil\n\t}\n\n\t// Otherwise, return the next task in the Tasks array\n\treturn &session.Tasks[lastExecutedTaskIndex + 1], nil\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.016,
+        "neu": 0.984,
+        "pos": 0.0,
+        "compound": -0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 250,
+        "self_ref_ratio": 0.008,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.1,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.008,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 250
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 250.0,
+          "clause_complexity": 8.0,
+          "vocabulary_richness": 0.3404255319148936
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 3,
+            "VBN": 6,
+            "VB": 2,
+            "VBP": 8,
+            "VBG": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 7
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "let me explain my flow. Session.ExecutedTask will store all executed task name. The task name maybe duplicative not unique. First, The flow will execute first element of session.Tasks. If the Task.Routing has value, the flow will execute Task.Routing. Otherwise, this engine will execute the second element of session.Tasks and so on. Please help to generate getCurrentTask for me. Thanks",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.835,
+        "pos": 0.165,
+        "compound": 0.8703
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 0,
+        "token_count": 69,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.11594202898550725,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.043478260869565216,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 69
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.625,
+          "clause_complexity": 0.125,
+          "vocabulary_richness": 0.7333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBN": 1,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here's the implementation for `getCurrentTask` function based on your explanation:\n```go\nfunc getCurrentTask(session *Session) (*Task, error) {\n\tif len(session.Tasks) == 0 {\n\t\treturn nil, fmt.Errorf(\"Session does not have any tasks\")\n\t}\n\n\tfor i, task := range session.Tasks {\n\t\tif len(session.ExecutedTask) == i {\n\t\t\treturn &task, nil\n\t\t}\n\t\tif len(task.Routing) > 0 {\n\t\t\t// If the task has routing information, go through each routing to find next task\n\t\t\tfor _, nextTask := range task.Routing {\n\t\t\t\tif !contains(session.ExecutedTask, nextTask.DefinitionName) {\n\t\t\t\t\t// If the next task has not been executed, return it as the current task\n\t\t\t\t\treturn &nextTask, nil\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\n\treturn nil, fmt.Errorf(\"No current task found\")\n}\n\nfunc contains(arr []string, str string) bool {\n\tfor _, a := range arr {\n\t\tif a == str {\n\t\t\treturn true\n\t\t}\n\t}\n\treturn false\n}\n```\nThis function will return the current task to be executed in the session, based on the `ExecutedTask` history and the routing information in each task. If there's no current task to be executed, it will return an error.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.044,
+        "neu": 0.94,
+        "pos": 0.016,
+        "compound": -0.6239
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 1,
+        "token_count": 238,
+        "self_ref_ratio": 0.008403361344537815,
+        "second_person_ratio": 0.004201680672268907
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.10084033613445378,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.008403361344537815,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.004201680672268907,
+        "token_count": 238
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 119.0,
+          "clause_complexity": 4.0,
+          "vocabulary_richness": 0.4024390243902439
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VBN": 9,
+            "VB": 9,
+            "VBP": 3,
+            "VBG": 4,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "here is my version of getCurrentTask\nfunc findCurrentTask(ctx goctx.Context, session \\*model.Session) (task \\*model.Task, err gopkg.CodeError) {\n funcName := \"findCurrentTask\"\n m800log.Infof(ctx, \"[%s] Finding current task for session: %v\", funcName, session)\n\n if len(session.Tasks) == 0 {\n return nil, nil\n }\n\n // Return first task if no task has been executed\n if len(session.ExecutedTask) == 0 {\n return &session.Tasks[0], nil\n }\n\n // Find the task that has not been executed\n executedName := make([]string, len(session.ExecutedTask))\n copy(executedName, session.ExecutedTask)\n task = findTask(ctx, executedName, session.Tasks)\n return\n}\n\nfunc findTask(ctx goctx.Context, executedTaskName []string, tasks []model.Task) (task \\*model.Task) {\n for \\_, task := range tasks {\n if task.DefinitionName == executedTaskName[0] {\n if len(executedTaskName) == 1 {\n // This is the task that has not been executed\n return &task\n }\n executedTaskName = executedTaskName[1:]\n }\n\n if len(task.Routing) > 0 {\n if \\_, ok := task.Routing[executedTaskName[0]]; !ok {\n return nil\n }\n\n nextNode := task.Routing[executedTaskName[0]]\n executedTaskName = executedTaskName[1:]\n nextTask := findTask(ctx, executedTaskName, nextNode)\n if nextTask != nil {\n return nextTask\n }\n }\n }\n return\n}",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.013,
+        "neu": 0.973,
+        "pos": 0.013,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 276,
+        "self_ref_ratio": 0.0036231884057971015,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.09782608695652174,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0036231884057971015,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 276
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 276.0,
+          "clause_complexity": 8.0,
+          "vocabulary_richness": 0.3333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VBN": 11,
+            "VBP": 5,
+            "VBD": 5,
+            "VBG": 3,
+            "VB": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 9
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is the updated version of the getCurrentTask function. It takes into consideration the fact that the task names may be duplicative and the flow will first execute the task and then the routing tasks if any are present.\n```go\nfunc findCurrentTask(ctx context.Context, session *Session) (task *Task, err error) {\n\tfuncName := \"findCurrentTask\"\n\tlog.Infof(ctx, \"[%s] Finding current task for session: %v\", funcName, session)\n\n\tif len(session.Tasks) == 0 {\n\t\treturn nil, nil\n\t}\n\n\t// Return first task if no task has been executed\n\tif len(session.ExecutedTask) == 0 {\n\t\treturn &session.Tasks[0], nil\n\t}\n\n\texecutedTaskName := make([]string, len(session.ExecutedTask))\n\tcopy(executedTaskName, session.ExecutedTask)\n\ttask = findTask(ctx, executedTaskName, session.Tasks)\n\treturn\n}\n\nfunc findTask(ctx context.Context, executedTaskName []string, tasks []Task) (task *Task) {\n\tfor i, t := range tasks {\n\t\tif t.DefinitionName == executedTaskName[0] {\n\t\t\tif len(executedTaskName) == 1 {\n\t\t\t\t// This is the task that has not been executed\n\t\t\t\treturn &tasks[i]\n\t\t\t}\n\t\t\texecutedTaskName = executedTaskName[1:]\n\t\t}\n\n\t\tif len(t.Routing) > 0 {\n\t\t\tif nextNode, ok := t.Routing[executedTaskName[0]]; ok {\n\t\t\t\texecutedTaskName = executedTaskName[1:]\n\t\t\t\tnextTask := findTask(ctx, executedTaskName, nextNode)\n\t\t\t\tif nextTask != nil {\n\t\t\t\t\treturn nextTask\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\treturn\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.028,
+        "neu": 0.949,
+        "pos": 0.023,
+        "compound": -0.2003
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 294,
+        "self_ref_ratio": 0.006802721088435374,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 28,
+        "adj_adv_ratio": 0.09523809523809523,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.006802721088435374,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 294
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 98.0,
+          "clause_complexity": 3.0,
+          "vocabulary_richness": 0.40186915887850466
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VB": 7,
+            "VBP": 9,
+            "VBN": 8,
+            "VBD": 4,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 10
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I want to add new data structure for session of async. Task. (SessionResult)\nHere are requirements\n- InstanceId\n- Step\n- OutputParams\nPlease generator for me in golang",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.878,
+        "pos": 0.122,
+        "compound": 0.3818
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 32,
+        "self_ref_ratio": 0.0625,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.0625,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.0625,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 32
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.666666666666666,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is the structure for SessionResult in Golang:\n```c\ntype SessionResult struct {\n\tInstanceId  string   `json:\"instance_id\" bson:\"instance_id\"`\n\tStep        int      `json:\"step\" bson:\"step\"`\n\tOutputParams ParamSet `json:\"output_params\" bson:\"output_params\"`\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 61,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.01639344262295082,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 61
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 61.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6666666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 2,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Add one field for task result. the data type is string",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 12,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "type SessionResult struct {\nInstanceId string `json:\"instance_id\" bson:\"instance_id\" yaml:\"instance_id\"`\nStep int `json:\"step\" bson:\"step\" yaml:\"step\"`\nOutputParams ParamSet `json:\"output_params\" bson:\"output_params\" yaml:\"output_params\"`\nResult string `json:\"result\" bson:\"result\" yaml:\"result\"`\n}",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 81,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 81
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 81.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.4482758620689655
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 2,
+            "VB": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "rename SessionResult to TaskResult and add field for Task status. (eg. Done, Failed, InProgress)",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.202,
+        "neu": 0.798,
+        "pos": 0.0,
+        "compound": -0.5106
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 20,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 20
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.666666666666667,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is the updated TaskResult structure:\n```c\ntype TaskResult struct {\n\tInstanceId string        `bson:\"instance_id\" json:\"instance_id\"`\n\tStep       int           `bson:\"step\" json:\"step\"`\n\tStatus     string        `bson:\"status\" json:\"status\"`\n\tOutputParams ParamSet `bson:\"output_params\" json:\"output_params\"`\n\tTaskName   string        `bson:\"task_name\" json:\"task_name\"`\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 87,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.022988505747126436,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 87
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 87.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5161290322580645
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 3,
+            "VBG": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "please change the Status to enum type",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.723,
+        "pos": 0.277,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 7,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 7
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 7.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is the updated TaskResult data structure in Go with the added `Status` field as an enumerated type:\n```go\ntype TaskStatus int\n\nconst (\n\tTaskStatusDone TaskStatus = iota\n\tTaskStatusFailed\n\tTaskStatusInProgress\n)\n\nfunc (s TaskStatus) String() string {\n\treturn [...]string{\"Done\", \"Failed\", \"InProgress\"}[s]\n}\n\n// TaskResult defines the structure of the result of a task instance in a workflow\ntype TaskResult struct {\n\tInstanceId string    `json:\"instance_id\" bson:\"instance_id\" yaml:\"instance_id\"`\n\tStep       int       `json:\"step\" bson:\"step\" yaml:\"step\"`\n\tOutputParams ParamSet `json:\"output_params\" bson:\"output_params\" yaml:\"output_params\"`\n\tStatus     TaskStatus `json:\"status\" bson:\"status\" yaml:\"status\"`\n}\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.039,
+        "neu": 0.961,
+        "pos": 0.0,
+        "compound": -0.5106
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 166,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.05421686746987952,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 166
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 166.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5538461538461539
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 2,
+            "VBG": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.07846428571428572,
+    "pos": 0.044,
+    "neu": 0.9272857142857144,
+    "neg": 0.02864285714285714
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 135,
+    "adj_adv_ratio": 0.08201701093560146,
+    "self_ref_freq": 12,
+    "self_ref_ratio": 0.007290400972053463,
+    "second_person_freq": 3,
+    "second_person_ratio": 0.0018226002430133657,
+    "total_tokens": 1646
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 84.82559523809525,
+      "clause_complexity": 1.6660714285714284,
+      "vocabulary_richness": 0.6483084354778684
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 2
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 44,
+        "VBZ": 33,
+        "VBG": 23,
+        "VBN": 35,
+        "VBP": 27,
+        "VBD": 13
+      },
+      "named_entities": {
+        "ORGANIZATION": 53,
+        "PERSON": 3,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 14
+    },
+    "turn_count": 14,
+    "total_tokens": 1646
+  }
+}

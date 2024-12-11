@@ -1,0 +1,398 @@
+{
+  "id": "lSeiu11_43",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Voici le code complet pour le fichier Article.php dans le dossier models :\n```php\n<?php\n\nrequire_once __DIR__ . '/../config/database.php';\n\nclass Article {\n    private $conn;\n    private $table_name = \"articles\";\n\n    public function __construct() {\n        $database = new Database();\n        $this->conn = $database->getConnection();\n    }\n\n    public function create($authorId, $content) {\n        $query = \"INSERT INTO \" . $this->table_name . \" (author_id, content) VALUES (:author_id, :content)\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':author_id', $authorId);\n        $stmt->bindParam(':content', $content);\n\n        if ($stmt->execute()) {\n            return $this->conn->lastInsertId();\n        }\n\n        return false;\n    }\n\n    public function getAll() {\n        $query = \"SELECT * FROM \" . $this->table_name;\n        $stmt = $this->conn->prepare($query);\n        $stmt->execute();\n\n        return $stmt;\n    }\n\n    public function getById($id) {\n        $query = \"SELECT * FROM \" . $this->table_name . \" WHERE id = :id\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':id', $id);\n        $stmt->execute();\n\n        return $stmt;\n    }\n\n    public function update($id, $content) {\n        $query = \"UPDATE \" . $this->table_name . \" SET content = :content WHERE id = :id\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':id', $id);\n        $stmt->bindParam(':content', $content);\n\n        return $stmt->execute();\n    }\n\n    public function delete($id) {\n        $query = \"DELETE FROM \" . $this->table_name . \" WHERE id = :id\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':id', $id);\n\n        return $stmt->execute();\n    }\n\n    public function getArticlesByAuthorId($authorId) {\n        $query = \"SELECT * FROM \" . $this->table_name . \" WHERE author_id = :author_id\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':author_id', $authorId);\n        $stmt->execute();\n\n        return $stmt;\n    }\n}\n\n?>\n```\nCe fichier contient les méthodes pour gérer les articles de la base de données. Assurez-vous d'avoir bien inclus le fichier database.php dans votre hiérarchie de fichiers pour que ce fichier fonctionne correctement.",
+      "language": "fr",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.984,
+        "pos": 0.016,
+        "compound": 0.5849
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    },
+    {
+      "from": "human",
+      "value": "Sigma wrote: Hey UCAR, le code complet de User.php",
+      "language": "fr",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Voici le code complet pour le fichier User.php dans le dossier models :\n```php\n<?php\n\nrequire_once __DIR__ . '/../config/database.php';\n\nclass User {\n    private $conn;\n    private $table_name = \"users\";\n\n    public function __construct() {\n        $database = new Database();\n        $this->conn = $database->getConnection();\n    }\n\n    public function create($username, $password, $role) {\n        $query = \"INSERT INTO \" . $this->table_name . \" (username, password, role) VALUES (:username, :password, :role)\";\n        $stmt = $this->conn->prepare($query);\n\n        $hashed_password = password_hash($password, PASSWORD_DEFAULT);\n\n        $stmt->bindParam(':username', $username);\n        $stmt->bindParam(':password', $hashed_password);\n        $stmt->bindParam(':role', $role);\n\n        if ($stmt->execute()) {\n            return $this->conn->lastInsertId();\n        }\n\n        return false;\n    }\n\n    public function getByUsername($username) {\n        $query = \"SELECT * FROM \" . $this->table_name . \" WHERE username = :username\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':username', $username);\n        $stmt->execute();\n\n        return $stmt;\n    }\n\n    public function getById($id) {\n        $query = \"SELECT * FROM \" . $this->table_name . \" WHERE id = :id\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':id', $id);\n        $stmt->execute();\n\n        return $stmt;\n    }\n}\n\n?>\n```\nCe fichier contient les méthodes pour gérer les utilisateurs de la base de données. Assurez-vous d'avoir bien inclus le fichier database.php dans votre hiérarchie de fichiers pour que ce fichier fonctionne correctement.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.978,
+        "pos": 0.022,
+        "compound": 0.5849
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 388,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 50,
+        "adj_adv_ratio": 0.12886597938144329,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 388
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 43.111111111111114,
+          "clause_complexity": 0.1111111111111111,
+          "vocabulary_richness": 0.4628099173553719
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 2
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBZ": 2,
+            "VBP": 4
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 8
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Sigma wrote: Hey UCAR, le code complet de LikeDislike.php",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 11,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.09090909090909091,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 11
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Voici le code complet pour le fichier LikeDislike.php dans le dossier models :\n```php\n<?php\n\nrequire_once __DIR__ . '/../config/database.php';\n\nclass LikeDislike {\n    private $conn;\n    private $table_name = \"likes_dislikes\";\n\n    public function __construct() {\n        $database = new Database();\n        $this->conn = $database->getConnection();\n    }\n\n    public function create($user_id, $article_id, $is_like) {\n        $query = \"INSERT INTO \" . $this->table_name . \" (user_id, article_id, is_like) VALUES (:user_id, :article_id, :is_like)\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':user_id', $user_id);\n        $stmt->bindParam(':article_id', $article_id);\n        $stmt->bindParam(':is_like', $is_like, PDO::PARAM_BOOL);\n\n        if ($stmt->execute()) {\n            return $this->conn->lastInsertId();\n        }\n\n        return false;\n    }\n\n    public function getByArticleId($article_id) {\n        $query = \"SELECT * FROM \" . $this->table_name . \" WHERE article_id = :article_id\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':article_id', $article_id);\n        $stmt->execute();\n\n        return $stmt;\n    }\n\n    public function delete($user_id, $article_id, $is_like) {\n        $query = \"DELETE FROM \" . $this->table_name . \" WHERE user_id = :user_id AND article_id = :article_id AND is_like = :is_like\";\n        $stmt = $this->conn->prepare($query);\n\n        $stmt->bindParam(':user_id', $user_id);\n        $stmt->bindParam(':article_id', $article_id);\n        $stmt->bindParam(':is_like', $is_like, PDO::PARAM_BOOL);\n\n        return $stmt->execute();\n    }\n}\n\n?>\n```\nCe fichier contient les méthodes pour gérer les likes et les dislikes des articles de la base de données. Assurez-vous d'avoir bien inclus le fichier database.php dans votre hiérarchie de fichiers pour que ce fichier fonctionne correctement.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.014,
+        "neu": 0.952,
+        "pos": 0.034,
+        "compound": 0.5984
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 430,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 57,
+        "adj_adv_ratio": 0.1325581395348837,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 430
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 47.77777777777778,
+          "clause_complexity": 0.1111111111111111,
+          "vocabulary_richness": 0.5436893203883495
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 2
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBZ": 3,
+            "VBP": 5
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 10
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Sigma wrote: Hey UCAR, le code complet de Authentication.php dans le dossier middleware",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 15,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.13333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9166666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Voici le code complet pour le fichier Authentication.php dans le dossier middleware :\n```php\n<?php\n\nrequire_once __DIR__ . '/../models/User.php';\n\nclass Authentication {\n    private $user_model;\n\n    public function __construct() {\n        $this->user_model = new User();\n    }\n\n    public function authenticate($request) {\n        $auth_header = isset($request['headers']['Authorization']) ? $request['headers']['Authorization'] : null;\n\n        if (!$auth_header) {\n            http_response_code(401);\n            echo json_encode([\"error\" => \"Unauthorized access, missing Authorization header.\"]);\n            exit();\n        }\n\n        $token = str_replace(\"Bearer \", \"\", $auth_header);\n\n        try {\n            $decoded = JWT::decode($token, SECRET_KEY, ['HS256']);\n            $user = $this->user_model->getById($decoded->data->id);\n\n            if (!$user) {\n                http_response_code(401);\n                echo json_encode([\"error\" => \"Unauthorized access, invalid token.\"]);\n                exit();\n            }\n\n            return $user;\n        } catch (Exception $e) {\n            http_response_code(401);\n            echo json_encode([\"error\" => \"Unauthorized access, invalid token. \" . $e->getMessage()]);\n            exit();\n        }\n    }\n}\n\n?>\n```\nCe fichier contient la classe Authentication qui sert à authentifier les requêtes en utilisant les JSON Web Tokens (JWT). N'oubliez pas d'inclure la bibliothèque JWT et de définir la clé secrète (SECRET\\_KEY) dans votre projet. Vous devez également inclure le fichier User.php pour que ce fichier fonctionne correctement.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.021,
+        "neu": 0.979,
+        "pos": 0.0,
+        "compound": -0.5145
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 327,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 39,
+        "adj_adv_ratio": 0.11926605504587157,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 327
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 36.333333333333336,
+          "clause_complexity": 0.2222222222222222,
+          "vocabulary_richness": 0.6607142857142857
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 3
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 4,
+            "VBZ": 5,
+            "VBG": 1,
+            "VBN": 2,
+            "VBP": 2
+          },
+          "named_entities": {
+            "GPE": 3,
+            "ORGANIZATION": 5
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.1791,
+    "pos": 0.010285714285714287,
+    "neu": 0.9847142857142857,
+    "neg": 0.005
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 149,
+    "adj_adv_ratio": 0.12724167378309137,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 1171
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 30.644444444444446,
+      "clause_complexity": 0.08888888888888888,
+      "vocabulary_richness": 0.7167760380249347
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 7
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 16,
+        "VBZ": 10,
+        "VBP": 12,
+        "VBD": 2,
+        "VBG": 1,
+        "VBN": 2
+      },
+      "named_entities": {
+        "GPE": 7,
+        "ORGANIZATION": 23,
+        "PERSON": 2
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "fr": 2,
+      "en": 5
+    },
+    "turn_count": 7,
+    "total_tokens": 1171
+  }
+}

@@ -1,0 +1,1420 @@
+{
+  "id": "SNScOVl_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Can you play tic-tac-toe?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.556,
+        "pos": 0.444,
+        "compound": 0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.2
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.2,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, I can play tic-tac-toe! Tic-tac-toe is a simple game that can be played by two players on a 3x3 grid. Each player takes turns placing their symbol (either an \"X\" or an \"O\") on an empty space on the grid. The first player to get three of their symbols in a row (horizontally, vertically, or diagonally) wins the game. If all of the spaces on the grid are filled and no player has won, the game is a draw.\n\nHere's an example of how a game of tic-tac-toe might be played:\n```\n  1 | 2 | 3\n  ---------\n  4 | 5 | 6\n  ---------\n  7 | 8 | 9\n\nPlayer 1 (X) goes first:\n  X |   |  \n  ---------\n    |   |  \n  ---------\n    |   |  \n\nPlayer 2 (O) goes next:\n  X | O |  \n  ---------\n    |   |  \n  ---------\n    |   |  \n\nPlayer 1 (X) goes next:\n  X | O | X\n  ---------\n    |   |  \n  ---------\n    |   |  \n\nPlayer 2 (O) goes next:\n  X | O | X\n  ---------\n  O |   |  \n  ---------\n    |   |  \n\nPlayer 1 (X) goes next:\n  X | O | X\n  ---------\n  O | X |  \n  ---------\n    |   |  \n\nPlayer 2 (O) goes next:\n  X | O | X\n  ---------\n  O | X | O\n  ---------\n    |   |  \n\nThe game is a draw because all of the spaces on the grid are filled and no player has won.\n```\nI hope this helps! Let me know if you have any other questions.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.023,
+        "neu": 0.873,
+        "pos": 0.104,
+        "compound": 0.9694
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 1,
+        "token_count": 341,
+        "self_ref_ratio": 0.008797653958944282,
+        "second_person_ratio": 0.002932551319648094
+      },
+      "lexical_features": {
+        "adj_adv_freq": 19,
+        "adj_adv_ratio": 0.05571847507331378,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.008797653958944282,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.002932551319648094,
+        "token_count": 341
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 42.625,
+          "clause_complexity": 0.375,
+          "vocabulary_richness": 0.48484848484848486
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 1,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBZ": 15,
+            "VBN": 6,
+            "VBG": 1,
+            "VBP": 4
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Please play tic-tac-toe against me, instead of showing an example.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.63,
+        "pos": 0.37,
+        "compound": 0.5719
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 12,
+        "self_ref_ratio": 0.08333333333333333,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.08333333333333333,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, I'd be happy to play tic-tac-toe against you! In this version of the game, I'll be \"O\" and you'll be \"X\". To make a move, just tell me the number of the space where you'd like to place your \"X\". For example, if you want to place your \"X\" in the top left corner of the grid, you can say \"1\".\n\nHere's the starting grid:\n```\n  1 | 2 | 3\n  ---------\n  4 | 5 | 6\n  ---------\n  7 | 8 | 9\n```\nYou can go first. Just let me know where you'd like to place your \"X\".",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.836,
+        "pos": 0.164,
+        "compound": 0.9336
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 10,
+        "token_count": 140,
+        "self_ref_ratio": 0.02857142857142857,
+        "second_person_ratio": 0.07142857142857142
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.07142857142857142,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.02857142857142857,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.07142857142857142,
+        "token_count": 140
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.333333333333332,
+          "clause_complexity": 0.16666666666666666,
+          "vocabulary_richness": 0.8095238095238095
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 15,
+            "VBP": 1,
+            "VBZ": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "1",
+      "language": "unknown",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Ok, you've placed your \"X\" in the top left corner of the grid. Here's the current state of the board:\n```\n  X |   |  \n  ---------\n    |   |  \n  ---------\n    |   |\n```\nNow it's my turn. I'll place my \"O\" in the center of the grid:\n```\n  X |   |  \n  ---------\n    | O |  \n  ---------\n    |   |\n```\nIt's now your turn again. Just let me know where you'd like to place your next \"X\".",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.944,
+        "pos": 0.056,
+        "compound": 0.5106
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 5,
+        "token_count": 113,
+        "self_ref_ratio": 0.035398230088495575,
+        "second_person_ratio": 0.04424778761061947
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.10619469026548672,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.035398230088495575,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.04424778761061947,
+        "token_count": 113
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.25,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7391304347826086
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBN": 1,
+            "VBZ": 3,
+            "VB": 5
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "9",
+      "language": "unknown",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Ok, you've placed your \"X\" in the bottom right corner of the grid. Here's the current state of the board:\n```\n  X |   |  \n  ---------\n    | O |  \n  ---------\n    |   | X\n```\nNow it's my turn again. I'll place my \"O\" in the top right corner of the grid:\n```\n  X |   | O\n  ---------\n    | O |  \n  ---------\n    |   | X\n```\nIt's now your turn. Just let me know where you'd like to place your next \"X\".",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.948,
+        "pos": 0.052,
+        "compound": 0.5106
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 5,
+        "token_count": 119,
+        "self_ref_ratio": 0.03361344537815126,
+        "second_person_ratio": 0.04201680672268908
+      },
+      "lexical_features": {
+        "adj_adv_freq": 14,
+        "adj_adv_ratio": 0.11764705882352941,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.03361344537815126,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.04201680672268908,
+        "token_count": 119
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 29.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6296296296296297
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBN": 1,
+            "VBZ": 3,
+            "VB": 5
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "7",
+      "language": "unknown",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Ok, you've placed your \"X\" in the bottom left corner of the grid. Here's the current state of the board:\n```\n  X |   | O\n  ---------\n    | O |  \n  ---------\n  X |   | X\n```\nNow it's my turn again. I'll place my \"O\" in the top center of the grid:\n```\n  X | O | O\n  ---------\n    | O |  \n  ---------\n  X |   | X\n```\nIt's now your turn. Just let me know where you'd like to place your next \"X\".",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.95,
+        "pos": 0.05,
+        "compound": 0.5106
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 5,
+        "token_count": 122,
+        "self_ref_ratio": 0.03278688524590164,
+        "second_person_ratio": 0.040983606557377046
+      },
+      "lexical_features": {
+        "adj_adv_freq": 14,
+        "adj_adv_ratio": 0.11475409836065574,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.03278688524590164,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.040983606557377046,
+        "token_count": 122
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 30.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6428571428571429
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBN": 1,
+            "VBD": 1,
+            "VBZ": 3,
+            "VB": 5
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Did you not notice that I will inevitably win after my last move?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.759,
+        "pos": 0.241,
+        "compound": 0.5859
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 1,
+        "token_count": 14,
+        "self_ref_ratio": 0.14285714285714285,
+        "second_person_ratio": 0.07142857142857142
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.21428571428571427,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.14285714285714285,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.07142857142857142,
+        "token_count": 14
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for not noticing that you had the opportunity to win the game with your last move. It looks like you have two \"X\"s in a row on the bottom row of the grid, which means you have won the game. Congratulations!\n\nHere's the final state of the board:\n```\n  X | O | O\n  ---------\n    | O |  \n  ---------\n  X |   | X\n```\nI hope you enjoyed playing tic-tac-toe with me. Let me know if you have any other questions or if you'd like to play again.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.716,
+        "pos": 0.284,
+        "compound": 0.9823
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 7,
+        "token_count": 112,
+        "self_ref_ratio": 0.03571428571428571,
+        "second_person_ratio": 0.0625
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.09821428571428571,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.03571428571428571,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.0625,
+        "token_count": 112
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.4,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.8125
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBG": 2,
+            "VBD": 1,
+            "VB": 5,
+            "VBZ": 3,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I haven'y won yet, I just can win, by placing my X in space 4 or 8.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.667,
+        "pos": 0.333,
+        "compound": 0.8176
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 0,
+        "token_count": 22,
+        "self_ref_ratio": 0.13636363636363635,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.13636363636363635,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.13636363636363635,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 22
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VBD": 1,
+            "VB": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the misunderstanding. You are correct that you have not yet won the game, but you do have the opportunity to win with your next move by placing your \"X\" in either space 4 or 8.\n\nHere's the current state of the board:\n```\n  X | O | O\n  ---------\n    |   |  \n  ---------\n  X |   | X\n```\nIt's now your turn. Just let me know where you'd like to place your next \"X\".",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.045,
+        "neu": 0.802,
+        "pos": 0.153,
+        "compound": 0.8873
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 8,
+        "token_count": 99,
+        "self_ref_ratio": 0.020202020202020204,
+        "second_person_ratio": 0.08080808080808081
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.12121212121212122,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.020202020202020204,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.08080808080808081,
+        "token_count": 99
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8214285714285714
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBD": 1,
+            "VB": 6,
+            "VBG": 1,
+            "VBZ": 2
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "What happened to the O you placed earlier in space 5?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 12,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.08333333333333333
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.08333333333333333,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the oversight. You are correct that I placed an \"O\" in space 5 earlier in the game. Here is the updated state of the board to reflect that:\n```\n  X | O | O\n  ---------\n    | O |  \n  ---------\n  X |   | X\n```\nIt's now your turn. Just let me know where you'd like to place your next \"X\".",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.94,
+        "pos": 0.06,
+        "compound": 0.4404
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 4,
+        "token_count": 84,
+        "self_ref_ratio": 0.03571428571428571,
+        "second_person_ratio": 0.047619047619047616
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.10714285714285714,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.03571428571428571,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.047619047619047616,
+        "token_count": 84
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 21.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8636363636363636
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VBD": 1,
+            "VBZ": 2,
+            "VB": 5
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "4",
+      "language": "unknown",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Ok, you've placed your \"X\" in the center of the grid. Here's the current state of the board:\n```\n  X | O | O\n  ---------\n  X | O |  \n  ---------\n  X |   | X\n```\nCongratulations, you have won the game! You got three of your \"X\"s in a row horizontally across the middle row of the grid.\n\nHere's the final state of the board:\n```\n  X | O | O\n  ---------\n  X | O |  \n  ---------\n  X |   | X\n```\nI hope you enjoyed playing tic-tac-toe with me. Let me know if you have any other questions or if you'd like to play again.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.826,
+        "pos": 0.174,
+        "compound": 0.9628
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 8,
+        "token_count": 144,
+        "self_ref_ratio": 0.020833333333333332,
+        "second_person_ratio": 0.05555555555555555
+      },
+      "lexical_features": {
+        "adj_adv_freq": 19,
+        "adj_adv_ratio": 0.13194444444444445,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.020833333333333332,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.05555555555555555,
+        "token_count": 144
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.8,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.6578947368421053
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBN": 2,
+            "VBZ": 2,
+            "VBD": 1,
+            "VBG": 1,
+            "VB": 4
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "No, I got them in a column vertically along the left side of the grid.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 17,
+        "self_ref_ratio": 0.058823529411764705,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.11764705882352941,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.058823529411764705,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 17
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the misunderstanding. You are correct that you have three \"X\"s in a column vertically along the left side of the grid, which means you have won the game. Congratulations!\n\nHere is the updated state of the board to reflect that:\n```\n  X |   |  \n  ---------\n  X |   |  \n  ---------\n  X |   |\n```\nI hope you enjoyed playing tic-tac-toe with me. Let me know if you have any other questions or if you'd like to play again.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.029,
+        "neu": 0.74,
+        "pos": 0.231,
+        "compound": 0.9545
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 6,
+        "token_count": 101,
+        "self_ref_ratio": 0.039603960396039604,
+        "second_person_ratio": 0.0594059405940594
+      },
+      "lexical_features": {
+        "adj_adv_freq": 11,
+        "adj_adv_ratio": 0.10891089108910891,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.039603960396039604,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.0594059405940594,
+        "token_count": 101
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 20.2,
+          "clause_complexity": 0.4,
+          "vocabulary_richness": 0.896551724137931
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 6,
+            "VBZ": 2,
+            "VBN": 1,
+            "VB": 5,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "What happened to your Os",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.2
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.2,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the oversight. You are correct that I placed two \"O\"s on the board earlier in the game, but I did not update the board to reflect that after your last move. Here is the updated state of the board to reflect the moves that have been made so far:\n```\n  X | O | O\n  ---------\n  X | O |  \n  ---------\n  X |   |\n```\nI hope this clears up any confusion. Let me know if you have any other questions or if you'd like to continue playing tic-tac-toe.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.028,
+        "neu": 0.853,
+        "pos": 0.12,
+        "compound": 0.8054
+      },
+      "core_lexical": {
+        "self_ref_freq": 5,
+        "second_person_freq": 4,
+        "token_count": 112,
+        "self_ref_ratio": 0.044642857142857144,
+        "second_person_ratio": 0.03571428571428571
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.10714285714285714,
+        "self_ref_freq": 5,
+        "self_ref_ratio": 0.044642857142857144,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.03571428571428571,
+        "token_count": 112
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 28.0,
+          "clause_complexity": 0.75,
+          "vocabulary_richness": 0.84375
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBD": 2,
+            "VB": 7,
+            "VBZ": 2,
+            "VBN": 2,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "No, you placed THREE Os. And I placed 4 Xs, not just 3.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 17,
+        "self_ref_ratio": 0.058823529411764705,
+        "second_person_ratio": 0.058823529411764705
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.11764705882352941,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.058823529411764705,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.058823529411764705,
+        "token_count": 17
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8571428571428571
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the confusion. You are correct that you placed four \"X\"s on the board and that I placed three \"O\"s on the board. Here is the updated state of the board to reflect the moves that have been made so far:\n```\n  X | O | O\n  ---------\n  X | O |  \n  ---------\n  X | X |\n```\nI hope this clears up any confusion. Let me know if you have any other questions or if you'd like to continue playing tic-tac-toe.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.048,
+        "neu": 0.843,
+        "pos": 0.109,
+        "compound": 0.5537
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 4,
+        "token_count": 106,
+        "self_ref_ratio": 0.03773584905660377,
+        "second_person_ratio": 0.03773584905660377
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.09433962264150944,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.03773584905660377,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.03773584905660377,
+        "token_count": 106
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.5,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.7333333333333333
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBD": 2,
+            "VBZ": 2,
+            "VB": 5,
+            "VBN": 2,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "That's not where I placed my X. Look again at my second move.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 0,
+        "token_count": 16,
+        "self_ref_ratio": 0.1875,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.1875,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.1875,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 16
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBD": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the misunderstanding. You are correct that the previous state of the board that I provided did not accurately reflect your moves. Here is the updated state of the board to reflect the moves that have been made so far:\n```\n  X |   |  \n  ---------\n    | O |  \n  ---------\n  X |   | X\n```\nI hope this clears up any confusion. Let me know if you have any other questions or if you'd like to continue playing tic-tac-toe.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.057,
+        "neu": 0.83,
+        "pos": 0.113,
+        "compound": 0.4543
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 4,
+        "token_count": 96,
+        "self_ref_ratio": 0.041666666666666664,
+        "second_person_ratio": 0.041666666666666664
+      },
+      "lexical_features": {
+        "adj_adv_freq": 12,
+        "adj_adv_ratio": 0.125,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.041666666666666664,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.041666666666666664,
+        "token_count": 96
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.0,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.7931034482758621
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBD": 2,
+            "VB": 6,
+            "VBZ": 2,
+            "VBN": 2,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.4534961538461539,
+    "pos": 0.11761538461538462,
+    "neu": 0.873576923076923,
+    "neg": 0.008846153846153846
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 180,
+    "adj_adv_ratio": 0.09950248756218906,
+    "self_ref_freq": 59,
+    "self_ref_ratio": 0.0326147042564953,
+    "second_person_freq": 76,
+    "second_person_ratio": 0.04201216141514649,
+    "total_tokens": 1809
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 20.61856060606061,
+      "clause_complexity": 0.20416666666666664,
+      "vocabulary_richness": 0.8447877516563046
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 2,
+        "how": 1,
+        "why": 0,
+        "can_could": 6,
+        "general": 3
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 2,
+        "causality": 1,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 85,
+        "VBZ": 43,
+        "VBN": 19,
+        "VBG": 12,
+        "VBP": 45,
+        "VBD": 19
+      },
+      "named_entities": {
+        "ORGANIZATION": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 22,
+      "unknown": 4
+    },
+    "turn_count": 26,
+    "total_tokens": 1809
+  }
+}

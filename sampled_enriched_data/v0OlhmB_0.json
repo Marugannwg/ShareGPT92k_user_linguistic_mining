@@ -1,0 +1,140 @@
+{
+  "id": "v0OlhmB_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Below is a single line in the JSONL file, which looks like this\n{\"instance\":{\"content\":\"gs://cloud-ai-platform-d561c808-61f0-4b7e-93a3-13153f33563b/sharpness/test/09881\\_909bf238-816d-48c3-a06e-fb81ec9ec3ca.jpg\",\"mimeType\":\"image/jpeg\"},\"prediction\":{\"ids\":[\"2277411287786848256\",\"8042018810821083136\"],\"displayNames\":[\"FALSE\",\"TRUE\"],\"confidences\":[0.73775524,0.2622448]}}\n{\"instance\":{\"content\":\"gs://cloud-ai-platform-d561c808-61f0-4b7e-93a3-13153f33563b/sharpness/val/10995\\_58725e97-6cb9-4693-aa59-6a14e3522383.jpg\",\"mimeType\":\"image/jpeg\"},\"prediction\":{\"ids\":[\"2277411287786848256\",\"8042018810821083136\"],\"displayNames\":[\"FALSE\",\"TRUE\"],\"confidences\":[0.5708533,0.42914668]}}\n{\"instance\":{\"content\":\"gs://cloud-ai-platform-d561c808-61f0-4b7e-93a3-13153f33563b/sharpness/val/11560\\_44b1e832-d0bc-4458-a058-1e6f5ad6d852.jpg\",\"mimeType\":\"image/jpeg\"},\"prediction\":{\"ids\":[\"8042018810821083136\",\"2277411287786848256\"],\"displayNames\":[\"TRUE\",\"FALSE\"],\"confidences\":[0.8667474,0.13325265]}}\n\nHere I want to print and store \"content\", \"prediction\", and \"confidences\". Frame the command so that I can implement this in the zshell terminal.\n\nModify the above to output as shown below.\n09881\\_909bf238-816d-48c3-a06e-fb81ec9ec3ca.jpg, FALSE, 0.73775524\n=content's file name, displayNames[0], confidences[0]\n\nThe name of the file is below, and there are 10 of them. I want to combine them into one output.txt. Please modify the code.\npredictions\\_00001.jsonl, predictions\\_00002.jsonl, ..., predictions\\_00010.jsonl\n\nI don't want to install jq",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.013,
+        "neu": 0.909,
+        "pos": 0.078,
+        "compound": 0.6343
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 0,
+        "token_count": 320,
+        "self_ref_ratio": 0.0125,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.025,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.0125,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 320
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 45.714285714285715,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5066666666666667
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VB": 18,
+            "VBP": 5,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 7
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "​",
+      "language": "unknown",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.31715,
+    "pos": 0.039,
+    "neu": 0.9545,
+    "neg": 0.0065
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 8,
+    "adj_adv_ratio": 0.025,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.0125,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 320
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 45.714285714285715,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.5066666666666667
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 7,
+        "VB": 18,
+        "VBP": 5,
+        "VBN": 1
+      },
+      "named_entities": {
+        "GPE": 1,
+        "ORGANIZATION": 7
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 1,
+      "unknown": 1
+    },
+    "turn_count": 2,
+    "total_tokens": 320
+  }
+}

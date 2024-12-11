@@ -1,0 +1,289 @@
+{
+  "id": "d8Zlqzn_65",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Прошу прощения, что остановился на полпути. Вот полный код приложения с улучшениями и добавленным пользовательским интерфейсом:\n```dart\nimport 'dart:io';\nimport 'dart:typed_data';\n\nimport 'package:flutter/material.dart';\nimport 'package:flutter_tesseract_ocr/flutter_tesseract_ocr.dart';\nimport 'package:image_picker/image_picker.dart';\nimport 'package:pdf/widgets.dart' as pdfLib;\nimport 'package:pdf/pdf.dart';\nimport 'package:pdf/widgets.dart';\nimport 'package:share/share.dart';\n\nclass HomePage extends StatefulWidget {\n  @override\n  _HomePageState createState() => _HomePageState();\n}\n\nclass _HomePageState extends State<HomePage> {\n  late File _image;\n  String _extractText = '';\n  final picker = ImagePicker();\n  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();\n  final List<File> _pictureHistory = [];\n\n  Future _getImageFromCamera() async {\n    final pickedFile = await picker.getImage(source: ImageSource.camera);\n    if (pickedFile != null) {\n      setState(() {\n        _image = File(pickedFile.path);\n      });\n      _addPictureToHistory(_image);\n      _extractTextFromImage();\n    }\n  }\n\n  Future _getImageFromGallery() async {\n    final pickedFile = await picker.getImage(source: ImageSource.gallery);\n    if (pickedFile != null) {\n      setState(() {\n        _image = File(pickedFile.path);\n      });\n      _addPictureToHistory(_image);\n      _extractTextFromImage();\n    }\n  }\n\n  Future _extractTextFromImage() async {\n    String result = await FlutterTesseractOcr.extractText(_image.path);\n    setState(() {\n      _extractText = result;\n    });\n  }\n\n  void _addPictureToHistory(File image) {\n    setState(() {\n      _pictureHistory.add(image);\n    });\n  }\n\n  void _clearPictureHistory() {\n    setState(() {\n      _pictureHistory.clear();\n    });\n  }\n\n  Future<void> _generatePdf() async {\n    final pdfLib.Document pdf = pdfLib.Document();\n\n    for (int i = 0; i < _pictureHistory.length; i++) {\n      final img = PdfImage.file(\n        pdf.document,\n        bytes: File(_pictureHistory[i].path).readAsBytesSync(),\n      );\n\n      pdf.addPage(\n        pdfLib.Page(\n          build: (context) {\n            return pdfLib.Center(\n              child: pdfLib.Image(img),\n            ); // Center\n          },\n        ),\n      ); // Page\n    } // for\n\n    final output = await getTemporaryDirectory();\n    final file = File(\"${output.path}/example.pdf\");\n    await file.writeAsBytes(await pdf.save());\n\n    Share.shareFiles([file.path], text: 'Here is your pdf!');\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      key: _scaffoldKey,\n      appBar: AppBar(\n        title: Text('OCR Scanner'),\n        actions: [\n          IconButton(\n            icon: Icon(Icons.picture_as_pdf),\n            onPressed: () {\n              if (_pictureHistory.isNotEmpty) {\n                _generatePdf();\n              } else {\n                _scaffoldKey.currentState?.showSnackBar(\n                  SnackBar(\n                    content: Text('No images to generate PDF!'),\n                    duration: Duration(seconds: 2),\n                  ),\n                );\n              }\n            },\n          )\n        ],\n      ),\n      body: Column(\n        children: [\n          Container(\n            padding: EdgeInsets.all(10),\n            child: Column(\n              children: [\n                Container(\n                  height: 200,\n                  width\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.962,
+        "pos": 0.038,
+        "compound": 0.7326
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 1,
+        "token_count": 580,
+        "self_ref_ratio": 0.006896551724137931,
+        "second_person_ratio": 0.0017241379310344827
+      },
+      "lexical_features": {
+        "adj_adv_freq": 34,
+        "adj_adv_ratio": 0.05862068965517241,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.006896551724137931,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0017241379310344827,
+        "token_count": 580
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 145.0,
+          "clause_complexity": 0.75,
+          "vocabulary_richness": 0.5605095541401274
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5,
+            "VBZ": 2,
+            "VBP": 5,
+            "VBG": 2,
+            "VBN": 2
+          },
+          "named_entities": {
+            "GPE": 5,
+            "ORGANIZATION": 24,
+            "PERSON": 6
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "продолжи писать body:Share Prompt",
+      "language": "ru",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here's the complete `body` section with the added widgets and functionalities:\n```dart\nbody: Column(\n  mainAxisAlignment: MainAxisAlignment.center,\n  crossAxisAlignment: CrossAxisAlignment.center,\n  children: [\n    Center(\n      child: Container(\n        padding: EdgeInsets.all(20),\n        child: _image == null\n            ? Text(\n                'No image selected.',\n                style: TextStyle(fontSize: 18),\n              )\n            : Image.file(\n                _image!,\n                height: 300,\n              ),\n      ),\n    ),\n    SizedBox(height: 20),\n    Row(\n      mainAxisAlignment: MainAxisAlignment.spaceEvenly,\n      children: [\n        ElevatedButton(\n          onPressed: () => _showPicker(context),\n          child: Text('Select Image'),\n        ),\n        ElevatedButton(\n          onPressed: _image == null ? null : _clearPicture,\n          child: Text('Clear'),\n          style: ElevatedButton.styleFrom(\n            primary: Colors.red,\n            onPrimary: Colors.white,\n          ),\n        ),\n      ],\n    ),\n    SizedBox(height: 20),\n    Text(\n      'Recognized Text:',\n      style: TextStyle(fontSize: 18),\n    ),\n    SizedBox(height: 10),\n    Expanded(\n      child: SingleChildScrollView(\n        child: Text(\n          _recognizedText ?? '',\n          style: TextStyle(fontSize: 16),\n        ),\n      ),\n    ),\n    SizedBox(height: 20),\n    Row(\n      mainAxisAlignment: MainAxisAlignment.spaceEvenly,\n      children: [\n        ElevatedButton(\n          onPressed: _recognizedText == null ? null : _saveToHistory,\n          child: Text('Save to History'),\n        ),\n        ElevatedButton(\n          onPressed: _pictureHistory.isEmpty ? null : _viewHistory,\n          child: Text('View History'),\n        ),\n        ElevatedButton(\n          onPressed: _pictureHistory.isEmpty ? null : _clearPictureHistory,\n          child: Text('Clear History'),\n          style: ElevatedButton.styleFrom(\n            primary: Colors.red,\n            onPrimary: Colors.white,\n          ),\n        ),\n      ],\n    ),\n  ],\n),\n```\nThis code includes the image display, buttons to select, clear, and recognize images, a section to display the recognized text, buttons to save, view, and clear the picture history, and appropriate styles and conditions for each widget.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.943,
+        "pos": 0.057,
+        "compound": 0.899
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 382,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.04712041884816754,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 382
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 42.44444444444444,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.45081967213114754
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 7
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 9,
+            "VBG": 1,
+            "VBN": 8,
+            "VBD": 1,
+            "VBP": 3
+          },
+          "named_entities": {
+            "GPE": 11,
+            "ORGANIZATION": 9,
+            "PERSON": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "напиши весь код в одном окнеShare Prompt",
+      "language": "ru",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here's the complete code with all the improvements and added functionality:\n```dart\nimport 'dart:async';\nimport 'dart:io';\nimport 'dart:typed_data';\nimport 'package:flutter/material.dart';\nimport 'package:flutter_tesseract_ocr/flutter_tesseract_ocr.dart';\nimport 'package:image_picker/image_picker.dart';\nimport 'package:path_provider/path_provider.dart';\nimport 'package:pdf/pdf.dart';\nimport 'package:pdf/widgets.dart' as pw;\n\nvoid main() => runApp(MyApp());\n\nclass MyApp extends StatelessWidget {\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'OCR Scanner',\n      theme: ThemeData(\n        primarySwatch: Colors.blue,\n        visualDensity: VisualDensity.adaptivePlatformDensity,\n      ),\n      home: MyHomePage(title: 'OCR Scanner'),\n    );\n  }\n}\n\nclass MyHomePage extends StatefulWidget {\n  MyHomePage({Key? key, required this.title}) : super(key: key);\n\n  final String title;\n\n  @override\n  _MyHomePageState createState() => _MyHomePageState();\n}\n\nclass _MyHomePageState extends State<MyHomePage> {\n  late File _image;\n  late String _extractText;\n  List<File> _pictureHistory = [];\n\n  Future<void> _addPicture() async {\n    final pickedFile = await ImagePicker().getImage(source: ImageSource.camera);\n\n    if (pickedFile != null) {\n      setState(() {\n        _image = File(pickedFile.path);\n        _pictureHistory.add(_image);\n      });\n    }\n  }\n\n  Future<void> _performOCR() async {\n    final text = await FlutterTesseractOcr.extractText(_image.path);\n    setState(() {\n      _extractText = text;\n    });\n  }\n\n  Future<void> _savePdf() async {\n    final pdf = pw.Document();\n\n    for (final image in _pictureHistory) {\n      final imgData = Uint8List.fromList(await image.readAsBytes());\n      final imageProvider = pw.MemoryImage(imgData);\n      pdf.addPage(pw.Page(\n        build: (context) {\n          return pw.Center(child: pw.Image(imageProvider));\n        },\n      ));\n    }\n\n    final dir = await getApplicationDocumentsDirectory();\n    final file = File(\"${dir.path}/scan.pdf\");\n    await file.writeAsBytes(await pdf.save());\n  }\n\n  void _clearPictureHistory() {\n    setState(() {\n      _pictureHistory.clear();\n    });\n  }\n\n  void _changeLanguage(String languageCode) async {\n    await FlutterTesseractOcr.setLanguage(languageCode);\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(\n        title: Text(widget.title),\n        actions: [\n          IconButton(\n            icon: Icon(Icons.history),\n            onPressed: () {\n              showModalBottomSheet(\n                context: context,\n                builder: (context) {\n                  return ListView.builder(\n                    itemCount: _pictureHistory.length,\n                    itemBuilder: (context, index) {\n                      final image = _pictureHistory[index];\n                      return ListTile(\n                        leading: Image.file(image),\n                        title: Text(image.path),\n                      );\n                    },\n                  );\n                },\n              );\n            },\n          ),\n          IconButton(\n            icon: Icon(Icons.save),\n            onPressed: _pictureHistory.isEmpty ? null : _savePdf,\n          ),\n        ],\n      ),\n      body: Center(\n        child: Column(\n          mainAxisAlignment: MainAxisAlignment.center,\n          children: <Widget>[\n            SizedBox(\n              height: 200,\n              width: 200,\n              child: _image == null ? Text('No image selected.') : Image.file(_image),\n            ),\n            ElevatedButton(\n              child: Text('Take Picture'),\n              onPressed: _addPicture,\n            ),\n            ElevatedButton(\n              child: Text\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.945,
+        "pos": 0.055,
+        "compound": 0.873
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 627,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 36,
+        "adj_adv_ratio": 0.05741626794258373,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 627
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 125.4,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.4473684210526316
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 3
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 4,
+            "VBP": 4,
+            "VBN": 6,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 37,
+            "GPE": 7,
+            "PERSON": 8
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.50092,
+    "pos": 0.03,
+    "neu": 0.97,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 88,
+    "adj_adv_ratio": 0.05538074260541221,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.0025173064820641915,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.0006293266205160479,
+    "total_tokens": 1589
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 104.28148148148148,
+      "clause_complexity": 0.31666666666666665,
+      "vocabulary_richness": 0.48623254910796887
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 11
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 18,
+        "VBZ": 10,
+        "VBP": 12,
+        "VBG": 4,
+        "VBN": 16,
+        "VBD": 1
+      },
+      "named_entities": {
+        "GPE": 23,
+        "ORGANIZATION": 70,
+        "PERSON": 18
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 3,
+      "ru": 2
+    },
+    "turn_count": 5,
+    "total_tokens": 1589
+  }
+}

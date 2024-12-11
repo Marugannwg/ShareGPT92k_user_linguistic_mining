@@ -1,0 +1,409 @@
+{
+  "id": "0487PFE_7",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Certainly! Here is an updated version of the fantasy hockey app that includes these features:\n```\nimport sqlite3\nimport requests\n\ndef create_player(name, position, team, goals, assists):\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"INSERT INTO players (name, position, team, goals, assists) VALUES (?, ?, ?, ?, ?)\", (name, position, team, goals, assists))\n    conn.commit()\n    conn.close()\n\ndef update_player_stats(name):\n    # make a GET request to the API to get the latest stats for the player\n    response = requests.get(f\"https://api.example.com/player/{name}\")\n\n    # check that the request was successful\n    if response.status_code == 200:\n        # parse the response as JSON\n        data = response.json()\n\n        # update the player's stats in the database\n        conn = sqlite3.connect(\"fantasy_hockey.db\")\n        c = conn.cursor()\n        c.execute(\"UPDATE players SET goals=?, assists=? WHERE name=?\", (data[\"goals\"], data[\"assists\"], name))\n        conn.commit()\n        conn.close()\n\ndef get_player_stats(name):\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"SELECT * FROM players WHERE name=?\", (name,))\n    stats = c.fetchone()\n    conn.close()\n    return stats\n\ndef create_team(name, players):\n    # create the team in the teams table\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"INSERT INTO teams (name) VALUES (?)\", (name,))\n    team_id = c.lastrowid\n\n    # add the players to the team_roster table\n    for player in players:\n        c.execute(\"INSERT INTO team_roster (team_id, player_name) VALUES (?, ?)\", (team_id, player))\n\n    # set the first 20 players in the roster as active\n    c.execute(\"UPDATE team_roster SET active=1 WHERE team_id=? AND rowid <= 20\", (team_id,))\n\n    conn.commit()\n    conn.close()\n\ndef get_team_roster(team_name):\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"SELECT player_name, active FROM team_roster WHERE team_id=(SELECT id FROM teams WHERE name=?)\", (team_name,))\n    roster = c.fetchall()\n    conn.close()\n    return roster\n\ndef set_active_roster(team_name, active_roster):\n    # check that the active roster is valid (12 forwards, 6 defensemen, 2 goaltenders)\n    positions = {\"C\": 0, \"LW\": 0, \"RW\": 0, \"D\": 0, \"G\": 0}\n    for player in active_roster:\n        stats = get_player_stats(player)\n        positions[stats[1\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.005,
+        "neu": 0.902,
+        "pos": 0.094,
+        "compound": 0.9789
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 528,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 26,
+        "adj_adv_ratio": 0.04924242424242424,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 528
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 52.8,
+          "clause_complexity": 0.1,
+          "vocabulary_richness": 0.4429530201342282
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 14
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBP": 21,
+            "VB": 12,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 20
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Awesome, I guess! Now add the following feature to the code please: a scoring system that ranks the teams by total points produced by each team’s active roster according to the following values for player statistics : goal = 1 point, assist = 1 point. For goaltenders the values are win = 2 points, OTL = 1 point, loss = 0, shutout = 3 points.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.029,
+        "neu": 0.735,
+        "pos": 0.236,
+        "compound": 0.9459
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 76,
+        "self_ref_ratio": 0.013157894736842105,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.09210526315789473,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.013157894736842105,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 76
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.333333333333332,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8048780487804879
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBZ": 2,
+            "VBN": 1,
+            "VBD": 3,
+            "VBG": 1,
+            "VB": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_speech_act": 1,
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! Here is an updated version of the fantasy hockey app that includes the scoring system:\n```\nimport sqlite3\nimport requests\n\ndef create_player(name, position, team, goals, assists):\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"INSERT INTO players (name, position, team, goals, assists) VALUES (?, ?, ?, ?, ?)\", (name, position, team, goals, assists))\n    conn.commit()\n    conn.close()\n\ndef update_player_stats(name):\n    # make a GET request to the API to get the latest stats for the player\n    response = requests.get(f\"https://api.example.com/player/{name}\")\n\n    # check that the request was successful\n    if response.status_code == 200:\n        # parse the response as JSON\n        data = response.json()\n\n        # update the player's stats in the database\n        conn = sqlite3.connect(\"fantasy_hockey.db\")\n        c = conn.cursor()\n        c.execute(\"UPDATE players SET goals=?, assists=? WHERE name=?\", (data[\"goals\"], data[\"assists\"], name))\n        conn.commit()\n        conn.close()\n\ndef get_player_stats(name):\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"SELECT * FROM players WHERE name=?\", (name,))\n    stats = c.fetchone()\n    conn.close()\n    return stats\n\ndef create_team(name, players):\n    # create the team in the teams table\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"INSERT INTO teams (name) VALUES (?)\", (name,))\n    team_id = c.lastrowid\n\n    # add the players to the team_roster table\n    for player in players:\n        c.execute(\"INSERT INTO team_roster (team_id, player_name) VALUES (?, ?)\", (team_id, player))\n\n    # set the first 20 players in the roster as active\n    c.execute(\"UPDATE team_roster SET active=1 WHERE team_id=? AND rowid <= 20\", (team_id,))\n\n    conn.commit()\n    conn.close()\n\ndef get_team_roster(team_name):\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"SELECT player_name, active FROM team_roster WHERE team_id=(SELECT id FROM teams WHERE name=?)\", (team_name,))\n    roster = c.fetchall()\n    conn.close()\n    return roster\n\ndef set_active_roster(team_name, active_roster):\n    # check that the active roster is valid (12 forwards, 6 defensemen, 2 goaltenders)\n    positions = {\"C\": 0, \"LW\": 0, \"RW\": 0, \"D\": 0, \"G\": 0}\n    for player in active_roster:\n        stats = get_player_stats(player)\n        positions[stats[\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.005,
+        "neu": 0.902,
+        "pos": 0.093,
+        "compound": 0.9789
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 528,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 26,
+        "adj_adv_ratio": 0.04924242424242424,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 528
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 52.8,
+          "clause_complexity": 0.1,
+          "vocabulary_richness": 0.4429530201342282
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 14
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VBP": 21,
+            "VB": 12,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 20
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Continue",
+      "language": "fr",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! Here is the rest of the updated code:\n```\ndef set_active_roster(team_name, active_roster):\n    # check that the active roster is valid (12 forwards, 6 defensemen, 2 goaltenders)\n    positions = {\"C\": 0, \"LW\": 0, \"RW\": 0, \"D\": 0, \"G\": 0}\n    for player in active_roster:\n        stats = get_player_stats(player)\n        positions[stats[1]] += 1\n    if positions[\"C\"] > 12 or positions[\"LW\"] > 12 or positions[\"RW\"] > 12 or positions[\"D\"] > 6 or positions[\"G\"] > 2:\n        print(\"Invalid roster\")\n        return\n    \n    # set the active roster in the database\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"UPDATE team_roster SET active=0 WHERE team_id=(SELECT id FROM teams WHERE name=?)\", (team_name,))\n    for player in active_roster:\n        c.execute(\"UPDATE team_roster SET active=1 WHERE team_id=(SELECT id FROM teams WHERE name=?) AND player_name=?\", (team_name, player))\n    conn.commit()\n    conn.close()\n\ndef simulate_game(team1, team2):\n    # update the stats for all players on both teams\n    team1_roster = get_team_roster(team1)\n    team2_roster = get_team_roster(team2)\n    for player in team1_roster:\n        update_player_stats(player[0])\n    for player in team2_roster:\n        update_player_stats(player[0])\n\n    # calculate the scores for both teams\n    team1_score = 0\n    team2_score = 0\n    for player in team1_roster:\n        if player[1] == 1:\n            stats = get_player_stats(player[0])\n            if stats[1] == \"G\":\n                team1_score += 2 if stats[3] > stats[4] else 1 if stats[3] == stats[4] else 0\n                team1_score += 3 if stats[5] > 0 else 0\n            else\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.007,
+        "neu": 0.952,
+        "pos": 0.041,
+        "compound": 0.8037
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 373,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 20,
+        "adj_adv_ratio": 0.05361930294906166,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 373
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 74.6,
+          "clause_complexity": 1.2,
+          "vocabulary_richness": 0.3644067796610169
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 3
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 6,
+            "VB": 4,
+            "VBP": 23,
+            "VBD": 8,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 6
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Continue",
+      "language": "fr",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_speech_act": 0,
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! Here is the rest of the updated code:\n```\n            else:\n                team1_score += stats[3] + stats[4]\n    for player in team2_roster:\n        if player[1] == 1:\n            stats = get_player_stats(player[0])\n            if stats[1] == \"G\":\n                team2_score += 2 if stats[3] > stats[4] else 1 if stats[3] == stats[4] else 0\n                team2_score += 3 if stats[5] > 0 else 0\n            else:\n                team2_score += stats[3] + stats[4]\n    \n    # update the standings\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"SELECT COUNT(*) FROM standings WHERE points > (SELECT points FROM standings WHERE team_name=?)\", (team1,))\n    rank1 = c.fetchone()[0] + 1\n    c.execute(\"UPDATE standings SET points=?, rank=? WHERE team_name=?\", (team1_score, rank1, team1))\n    c.execute(\"SELECT COUNT(*) FROM standings WHERE points > (SELECT points FROM standings WHERE team_name=?)\", (team2,))\n    rank2 = c.fetchone()[0] + 1\n    c.execute(\"UPDATE standings SET points=?, rank=? WHERE team_name=?\", (team2_score, rank2, team2))\n    conn.commit()\n    conn.close()\n\ndef get_standings():\n    conn = sqlite3.connect(\"fantasy_hockey.db\")\n    c = conn.cursor()\n    c.execute(\"SELECT team_name, points, rank FROM standings ORDER BY rank\")\n    standings = c.fetchall()\n    conn.close()\n    return standings\n```\nThis code includes the scoring system that ranks the teams by total points produced by each team's active roster according to the values specified in the question (1 point for a goal or assist, 2 points for a win, 1 point for an overtime loss, 3 points for a shutout). It also includes a `simulate_game` function that updates the standings based on the scores of the two teams, and a `get_standings` function that retrieves the current standings from the database.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.009,
+        "neu": 0.938,
+        "pos": 0.052,
+        "compound": 0.8898
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 398,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 23,
+        "adj_adv_ratio": 0.05778894472361809,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 398
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 44.22222222222222,
+          "clause_complexity": 0.5555555555555556,
+          "vocabulary_richness": 0.4444444444444444
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 8
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 10,
+            "VBP": 22,
+            "VBD": 4,
+            "VBN": 4,
+            "VB": 2,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 12
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.6567428571428572,
+    "pos": 0.0737142857142857,
+    "neu": 0.9184285714285714,
+    "neg": 0.007857142857142858
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 102,
+    "adj_adv_ratio": 0.053599579611140306,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0005254860746190226,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 1903
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 49.95111111111111,
+      "clause_complexity": 0.3911111111111111,
+      "vocabulary_richness": 0.4999270626308812
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 39
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 26,
+        "VBP": 90,
+        "VB": 31,
+        "VBD": 19,
+        "VBN": 6,
+        "VBG": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 59,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 5,
+      "fr": 2
+    },
+    "turn_count": 7,
+    "total_tokens": 1903
+  }
+}

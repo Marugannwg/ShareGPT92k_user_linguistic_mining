@@ -1,0 +1,191 @@
+{
+  "id": "IwD5xE4_8",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "---------------------------------------------------------------------------\nLookupError Traceback (most recent call last)\n~\\Anaconda3\\lib\\site-packages\\nltk\\corpus\\util.py in \\_\\_load(self)\n 83 try:\n---> 84 root = nltk.data.find(f\"{self.subdir}/{zip\\_name}\")\n 85 except LookupError:\n\n~\\Anaconda3\\lib\\site-packages\\nltk\\data.py in find(resource\\_name, paths)\n 582 resource\\_not\\_found = f\"\\n{sep}\\n{msg}\\n{sep}\\n\"\n--> 583 raise LookupError(resource\\_not\\_found)\n 584 \n\nLookupError: \n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\n Resource omw-1.4 not found.\n Please use the NLTK Downloader to obtain the resource:\n\n >>> import nltk\n >>> nltk.download('omw-1.4')\n \n For more information see: https://www.nltk.org/data.html\n\n Attempted to load corpora/omw-1.4.zip/omw-1.4/\n\n Searched in:\n - 'C:\\\\Users\\\\rockr/nltk\\_data'\n - 'C:\\\\Users\\\\rockr\\\\Anaconda3\\\\nltk\\_data'\n - 'C:\\\\Users\\\\rockr\\\\Anaconda3\\\\share\\\\nltk\\_data'\n - 'C:\\\\Users\\\\rockr\\\\Anaconda3\\\\lib\\\\nltk\\_data'\n - 'C:\\\\Users\\\\rockr\\\\AppData\\\\Roaming\\\\nltk\\_data'\n - 'C:\\\\nltk\\_data'\n - 'D:\\\\nltk\\_data'\n - 'E:\\\\nltk\\_data'\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\nDuring handling of the above exception, another exception occurred:\n\nLookupError Traceback (most recent call last)\n~\\AppData\\Local\\Temp\\ipykernel\\_9724\\3118448898.py in \n 42 \n 43 # Preprocess train and test text data\n---> 44 train\\_df['text'] = train\\_df['text'].apply(preprocess\\_text)\n 45 test\\_df['text'] = test\\_df['text'].apply(preprocess\\_text)\n 46 \n\n~\\Anaconda3\\lib\\site-packages\\pandas\\core\\series.py in apply(self, func, convert\\_dtype, args, \\*\\*kwargs)\n 4431 dtype: float64\n 4432 \"\"\"\n-> 4433 return SeriesApply(self, func, convert\\_dtype, args, kwargs).apply()\n 4434 \n 4435 def \\_reduce(\n\n~\\Anaconda3\\lib\\site-packages\\pandas\\core\\apply.py in apply(self)\n 1086 return self.apply\\_str()\n 1087 \n-> 1088 return self.apply\\_standard()\n 1089 \n 1090 def agg(self):\n\n~\\Anaconda3\\lib\\site-packages\\pandas\\core\\apply.py in apply\\_standard(self)\n 1141 # List[Union[Callable[..., Any], str]]]]]\"; expected\n 1142 # \"Callable[[Any], Any]\"\n-> 1143 mapped = lib.map\\_infer(\n 1144 values,\n 1145 f, # type: ignore[arg-type]\n\n~\\Anaconda3\\lib\\site-packages\\pandas\\\\_libs\\lib.pyx in pandas.\\_libs.lib.map\\_infer()\n\n~\\AppData\\Local\\Temp\\ipykernel\\_9724\\3118448898.py in preprocess\\_text(text)\n 36 # Lemmatize\n 37 lemmatizer = WordNetLemmatizer()\n---> 38 tokens = [lemmatizer.lemmatize(token) for token in tokens]\n 39 # Join tokens back into a string\n 40 text = ' '.join(tokens)\n\n~\\AppData\\Local\\Temp\\ipykernel\\_9724\\3118448898.py in (.0)\n 36 # Lemmatize\n 37 lemmatizer = WordNetLemmatizer()\n---> 38 tokens = [lemmatizer.lemmatize(token) for token in tokens]\n 39 # Join tokens back into a string\n 40 text = ' '.join(tokens)\n\n~\\Anaconda3\\lib\\site-packages\\nltk\\stem\\wordnet.py in lemmatize(self, word, pos)\n 43 :return: The lemma of `word`, for the given `pos`.\n 44 \"\"\"\n---> 45 lemmas = wn.\\_morphy(word, pos)\n 46 return min(lemmas, key=len) if lemmas else word\n 47 \n\n~\\Anaconda3\\lib\\site-packages\\nltk\\corpus\\util.py in \\_\\_getattr\\_\\_(self, attr)\n 119 raise AttributeError(\"LazyCorpusLoader object has no attribute '\\_\\_bases\\_\\_'\")\n 120 \n--> 121 self.\\_\\_load()\n 122 # This looks circular, but its not, since \\_\\_load() changes our\n 123 # \\_\\_class\\_\\_ to something new:\n\n~\\Anaconda3\\lib\\site-packages\\nltk\\corpus\\util.py in \\_\\_load(self)\n 87 \n 88 # Load the corpus.\n---> 89 corpus = self.\\_\\_reader\\_cls(root, \\*self.\\_\\_args, \\*\\*self.\\_\\_kwargs)\n 90 \n 91 # This is where the magic happens! Transform ourselves into\n\n~\\Anaconda3\\lib\\site-packages\\nltk\\corpus\\reader\\wordnet.py in \\_\\_init\\_\\_(self, root, omw\\_reader)\n 1174 )\n 1175 else:\n-> 1176 self.provenances = self.omw\\_prov()\n 1177 \n 1178 # A cache to store the wordnet data of multiple languages\n\n~\\Anaconda3\\lib\\site-packages\\nltk\\corpus\\reader\\wordnet.py in omw\\_prov(self)\n 1283 provdict = {}\n 1284 provdict[\"eng\"] = \"\"\n-> 1285 fileids = self.\\_omw\\_reader.fileids()\n 1286 for fileid in fileids:\n 1287 prov, langfile = os.path.split(fileid)\n\n~\\Anaconda3\\lib\\site-packages\\nltk\\corpus\\util.py in \\_\\_getattr\\_\\_(self, attr)\n 119 raise AttributeError(\"LazyCorpusLoader object has no attribute '\\_\\_bases\\_\\_'\")\n 120 \n--> 121 self.\\_\\_load()\n 122 # This looks circular, but its not, since \\_\\_load() changes our\n 123 # \\_\\_class\\_\\_ to something new:\n\n~\\Anaconda3\\lib\\site-packages\\nltk\\corpus\\util.py in \\_\\_load(self)\n 84 root = nltk.data.find(f\"{self.subdir}/{zip\\_name}\")\n 85 except LookupError:\n---> 86 raise e\n 87 \n 88 # Load the corpus.\n\n~\\Anaconda3\\lib\\site-packages\\nltk\\corpus\\util.py in \\_\\_load(self)\n 79 else:\n 80 try:\n---> 81 root = nltk.data.find(f\"{self.subdir}/{self.\\_\\_name}\")\n 82 except LookupError as e:\n 83 try:\n\n~\\Anaconda3\\lib\\site-packages\\nltk\\data.py in find(resource\\_name, paths)\n 581 sep = \"\\*\" \\* 70\n 582 resource\\_not\\_found = f\"\\n{sep}\\n{msg}\\n{sep}\\n\"\n--> 583 raise LookupError(resource\\_not\\_found)\n 584 \n 585 \n\nLookupError: \n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\n Resource omw-1.4 not found.\n Please use the NLTK Downloader to obtain the resource:\n\n >>> import nltk\n >>> nltk.download('omw-1.4')\n \n For more information see: https://www.nltk.org/data.html\n\n Attempted to load corpora/omw-1.4\n\n Searched in:\n - 'C:\\\\Users\\\\rockr/nltk\\_data'\n - 'C:\\\\Users\\\\rockr\\\\Anaconda3\\\\nltk\\_data'\n - 'C:\\\\Users\\\\rockr\\\\Anaconda3\\\\share\\\\nltk\\_data'\n - 'C:\\\\Users\\\\rockr\\\\Anaconda3\\\\lib\\\\nltk\\_data'\n - 'C:\\\\Users\\\\rockr\\\\AppData\\\\Roaming\\\\nltk\\_data'\n - 'C:\\\\nltk\\_data'\n - 'D:\\\\nltk\\_data'\n - 'E:\\\\nltk\\_data'\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\n\nstill error",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.028,
+        "neu": 0.962,
+        "pos": 0.009,
+        "compound": -0.8889
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 1558,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0012836970474967907
+      },
+      "lexical_features": {
+        "adj_adv_freq": 72,
+        "adj_adv_ratio": 0.04621309370988447,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.0012836970474967907,
+        "token_count": 1558
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 222.57142857142858,
+          "clause_complexity": 0.14285714285714285,
+          "vocabulary_richness": 0.5
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 2,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBN": 8,
+            "VBD": 8,
+            "VBP": 5,
+            "VBZ": 10
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "GPE": 4,
+            "PERSON": 4
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, to preprocess text using WordNetLemmatizer, you need to download the WordNet corpus first. You can do so by running the following command in your Python script:\n```python\nimport nltk\nnltk.download('wordnet')\n```\nThis will download the WordNet corpus, which is required by the WordNetLemmatizer. Once you have downloaded the corpus, you should be able to use the WordNetLemmatizer to preprocess your text data.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.958,
+        "pos": 0.042,
+        "compound": 0.4019
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 6,
+        "token_count": 78,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.07692307692307693
+      },
+      "lexical_features": {
+        "adj_adv_freq": 6,
+        "adj_adv_ratio": 0.07692307692307693,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.07692307692307693,
+        "token_count": 78
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 26.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7096774193548387
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBG": 2,
+            "VBP": 2,
+            "VBZ": 1,
+            "VBN": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": -0.24350000000000002,
+    "pos": 0.025500000000000002,
+    "neu": 0.96,
+    "neg": 0.014
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 78,
+    "adj_adv_ratio": 0.04767726161369193,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 8,
+    "second_person_ratio": 0.004889975550122249,
+    "total_tokens": 1636
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 124.28571428571429,
+      "clause_complexity": 0.07142857142857142,
+      "vocabulary_richness": 0.6048387096774194
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 2,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 16,
+        "VBN": 10,
+        "VBD": 8,
+        "VBP": 7,
+        "VBZ": 11,
+        "VBG": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 11,
+        "GPE": 5,
+        "PERSON": 4
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 1636
+  }
+}

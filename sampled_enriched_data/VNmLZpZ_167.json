@@ -1,0 +1,610 @@
+{
+  "id": "VNmLZpZ_167",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Sure, let's add web browser functionality to the app. Here's a sample code that uses the `webbrowser` module in Python to open a new tab in the default web browser with the user's query:\n```python\nimport webbrowser\n\ndef open_browser(query):\n    search_url=\"https://www.google.com/search?q=\" + query\n    webbrowser.open_new_tab(search_url)\n```\nTo use this function in your app, you can call it in the `except sr.UnknownValueError` block of the `speak_button_clicked` function. Here's the modified code:\n```python\ndef speak_button_clicked():\n    recognizer = sr.Recognizer()\n    with sr.Microphone() as source:\n        recognizer.pause_threshold = 1\n        audio = recognizer.listen(source)\n    try:\n        query = recognizer.recognize_google(audio, language='en-US')\n        print(f\"Your query: {query}\")\n        search_entry.delete(0, tk.END)\n        search_entry.insert(0, query)\n        # send query to AI chatbot\n        response = requests.post(\n            \"http://localhost:5005/webhooks/rest/webhook\",\n            json={\"message\": query}\n        )\n        # get response from AI chatbot\n        if response.status_code == 200:\n            response_data = response.json()\n            for r in response_data:\n                bot_response = r.get('text')\n                if bot_response:\n                    print(f\"AI response: {bot_response}\")\n                    # speak AI response\n                    tts = gTTS(bot_response)\n                    tts.save('response.mp3')\n                    player.set_media(instance.media_new('response.mp3'))\n                    player.play()\n                    os.remove('response.mp3')\n        else:\n            print(f\"Failed to get response from AI chatbot: {response.status_code}\")\n    except sr.UnknownValueError:\n        print(\"Speech recognition could not understand audio\")\n        open_browser(query)\n    except sr.RequestError:\n        print(\"Could not request results from Google Speech Recognition service\")\n    except Exception as e:\n        print(e)\n```\nIn this code, we're using the `open_browser` function to open a new tab in the default web browser with the user's query if speech recognition cannot understand the user's audio. We're also using the `webbrowser` module to perform this action. Note that we're passing the `query` variable to the `open_browser` function, which contains the user's spoken query.\n\nLet me know if you have any questions or need any further assistance.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.011,
+        "neu": 0.979,
+        "pos": 0.009,
+        "compound": -0.1531
+      },
+      "core_lexical": {
+        "self_ref_freq": 5,
+        "second_person_freq": 8,
+        "token_count": 420,
+        "self_ref_ratio": 0.011904761904761904,
+        "second_person_ratio": 0.01904761904761905
+      },
+      "lexical_features": {
+        "adj_adv_freq": 30,
+        "adj_adv_ratio": 0.07142857142857142,
+        "self_ref_freq": 5,
+        "self_ref_ratio": 0.011904761904761904,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.01904761904761905,
+        "token_count": 420
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 70.0,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.5104895104895105
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 2
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 16,
+            "VBZ": 7,
+            "VBD": 2,
+            "VBP": 5,
+            "VBG": 3
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 2,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "where do i put this file",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 6,
+        "self_ref_ratio": 0.16666666666666666,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.16666666666666666,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "You can save the Python file in a directory of your choice on your local machine. Just make sure you have all the required libraries installed, including `tkinter` and `webbrowser`. Then you can run the file using a Python interpreter.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.874,
+        "pos": 0.126,
+        "compound": 0.6705
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 5,
+        "token_count": 48,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.10416666666666667
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.08333333333333333,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.10416666666666667,
+        "token_count": 48
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBP": 1,
+            "VBN": 1,
+            "VBG": 2
+          },
+          "named_entities": {
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Traceback (most recent call last):\n File \"C:\\Program Files\\Python311\\Lib\\runpy.py\", line 198, in \\_run\\_module\\_as\\_main\n return \\_run\\_code(code, main\\_globals, None,\n ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n File \"C:\\Program Files\\Python311\\Lib\\runpy.py\", line 88, in \\_run\\_code\n exec(code, run\\_globals)\n File \"c:\\Users\\Dan.QTIS\\.vscode\\extensions\\ms-python.python-2023.4.0\\pythonFiles\\lib\\python\\debugpy\\adapter/../..\\debugpy\\launcher/../..\\debugpy\\\\_\\_main\\_\\_.py\", line 39, in \n cli.main()\n File \"c:\\Users\\Dan.QTIS\\.vscode\\extensions\\ms-python.python-2023.4.0\\pythonFiles\\lib\\python\\debugpy\\adapter/../..\\debugpy\\launcher/../..\\debugpy/..\\debugpy\\server\\cli.py\", line 430, in main\n run()\n File \"c:\\Users\\Dan.QTIS\\.vscode\\extensions\\ms-python.python-2023.4.0\\pythonFiles\\lib\\python\\debugpy\\adapter/../..\\debugpy\\launcher/../..\\debugpy/..\\debugpy\\server\\cli.py\", line 284, in run\\_file\n runpy.run\\_path(target, run\\_name=\"\\_\\_main\\_\\_\")\n File \"c:\\Users\\Dan.QTIS\\.vscode\\extensions\\ms-python.python-2023.4.0\\pythonFiles\\lib\\python\\debugpy\\\\_vendored\\pydevd\\\\_pydevd\\_bundle\\pydevd\\_runpy.py\", line 320, in run\\_path\n code, fname = \\_get\\_code\\_from\\_file(run\\_name, path\\_name)\n ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n File \"c:\\Users\\Dan.QTIS\\.vscode\\extensions\\ms-python.python-2023.4.0\\pythonFiles\\lib\\python\\debugpy\\\\_vendored\\pydevd\\\\_pydevd\\_bundle\\pydevd\\_runpy.py\", line 289, in \\_get\\_code\\_from\\_file\n with io\\_open\\_code(decoded\\_path) as f:\n ^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\Dan.QTIS\\\\Desktop\\\\Dan\\\\All Projects Full\\\\Ai App\\\\Untitled-3' heres the code: import webbrowser\n\ndef open\\_browser(query):\n search\\_url=\"https://www.google.com/search?q=\" + query\n webbrowser.open\\_new\\_tab(search\\_url)\ndef speak\\_button\\_clicked():\n recognizer = sr.Recognizer()\n with sr.Microphone() as source:\n recognizer.pause\\_threshold = 1\n audio = recognizer.listen(source)\n try:\n query = recognizer.recognize\\_google(audio, language='en-US')\n print(f\"Your query: {query}\")\n search\\_entry.delete(0, tk.END)\n search\\_entry.insert(0, query)\n # send query to AI chatbot\n response = requests.post(\n \"http://localhost:5005/webhooks/rest/webhook\",\n json={\"message\": query}\n )\n # get response from AI chatbot\n if response.status\\_code == 200:\n response\\_data = response.json()\n for r in response\\_data:\n bot\\_response = r.get('text')\n if bot\\_response:\n print(f\"AI response: {bot\\_response}\")\n # speak AI response\n tts = gTTS(bot\\_response)\n tts.save('response.mp3')\n player.set\\_media(instance.media\\_new('response.mp3'))\n player.play()\n os.remove('response.mp3')\n else:\n print(f\"Failed to get response from AI chatbot: {response.status\\_code}\")\n except sr.UnknownValueError:\n print(\"Speech recognition could not understand audio\")\n open\\_browser(query)\n except sr.RequestError:\n print(\"Could not request results from Google Speech Recognition service\")\n except Exception as e:\n print(e)",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.011,
+        "neu": 0.989,
+        "pos": 0.0,
+        "compound": -0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 441,
+        "self_ref_ratio": 0.0022675736961451248,
+        "second_person_ratio": 0.0045351473922902496
+      },
+      "lexical_features": {
+        "adj_adv_freq": 33,
+        "adj_adv_ratio": 0.07482993197278912,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0022675736961451248,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.0045351473922902496,
+        "token_count": 441
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 441.0,
+          "clause_complexity": 2.0,
+          "vocabulary_richness": 0.5196850393700787
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 2
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VBN": 1,
+            "VB": 4,
+            "VBP": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 2,
+            "PERSON": 2,
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "It looks like you are trying to run a Python script, but there is an error due to the script file not being found in the specified path.\n\nPlease ensure that the file path specified in the code is correct and the file exists at that location. In this case, it seems that the file is not found in the path \"C:\\Users\\Dan.QTIS\\Desktop\\Dan\\All Projects Full\\Ai App\\Untitled-3\". You may want to check if the file name is correct or if the file is located in a different directory.\n\nOnce you have confirmed the file location, you can try running the script again. If you continue to encounter errors, feel free to provide more information, and I'll do my best to assist you.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.048,
+        "neu": 0.809,
+        "pos": 0.143,
+        "compound": 0.9209
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 6,
+        "token_count": 136,
+        "self_ref_ratio": 0.014705882352941176,
+        "second_person_ratio": 0.04411764705882353
+      },
+      "lexical_features": {
+        "adj_adv_freq": 14,
+        "adj_adv_ratio": 0.10294117647058823,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.014705882352941176,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.04411764705882353,
+        "token_count": 136
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.666666666666668,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.7454545454545455
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 8,
+            "VBP": 4,
+            "VBG": 3,
+            "VB": 11,
+            "VBN": 5
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "i dont see where to enter the new path",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.2222222222222222,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.1111111111111111,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "You can replace the current file path with the new path you want to use for your Python file.\n\nFor example, if your Python file is located in `C:\\Users\\Dan\\Documents\\my_script.py`, you can replace the file path in the terminal with:\n```bash\ncd C:\\Users\\Dan\\Documents\n```\nThen, you can run your Python file by typing:\n```\npython my_script.py\n```\nThis will execute the `my_script.py` file in the `C:\\Users\\Dan\\Documents` directory.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.98,
+        "pos": 0.02,
+        "compound": 0.0772
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 7,
+        "token_count": 90,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.07777777777777778
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.05555555555555555,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.07777777777777778,
+        "token_count": 90
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 45.0,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.5806451612903226
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBP": 1,
+            "VBZ": 1,
+            "VBN": 1,
+            "VBG": 1
+          },
+          "named_entities": {
+            "GPE": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "do i have to add that into",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 7,
+        "self_ref_ratio": 0.14285714285714285,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.14285714285714285,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 7
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 7.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Yes, you need to add the new path to your system's PATH environment variable.\n\nHere are the steps to do this on Windows 10:\n\n1. Open the Start menu and search for \"Environment Variables\".\n2. Click on \"Edit the system environment variables\".\n3. In the \"System Properties\" window, click on the \"Environment Variables\" button at the bottom right.\n4. Under \"System Variables\", scroll down and find \"Path\". Click on \"Edit\".\n5. Click on \"New\" and add the path to your Python installation directory (e.g. C:\\Python39\\ or C:\\Python311).\n6. Click \"OK\" to close all the windows.\n\nAfter adding the new path, you should be able to run the Python script without any errors.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.959,
+        "pos": 0.041,
+        "compound": 0.577
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 4,
+        "token_count": 158,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.02531645569620253
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.056962025316455694,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.02531645569620253,
+        "token_count": 158
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.875,
+          "clause_complexity": 0.0625,
+          "vocabulary_richness": 0.6417910447761194
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VB": 10,
+            "VBZ": 1,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "PERSON": 5,
+            "GPE": 2
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.1996111111111111,
+    "pos": 0.03766666666666666,
+    "neu": 0.9544444444444444,
+    "neg": 0.007777777777777778
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 97,
+    "adj_adv_ratio": 0.07376425855513308,
+    "self_ref_freq": 11,
+    "self_ref_ratio": 0.008365019011406844,
+    "second_person_freq": 32,
+    "second_person_ratio": 0.024334600760456272,
+    "total_tokens": 1315
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 69.61574074074073,
+      "clause_complexity": 0.41435185185185186,
+      "vocabulary_richness": 0.7664517001533974
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 11,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 1,
+        "causality": 0,
+        "hedging": 4
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 54,
+        "VBZ": 19,
+        "VBD": 3,
+        "VBP": 19,
+        "VBG": 10,
+        "VBN": 8
+      },
+      "named_entities": {
+        "GPE": 11,
+        "ORGANIZATION": 6,
+        "PERSON": 8
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 9
+    },
+    "turn_count": 9,
+    "total_tokens": 1315
+  }
+}

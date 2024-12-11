@@ -1,0 +1,184 @@
+{
+  "id": "TqyM0rI_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Tables:\nCREATE TABLE `crm\\_account` (\n `CustomerID` varchar(255) NOT NULL,\n `CustomerName` varchar(255) DEFAULT NULL,\n `CustomerOwner` varchar(255) DEFAULT NULL,\n `Country` varchar(255) DEFAULT NULL,\n `Industry` varchar(255) DEFAULT NULL,\n `Region` varchar(255) DEFAULT NULL,\n `CreateTime` datetime DEFAULT NULL,\n `UpdateTime` datetime DEFAULT NULL,\n `LighthouseLogo` enum('','Yes','No') DEFAULT NULL COMMENT 'lighthouse users are users with huge influence',\n `Segmentation` enum('SKA','KA','SMB') NOT NULL COMMENT 'customer priority',\n `IsTiDBCloudTenant` tinyint(1) DEFAULT NULL COMMENT 'Whether TiDB Cloud user',\n `CloudTenantID` varchar(255) DEFAULT NULL COMMENT 'TiDB Cloud Tenant ID',\n `CloudTenantCreateTime` varchar(255) DEFAULT NULL COMMENT 'TiDB Cloud Tenant create time',\n `CloudTenantType` enum('','Unknown','On Demand','Commitment Plan','Paid PoC') DEFAULT NULL COMMENT ' TiDB Cloud Tenant Payment Type',\n PRIMARY KEY (`CustomerID`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4\\_bin COMMENT='customer infomration'\n\nCREATE TABLE `salesforce\\_order` (\n `OrderID` varchar(255) NOT NULL,\n `CustomerID` varchar(255) NOT NULL,\n `ACVAmount` float NOT NULL,\n `ExchangeRate` varchar(255) NOT NULL,\n `OrderNumberC` varchar(255) NOT NULL,\n `Salesperson` varchar(255) NOT NULL,\n `OrderType` enum('New','New Subscription','Renewal','Expansion') NOT NULL,\n `OrderStartDate` date NOT NULL,\n `OrderEndDate` date NOT NULL,\n `Tax` float NOT NULL,\n `TCVAmount` float NOT NULL,\n `TermMonths` float NOT NULL,\n `ProductFamily` enum('TiDB Cloud','PingCAP Services','TiDB Enterprise Subscription','PingCAP Training & Exam Services','PingCAP Professional Services','PingCAP Consulting Services') NOT NULL,\n `FiscalPeriod` varchar(255) NOT NULL,\n `SigningDate` date NOT NULL,\n `sf\\_exchangerate\\_to\\_usd` float NOT NULL,\n PRIMARY KEY (`OrderID`)\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4\\_bin\n\nAssuming you are a senior dba, generate some SQLs for these purposes\n1. add the Country, CustomerOwner, and LighthouseLogo columns of the table `crm\\_account` to the table `salesforce\\_order`, and bring the data over as well\n2. add a new column `order\\_tcv\\_usd\\_cd\\_rate` whose value = `TCVAmount`/`sf\\_exchangerate\\_to\\_usd` to the table `salesforce\\_order`\n3. fill the `FiscalPeriod` columns of the table `salesforce\\_order` with rules: 1) if OrderEndDate is in the first quarter then the value of `FiscalPeriod` is Q4; 2) if OrderEndDate is in the second quarter then the value of `FiscalPeriod` is Q4; 3) if OrderEndDate is in the third quarter then the value of `FiscalPeriod` is Q2; 4) otherwise it's Q4",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.932,
+        "pos": 0.068,
+        "compound": 0.9569
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 563,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0017761989342806395
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.04440497335701599,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0017761989342806395,
+        "token_count": 563
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 563.0,
+          "clause_complexity": 3.0,
+          "vocabulary_richness": 0.4189189189189189
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 8,
+            "VBP": 3,
+            "VBZ": 7
+          },
+          "named_entities": {
+            "ORGANIZATION": 53,
+            "PERSON": 6,
+            "GPE": 4
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "1. To add the Country, CustomerOwner, and LighthouseLogo columns of the table `crm_account` to the table `salesforce_order`, and bring the data over as well:\n```sql\nALTER TABLE salesforce_order\nADD COLUMN Country varchar(255) DEFAULT NULL,\nADD COLUMN CustomerOwner varchar(255) DEFAULT NULL,\nADD COLUMN LighthouseLogo enum('','Yes','No') DEFAULT NULL COMMENT 'lighthouse users are users with huge influence';\n\nUPDATE salesforce_order so\nJOIN crm_account ca ON so.CustomerID = ca.CustomerID\nSET so.Country = ca.Country,\nso.CustomerOwner = ca.CustomerOwner,\nso.LighthouseLogo = ca.LighthouseLogo;\n```\n2. To add a new column `order_tcv_usd_cd_rate` whose value = `TCVAmount`/`sf_exchangerate_to_usd` to the table `salesforce_order`:\n```sql\nALTER TABLE salesforce_order\nADD COLUMN order_tcv_usd_cd_rate float NOT NULL;\n\nUPDATE salesforce_order\nSET order_tcv_usd_cd_rate = TCVAmount / sf_exchangerate_to_usd;\n```\n3. To fill the `FiscalPeriod` columns of the table `salesforce_order` with the given rules:\n```sql\nUPDATE salesforce_order\nSET FiscalPeriod = CASE\n    WHEN MONTH(OrderEndDate) BETWEEN 1 AND 6 THEN 'Q4'\n    ELSE 'Q2'\n    END\nWHERE MONTH(OrderEndDate) BETWEEN 1 AND 9;\n\nUPDATE salesforce_order\nSET FiscalPeriod = 'Q4'\nWHERE MONTH(OrderEndDate) BETWEEN 10 AND 12;\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.936,
+        "pos": 0.064,
+        "compound": 0.8619
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 231,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.05627705627705628,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 231
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 57.75,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.5111111111111111
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5,
+            "VBP": 2,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 28
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.9094,
+    "pos": 0.066,
+    "neu": 0.934,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 38,
+    "adj_adv_ratio": 0.04785894206549118,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.0012594458438287153,
+    "total_tokens": 794
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 310.375,
+      "clause_complexity": 1.625,
+      "vocabulary_richness": 0.46501501501501497
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 13,
+        "VBP": 5,
+        "VBZ": 7,
+        "VBN": 1
+      },
+      "named_entities": {
+        "ORGANIZATION": 81,
+        "PERSON": 6,
+        "GPE": 4
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 794
+  }
+}

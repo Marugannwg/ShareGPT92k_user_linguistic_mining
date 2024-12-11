@@ -1,0 +1,682 @@
+{
+  "id": "WfPrQcG_11",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "You're welcome! I'm glad I could help. If you have any further questions or need additional assistance with TensorTrade or using Interactive Brokers' API, please don't hesitate to ask. I'll do my best to help.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.583,
+        "pos": 0.417,
+        "compound": 0.9584
+      },
+      "core_lexical": {
+        "self_ref_freq": 4,
+        "second_person_freq": 2,
+        "token_count": 45,
+        "self_ref_ratio": 0.08888888888888889,
+        "second_person_ratio": 0.044444444444444446
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.15555555555555556,
+        "self_ref_freq": 4,
+        "self_ref_ratio": 0.08888888888888889,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.044444444444444446,
+        "token_count": 45
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.25,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.9444444444444444
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VB": 5,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "do you mind give me one more example?",
+      "language": "fr",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Not at all! Here is an example of how you might use the `live` module with TensorTrade to create and execute a simple trading strategy that buys and sells a financial instrument based on the price trend:\n```\n# Import the necessary classes and functions\nfrom tensortrade.exchanges import Exchange, Instrument, Order, Trade\nfrom tensortrade.exchanges.live import InteractiveBrokers\nfrom tensortrade.strategies import TradingStrategy\n\n# Set up your Interactive Brokers account credentials and API connection\nexchange = Exchange(\n    backend=InteractiveBrokers,\n    account_id=\"my_account_id\",\n    api_key=\"my_api_key\",\n    api_secret=\"my_api_secret\",\n    host=\"127.0.0.1\",\n    port=7497,\n    client_id=123\n)\n\n# Connect to Interactive Brokers\nexchange.connect()\n\n# Define the instrument you want to trade\ninstrument = Instrument(\"AAPL\")\n\n# Set up a trading strategy that buys or sells based on the price trend\nclass TrendFollowingStrategy(TradingStrategy):\n    def should_execute(self, steps: int, last_price: float, current_price: float) -> bool:\n        # Buy if the price is increasing\n        if current_price > last_price:\n            return True\n        # Sell if the price is decreasing\n        elif current_price < last_price:\n            return True\n        # Otherwise, don't execute a trade\n        return False\n\n    def should_cancel(self, trade: Trade) -> bool:\n        # Cancel the trade if the price goes against our position\n        if trade.side == Order.Side.BUY and trade.price > current_price:\n            return True\n        elif trade.side == Order.Side.SELL and trade.price < current_price:\n            return True\n        # Otherwise, keep the trade open\n        return False\n\n# Set up a trading loop to execute trades based on the strategy\nwhile True:\n    # Retrieve the current price of the instrument\n    current_price = exchange.current_price(instrument)\n\n    # Check if we should execute a trade\n    if strategy.should_execute(steps, last_price, current_price):\n        # Create an order to buy or sell based on the price trend\n        if current_price > last_price:\n            order = Order(instrument, 1, Order.Type.MARKET, Order.Side.BUY)\n        else:\n            order = Order(instrument, 1, Order.Type.MARKET, Order.Side.SELL)\n        # Execute the trade\n        trade = exchange.execute(order)\n        # Print the details of the trade\n        print(trade)\n\n    # Check if we should cancel any open trades\n    for trade in exchange.trades:\n        if strategy.should_cancel(trade):\n            # Cancel the trade\n            exchange.cancel(trade)\n            # Print the details of the cancelled trade\n            print(trade)\n\n    # Update the last price and increment the step counter\n    last_price = current_price\n    steps += 1\n\n    # Sleep for a short period of time before checking again\n    time.sleep(10)\n\n# Disconnect from Interactive Brokers\nexchange.disconnect()\n```\nThis example shows how",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.022,
+        "neu": 0.925,
+        "pos": 0.053,
+        "compound": 0.8955
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 6,
+        "token_count": 466,
+        "self_ref_ratio": 0.004291845493562232,
+        "second_person_ratio": 0.012875536480686695
+      },
+      "lexical_features": {
+        "adj_adv_freq": 28,
+        "adj_adv_ratio": 0.060085836909871244,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.004291845493562232,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.012875536480686695,
+        "token_count": 466
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 233.0,
+          "clause_complexity": 6.0,
+          "vocabulary_richness": 0.4585635359116022
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 9,
+            "VB": 12,
+            "VBN": 4,
+            "VBP": 9,
+            "VBG": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 7,
+            "GPE": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "wow, one more please!",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.23,
+        "pos": 0.77,
+        "compound": 0.7707
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 6,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {},
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! Here is an example of how you might use the `live` module with TensorTrade to retrieve and visualize real-time market data for a financial instrument:\n```\n# Import the necessary classes and functions\nimport matplotlib.pyplot as plt\nimport pandas as pd\nfrom tensortrade.exchanges import Exchange, Instrument\nfrom tensortrade.exchanges.live import InteractiveBrokers\n\n# Set up your Interactive Brokers account credentials and API connection\nexchange = Exchange(\n    backend=InteractiveBrokers,\n    account_id=\"my_account_id\",\n    api_key=\"my_api_key\",\n    api_secret=\"my_api_secret\",\n    host=\"127.0.0.1\",\n    port=7497,\n    client_id=123\n)\n\n# Connect to Interactive Brokers\nexchange.connect()\n\n# Define the instrument you want to retrieve data for\ninstrument = Instrument(\"AAPL\")\n\n# Set up a data frame to store the market data\ndata = pd.DataFrame(columns=[\"timestamp\", \"open\", \"high\", \"low\", \"close\"])\n\n# Set up a loop to retrieve and store the market data\nwhile True:\n    # Retrieve the current market data\n    market_data = exchange.market_data(instrument)\n\n    # Add the market data to the data frame\n    data = data.append({\n        \"timestamp\": market_data.timestamp,\n        \"open\": market_data.open,\n        \"high\": market_data.high,\n        \"low\": market_data.low,\n        \"close\": market_data.close\n    }, ignore_index=True)\n\n    # Plot the market data\n    plt.plot(data[\"timestamp\"], data[\"close\"])\n    plt.show(block=False)\n    plt.pause(0.1)\n\n    # Sleep for a short period of time before retrieving the data again\n    time.sleep(1)\n\n# Disconnect from Interactive Brokers\nexchange.disconnect()\n```\nThis example shows how to connect to Interactive Brokers, retrieve real-time market data for the instrument \"AAPL\", and plot the closing price over time using Matplotlib. The market data is stored in a Pandas data frame and plotted using the Matplotlib `plot` function. The `show` and `pause` functions are used to update the plot in real-time as new data is retrieved.\n\nI hope this helps to give you an idea of how to use the `live` module with TensorTrade to retrieve and visualize market data. Let me know if you have any questions or need further assistance.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.014,
+        "neu": 0.943,
+        "pos": 0.043,
+        "compound": 0.8172
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 5,
+        "token_count": 406,
+        "self_ref_ratio": 0.0049261083743842365,
+        "second_person_ratio": 0.012315270935960592
+      },
+      "lexical_features": {
+        "adj_adv_freq": 31,
+        "adj_adv_ratio": 0.07635467980295567,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.0049261083743842365,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.012315270935960592,
+        "token_count": 406
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 67.66666666666667,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.4934210526315789
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 3,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 6,
+            "VB": 18,
+            "VBP": 15,
+            "VBG": 3,
+            "VBN": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 3,
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "one more, please",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.435,
+        "pos": 0.565,
+        "compound": 0.3804
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 4,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.25,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 4
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 4.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! Here is an example of how you might use the `live` module with TensorTrade to retrieve and analyze historical market data for a financial instrument:\n```\n# Import the necessary classes and functions\nimport matplotlib.pyplot as plt\nimport pandas as pd\nfrom tensortrade.exchanges import Exchange, Instrument\nfrom tensortrade.exchanges.live import InteractiveBrokers\n\n# Set up your Interactive Brokers account credentials and API connection\nexchange = Exchange(\n    backend=InteractiveBrokers,\n    account_id=\"my_account_id\",\n    api_key=\"my_api_key\",\n    api_secret=\"my_api_secret\",\n    host=\"127.0.0.1\",\n    port=7497,\n    client_id=123\n)\n\n# Connect to Interactive Brokers\nexchange.connect()\n\n# Define the instrument you want to retrieve data for\ninstrument = Instrument(\"AAPL\")\n\n# Set up a data frame to store the market data\ndata = pd.DataFrame(columns=[\"timestamp\", \"open\", \"high\", \"low\", \"close\"])\n\n# Set the start and end dates for the data\nstart_date = \"2022-01-01\"\nend_date = \"2022-01-31\"\n\n# Retrieve the historical market data for the specified time period\nmarket_data = exchange.historical_data(instrument, start_date, end_date)\n\n# Add the market data to the data frame\nfor bar in market_data:\n    data = data.append({\n        \"timestamp\": bar.timestamp,\n        \"open\": bar.open,\n        \"high\": bar.high,\n        \"low\": bar.low,\n        \"close\": bar.close\n    }, ignore_index=True)\n\n# Disconnect from Interactive Brokers\nexchange.disconnect()\n\n# Plot the market data\nplt.plot(data[\"timestamp\"], data[\"close\"])\nplt.show()\n``\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.024,
+        "neu": 0.957,
+        "pos": 0.019,
+        "compound": -0.2003
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 290,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.010344827586206896
+      },
+      "lexical_features": {
+        "adj_adv_freq": 26,
+        "adj_adv_ratio": 0.0896551724137931,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.010344827586206896,
+        "token_count": 290
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 145.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5368421052631579
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 7,
+            "VBP": 10
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "may I copy a trained results to here, restore for using",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.82,
+        "pos": 0.18,
+        "compound": 0.296
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 12,
+        "self_ref_ratio": 0.08333333333333333,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.16666666666666666,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.08333333333333333,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 12
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! You can use the `load_model` function from TensorTrade's `models` module to restore a trained model from a file or other storage location.\n\nHere is an example of how you might use the `load_model` function to restore a trained model in TensorTrade:\n```\nfrom tensortrade.models import load_model\n\n# Load the trained model from a file\nmodel = load_model(\"my_trained_model.h5\")\n```\nThe `load_model` function takes a file path or other storage location as an argument and returns the trained model. You can then use the model as you would any other TensorTrade model, such as using it to make predictions or execute trades.\n\nI hope this helps to give you an idea of how to restore a trained model in TensorTrade. Let me know if you have any questions or need further assistance.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.018,
+        "neu": 0.875,
+        "pos": 0.107,
+        "compound": 0.8932
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 6,
+        "token_count": 155,
+        "self_ref_ratio": 0.012903225806451613,
+        "second_person_ratio": 0.03870967741935484
+      },
+      "lexical_features": {
+        "adj_adv_freq": 15,
+        "adj_adv_ratio": 0.0967741935483871,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.012903225806451613,
+        "second_person_freq": 6,
+        "second_person_ratio": 0.03870967741935484,
+        "token_count": 155
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.833333333333332,
+          "clause_complexity": 0.16666666666666666,
+          "vocabulary_richness": 0.5932203389830508
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 11,
+            "VBZ": 4,
+            "VBP": 3,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2,
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "sorry, it is not clear for me, can you explain to me more details",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.225,
+        "neu": 0.775,
+        "pos": 0.0,
+        "compound": -0.3578
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 1,
+        "token_count": 16,
+        "self_ref_ratio": 0.125,
+        "second_person_ratio": 0.0625
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.1875,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.125,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0625,
+        "token_count": 16
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! To restore a trained model in TensorTrade, you will need to have access to the model itself and any related files or information that were used to train it. This typically includes the model architecture and weights, as well as any data or training configurations that were used to train the model.\n\nTo restore a trained model in TensorTrade, you can use the `load_model` function from the `models` module. The `load_model` function takes a file path or other storage location as an argument and returns the trained model. Here is an example of how you might use the `load_model` function to restore a trained model:\n```\nfrom tensortrade.models import load_model\n\n# Load the trained model from a file\nmodel = load_model(\"my_trained_model.h5\")\n```\nIn this example, the trained model is stored in a file called \"my\\_trained\\_model.h5\", which is located in the current working directory. The `load_model` function reads the model from this file and returns it as a TensorTrade model object.\n\nOnce the trained model has been restored, you can use it as you would any other TensorTrade model. For example, you might use it to make predictions or execute trades based on its learned behavior.\n\nI hope this helps to clarify the process of restoring a trained model in TensorTrade. Let me know if you have any further questions or need additional assistance.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.01,
+        "neu": 0.898,
+        "pos": 0.092,
+        "compound": 0.9468
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 7,
+        "token_count": 262,
+        "self_ref_ratio": 0.011450381679389313,
+        "second_person_ratio": 0.026717557251908396
+      },
+      "lexical_features": {
+        "adj_adv_freq": 23,
+        "adj_adv_ratio": 0.08778625954198473,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.011450381679389313,
+        "second_person_freq": 7,
+        "second_person_ratio": 0.026717557251908396,
+        "token_count": 262
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.818181818181817,
+          "clause_complexity": 0.09090909090909091,
+          "vocabulary_richness": 0.5904761904761905
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 2
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 16,
+            "VBD": 2,
+            "VBN": 8,
+            "VBZ": 10,
+            "VBP": 4,
+            "VBG": 1
+          },
+          "named_entities": {
+            "GPE": 3,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.49091818181818175,
+    "pos": 0.2041818181818182,
+    "neu": 0.7673636363636365,
+    "neg": 0.028454545454545455
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 137,
+    "adj_adv_ratio": 0.08243080625752106,
+    "self_ref_freq": 16,
+    "self_ref_ratio": 0.009626955475330927,
+    "second_person_freq": 30,
+    "second_person_ratio": 0.018050541516245487,
+    "total_tokens": 1662
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 54.456818181818186,
+      "clause_complexity": 0.7007575757575758,
+      "vocabulary_richness": 0.7616967667710024
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 9,
+        "why": 0,
+        "can_could": 6,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 2,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 7
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 46,
+        "VB": 72,
+        "VBG": 10,
+        "VBZ": 31,
+        "VBN": 15,
+        "VBD": 4
+      },
+      "named_entities": {
+        "ORGANIZATION": 31,
+        "PERSON": 11,
+        "GPE": 11
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 10,
+      "fr": 1
+    },
+    "turn_count": 11,
+    "total_tokens": 1662
+  }
+}

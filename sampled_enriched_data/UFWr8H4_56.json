@@ -1,0 +1,191 @@
+{
+  "id": "UFWr8H4_56",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "I got another error. Do you need additional documentation to provide a solution?\n\n03/21/2023 12:42:18 PM\nQueued\n03/21/2023 12:42:19 PM\nDedicating resources\n03/21/2023 12:42:19 PM\nPartition ID: 466, Label: \"Job\"\n03/21/2023 12:42:19 PM\nActual CPU allocation: 256m\n03/21/2023 12:42:19 PM\nActual memory allocated: 1024mb\n03/21/2023 12:42:21 PM\nYour job is now in a running state.\n03/21/2023 12:42:24 PM\nCollecting slack-sdk\n03/21/2023 12:42:24 PM\n Downloading slack\\_sdk-3.20.2-py2.py3-none-any.whl (274 kB)\n03/21/2023 12:42:27 PM\nInstalling collected packages: slack-sdk\n03/21/2023 12:42:28 PM\nSuccessfully installed slack-sdk-3.20.2\n03/21/2023 12:42:31 PM\nRequirement already satisfied: civis in /opt/conda/lib/python3.7/site-packages (1.16.0)\n03/21/2023 12:42:31 PM\nRequirement already satisfied: cloudpickle<3,>=0.2 in /opt/conda/lib/python3.7/site-packages (from civis) (1.2.2)\n03/21/2023 12:42:31 PM\nRequirement already satisfied: pyyaml<7,>=3.0 in /opt/conda/lib/python3.7/site-packages (from civis) (5.2)\n03/21/2023 12:42:31 PM\nRequirement already satisfied: jsonschema<5,>=2.5.1 in /opt/conda/lib/python3.7/site-packages (from civis) (3.2.0)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: tenacity<9,>=6.2 in /opt/conda/lib/python3.7/site-packages (from civis) (8.0.1)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: joblib<2,>=0.11 in /opt/conda/lib/python3.7/site-packages (from civis) (0.14.1)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: jsonref<=0.2.99,>=0.1 in /opt/conda/lib/python3.7/site-packages (from civis) (0.2)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: requests<3,>=2.12.0 in /opt/conda/lib/python3.7/site-packages (from civis) (2.22.0)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: click<9,>=6.0 in /opt/conda/lib/python3.7/site-packages (from civis) (6.7)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: importlib-metadata; python\\_version < \"3.8\" in /opt/conda/lib/python3.7/site-packages (from jsonschema<5,>=2.5.1->civis) (4.8.2)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: pyrsistent>=0.14.0 in /opt/conda/lib/python3.7/site-packages (from jsonschema<5,>=2.5.1->civis) (0.18.0)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: six>=1.11.0 in /opt/conda/lib/python3.7/site-packages (from jsonschema<5,>=2.5.1->civis) (1.16.0)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: attrs>=17.4.0 in /opt/conda/lib/python3.7/site-packages (from jsonschema<5,>=2.5.1->civis) (21.2.0)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: setuptools in /opt/conda/lib/python3.7/site-packages (from jsonschema<5,>=2.5.1->civis) (58.0.4)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: certifi>=2017.4.17 in /opt/conda/lib/python3.7/site-packages (from requests<3,>=2.12.0->civis) (2021.10.8)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: chardet<3.1.0,>=3.0.2 in /opt/conda/lib/python3.7/site-packages (from requests<3,>=2.12.0->civis) (3.0.4)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /opt/conda/lib/python3.7/site-packages (from requests<3,>=2.12.0->civis) (1.25.7)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: idna<2.9,>=2.5 in /opt/conda/lib/python3.7/site-packages (from requests<3,>=2.12.0->civis) (2.8)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: typing-extensions>=3.6.4; python\\_version < \"3.8\" in /opt/conda/lib/python3.7/site-packages (from importlib-metadata; python\\_version < \"3.8\"->jsonschema<5,>=2.5.1->civis) (3.10.0.2)\n03/21/2023 12:42:32 PM\nRequirement already satisfied: zipp>=0.5 in /opt/conda/lib/python3.7/site-packages (from importlib-metadata; python\\_version < \"3.8\"->jsonschema<5,>=2.5.1->civis) (3.6.0)\n03/21/2023 12:42:45 PM\nTraceback (most recent call last):\n03/21/2023 12:42:45 PM\n File \"/app/script\", line 38, in \n03/21/2023 12:42:45 PM\n last\\_run = get\\_last\\_workflow\\_run(workflow\\_name)\n03/21/2023 12:42:45 PM\n File \"/app/script\", line 29, in get\\_last\\_workflow\\_run\n03/21/2023 12:42:45 PM\n runs = client.workflows.list\\_executions(workflow\\_name)\n03/21/2023 12:42:45 PM\n File \"/opt/conda/lib/python3.7/site-packages/civis/resources/\\_resources.py\", line 276, in f\n03/21/2023 12:42:45 PM\n return self.\\_call\\_api(verb, url, query, body, iterator=iterator)\n03/21/2023 12:42:45 PM\n File \"/opt/conda/lib/python3.7/site-packages/civis/base.py\", line 135, in \\_call\\_api\n03/21/2023 12:42:45 PM\n resp = self.\\_make\\_request(method, path, params, data, \\*\\*kwargs)\n03/21/2023 12:42:45 PM\n File \"/opt/conda/lib/python3.7/site-packages/civis/base.py\", line 125, in \\_make\\_request\n03/21/2023 12:42:45 PM\n raise CivisAPIError(response)\n03/21/2023 12:42:45 PM\ncivis.base.CivisAPIError: (400) The given request was not as expected: The property '#/Id' of type string did not match the following type: integer\n03/21/2023 12:42:47 PM\nFailed: The job container failed. Exit code 1\n03/21/2023 12:42:47 PM\nNo resource usage metrics were collected. This may happen when a Run finishes quickly.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.022,
+        "neu": 0.858,
+        "pos": 0.12,
+        "compound": 0.993
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 812,
+        "self_ref_ratio": 0.0012315270935960591,
+        "second_person_ratio": 0.0024630541871921183
+      },
+      "lexical_features": {
+        "adj_adv_freq": 65,
+        "adj_adv_ratio": 0.08004926108374384,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0012315270935960591,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.0024630541871921183,
+        "token_count": 812
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 135.33333333333334,
+          "clause_complexity": 0.16666666666666666,
+          "vocabulary_richness": 0.4141791044776119
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 33,
+            "VB": 5,
+            "VBZ": 10,
+            "VBP": 6,
+            "VBN": 3
+          },
+          "named_entities": {
+            "PERSON": 2
+          }
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the confusion. It seems that I made a mistake in the function `get_last_workflow_run`. The `list_executions` method requires the workflow ID as its argument, not the workflow name. We first need to fetch the workflow ID using the `list_workflows` method.\n\nHere's the updated script:\n```python\nimport os\nimport sys\nimport subprocess\n\ndef install_package(package_name):\n    subprocess.check_call([sys.executable, \"-m\", \"pip\", \"install\", package_name])\n\n# Install the required packages\ninstall_package(\"slack-sdk\")\ninstall_package(\"civis\")\n\n# Import the required packages\nfrom slack_sdk import WebClient\nimport civis\n\n# Your API keys\nSLACK_API_TOKEN = os.getenv(\"SLACK_API_TOKEN\")\nCIVIS_API_KEY = os.environ[\"CIVIS_API_KEY\"]\n\n# Your desired Slack channel\nSLACK_CHANNEL_ID = \"C016ZP7LTQA\"\n\n# Initialize Civis and Slack clients\nclient = civis.APIClient(api_key=CIVIS_API_KEY)\nslack_client = WebClient(token=SLACK_API_TOKEN)\n\n# Function to fetch the workflow ID by its name\ndef get_workflow_id(workflow_name):\n    workflows = client.workflows.list()\n    for workflow in workflows:\n        if workflow[\"name\"] == workflow_name:\n            return workflow[\"id\"]\n    return None\n\n# Function to fetch the last run of a workflow\ndef get_last_workflow_run(workflow_id):\n    runs = client.workflows.list_executions(workflow_id)\n    return sorted(runs, key=lambda x: x[\"created_at\"], reverse=True)[0] if runs else None\n\n# Function to send a message to Slack\ndef send_slack_message(channel_id, message):\n    slack_client.chat_postMessage(channel=channel_id, text=message)\n\n# Fetch the workflow ID for \"[Middle Seat] Workflow\"\nworkflow_name = \"[Middle Seat] Workflow\"\nworkflow_id = get_workflow_id(workflow_name)\n\nif workflow_id is not None:\n    # Fetch the last run of the workflow\n    last_run = get_last_workflow_run(workflow_id)\n\n    if last_run is not None:\n        # Determine the status of the last run and send a message to Slack\n        if last_run[\"state\"] == \"succeeded\":\n            message = f\"TEST: The {workflow_name} finished successfully.\"\n        else:\n            message = f\"The {workflow_name} failed.\"\n\n        send_slack_message(SLACK_CHANNEL_ID, message)\n    else:\n        print(f\"No runs found for the workflow with name '{workflow_name}'. No message sent to Slack.\")\nelse:\n    print(f\"Workflow with name '{workflow_name}' not found. No message sent to Slack.\")\n```\nThis updated script fetches the workflow ID based on its name before fetching the last run of the workflow, which should resolve the issue.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.04,
+        "neu": 0.915,
+        "pos": 0.045,
+        "compound": 0.0997
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 3,
+        "token_count": 477,
+        "self_ref_ratio": 0.006289308176100629,
+        "second_person_ratio": 0.006289308176100629
+      },
+      "lexical_features": {
+        "adj_adv_freq": 43,
+        "adj_adv_ratio": 0.09014675052410902,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.006289308176100629,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.006289308176100629,
+        "token_count": 477
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 43.36363636363637,
+          "clause_complexity": 0.5454545454545454,
+          "vocabulary_richness": 0.44025157232704404
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBZ": 8,
+            "VBD": 10,
+            "VB": 9,
+            "VBG": 2,
+            "VBN": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 7,
+            "PERSON": 4,
+            "GPE": 6
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.54635,
+    "pos": 0.08249999999999999,
+    "neu": 0.8865000000000001,
+    "neg": 0.031
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 108,
+    "adj_adv_ratio": 0.08378588052754073,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.0031031807602792862,
+    "second_person_freq": 5,
+    "second_person_ratio": 0.003878975950349108,
+    "total_tokens": 1289
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 89.34848484848486,
+      "clause_complexity": 0.356060606060606,
+      "vocabulary_richness": 0.42721533840232795
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 1
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBD": 43,
+        "VB": 14,
+        "VBZ": 18,
+        "VBP": 11,
+        "VBN": 7,
+        "VBG": 2
+      },
+      "named_entities": {
+        "PERSON": 6,
+        "ORGANIZATION": 7,
+        "GPE": 6
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 1289
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "id": "n82Uxuz_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Please reason about the commonalities and aspects of titles that are primarily written to clickbait users. Consider the use of language but mainly focus on other aspects in click bait prone news. Consider mainly the promise of information while not giving away any of it in the title so that the true nature of the information might be completely different or trivial. Consider also how everyday topics that are encountered as aspects of everyones life are more likely touched so that many people relate to the respective article making a click more likely. With the reasoning done please score titles of news articles between 0 and 10 on their click baiting potential: • Russische Truppenverluste setzen Putin unter Druck\n• Das ist die Familie der Ex-Ministerin\n• Bundeskanzler redet auf dem Weltwirtschaftsgipfel\n• Sieben Irrtümer über Aufbackbrötchen\n• Spektakulärer Spielertransfer in der Oberliga\n• Kinderstar Hanni Klump: So sieht sie mit 89 aus\n• Diese Nasenhaarschneider sind viel günstiger, als Sie denken",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.053,
+        "neu": 0.861,
+        "pos": 0.086,
+        "compound": 0.7092
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 169,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 26,
+        "adj_adv_ratio": 0.15384615384615385,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 169
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 33.8,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.8640776699029126
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBN": 4,
+            "VB": 6,
+            "VBG": 4,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 6
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Commonalities of clickbait titles include the use of sensational language and the promise of intriguing or controversial information without giving away any details in the title. Clickbait titles also often focus on everyday topics that many people can relate to in order to increase the likelihood of clicks.\n\nScoring the provided titles on their clickbait potential:\n• Russische Truppenverluste setzen Putin unter Druck - 2\n• Das ist die Familie der Ex-Ministerin - 3\n• Bundeskanzler redet auf dem Weltwirtschaftsgipfel - 1\n• Sieben Irrtümer über Aufbackbrötchen - 6\n• Spektakulärer Spielertransfer in der Oberliga - 5\n• Kinderstar Hanni Klump: So sieht sie mit 89 aus - 8\n• Diese Nasenhaarschneider sind viel günstiger, als Sie denken - 7\n\nThe titles that score higher on the clickbait potential scale use more sensational language or play on people's curiosity about celebrities or everyday topics. The titles that score lower on the scale tend to be more straightforward and provide less information about the content of the article.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.056,
+        "neu": 0.904,
+        "pos": 0.04,
+        "compound": -0.4471
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 175,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 29,
+        "adj_adv_ratio": 0.1657142857142857,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 175
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 43.75,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8240740740740741
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBG": 3,
+            "VB": 6,
+            "VBD": 2
+          },
+          "named_entities": {
+            "PERSON": 9,
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "In that sense generate a list of 7 news article titles that cover similar news in terms of topic and category and rate approx. the same as the examples I gave.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 33,
+        "self_ref_ratio": 0.030303030303030304,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.06060606060606061,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.030303030303030304,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 33
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 16.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9411764705882353
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBD": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here are 7 news article titles that cover similar topics and categories and rate approximately the same as the examples provided:\n\n• US-China relations: The new era of trade tensions - 2\n• The latest on the COVID-19 vaccine rollout - 3\n• How to protect yourself from online scams - 4\n• The future of electric cars: What to expect in the next 5 years - 5\n• The impact of social media on mental health - 6\n• The rise of plant-based diets and their health benefits - 7\n• The secrets of successful time management - 8\n\nThese titles are similar to the examples provided in that they provide information on current events and everyday topics, but do not use sensational language or promise information without providing details in the title.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.03,
+        "neu": 0.907,
+        "pos": 0.063,
+        "compound": 0.5719
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 139,
+        "self_ref_ratio": 0.007194244604316547,
+        "second_person_ratio": 0.007194244604316547
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.1510791366906475,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.007194244604316547,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.007194244604316547,
+        "token_count": 139
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 139.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8695652173913043
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 4,
+            "VBD": 1,
+            "VB": 4,
+            "VBN": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.20850000000000002,
+    "pos": 0.04725,
+    "neu": 0.918,
+    "neg": 0.03475
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 78,
+    "adj_adv_ratio": 0.1511627906976744,
+    "self_ref_freq": 2,
+    "self_ref_ratio": 0.003875968992248062,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.001937984496124031,
+    "total_tokens": 516
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 58.2625,
+      "clause_complexity": 0.05,
+      "vocabulary_richness": 0.8747233579891315
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 1,
+        "how": 2,
+        "why": 0,
+        "can_could": 1,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 2,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 11,
+        "VBN": 5,
+        "VB": 17,
+        "VBG": 8,
+        "VBD": 5
+      },
+      "named_entities": {
+        "GPE": 1,
+        "PERSON": 15,
+        "ORGANIZATION": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 4
+    },
+    "turn_count": 4,
+    "total_tokens": 516
+  }
+}

@@ -1,0 +1,786 @@
+{
+  "id": "Y6z8x6v_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "how can i receive some data at a nextjs api route and then run a mutation on another graphql api using apollo",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 22,
+        "self_ref_ratio": 0.045454545454545456,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.09090909090909091,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.045454545454545456,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 22
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 22.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9166666666666666
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To receive data at a Next.js API route and run a mutation on another GraphQL API using Apollo, you can follow the following steps:\n\n1. Install the necessary dependencies: `npm install apollo-client graphql`.\n2. Import the necessary dependencies and configure your Apollo client in your Next.js API route file:\n```javascript\nimport { ApolloClient, InMemoryCache, gql } from '@apollo/client';\n\nconst apolloClient = new ApolloClient({\n  uri: '<graphql-api-url>',\n  cache: new InMemoryCache(),\n});\n```\nReplace `<graphql-api-url>` with the URL of your GraphQL API.\n\n3. In your Next.js API route handler function, retrieve the data from the incoming request using the `req.body` object:\n```javascript\nexport default async function handler(req, res) {\n  const { data } = req.body;\n  // use the data to construct your GraphQL mutation\n  // and run it using the Apollo client\n}\n```\n4. Construct your GraphQL mutation using the data from the request and run it using the Apollo client:\n```javascript\nconst mutation = gql`\n  mutation MyMutation($input: MyInputType!) {\n    myMutation(input: $input) {\n      // specify the fields you want to retrieve from the mutation result\n    }\n  }\n`;\n\nconst result = await apolloClient.mutate({\n  mutation,\n  variables: {\n    input: {\n      // map the data from the request to the fields in your mutation input\n    }\n  }\n});\n```\nReplace `MyMutation` and `MyInputType` with the name of your mutation and the input type it expects, respectively. Also, make sure to specify the fields you want to retrieve from the mutation result.\n\n5. Send the result of the mutation back in the response:\n```javascript\nres.status(200).json(result);\n```\nThis is a basic example, and depending on your specific use case, you may need to add error handling and validation for the incoming data.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.01,
+        "neu": 0.958,
+        "pos": 0.032,
+        "compound": 0.5093
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 13,
+        "token_count": 374,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.034759358288770054
+      },
+      "lexical_features": {
+        "adj_adv_freq": 24,
+        "adj_adv_ratio": 0.06417112299465241,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 13,
+        "second_person_ratio": 0.034759358288770054,
+        "token_count": 374
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 34.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5094339622641509
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 19,
+            "VBG": 7,
+            "VBP": 6,
+            "VBZ": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "PERSON": 1,
+            "GPE": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "can you please make this typescript compatible export default async function handler(req, res) {",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.85,
+        "pos": 0.15,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 18,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.05555555555555555
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.05555555555555555,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Certainly! Here's the TypeScript compatible version of the handler function:\n```typescript\nimport { NextApiRequest, NextApiResponse } from 'next';\n\nexport default async function handler(req: NextApiRequest, res: NextApiResponse) {\n  const { data } = req.body;\n  // use the data to construct your GraphQL mutation\n  // and run it using the Apollo client\n}\n```\nThe changes include adding type annotations for the `req` and `res` parameters to specify that they are instances of `NextApiRequest` and `NextApiResponse` respectively, which are provided by Next.js to handle API routes.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.942,
+        "pos": 0.058,
+        "compound": 0.6239
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 110,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.00909090909090909
+      },
+      "lexical_features": {
+        "adj_adv_freq": 8,
+        "adj_adv_ratio": 0.07272727272727272,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.00909090909090909,
+        "token_count": 110
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 55.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7872340425531915
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VB": 5,
+            "VBP": 4,
+            "VBG": 2,
+            "VBN": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 5,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "how would i use apollos function \"usemutation\" in my nextjs api routes",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 14,
+        "self_ref_ratio": 0.14285714285714285,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.07142857142857142,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.14285714285714285,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 14
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "To use the `useMutation` function from Apollo Client in your Next.js API routes, you would need to use the `ApolloClient` instance directly instead of using the React hook.\n\nHere's an example of how you could use the `mutate` method of the `ApolloClient` instance to execute a mutation in your Next.js API route:\n```typescript\nimport { NextApiRequest, NextApiResponse } from 'next';\nimport { ApolloClient, InMemoryCache, gql } from '@apollo/client';\n\nconst apolloClient = new ApolloClient({\n  uri: 'YOUR_GRAPHQL_API_URL',\n  cache: new InMemoryCache(),\n});\n\nexport default async function handler(req: NextApiRequest, res: NextApiResponse) {\n  const { data } = req.body;\n\n  const MUTATION = gql`\n    mutation MyMutation($input: MyInputType!) {\n      myMutation(input: $input) {\n        // specify the fields you want to retrieve from the mutation result\n      }\n    }\n  `;\n\n  try {\n    const result = await apolloClient.mutate({\n      mutation: MUTATION,\n      variables: {\n        input: {\n          // map the data from the request to the fields in your mutation input\n        }\n      }\n    });\n\n    res.status(200).json(result);\n  } catch (error) {\n    res.status(500).json({ message: error.message });\n  }\n}\n```\nReplace `'YOUR_GRAPHQL_API_URL'` with the URL of your GraphQL API, and update the `MUTATION` variable to match your mutation's schema.\n\nNote that the `useMutation` hook is designed to be used in React components and is not suitable for use in API routes, as it relies on React's component lifecycle methods to function properly. Instead, you should use the `ApolloClient` instance directly to execute mutations in your API routes.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.012,
+        "neu": 0.977,
+        "pos": 0.012,
+        "compound": -0.3164
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 10,
+        "token_count": 328,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.03048780487804878
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.06402439024390244,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.03048780487804878,
+        "token_count": 328
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 65.6,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.59375
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 16,
+            "VBG": 1,
+            "VBZ": 5,
+            "VBP": 3,
+            "VBN": 2
+          },
+          "named_entities": {
+            "PERSON": 2,
+            "ORGANIZATION": 11,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "what if i used this codegen package https://www.npmjs.com/package/@graphql-codegen/cli to generate the mutation function, how would i work with the output",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 25,
+        "self_ref_ratio": 0.08,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.08,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.08,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 25
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VB": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "If you used the `@graphql-codegen/cli` package to generate the mutation function, you should have a TypeScript file that exports a function that executes the mutation using the Apollo Client.\n\nHere's an example of how you could use the generated function in your Next.js API route:\n\n1. Import the generated mutation function and the `ApolloClient` instance:\n```typescript\nimport { NextApiRequest, NextApiResponse } from 'next';\nimport { ApolloClient, InMemoryCache } from '@apollo/client';\nimport { MyMutationFunction, MyMutationMutation, MyMutationMutationVariables } from './path/to/generated/file';\n```\nReplace `'./path/to/generated/file'` with the actual path to your generated TypeScript file.\n\n2. Instantiate the `ApolloClient` instance:\n```typescript\nconst apolloClient = new ApolloClient({\n  uri: 'YOUR_GRAPHQL_API_URL',\n  cache: new InMemoryCache(),\n});\n```\nReplace `'YOUR_GRAPHQL_API_URL'` with the URL of your GraphQL API.\n\n3. Call the generated mutation function with the request data and the `ApolloClient` instance:\n```typescript\nexport default async function handler(req: NextApiRequest, res: NextApiResponse) {\n  const { data } = req.body;\n\n  const variables: MyMutationMutationVariables = {\n    input: {\n      // map the data from the request to the fields in your mutation input\n    }\n  };\n\n  try {\n    const result = await MyMutationFunction(apolloClient, variables);\n\n    res.status(200).json(result);\n  } catch (error) {\n    res.status(500).json({ message: error.message });\n  }\n}\n```\nReplace `MyMutationMutation` and `MyMutationMutationVariables` with the actual types generated by the `@graphql-codegen/cli` package.\n\nNote that the `MyMutationFunction` generated by `@graphql-codegen/cli` accepts an `ApolloClient` instance as its first argument, so you should pass in the `apolloClient` instance you instantiated earlier. The second argument is an object that contains the variables for the mutation, which you can construct based on the data from the incoming request.\n\nAlso, make sure to add error handling and validation for the incoming data as needed.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.037,
+        "neu": 0.941,
+        "pos": 0.022,
+        "compound": -0.6597
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 10,
+        "token_count": 385,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.025974025974025976
+      },
+      "lexical_features": {
+        "adj_adv_freq": 28,
+        "adj_adv_ratio": 0.07272727272727272,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.025974025974025976,
+        "token_count": 385
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 38.5,
+          "clause_complexity": 0.1,
+          "vocabulary_richness": 0.5578231292517006
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VB": 13,
+            "VBZ": 6,
+            "VBG": 2,
+            "VBP": 1,
+            "VBN": 5
+          },
+          "named_entities": {
+            "ORGANIZATION": 13
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "would these be functions or types MyMutationFunction, MyMutationMutation, MyMutationMutationVariables",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 11,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 11
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "`MyMutationFunction`, `MyMutationMutation`, and `MyMutationMutationVariables` are types generated by the `@graphql-codegen/cli` package.\n\n* `MyMutationFunction` is a function that executes the mutation using the `ApolloClient` instance and returns a Promise that resolves to the mutation result.\n* `MyMutationMutation` is the shape of the result object returned by the mutation. It typically includes the fields you requested in your GraphQL mutation, as well as any errors that may have occurred.\n* `MyMutationMutationVariables` is an object that contains the input variables for the mutation. It corresponds to the `variables` argument passed to the `MyMutationFunction` when executing the mutation.\n\nThese types are generated based on the schema and the GraphQL query or mutation you provide to the `@graphql-codegen/cli` package.\n\nWhen you import these types into your TypeScript code, you can use them to type-check your variables, the result of the mutation, and the function that executes the mutation, ensuring that you're using the correct types and avoiding runtime errors.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.059,
+        "neu": 0.891,
+        "pos": 0.05,
+        "compound": -0.3612
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 8,
+        "token_count": 194,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.041237113402061855
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.04639175257731959,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 8,
+        "second_person_ratio": 0.041237113402061855,
+        "token_count": 194
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 24.25,
+          "clause_complexity": 0.25,
+          "vocabulary_richness": 0.6351351351351351
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBN": 6,
+            "VBZ": 10,
+            "VBG": 5,
+            "VB": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "what those those same types be called if the .graphql file used by @graphql-codegen/cli was called DraftOrderCreate",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 18,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.1111111111111111,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 18
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 0.8333333333333334
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 1,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBN": 3,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "If you have a `.graphql` file called `DraftOrderCreate` and you generate types using `@graphql-codegen/cli`, the names of the generated types would typically include the name of the GraphQL operation (in this case, the mutation) followed by `Mutation`, `MutationVariables`, and `MutationFunction`.\n\nSo the generated types for a mutation called `draftOrderCreate` could be named:\n\n* `DraftOrderCreateMutation`: The shape of the result object returned by the mutation.\n* `DraftOrderCreateMutationVariables`: An object that contains the input variables for the mutation.\n* `DraftOrderCreateMutationFunction`: A function that executes the mutation using the `ApolloClient` instance and returns a Promise that resolves to the mutation result.\n\nNote that the actual names of the generated types depend on the configuration of the `@graphql-codegen/cli` package. You can customize the naming convention by providing a custom template or using one of the built-in templates.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.97,
+        "pos": 0.03,
+        "compound": 0.4588
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 175,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.017142857142857144
+      },
+      "lexical_features": {
+        "adj_adv_freq": 16,
+        "adj_adv_ratio": 0.09142857142857143,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.017142857142857144,
+        "token_count": 175
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 29.166666666666668,
+          "clause_complexity": 0.16666666666666666,
+          "vocabulary_richness": 0.7391304347826086
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBN": 5,
+            "VBG": 4,
+            "VB": 3,
+            "VBZ": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.04774166666666666,
+    "pos": 0.0295,
+    "neu": 0.96075,
+    "neg": 0.009833333333333333
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 115,
+    "adj_adv_ratio": 0.06869772998805257,
+    "self_ref_freq": 5,
+    "self_ref_ratio": 0.002986857825567503,
+    "second_person_freq": 46,
+    "second_person_ratio": 0.027479091995221028,
+    "total_tokens": 1674
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 29.543055555555558,
+      "clause_complexity": 0.20972222222222223,
+      "vocabulary_richness": 0.7977088919988989
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 2,
+        "how": 5,
+        "why": 0,
+        "can_could": 9,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 3
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 69,
+        "VBG": 22,
+        "VBP": 22,
+        "VBZ": 29,
+        "VBN": 22,
+        "VBD": 4
+      },
+      "named_entities": {
+        "ORGANIZATION": 44,
+        "PERSON": 3,
+        "GPE": 4
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 12
+    },
+    "turn_count": 12,
+    "total_tokens": 1674
+  }
+}

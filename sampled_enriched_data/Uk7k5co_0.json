@@ -1,0 +1,190 @@
+{
+  "id": "Uk7k5co_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "can you make this look so much better using css [Action & adventure14](#Action%20&%20adventure)[Anime10](#Anime)[Children & family movies13](#Children%20&%20family%20movies)[Christmas 🎄12](#Christmas%20%F0%9F%8E%84)[Classic Movies13](#Classic%20Movies)[Comedies15](#Comedies)[Documentaries13](#Documentaries)[Dramas11](#Dramas)[Foreign movies36](#Foreign%20movies)[Horror movies12](#Horror%20movies)[Independent movies6](#Independent%20movies)[LGBTQ5](#LGBTQ)[Music12](#Music)[Others12](#Others)[Romantic movies8](#Romantic%20movies)[Sci - Fi & Fantasy10](#Sci%20-%20Fi%20&%20Fantasy)[Sports movies11](#Sports%20movies)[TV Show18](#TV%20Show)[Teen TV shows3](#Teen%20TV%20shows)[Thrillers13](#Thrillers)\nGo to the top",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.869,
+        "pos": 0.131,
+        "compound": 0.6096
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 222,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0045045045045045045
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.03153153153153153,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.0045045045045045045,
+        "token_count": 222
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 222.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7261904761904762
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBG": 1,
+            "VBP": 5
+          },
+          "named_entities": {
+            "PERSON": 13,
+            "GPE": 2,
+            "ORGANIZATION": 4
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure! Here's an example of how you could use CSS to improve the styling of the given HTML code:\n\nHTML:\n```html\n<p>\n  <a href=\"#Action%20&amp;%20adventure\">Action & adventure<span class=\"badge\">14</span></a>\n  <a href=\"#Anime\">Anime<span class=\"badge\">10</span></a>\n  <a href=\"#Children%20&amp;%20family%20movies\">Children & family movies<span class=\"badge\">13</span></a>\n  <a href=\"#Christmas%20%F0%9F%8E%84\">Christmas 🎄<span class=\"badge\">12</span></a>\n  <a href=\"#Classic%20Movies\">Classic Movies<span class=\"badge\">13</span></a>\n  <a href=\"#Comedies\">Comedies<span class=\"badge\">15</span></a>\n  <a href=\"#Documentaries\">Documentaries<span class=\"badge\">13</span></a>\n  <a href=\"#Dramas\">Dramas<span class=\"badge\">11</span></a>\n  <a href=\"#Foreign%20movies\">Foreign movies<span class=\"badge\">36</span></a>\n  <a href=\"#Horror%20movies\">Horror movies<span class=\"badge\">12</span></a>\n  <a href=\"#Independent%20movies\">Independent movies<span class=\"badge\">6</span></a>\n  <a href=\"#LGBTQ\">LGBTQ<span class=\"badge\">5</span></a>\n  <a href=\"#Music\">Music<span class=\"badge\">12</span></a>\n  <a href=\"#Others\">Others<span class=\"badge\">12</span></a>\n  <a href=\"#Romantic%20movies\">Romantic movies<span class=\"badge\">8</span></a>\n  <a href=\"#Sci%20-%20Fi%20&amp;%20Fantasy\">Sci-Fi & Fantasy<span class=\"badge\">10</span></a>\n  <a href=\"#Sports%20movies\">Sports movies<span class=\"badge\">11</span></a>\n  <a href=\"#TV%20Show\">TV Show<span class=\"badge\">18</span></a>\n  <a href=\"#Teen%20TV%20shows\">Teen TV shows<span class=\"badge\">3</span></a>\n  <a href=\"#Thrillers\">Thrillers<span class=\"badge\">13</span></a>\n</p>\n<p><a href=\"#\">Go to the top</a></p>\n```\nCSS:\n```css\np {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: center;\n  gap: 10px;\n  font-size: 16px;\n  margin: 20px 0;\n}\n\na {\n  text-decoration: none;\n  padding: 8px;\n  border-radius: 10px;\n  background-color: #eee;\n  color: #333;\n}\n\na:hover {\n  background-color: #ddd;\n}\n\n.badge {\n  margin-left: 8px;\n  padding: 3px 6px;\n  border-radius: 10px;\n  background-color: #333;\n  color: #fff;\n  font-size: 12px;\n}\n```\nExplanation:\n\n* We use `display: flex` on the parent `p` element to create a horizontal layout for the links.\n* We use `flex-wrap: wrap` to ensure that the links wrap to the next line if there's not enough space on the current line.\n* We use `justify-content: center` to horizontally center the links within the `p` element.\n*",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.955,
+        "pos": 0.045,
+        "compound": 0.8478
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 4,
+        "token_count": 763,
+        "self_ref_ratio": 0.003931847968545216,
+        "second_person_ratio": 0.005242463958060288
+      },
+      "lexical_features": {
+        "adj_adv_freq": 25,
+        "adj_adv_ratio": 0.0327653997378768,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.003931847968545216,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.005242463958060288,
+        "token_count": 763
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 152.6,
+          "clause_complexity": 0.2,
+          "vocabulary_richness": 0.48598130841121495
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 1
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 23,
+            "VB": 8,
+            "VBN": 1,
+            "VBD": 12,
+            "VBP": 11
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 10,
+            "GPE": 2
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.7287,
+    "pos": 0.088,
+    "neu": 0.9119999999999999,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 32,
+    "adj_adv_ratio": 0.03248730964467005,
+    "self_ref_freq": 3,
+    "self_ref_ratio": 0.003045685279187817,
+    "second_person_freq": 5,
+    "second_person_ratio": 0.005076142131979695,
+    "total_tokens": 985
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 187.3,
+      "clause_complexity": 0.1,
+      "vocabulary_richness": 0.6060858923008455
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 2,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 1
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 10,
+        "VBG": 1,
+        "VBP": 16,
+        "VBZ": 23,
+        "VBN": 1,
+        "VBD": 12
+      },
+      "named_entities": {
+        "PERSON": 23,
+        "GPE": 4,
+        "ORGANIZATION": 10
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 985
+  }
+}

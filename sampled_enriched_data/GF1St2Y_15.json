@@ -1,0 +1,286 @@
+{
+  "id": "GF1St2Y_15",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Now let's add functionality to handle patients who are medical aid members versus those who are private patients.\n\nTo do this, we need to modify our `create_consultation` view to calculate the consultation fee based on the patient's medical aid status. We can add a new field to the `Consultation` model to store the fee, and then use this field to display the fee in the consultation detail page. Here's an example implementation:\n```python\n# models.py\n\nclass Consultation(models.Model):\n    date = models.DateTimeField()\n    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)\n    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='consultations')\n    details = models.TextField()\n    fee = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)\n\n    def calculate_fee(self):\n        if self.patient.is_medical_aid_member:\n            # calculate fee for medical aid member\n            medical_aid_scheme = self.patient.medical_aid_scheme\n            # use medical aid scheme information to calculate fee\n            # ...\n            self.fee = calculated_fee\n        else:\n            # calculate fee for private patient\n            self.fee = 100.00  # default fee for private patients\n\n# views.py\n\ndef create_consultation(request, appointment_id):\n    appointment = get_object_or_404(Appointment, id=appointment_id)\n    patient = appointment.patient\n    doctor = appointment.doctor\n\n    if request.method == 'POST':\n        form = ConsultationForm(request.POST)\n        if form.is_valid():\n            consultation = form.save(commit=False)\n            consultation.date = timezone.now()\n            consultation.doctor = doctor\n            consultation.patient = patient\n            consultation.calculate_fee()  # calculate fee based on patient's medical aid status\n            consultation.save()\n            return redirect('consultation_detail', consultation.id)\n    else:\n        form = ConsultationForm()\n\n    context = {\n        'appointment': appointment,\n        'patient': patient,\n        'doctor': doctor,\n        'form': form,\n    }\n\n    return render(request, 'create_consultation.html', context)\n\n# consultation_detail.html\n\n{% extends 'base.html' %}\n\n{% block content %}\n  <h1>Consultation Details</h1>\n  <p>Date: {{ consultation.date }}</p>\n  <p>Doctor: {{ consultation.doctor }}</p>\n  <p>Patient: {{ consultation.patient }}</p>\n  <p>Details: {{ consultation.details }}</p>\n  {% if consultation.fee %}\n    <p>Fee: {{ consultation.fee }}</p>\n  {% endif %}\n{% endblock %}\n```\nIn this implementation, we've added a `fee` field to the `Consultation` model, which will store the fee for the consultation. We've also added a `calculate_fee` method to the model that calculates the fee based on the patient's medical aid status and stores it in the `fee` field.\n\nIn the `create_consultation` view, we call the `calculate_fee` method on the `Consultation` object before saving it to calculate the fee and store it in the database. We can then display the fee in the consultation detail page if it exists.\n\nNote that in this implementation, we've used a simple default fee of $100.00 for private patients. In a real application, you would likely want to provide more fine-grained control over consultation fees for private patients, such as allowing doctors to set their own fees or setting fees based on the complexity of the consultation. Additionally, you would need to handle the case where a medical aid scheme does not cover a particular consultation, and provide appropriate messaging to the patient in such cases.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.007,
+        "neu": 0.987,
+        "pos": 0.007,
+        "compound": -0.2732
+      },
+      "core_lexical": {
+        "self_ref_freq": 7,
+        "second_person_freq": 10,
+        "token_count": 620,
+        "self_ref_ratio": 0.01129032258064516,
+        "second_person_ratio": 0.016129032258064516
+      },
+      "lexical_features": {
+        "adj_adv_freq": 57,
+        "adj_adv_ratio": 0.09193548387096774,
+        "self_ref_freq": 7,
+        "self_ref_ratio": 0.01129032258064516,
+        "second_person_freq": 10,
+        "second_person_ratio": 0.016129032258064516,
+        "token_count": 620
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 62.0,
+          "clause_complexity": 0.6,
+          "vocabulary_richness": 0.4362745098039216
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 13,
+            "VB": 22,
+            "VBN": 6,
+            "VBZ": 5,
+            "VBD": 1,
+            "VBG": 3
+          },
+          "named_entities": {
+            "PERSON": 2,
+            "ORGANIZATION": 4
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Finally, let's add support for storing medical aid membership information for patients.\n\nWe can add two new fields to the `Patient` model to store the medical aid provider and membership number. We can then use this information in the `calculate_fee` method of the `Consultation` model to look up the patient's medical aid scheme and calculate the consultation fee accordingly. Here's an example implementation:\n```css\n# models.py\n\nclass Patient(models.Model):\n    first_name = models.CharField(max_length=30)\n    last_name = models.CharField(max_length=30)\n    date_of_birth = models.DateField()\n    is_medical_aid_member = models.BooleanField(default=False)\n    medical_aid_provider = models.CharField(max_length=50, null=True, blank=True)\n    medical_aid_membership_number = models.CharField(max_length=50, null=True, blank=True)\n\nclass Consultation(models.Model):\n    date = models.DateTimeField()\n    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)\n    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='consultations')\n    details = models.TextField()\n    fee = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)\n\n    def calculate_fee(self):\n        if self.patient.is_medical_aid_member:\n            # calculate fee for medical aid member\n            medical_aid_provider = self.patient.medical_aid_provider\n            medical_aid_membership_number = self.patient.medical_aid_membership_number\n            try:\n                medical_aid_scheme = MedicalAidScheme.objects.get(provider=medical_aid_provider, membership_number=medical_aid_membership_number)\n                # use medical aid scheme information to calculate fee\n                # ...\n                self.fee = calculated_fee\n            except MedicalAidScheme.DoesNotExist:\n                self.fee = None  # unable to find medical aid scheme for patient\n        else:\n            # calculate fee for private patient\n            self.fee = 100.00  # default fee for private patients\n\n# forms.py\n\nclass PatientForm(forms.ModelForm):\n    class Meta:\n        model = Patient\n        fields = ['first_name', 'last_name', 'date_of_birth', 'is_medical_aid_member', 'medical_aid_provider', 'medical_aid_membership_number']\n\n# views.py\n\ndef create_patient(request):\n    if request.method == 'POST':\n        form = PatientForm(request.POST)\n        if form.is_valid():\n            patient = form.save()\n            return redirect('patient_detail', patient.id)\n    else:\n        form = PatientForm()\n\n    context = {\n        'form': form,\n    }\n\n    return render(request, 'create_patient.html', context)\n\n# patient_detail.html\n\n{% extends 'base.html' %}\n\n{% block content %}\n  <h1>Patient Details</h1>\n  <p>First Name: {{ patient.first_name }}</p>\n  <p>Last Name: {{ patient.last_name }}</p>\n  <p>Date of Birth: {{ patient.date_of_birth }}</p>\n  {% if patient.is_medical_aid_member %}\n    <p>Medical Aid Provider: {{ patient.medical_aid_provider }}</p>\n    <p>Medical Aid Membership Number: {{ patient.medical_aid_membership_number }}</p>\n  {% endif %}\n  <h2>Consultations</h2>\n  {% for consultation in patient.consultations.all %}\n    <p>Date: {{ consultation.date }}</p>\n    <p>Doctor: {{ consultation.doctor }}</p>\n    <p>Details: {{ consultation.details }}</p>\n    {% if consultation.fee %}\n      <p>Fee: {{ consultation.fee }}</p>\n    {% endif %}\n  {% endfor %}\n{% endblock %}\n```\nIn this implementation, we've added two new fields",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.009,
+        "neu": 0.97,
+        "pos": 0.021,
+        "compound": 0.2263
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 3,
+        "token_count": 563,
+        "self_ref_ratio": 0.0053285968028419185,
+        "second_person_ratio": 0.0053285968028419185
+      },
+      "lexical_features": {
+        "adj_adv_freq": 55,
+        "adj_adv_ratio": 0.09769094138543517,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.0053285968028419185,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.0053285968028419185,
+        "token_count": 563
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 140.75,
+          "clause_complexity": 1.25,
+          "vocabulary_richness": 0.44966442953020136
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 2,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 12,
+            "VBG": 1,
+            "VBZ": 2,
+            "VBP": 7,
+            "VBD": 1,
+            "VBN": 2
+          },
+          "named_entities": {
+            "PERSON": 3,
+            "ORGANIZATION": 4,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "continue",
+      "language": "it",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "to the `Patient` model: `medical_aid_provider` and `medical_aid_membership_number`. These fields will allow us to store information about the patient's medical aid provider and membership number.\n\nWe've also added a new `MedicalAidScheme` model to the project, which will allow us to look up the patient's medical aid scheme based on their provider and membership number.\n\nIn the `Consultation` model, we've updated the `calculate_fee` method to take into account the patient's medical aid membership status. If the patient is a medical aid member, we look up their medical aid scheme based on their provider and membership number and use that information to calculate the consultation fee. If the patient is not a medical aid member, we set the fee to a default value of 100.00.\n\nIn the `PatientForm`, we've added fields for `is_medical_aid_member`, `medical_aid_provider`, and `medical_aid_membership_number` to allow users to enter this information when creating a new patient.\n\nIn the `patient_detail.html` template, we've updated the patient details section to include the patient's medical aid provider and membership number if they are a medical aid member. We've also updated the consultation details section to include the fee if it has been calculated.\n\nOverall, this implementation should provide a basic framework for an application that allows doctors to manage patient appointments and consultations, including information about the patient's medical history and medical aid status.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.931,
+        "pos": 0.069,
+        "compound": 0.8591
+      },
+      "core_lexical": {
+        "self_ref_freq": 9,
+        "second_person_freq": 9,
+        "token_count": 272,
+        "self_ref_ratio": 0.03308823529411765,
+        "second_person_ratio": 0.03308823529411765
+      },
+      "lexical_features": {
+        "adj_adv_freq": 21,
+        "adj_adv_ratio": 0.07720588235294118,
+        "self_ref_freq": 9,
+        "self_ref_ratio": 0.03308823529411765,
+        "second_person_freq": 9,
+        "second_person_ratio": 0.03308823529411765,
+        "token_count": 272
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 27.2,
+          "clause_complexity": 0.5,
+          "vocabulary_richness": 0.46218487394957986
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 15,
+            "VBP": 8,
+            "VBD": 1,
+            "VBN": 8,
+            "VBZ": 4,
+            "VBG": 2
+          },
+          "named_entities": {}
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.16244,
+    "pos": 0.0194,
+    "neu": 0.9776,
+    "neg": 0.0032
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 133,
+    "adj_adv_ratio": 0.09140893470790377,
+    "self_ref_freq": 19,
+    "self_ref_ratio": 0.013058419243986255,
+    "second_person_freq": 22,
+    "second_person_ratio": 0.015120274914089347,
+    "total_tokens": 1455
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 76.64999999999999,
+      "clause_complexity": 0.7833333333333333,
+      "vocabulary_richness": 0.44937460442790095
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 4,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 1,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 28,
+        "VB": 49,
+        "VBN": 16,
+        "VBZ": 11,
+        "VBD": 3,
+        "VBG": 6
+      },
+      "named_entities": {
+        "PERSON": 5,
+        "ORGANIZATION": 8,
+        "GPE": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 3,
+      "it": 2
+    },
+    "turn_count": 5,
+    "total_tokens": 1455
+  }
+}

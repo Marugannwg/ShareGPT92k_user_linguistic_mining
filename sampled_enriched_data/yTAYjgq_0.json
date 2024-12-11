@@ -1,0 +1,259 @@
+{
+  "id": "yTAYjgq_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Teach me html form controls",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 5,
+        "self_ref_ratio": 0.2,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.2,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.2,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "HTML forms are used to collect user input. Here are some common form controls and their uses:\n\n1. `<input>` - used to create text fields, checkboxes, radio buttons, and more.\n2. `<textarea>` - used to create a multi-line text input field.\n3. `<select>` - used to create a dropdown list of options.\n4. `<option>` - used to define the options in a `<select>` element.\n5. `<label>` - used to provide a text description for a form control.\n6. `<button>` - used to create clickable buttons.\n7. `<fieldset>` - used to group related form controls together.\n8. `<legend>` - used to provide a caption for a `<fieldset>`.\n9. `<form>` - used to create an HTML form\n10. `<input type=\"submit\">` - used to submit the form\n\nIt's also important to use the `name` attribute for each form control, as it is used to identify the data when it is submitted to the server.\n\nYou can learn more about HTML forms and their controls by searching for tutorials and documentation online.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.929,
+        "pos": 0.071,
+        "compound": 0.8519
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 248,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.004032258064516129
+      },
+      "lexical_features": {
+        "adj_adv_freq": 26,
+        "adj_adv_ratio": 0.10483870967741936,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.004032258064516129,
+        "token_count": 248
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.80952380952381,
+          "clause_complexity": 0.047619047619047616,
+          "vocabulary_richness": 0.62
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VBN": 13,
+            "VB": 13,
+            "VBZ": 4,
+            "VBG": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Design a feedback form for hotel using html form tags",
+      "language": "da",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is an example of a simple feedback form for a hotel using HTML form controls:\n```\n<form action=\"submit-feedback.php\" method=\"post\">\n  <fieldset>\n    <legend>Hotel Feedback Form</legend>\n    <label for=\"name\">Name:</label>\n    <input type=\"text\" id=\"name\" name=\"name\" required>\n    <br>\n    <label for=\"email\">Email:</label>\n    <input type=\"email\" id=\"email\" name=\"email\" required>\n    <br>\n    <label for=\"room\">Room Number:</label>\n    <input type=\"text\" id=\"room\" name=\"room\" required>\n    <br>\n    <label for=\"rating\">Overall Rating:</label>\n    <select id=\"rating\" name=\"rating\" required>\n        <option value=\"1\">1</option>\n        <option value=\"2\">2</option>\n        <option value=\"3\">3</option>\n        <option value=\"4\">4</option>\n        <option value=\"5\">5</option>\n    </select>\n    <br>\n    <label for=\"feedback\">Additional Feedback:</label>\n    <textarea id=\"feedback\" name=\"feed\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 246,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 15,
+        "adj_adv_ratio": 0.06097560975609756,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 246
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 246.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.4266666666666667
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1,
+            "VBG": 1,
+            "VBP": 2,
+            "VBN": 5
+          },
+          "named_entities": {
+            "ORGANIZATION": 3,
+            "PERSON": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.212975,
+    "pos": 0.01775,
+    "neu": 0.9822500000000001,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 42,
+    "adj_adv_ratio": 0.0841683366733467,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.002004008016032064,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.002004008016032064,
+    "total_tokens": 499
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 87.6031746031746,
+      "clause_complexity": 0.015873015873015872,
+      "vocabulary_richness": 0.6822222222222223
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 14,
+        "VBP": 4,
+        "VBN": 18,
+        "VBZ": 5,
+        "VBG": 2
+      },
+      "named_entities": {
+        "ORGANIZATION": 6,
+        "PERSON": 1
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 3,
+      "da": 1
+    },
+    "turn_count": 4,
+    "total_tokens": 499
+  }
+}

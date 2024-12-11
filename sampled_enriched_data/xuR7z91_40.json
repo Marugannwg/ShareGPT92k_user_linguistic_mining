@@ -1,0 +1,180 @@
+{
+  "id": "xuR7z91_40",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "provide json like this for answer\nyou need identefy merchant, if cant then add key to json 'closest' and provide up to 4 similar merchant, if you cant identefy merchant value of merhcant should be Null\nclosest its only in 300m radius\n{\n \"ANNA AUGUSTOWSKA\": {\n \"latitude\": 51.0999,\n \"longitude\": 17.0299,\n \"mcc\": 5812,\n \"merchant\": \"Anna Augustowska\",\n \"location\": {\n \"address\": null,\n \"city\": null,\n \"country\": \"PL\"\n }\n },\n \"AUCHAN POLSKA SP. Z\": {\n \"latitude\": 51.7789,\n \"longitude\": 19.4424,\n \"mcc\": 5411,\n \"merchant\": \"Auchan\",\n \"location\": {\n \"address\": \"ul. Brzezińska 27/29\",\n \"city\": \"Łódź\",\n \"country\": \"PL\"\n }\n }}\nANNA AUGUSTOWSKA 51.0999 17.0299 5812\nAUCHAN POLSKA SP. Z 51.7789 19.4424 5411\nZABKA Z5782 K.1 50.4422 30.6196 5499\nSKLEP LIDL 1221 WRO 51.0763 17.0068 5411\nLIDL WIELICKA 50.0345 19.9685 5411\nJMP S.A. BIEDRONKA 6126 51.2494 22.5758 5411\nMARKET MAJA 48.0623 33.4977 5499\nZABKA Z6300 K.1 51.2191 22.7011 5499\nKAUFLAND PL 7962 51.0923 17.031 5411\nCARREFOUR LODZ PRZYBYS 51.7515 19.5022 5411\nPARFOIS AC1 50.0537 19.9556 5631\nMPSA - A 323 52.1787 21.0031 4111\nLPP CROPP 1512157 50.0671 19.9463 5651\nZABKA Z8793 K.1 51.0588 16.1772 5499\nSALAD STORY Wroclav 51.0963 17.0337 5812\nSTOKROTKA 1208 51.7179 19.4821 5499\nBilety Urbancard Wrocl 51.104 17.0304 4111\nMARKET PUNKT 50.0752 19.9292 5411\nKAUFLAND 01 53.4415 14.5554 5411\nAUCHAN POLSKA SP. Z 51.4258 21.1544 5411\nInmedio 31105 51.3816 21.1695 5994\nGREEN COFFEE 52.2332 21.013 5814\nCARREFOUR HIPERMARKET 52.2312 21.105 5411\nCIRCLE K KATOWICE, 50.2762 19.0177 5541\nZABKA Z7836 K.1 50.4422 30.6196 5499\nSTACJA PALIW KORYCIN 53.45 23.0897 5541\n2484420/8442/1667 52.2636 21.0196 4789\n3 BRZECZKOWICE MANUAL 2) 50.1966 19.1853 4784\nJMP S.A. BIEDRONKA 4110 52.2013 21.0337 5411\nZABKA Z4067 K.1 50.4422 30.6196 5499\nSHELL 11 51.7558 19.4707 5541\nMPSA - A 309 52.1681 21.018 4111\nMcDonalds 23 52.2278 21.0021 5814\nLIDL BOH. WARSZAWY 52.1711 20.813 5411\nZABKA Z6100 K.1 52.2283 21.0033 5499\nZABKA Z7811 K.1 51.0588 16.1772 5499\nLIDL WILENSKA 52.2579 21.0409 5411\nJMP S.A. BIEDRONKA 403 50.0428 19.9687 5411\nZABKA Z6932 K.1 51.0588 16.1772 5499\nZABKA Z3489 K.1 51.0588 16.1772 5499\nZABKA Z5582 K.1 50.4422 30.6196 5499\nBILETOMAT BILET ZTM 52.2297 21.0218 4111\nH&M 50.0663 19.9465 5651\nul. Pawia 5 50.0682 19.9463 6011\nJMP S.A. BIEDRONKA 528 52.2303 20.9939 5411\nJMP S.A. BIEDRONKA 166 50.8676 20.6204 5411\nSPAR EXPRESS 50.0356 19.9996 5411\nPEPCO 110336 KATOWICE 50.262 19.0192 5651\nSKLEP LIDL 1760 50.261 19.0089 5411\nBATEX -VENDING 52.106 20.8227 5814\nIKEA Retail Sp. z o 52.3057 21.0826 5812\nAUCHAN POLSKA SP. Z 51.4259 21.1547 5411\nJMP S.A. BIEDRONKA 4419 52.272 20.9602 5411\nZABKA Z3205 K.1 50.0702 19.9362 5499\nPEPCO 1012 WARSZAWA 26 KO 52.2418 21.1601 5651\nPOLREGIO EN63 001 49.8285 22.6494 4111\nul. Ordona 7 52.2256 20.9526 6011\nJMP S.A. BIEDRONKA 558 51.0968 17.036 5411\nZARA GALERIA MOKOTO 52.1806 21.0039 5699\neLeclerc 50.0193 22.0196 5411\nMORSKIE OKO I REST. 50.0637 19.9361 5812\nCIRCLE K WARSZAWA, 52.3148 20.9777 5541\nSKLEP LIDL 1941 51.1113 17.0066 5411",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.004,
+        "neu": 0.99,
+        "pos": 0.005,
+        "compound": 0.119
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 564,
+        "self_ref_ratio": 0.0017730496453900709,
+        "second_person_ratio": 0.0035460992907801418
+      },
+      "lexical_features": {
+        "adj_adv_freq": 9,
+        "adj_adv_ratio": 0.015957446808510637,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0017730496453900709,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.0035460992907801418,
+        "token_count": 564
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 51.27272727272727,
+          "clause_complexity": 0.18181818181818182,
+          "vocabulary_richness": 0.5390070921985816
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 5,
+            "VBD": 2
+          },
+          "named_entities": {
+            "PERSON": 3,
+            "ORGANIZATION": 50
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "{\n\"ANNA AUGUSTOWSKA\": {\n\"latitude\": 51.0999,\n\"longitude\": 17.0299,\n\"mcc\": 5812,\n\"merchant\": \"Anna Augustowska\",\n\"location\": {\n\"address\": null,\n\"city\": null,\n\"country\": \"PL\"\n}\n},\n\"AUCHAN POLSKA SP. Z\": {\n\"latitude\": 51.7789,\n\"longitude\": 19.4424,\n\"mcc\": 5411,\n\"merchant\": \"Auchan\",\n\"location\": {\n\"address\": \"ul. Brzezińska 27/29\",\n\"city\": \"Łódź\",\n\"country\": \"PL\"\n}\n},\n\"ZABKA Z5782 K.1\": {\n\"latitude\": 50.4422,\n\"longitude\": 30.6196,\n\"mcc\": 5499,\n\"merchant\": \"Żabka\",\n\"location\": {\n\"address\": null,\n\"city\": null,\n\"country\": \"PL\"\n}\n},\n\"SKLEP LIDL 1221 WRO\": {\n\"latitude\": 51.0763,\n\"longitude\": 17.0068,\n\"mcc\": 5411,\n\"merchant\": \"Lidl\",\n\"location\": {\n\"address\": null,\n\"city\": \"Wrocław\",\n\"country\": \"PL\"\n}\n},\n\"LIDL WIELICKA\": {\n\"latitude\": 50.0345,\n\"longitude\": 19.9685,\n\"mcc\": 5411,\n\"merchant\": \"Lidl\",\n\"location\": {\n\"address\": \"ul. Wielicka\",\n\"city\": \"Kraków\",\n\"country\": \"PL\"\n}\n},\n\"JMP S.A. BIEDRONKA 6126\": {\n\"latitude\": 51.2494,\n\"longitude\": 22.5758,\n\"mcc\": 5411,\n\"merchant\": \"Biedronka\",\n\"location\": {\n\"address\": null,\n\"city\": \"Lublin\",\n\"country\": \"PL\"\n}\n},\n\"MARKET MAJA\": {\n\"latitude\": 48.0623,\n\"longitude\": 33.4977,\n\"mcc\": 5499,\n\"merchant\": null,\n\"closest\": [\n{\n\"merchant\": \"Maja Market\",\n\"latitude\": 48.0617,\n\"longitude\": 33.4952\n},\n{\n\"merchant\": \"Maja Grocery\",\n\"latitude\": 48.0615,\n\"longitude\": 33.4956\n},\n{\n\"merchant\": \"Maja Mini Market\",\n\"latitude\": 48.0621,\n\"longitude\": 33.4965\n},\n{\n\"merchant\": \"Maja Supermarket\",\n\"latitude\": 48.0628,\n\"longitude\": 33.4981\n}\n],\n\"location\": {\n\"address\": null,\n\"city\": null,\n\"country\": \"PL\"\n}\n},\n\"ZABKA Z6300 K.1\": {\n\"latitude\": 51.2191,\n\"longitude\": 22.7011,\n\"mcc\": 5499,\n\"merchant\": \"Ż",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 568,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.0017605633802816902,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 568
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 142.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.3076923076923077
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "PERSON": 3
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.0595,
+    "pos": 0.0025,
+    "neu": 0.995,
+    "neg": 0.002
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 10,
+    "adj_adv_ratio": 0.0088339222614841,
+    "self_ref_freq": 1,
+    "self_ref_ratio": 0.0008833922261484099,
+    "second_person_freq": 2,
+    "second_person_ratio": 0.0017667844522968198,
+    "total_tokens": 1132
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 96.63636363636364,
+      "clause_complexity": 0.09090909090909091,
+      "vocabulary_richness": 0.42334969994544464
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 0,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBP": 2,
+        "VB": 6,
+        "VBD": 2
+      },
+      "named_entities": {
+        "PERSON": 6,
+        "ORGANIZATION": 58
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 1132
+  }
+}

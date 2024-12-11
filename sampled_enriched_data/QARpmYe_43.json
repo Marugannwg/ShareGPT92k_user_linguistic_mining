@@ -1,0 +1,487 @@
+{
+  "id": "QARpmYe_43",
+  "conversations": [
+    {
+      "from": "gpt",
+      "value": "Sure, here is a possible updated schema.prisma file that does not include the `itemQuantities` and `itemDiscounts` fields on the `Order` model:\n```\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\nmodel User {\n  id             String   @id @default(cuid())\n  name           String\n  email          String   @unique\n  password       String\n  address        String   @required(role: \"client\")\n  role           UserRole\n  phoneNumber    String   @required(role: \"client\")\n  emailVerified  Boolean  @default(false)\n  emailVerifyToken String  @required(role: \"client\")\n  emailVerifyTokenExpiry DateTime @required(role: \"client\")\n  orders         Order[]\n  notifications  Notification[]\n  reviews        Review[]\n}\n\nmodel Order {\n  id            String   @id @default(cuid())\n  user          User\n  userId        String   @unique\n  status        OrderStatus\n  price         Float\n  payment       PaymentMethod\n  pickupTime    DateTime\n  deliveryTime  DateTime\n  promoCode     PromoCode\n  promoCodeId   String\n  items         LaundryItem[]\n  review        Review\n  reviewId      String\n}\n\nmodel LaundryItem {\n  id          String   @id @default(cuid())\n  name        String\n  description String\n  cost        Float\n  discount    Float\n}\n\nmodel PromoCode {\n  id        String   @id @default(cuid())\n  code      String   @unique\n  discount  Float\n}\n\nmodel Notification {\n  id          String   @id @default(cuid())\n  user        User\n  userId      String   @unique\n  type        NotificationType\n  message     String\n  read        Boolean  @default(false)\n  deleted     Boolean  @default(false)\n  timestamp   DateTime\n}\n\nmodel Review {\n  id          String   @id @default(cuid())\n  user        User\n  userId      String\n  order       Order\n  orderId     String\n  rating      Int\n  comment     String\n}\n\nenum NotificationType {\n  discount\n  order_status\n  other\n}\n\nenum ItemType {\n  clothing\n  bedding\n  towels\n  delicates\n  other\n}\n\nenum OrderStatus {\n  pending\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.982,
+        "pos": 0.018,
+        "compound": 0.4404
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 322,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 27,
+        "adj_adv_ratio": 0.08385093167701864,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 322
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 322.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.430939226519337
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VB": 1,
+            "VBG": 17,
+            "VBN": 4,
+            "VBD": 2,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 12,
+            "PERSON": 10
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I need another model where i can see how much quantity of a laundryitem the order have",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 17,
+        "self_ref_ratio": 0.11764705882352941,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.058823529411764705,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.11764705882352941,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 17
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2,
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here is a possible updated schema.prisma file that includes a `LaundryItemOrder` model that tracks the quantity of each `LaundryItem` in an `Order`:\n```\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\nmodel User {\n  id             String   @id @default(cuid())\n  name           String\n  email          String   @unique\n  password       String\n  address        String   @required(role: \"client\")\n  role           UserRole\n  phoneNumber    String   @required(role: \"client\")\n  emailVerified  Boolean  @default(false)\n  emailVerifyToken String  @required(role: \"client\")\n  emailVerifyTokenExpiry DateTime @required(role: \"client\")\n  orders         Order[]\n  notifications  Notification[]\n  reviews        Review[]\n}\n\nmodel Order {\n  id            String   @id @default(cuid())\n  user          User\n  userId        String   @unique\n  status        OrderStatus\n  price         Float\n  payment       PaymentMethod\n  pickupTime    DateTime\n  deliveryTime  DateTime\n  promoCode     PromoCode\n  promoCodeId   String\n  items         LaundryItemOrder[]\n  review        Review\n  reviewId      String\n}\n\nmodel LaundryItem {\n  id          String   @id @default(cuid())\n  name        String\n  description String\n  cost        Float\n  discount    Float\n}\n\nmodel LaundryItemOrder {\n  id          String   @id @default(cuid())\n  order       Order\n  orderId     String   @unique\n  item        LaundryItem\n  itemId      String\n  quantity    Int\n  discount    Float\n}\n\nmodel PromoCode {\n  id        String   @id @default(cuid())\n  code      String   @unique\n  discount  Float\n}\n\nmodel Notification {\n  id          String   @id @default(cuid())\n  user        User\n  userId      String   @unique\n  type        NotificationType\n  message     String\n  read        Boolean  @default(false)\n  deleted     Boolean  @default(false)\n  timestamp   DateTime\n}\n\nmodel Review {\n  id          String   @id @default(cuid())\n  user        User\n  userId      String\n  order       Order\n  orderId     String\n  rating      Int\n  comment     String\n}\n\nenum NotificationType {\n  discount\n  order_status\n  other\n}\n\nenum ItemType {\n  clothing\n  bedding\n  towels\n  delicates\n  other\n}\n\nenum OrderStatus {\n  pending\n  in_progress\n  completed\n  cancelled\n}\n\nenum PaymentMethod {\n  cash\n  credit_card\n  paypal\n}\n\nmodel Provider {\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.008,
+        "neu": 0.976,
+        "pos": 0.016,
+        "compound": 0.2263
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 367,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 29,
+        "adj_adv_ratio": 0.07901907356948229,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 367
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 367.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.4
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VBG": 18,
+            "VBN": 4,
+            "VBD": 3,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 15,
+            "PERSON": 11
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I dont need the provider model",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 6,
+        "self_ref_ratio": 0.16666666666666666,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.16666666666666666,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 6
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 6.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here is a possible updated schema.prisma file that does not include the `Provider` model:\n```\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\nmodel User {\n  id             String   @id @default(cuid())\n  name           String\n  email          String   @unique\n  password       String\n  address        String   @required(role: \"client\")\n  role           UserRole\n  phoneNumber    String   @required(role: \"client\")\n  emailVerified  Boolean  @default(false)\n  emailVerifyToken String  @required(role: \"client\")\n  emailVerifyTokenExpiry DateTime @required(role: \"client\")\n  orders         Order[]\n  notifications  Notification[]\n  reviews        Review[]\n}\n\nmodel Order {\n  id            String   @id @default(cuid())\n  user          User\n  userId        String   @unique\n  status        OrderStatus\n  price         Float\n  payment       PaymentMethod\n  pickupTime    DateTime\n  deliveryTime  DateTime\n  promoCode     PromoCode\n  promoCodeId   String\n  items         LaundryItemOrder[]\n  review        Review\n  reviewId      String\n}\n\nmodel LaundryItem {\n  id          String   @id @default(cuid())\n  name        String\n  description String\n  cost        Float\n  discount    Float\n}\n\nmodel LaundryItemOrder {\n  id\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.982,
+        "pos": 0.018,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 207,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 16,
+        "adj_adv_ratio": 0.07729468599033816,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 207
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 207.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5178571428571429
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 4,
+            "VB": 2,
+            "VBG": 9,
+            "VBN": 4,
+            "VBD": 1,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 6
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Give me the schema with all the updates that were made till now",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 0,
+        "token_count": 13,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.07692307692307693,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.07692307692307693,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 13
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 13.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1,
+            "VBD": 1,
+            "VBN": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here is a possible schema.prisma file that incorporates all of the updates that have been made so far:\n```\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\nmodel User {\n  id             String   @id @default(cuid())\n  name           String\n  email          String   @unique\n  password       String\n  address        String   @required(role: \"client\")\n  role           UserRole\n  phoneNumber    String   @required(role: \"client\")\n  emailVerified  Boolean  @default(false)\n  emailVerifyToken String  @required(role: \"client\")\n  emailVerifyTokenExpiry DateTime @required(role: \"client\")\n  orders         Order[]\n  notifications  Notification[]\n  reviews        Review[]\n}\n\nmodel Order {\n  id            String   @id @default(cuid())\n  user          User\n  userId        String   @unique\n  status        OrderStatus\n  price         Float\n  payment       PaymentMethod\n  pickupTime    DateTime\n  deliveryTime  DateTime\n  promoCode     PromoCode\n  promoCodeId   String\n  items         LaundryItemOrder[]\n  review        Review\n  reviewId      String\n}\n\nmodel LaundryItem {\n  id          String   @id @default(cuid())\n  name        String\n  description String\n  cost        Float\n  discount    Float\n}\n\nmodel LaundryItemOrder {\n  id          String   @id @default(cuid())\n  order       Order\n  orderId     String   @unique\n  item        LaundryItem\n  itemId      String\n  quantity    Int\n  discount    Float\n}\n\nmodel PromoCode {\n  id        String   @id @default(cuid())\n  code      String   @unique\n  discount  Float\n}\n\nmodel Notification {\n  id          String   @id @default(cuid())\n  user        User\n  userId      String   @unique\n  type        NotificationType\n  message     String\n  read        Boolean  @default(false)\n  deleted     Boolean  @default(false)\n  timestamp   DateTime\n}\n\nmodel Review {\n  id          String   @id @default(cuid())\n  user        User\n  userId      String\n  order       Order\n  orderId     String\n  rating      Int\n  comment     String\n}\n\nenum Notification\n```",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.989,
+        "pos": 0.011,
+        "compound": 0.3182
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 325,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 28,
+        "adj_adv_ratio": 0.08615384615384615,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 325
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 325.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.39893617021276595
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VBP": 3,
+            "VBN": 6,
+            "VBG": 15,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 12,
+            "PERSON": 11
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.18615714285714288,
+    "pos": 0.009,
+    "neu": 0.9898571428571429,
+    "neg": 0.001142857142857143
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 102,
+    "adj_adv_ratio": 0.081145584725537,
+    "self_ref_freq": 4,
+    "self_ref_ratio": 0.0031821797931583136,
+    "second_person_freq": 0,
+    "second_person_ratio": 0.0,
+    "total_tokens": 1257
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 179.57142857142858,
+      "clause_complexity": 0.0,
+      "vocabulary_richness": 0.6782475056556064
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 1,
+        "why": 0,
+        "can_could": 1,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBZ": 21,
+        "VB": 5,
+        "VBG": 59,
+        "VBN": 19,
+        "VBD": 9,
+        "VBP": 17
+      },
+      "named_entities": {
+        "ORGANIZATION": 48,
+        "PERSON": 38
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 7
+    },
+    "turn_count": 7,
+    "total_tokens": 1257
+  }
+}

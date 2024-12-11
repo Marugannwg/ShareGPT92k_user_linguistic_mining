@@ -1,0 +1,1526 @@
+{
+  "id": "TnwWAuH_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Write a short JIRA issue description about this, mentioning it should be a flow diagram with information about the endpoints concerned:\nDocument how we implemented authentication with Identity Server with a diagram.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 35,
+        "self_ref_ratio": 0.02857142857142857,
+        "second_person_ratio": 0.02857142857142857
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.05714285714285714,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.02857142857142857,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.02857142857142857,
+        "token_count": 35
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 35.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9411764705882353
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBG": 1,
+            "VBN": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Title: Document Authentication with Identity Server\n\nDescription:\nWe need to document the implementation of authentication with Identity Server, including a flow diagram that shows the different endpoints involved in the process. This will help team members understand how the system works and make it easier for new developers to onboard.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.897,
+        "pos": 0.103,
+        "compound": 0.6705
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 1,
+        "token_count": 55,
+        "self_ref_ratio": 0.01818181818181818,
+        "second_person_ratio": 0.01818181818181818
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.07272727272727272,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.01818181818181818,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.01818181818181818,
+        "token_count": 55
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 27.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8709677419354839
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 6,
+            "VBG": 1,
+            "VBZ": 2,
+            "VBN": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Do it in a more guided manner.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 8,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.25,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 8
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 8.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Title: Create Authentication Flow Diagram for Identity Server Implementation\n\nDescription:\nWe currently have implemented authentication with Identity Server in our system, but the process is not well-documented. To improve understanding and make it easier for new developers to onboard, we should create a flow diagram that outlines the different endpoints involved in the authentication process.\n\nSteps to reproduce:\n\n1. Review the current implementation of authentication with Identity Server\n2. Identify all the endpoints involved in the process\n3. Create a flow diagram that illustrates the flow of authentication, including the different endpoints and how they interact with each other\n4. Add the diagram to our documentation\n5. Review and verify the accuracy of the diagram\n\nAcceptance Criteria:\n\n* A clear and easy to understand flow diagram is created\n* The diagram illustrates all the endpoints involved in the authentication process\n* The diagram is added to our documentation and easily accessible for team members\n* The accuracy of the diagram is verified by at least one team member.\n\nThis JIRA task aims to improve the understandability of how the authentication process works and make it easy for new team members to understand and maintain it.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.014,
+        "neu": 0.827,
+        "pos": 0.159,
+        "compound": 0.9848
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 5,
+        "token_count": 209,
+        "self_ref_ratio": 0.009569377990430622,
+        "second_person_ratio": 0.023923444976076555
+      },
+      "lexical_features": {
+        "adj_adv_freq": 18,
+        "adj_adv_ratio": 0.0861244019138756,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.009569377990430622,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.023923444976076555,
+        "token_count": 209
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 29.857142857142858,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5607476635514018
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 2,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBN": 7,
+            "VBZ": 8,
+            "VB": 16,
+            "VBG": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 5,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "I like the steps to reproduce and acceptance criteria. The rest is too verbose. Stick with the first two for my next requests please.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.729,
+        "pos": 0.271,
+        "compound": 0.7783
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 0,
+        "token_count": 27,
+        "self_ref_ratio": 0.07407407407407407,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.14814814814814814,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.07407407407407407,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 27
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 1,
+            "VB": 2,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Steps to reproduce:\n\n1. Review the current implementation of authentication with Identity Server\n2. Identify all the endpoints involved in the process\n\nAcceptance Criteria:\n\n* A clear and easy to understand flow diagram is created\n* The diagram illustrates all the endpoints involved in the authentication process",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.804,
+        "pos": 0.196,
+        "compound": 0.8591
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 50,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 4,
+        "adj_adv_ratio": 0.08,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 50
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8148148148148148
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 4,
+            "VBN": 3,
+            "VBZ": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "No, the way you did it the time before was perfect for these two sections.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.791,
+        "pos": 0.209,
+        "compound": 0.5719
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 17,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.058823529411764705
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.058823529411764705,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.058823529411764705,
+        "token_count": 17
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 17.0,
+          "clause_complexity": 1.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 2
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Title: Create Authentication Flow Diagram for Identity Server Implementation\n\nDescription:\nWe currently have implemented authentication with Identity Server in our system, but the process is not well-documented. To improve understanding and make it easier for new developers to onboard, we should create a flow diagram that outlines the different endpoints involved in the authentication process.\n\nSteps to reproduce:\n\n1. Review the current implementation of authentication with Identity Server\n2. Identify all the endpoints involved in the process\n3. Create a flow diagram that illustrates the flow of authentication, including the different endpoints and how they interact with each other\n4. Add the diagram to our documentation\n5. Review and verify the accuracy of the diagram\n\nAcceptance Criteria:\n\n* A clear and easy to understand flow diagram is created\n* The diagram illustrates all the endpoints involved in the authentication process\n* The diagram is added to our documentation and easily accessible for team members\n* The accuracy of the diagram is verified by at least one team member.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.016,
+        "neu": 0.838,
+        "pos": 0.145,
+        "compound": 0.9729
+      },
+      "core_lexical": {
+        "self_ref_freq": 2,
+        "second_person_freq": 5,
+        "token_count": 181,
+        "self_ref_ratio": 0.011049723756906077,
+        "second_person_ratio": 0.027624309392265192
+      },
+      "lexical_features": {
+        "adj_adv_freq": 17,
+        "adj_adv_ratio": 0.09392265193370165,
+        "self_ref_freq": 2,
+        "self_ref_ratio": 0.011049723756906077,
+        "second_person_freq": 5,
+        "second_person_ratio": 0.027624309392265192,
+        "token_count": 181
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 30.166666666666668,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.5869565217391305
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 3,
+            "VBN": 7,
+            "VBZ": 7,
+            "VB": 11,
+            "VBG": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 4,
+            "PERSON": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Remove the description section.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 5,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 5
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 5.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Title: Create Authentication Flow Diagram for Identity Server Implementation\n\nSteps to reproduce:\n\n1. Review the current implementation of authentication with Identity Server\n2. Identify all the endpoints involved in the process\n3. Create a flow diagram that illustrates the flow of authentication, including the different endpoints and how they interact with each other\n4. Add the diagram to our documentation\n5. Review and verify the accuracy of the diagram\n\nAcceptance Criteria:\n\n* A clear and easy to understand flow diagram is created\n* The diagram illustrates all the endpoints involved in the authentication process\n* The diagram is added to our documentation and easily accessible for team members\n* The accuracy of the diagram is verified by at least one team member.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.871,
+        "pos": 0.129,
+        "compound": 0.9337
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 130,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.015384615384615385
+      },
+      "lexical_features": {
+        "adj_adv_freq": 10,
+        "adj_adv_ratio": 0.07692307692307693,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.015384615384615385,
+        "token_count": 130
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 32.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6176470588235294
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBN": 5,
+            "VBZ": 5,
+            "VBG": 1,
+            "VBP": 2,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Criteria point 3 'and easily accessible for team members' should be removed. The whole last point must be removed too.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.888,
+        "pos": 0.112,
+        "compound": 0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 23,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 5,
+        "adj_adv_ratio": 0.21739130434782608,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 23
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 11.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.8461538461538461
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 2,
+            "VBN": 2
+          },
+          "named_entities": {
+            "GPE": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Title: Create Authentication Flow Diagram for Identity Server Implementation\n\nSteps to reproduce:\n\n1. Review the current implementation of authentication with Identity Server\n2. Identify all the endpoints involved in the process\n3. Create a flow diagram that illustrates the flow of authentication, including the different endpoints and how they interact with each other\n4. Add the diagram to our documentation\n\nAcceptance Criteria:\n\n* A clear and easy to understand flow diagram is created\n* The diagram illustrates all the endpoints involved in the authentication process",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.843,
+        "pos": 0.157,
+        "compound": 0.9136
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 92,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.010869565217391304
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.07608695652173914,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.010869565217391304,
+        "token_count": 92
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 23.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.62
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBN": 3,
+            "VBZ": 3,
+            "VBG": 1,
+            "VBP": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "You did too much. 'The diagram is added to our documentation and easily accessible for team members' should have been replaced with 'The diagram is added to our documentation' instead of being removed.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.93,
+        "pos": 0.07,
+        "compound": 0.34
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 3,
+        "token_count": 37,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.08108108108108109
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.1891891891891892,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 3,
+        "second_person_ratio": 0.08108108108108109,
+        "token_count": 37
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 18.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.7857142857142857
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VBZ": 2,
+            "VBN": 5,
+            "VB": 1,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 1,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Title: Create Authentication Flow Diagram for Identity Server Implementation\n\nSteps to reproduce:\n\n1. Review the current implementation of authentication with Identity Server\n2. Identify all the endpoints involved in the process\n3. Create a flow diagram that illustrates the flow of authentication, including the different endpoints and how they interact with each other\n4. Add the diagram to our documentation\n\nAcceptance Criteria:\n\n* A clear and easy to understand flow diagram is created\n* The diagram illustrates all the endpoints involved in the authentication process\n* The diagram is added to our documentation",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.855,
+        "pos": 0.145,
+        "compound": 0.9136
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 100,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.02
+      },
+      "lexical_features": {
+        "adj_adv_freq": 7,
+        "adj_adv_ratio": 0.07,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.02,
+        "token_count": 100
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 25.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6037735849056604
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 6,
+            "VBN": 4,
+            "VBZ": 4,
+            "VBG": 1,
+            "VBP": 1,
+            "VBD": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "ORGANIZATION": 3
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "The bullet points will be action items on JIRA.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 10,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Understood, the bullet points in the \"Steps to reproduce\" and \"Acceptance Criteria\" sections can be used as action items on JIRA. These action items will help guide the development team through the process of creating the flow diagram for the Identity Server authentication implementation and ensure that the final product meets the desired specifications.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.795,
+        "pos": 0.205,
+        "compound": 0.891
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 61,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.03278688524590164,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 61
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 30.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9375
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5,
+            "VBN": 1,
+            "VBG": 1,
+            "VBZ": 1
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 1,
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Bullet points should be action items. 'Steps to reproduce:' and 'Acceptance Criteria:' should be in bold too. Can you prepare the text with the markdown ready? \nFor example '\\*\\*Steps to reproduce:\\*\\*'",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.776,
+        "pos": 0.224,
+        "compound": 0.7964
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 48,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.020833333333333332
+      },
+      "lexical_features": {
+        "adj_adv_freq": 3,
+        "adj_adv_ratio": 0.0625,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.020833333333333332,
+        "token_count": 48
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 12.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9285714285714286
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 5
+          },
+          "named_entities": {
+            "GPE": 1,
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 1
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here is the updated JIRA issue description:\n```\nTitle: Create Authentication Flow Diagram for Identity Server Implementation\n\n**Steps to reproduce:**\n- Review the current implementation of authentication with Identity Server\n- Identify all the endpoints involved in the process\n- Create a flow diagram that illustrates the flow of authentication, including the different endpoints and how they interact with each other\n- Add the diagram to our documentation \n\n**Acceptance Criteria:**\n- **Create** a clear and easy to understand flow diagram \n- **Identify** all the endpoints involved in the authentication process\n- **Add** the diagram to our documentation\n```\nEach bullet point represents a action item. The last point is an action item but it is not necessary to repeat it, as it is already in the Steps to reproduce section. And, I've added the **bold** markdown to make the sections more clear.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.874,
+        "pos": 0.126,
+        "compound": 0.9359
+      },
+      "core_lexical": {
+        "self_ref_freq": 1,
+        "second_person_freq": 2,
+        "token_count": 181,
+        "self_ref_ratio": 0.0055248618784530384,
+        "second_person_ratio": 0.011049723756906077
+      },
+      "lexical_features": {
+        "adj_adv_freq": 19,
+        "adj_adv_ratio": 0.10497237569060773,
+        "self_ref_freq": 1,
+        "self_ref_ratio": 0.0055248618784530384,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.011049723756906077,
+        "token_count": 181
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 60.333333333333336,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6266666666666667
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 7,
+            "VB": 7,
+            "VBN": 3,
+            "VBG": 1,
+            "VBP": 2,
+            "VBD": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 6,
+            "PERSON": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Isn't there a markdown shortcut from Action Item?",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 10,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.2,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 10
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 10.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 1
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 1
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "In JIRA, action items can be represented using the `- [ ]` syntax, which creates a checkbox that can be checked or unchecked.\n\nFor example,\n```\n**Steps to reproduce:**\n- [ ] Review the current implementation of authentication with Identity Server\n- [ ] Identify all the endpoints involved in the process\n- [ ] Create a flow diagram that illustrates the flow of authentication, including the different endpoints and how they interact with each other\n- [ ] Add the diagram to our documentation \n\n**Acceptance Criteria:**\n- [ ] Create a clear and easy to understand flow diagram \n- [ ] Identify all the endpoints involved in the authentication process\n- [ ] Add the diagram to our documentation\n```\nThis will create checkboxes that can be checked or unchecked to indicate the completion status of each action item.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.887,
+        "pos": 0.113,
+        "compound": 0.9313
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 160,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0125
+      },
+      "lexical_features": {
+        "adj_adv_freq": 15,
+        "adj_adv_ratio": 0.09375,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.0125,
+        "token_count": 160
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 80.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6885245901639344
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 1,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 7,
+            "VBN": 7,
+            "VBG": 2,
+            "VBZ": 2,
+            "VBP": 1
+          },
+          "named_entities": {
+            "ORGANIZATION": 2
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "It didn't seem to work for [ ] turning into action items.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 14,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 2,
+        "adj_adv_ratio": 0.14285714285714285,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 14
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 14.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 1.0
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBD": 1,
+            "VB": 2,
+            "VBG": 1
+          },
+          "named_entities": {}
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "I apologize for the confusion. The `- [ ]` syntax for creating checkboxes is a feature of GitHub Flavored Markdown (GFM), which is used in many places including GitHub, and some other platforms but not in JIRA. JIRA uses a different markup language called Jira's own markup language, which doesn't support markdown shortcuts for checkboxes.\n\nIn JIRA, instead of using markdown shortcuts, the action items can be represented by bullet points and the team members can use the checkbox feature in the JIRA's interface to indicate the completion status of each action item.\n```\n**Steps to reproduce:**\n- Review the current implementation of authentication with Identity Server\n- Identify all the endpoints involved in the process\n- Create a flow diagram that illustrates the flow of authentication, including the different endpoints and how they interact with each other\n- Add the diagram to our documentation \n\n**Acceptance Criteria:**\n- Create a clear and easy to understand flow diagram \n- Identify all the endpoints involved in the authentication process\n- Add the diagram to our documentation\n```\nIn JIRA's interface, you can check a box next to each action item, to indicate that it has been completed.\n\nI apologize for any confusion caused. Please let me know if you need further help.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.031,
+        "neu": 0.85,
+        "pos": 0.118,
+        "compound": 0.9593
+      },
+      "core_lexical": {
+        "self_ref_freq": 3,
+        "second_person_freq": 4,
+        "token_count": 245,
+        "self_ref_ratio": 0.012244897959183673,
+        "second_person_ratio": 0.0163265306122449
+      },
+      "lexical_features": {
+        "adj_adv_freq": 19,
+        "adj_adv_ratio": 0.07755102040816327,
+        "self_ref_freq": 3,
+        "self_ref_ratio": 0.012244897959183673,
+        "second_person_freq": 4,
+        "second_person_ratio": 0.0163265306122449,
+        "token_count": 245
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 35.0,
+          "clause_complexity": 0.14285714285714285,
+          "vocabulary_richness": 0.6636363636363637
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 3,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 1,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBP": 5,
+            "VBG": 4,
+            "VBZ": 6,
+            "VBN": 7,
+            "VBD": 1,
+            "VB": 14
+          },
+          "named_entities": {
+            "ORGANIZATION": 9,
+            "PERSON": 1,
+            "GPE": 1
+          }
+        }
+      }
+    },
+    {
+      "from": "human",
+      "value": "Steps to reproduce should be Steps to complete.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 9,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 0,
+        "adj_adv_ratio": 0.0,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 9
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 9.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.75
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VB": 3
+          },
+          "named_entities": {
+            "PERSON": 1
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Sure, here's the updated JIRA issue description:\n```\nTitle: Create Authentication Flow Diagram for Identity Server Implementation\n\n**Steps to complete:**\n- Review the current implementation of authentication with Identity Server\n- Identify all the endpoints involved in the process\n- Create a flow diagram that illustrates the flow of authentication, including the different endpoints and how they interact with each other\n- Add the diagram to our documentation \n\n**Acceptance Criteria:**\n- Create a clear and easy to understand flow diagram \n- Identify all the endpoints involved in the authentication process\n- Add the diagram to our documentation\n```\nThe \"Steps to complete\" section outlines the action items that need to be completed in order to fulfill the requirements of the task. It is clear now that it is the task that need to be done, not only the steps to reproduce the issue.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.856,
+        "pos": 0.144,
+        "compound": 0.9618
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 2,
+        "token_count": 165,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.012121212121212121
+      },
+      "lexical_features": {
+        "adj_adv_freq": 13,
+        "adj_adv_ratio": 0.07878787878787878,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 2,
+        "second_person_ratio": 0.012121212121212121,
+        "token_count": 165
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 82.5,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.6027397260273972
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 1,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 5,
+            "VB": 11,
+            "VBN": 4,
+            "VBG": 1,
+            "VBP": 4
+          },
+          "named_entities": {
+            "ORGANIZATION": 4,
+            "PERSON": 1,
+            "GPE": 1
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.5730875000000001,
+    "pos": 0.10941666666666668,
+    "neu": 0.8879583333333333,
+    "neg": 0.0025416666666666665
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 163,
+    "adj_adv_ratio": 0.08707264957264957,
+    "self_ref_freq": 12,
+    "self_ref_ratio": 0.00641025641025641,
+    "second_person_freq": 32,
+    "second_person_ratio": 0.017094017094017096,
+    "total_tokens": 1872
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 26.68154761904762,
+      "clause_complexity": 0.047619047619047616,
+      "vocabulary_richness": 0.8102329484705075
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 12,
+        "why": 0,
+        "can_could": 8,
+        "general": 2
+      },
+      "discourse_markers": {
+        "elaboration": 2,
+        "contrast": 4,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VB": 120,
+        "VBG": 18,
+        "VBN": 60,
+        "VBD": 12,
+        "VBP": 24,
+        "VBZ": 56
+      },
+      "named_entities": {
+        "ORGANIZATION": 47,
+        "GPE": 12,
+        "PERSON": 10
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 24
+    },
+    "turn_count": 24,
+    "total_tokens": 1872
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "id": "6QZ3PVI_0",
+  "conversations": [
+    {
+      "from": "human",
+      "value": "Provide complete and working implementation for converting SQL queries to MongoDB queries in Java.",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 1.0,
+        "pos": 0.0,
+        "compound": 0.0
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 0,
+        "token_count": 15,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.0
+      },
+      "lexical_features": {
+        "adj_adv_freq": 1,
+        "adj_adv_ratio": 0.06666666666666667,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 0,
+        "second_person_ratio": 0.0,
+        "token_count": 15
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 15.0,
+          "clause_complexity": 0.0,
+          "vocabulary_richness": 0.9
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 0,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBG": 2
+          },
+          "named_entities": {
+            "GPE": 2,
+            "ORGANIZATION": 2
+          }
+        }
+      },
+      "expressive_label": 0,
+      "anthropomorphic_label": 0
+    },
+    {
+      "from": "gpt",
+      "value": "Here is a complete and working implementation for converting SQL queries to MongoDB queries in Java:\n```\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.regex.Matcher;\nimport java.util.regex.Pattern;\n\npublic class SQLtoMongoConverter {\n    public static String convert(String sql) {\n        // Replace \"SELECT\" with \"find\"\n        sql = sql.replaceFirst(\"SELECT\", \"db.collection.find\");\n\n        // Replace \"FROM\" with \".project\"\n        sql = sql.replaceFirst(\"FROM\", \".project\");\n\n        // Replace \"WHERE\" with \".filter\"\n        sql = sql.replaceFirst(\"WHERE\", \".filter\");\n\n        // Replace \"AND\" with \".and\"\n        sql = sql.replaceAll(\"\\\\s+AND\\\\s+\", \".and\");\n\n        // Replace \"OR\" with \".or\"\n        sql = sql.replaceAll(\"\\\\s+OR\\\\s+\", \".or\");\n\n        // Replace \"<>\" with \"!=\"\n        sql = sql.replaceAll(\"<>\", \"!=\");\n\n        // Replace \"IN\" with \".in\"\n        sql = sql.replaceAll(\"\\\\s+IN\\\\s+\", \".in\");\n\n        // Replace \"NOT IN\" with \".nin\"\n        sql = sql.replaceAll(\"\\\\s+NOT IN\\\\s+\", \".nin\");\n\n        // Replace \"BETWEEN\" with \".gte and .lte\"\n        Pattern betweenPattern = Pattern.compile(\"\\\\s+BETWEEN\\\\s+([^\\\\s]+)\\\\s+AND\\\\s+([^\\\\s]+)\");\n        Matcher betweenMatcher = betweenPattern.matcher(sql);\n        List<String> betweenReplacements = new ArrayList<>();\n        while (betweenMatcher.find()) {\n            String field = betweenMatcher.group(1);\n            String start = betweenMatcher.group(2);\n            String end = betweenMatcher.group(3);\n            String replacement = String.format(\".gte(%s).lte(%s)\", start, end);\n            betweenReplacements.add(replacement);\n        }\n        for (String replacement : betweenReplacements) {\n            sql = sql.replaceFirst(\"BETWEEN\", replacement);\n        }\n\n        // Replace \"LIKE\" with \".regex\"\n        Pattern likePattern = Pattern.compile(\"\\\\s+LIKE\\\\s+([^\\\\s]+)\");\n        Matcher likeMatcher = likePattern.matcher(sql);\n        List<String> likeReplacements = new ArrayList<>();\n        while (likeMatcher.find()) {\n            String field = likeMatcher.group(1);\n            String pattern = likeMatcher.group(2);\n            // Convert SQL LIKE pattern to a Java regex pattern\n            pattern = pattern.replace(\"%\", \".*\");\n            pattern = pattern.replace(\"_\", \".\");\n            String replacement = String.format(\".regex(\\\"%s\\\")\", pattern);\n            likeReplacements.add(replacement);\n        }\n        for (String replacement : likeReplacements) {\n            sql = sql.replaceFirst(\"LIKE\", replacement);\n        }\n\n        return sql;\n    }\n}\n```\nTo use this converter, you can simply call the",
+      "language": "en",
+      "sentiment": {
+        "neg": 0.0,
+        "neu": 0.971,
+        "pos": 0.029,
+        "compound": 0.7935
+      },
+      "core_lexical": {
+        "self_ref_freq": 0,
+        "second_person_freq": 1,
+        "token_count": 529,
+        "self_ref_ratio": 0.0,
+        "second_person_ratio": 0.001890359168241966
+      },
+      "lexical_features": {
+        "adj_adv_freq": 36,
+        "adj_adv_ratio": 0.06805293005671077,
+        "self_ref_freq": 0,
+        "self_ref_ratio": 0.0,
+        "second_person_freq": 1,
+        "second_person_ratio": 0.001890359168241966,
+        "token_count": 529
+      },
+      "advanced_features": {
+        "structural_features": {
+          "avg_sentence_length": 176.33333333333334,
+          "clause_complexity": 0.6666666666666666,
+          "vocabulary_richness": 0.37719298245614036
+        },
+        "interaction_features": {
+          "question_types": {
+            "what": 0,
+            "how": 0,
+            "why": 0,
+            "can_could": 1,
+            "general": 0
+          },
+          "discourse_markers": {
+            "elaboration": 0,
+            "contrast": 0,
+            "causality": 0,
+            "hedging": 0
+          }
+        },
+        "linguistic_features": {
+          "verb_tense_dist": {
+            "VBZ": 2,
+            "VBG": 11,
+            "VB": 7,
+            "VBP": 2
+          },
+          "named_entities": {
+            "ORGANIZATION": 8,
+            "GPE": 1,
+            "PERSON": 5
+          }
+        }
+      }
+    }
+  ],
+  "overall_sentiment": {
+    "compound": 0.39675,
+    "pos": 0.0145,
+    "neu": 0.9855,
+    "neg": 0.0
+  },
+  "overall_lexical": {
+    "adj_adv_freq": 37,
+    "adj_adv_ratio": 0.06801470588235294,
+    "self_ref_freq": 0,
+    "self_ref_ratio": 0.0,
+    "second_person_freq": 1,
+    "second_person_ratio": 0.001838235294117647,
+    "total_tokens": 544
+  },
+  "overall_advanced": {
+    "structural_features": {
+      "avg_sentence_length": 95.66666666666667,
+      "clause_complexity": 0.3333333333333333,
+      "vocabulary_richness": 0.6385964912280702
+    },
+    "interaction_features": {
+      "question_types": {
+        "what": 0,
+        "how": 0,
+        "why": 0,
+        "can_could": 1,
+        "general": 0
+      },
+      "discourse_markers": {
+        "elaboration": 0,
+        "contrast": 0,
+        "causality": 0,
+        "hedging": 0
+      }
+    },
+    "linguistic_features": {
+      "verb_tense_dist": {
+        "VBG": 13,
+        "VBZ": 2,
+        "VB": 7,
+        "VBP": 2
+      },
+      "named_entities": {
+        "GPE": 3,
+        "ORGANIZATION": 10,
+        "PERSON": 5
+      }
+    }
+  },
+  "conversation_metadata": {
+    "language_distribution": {
+      "en": 2
+    },
+    "turn_count": 2,
+    "total_tokens": 544
+  }
+}
