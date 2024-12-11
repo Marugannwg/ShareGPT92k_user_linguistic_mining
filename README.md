@@ -2,21 +2,12 @@
 
 This project analyzes human-AI interactions from the ShareGPT92K dataset, focusing on linguistic patterns, emotions, and anthropomorphic characteristics in early user-LLM conversations.
 
-├── raw_data/
-│ └── ShareGPT_V3_unfiltered_cleaned_split.json
-├── openai_api_encode/
-│ └── [OpenAI API interaction modules]
-├── sampled_enriched_data/
-│ └── [Sample JSON files with processed conversations]
-├── full_nlp.py
-├── human_labeling.py
-├── sentiment_analysis.py
-├── visualization.ipynb
-└── merged_df_with_clusters.7z *(pickle file inside)
-
 ## Features
 
+Here are the list of tools:
+
 ### Traditional NLP Analysis
+- see \full_nlp.py and \sentiment_analysis.py
 - Lexical feature extraction (word frequencies, POS patterns)
 - Sentiment analysis using VADER
 - Discourse markers identification
@@ -26,17 +17,15 @@ This project analyzes human-AI interactions from the ShareGPT92K dataset, focusi
 - Multi-threaded conversation processing
 
 ### OpenAI API Integration
+- see \openai_api_encode/
 - Asynchronous API calls at scale
 - Token and rate limit management
 - Streaming capabilities
 - Threading management for parallel processing
-- Support for both Chat (e.g., GPT-4) and Embedding models
-
-### Labeling System
-- Human coding interface for manual message labeling
-- GPT-based automated labeling for expressiveness and anthropomorphism
-- Two-step Chain of Thought for summary generation
-- Domain/task topic classification
+- Support for both Chat (e.g., GPT-4o and more) and Text Embedding models
+- The example here is an automated multi-shot labeling for expressiveness and anthropomorphism
+- Same toolkit also used for a Two-step Chain of Thought for summary generation
+- Human coding interface for manual message labeling \human_labeling.py -- for accuracy and robustness check
 
 ## Data Processing Pipeline
 
