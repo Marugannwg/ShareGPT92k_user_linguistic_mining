@@ -7,17 +7,14 @@ This project analyzes human-AI interactions from the ShareGPT92K dataset, focusi
 Here are the list of tools:
 
 ### Traditional NLP Analysis
-- see \full_nlp.py and \sentiment_analysis.py
+- see [full_nlp.py](./full_nlp.py) and [sentiment_analysis.py](./sentiment_analysis.py)
 - Lexical feature extraction (word frequencies, POS patterns)
 - Sentiment analysis using VADER
 - Discourse markers identification
-- Syntactic complexity measurement
-- Named Entity Recognition
-- Language detection
-- Multi-threaded conversation processing
+- Prepared for Multi-threaded batch processing
 
 ### OpenAI API Integration
-- see \openai_api_encode/
+- see [openai_api_encode/](./openai_api_encode/)
 - Asynchronous API calls at scale
 - Token and rate limit management
 - Streaming capabilities
@@ -27,39 +24,22 @@ Here are the list of tools:
 - Same toolkit also used for a Two-step Chain of Thought for summary generation
 - Human coding interface for manual message labeling \human_labeling.py -- for accuracy and robustness check
 
-## Data Processing Pipeline
+**Raw Data**: ShareGPT92K dataset in JSON format
+- Raw data is cleaned and processed into batch, and go through the NLP analysis and customized OpenAI API labeling process
+**Sample Intermediate Storage**: Processed conversations stored in `sampled_enriched_data/` as individual JSONs
+- Sample json outcome for each conversation
+**Final Output**: Combined all processed conversations into `merged_df_with_clusters.7z` -- Use the pickle file inside for visualization
+- This version include:
+   - Token count
+   - VADER sentiment analysis
+   - User of pronouns (first person, second person)
+   - Expressiveness and anthropomorphism labeling (GPT-4o multi-shot result)
+   - Summary and domain topic keyword labeling (GPT-4o CoT)
+   - Clustering results based on domain topic keywords -- Each human input is assigned to one or more clusters representing similar topics (k=50), detail see this [csv](./processed_data/clustering_result_references/domain_clusters_detailed.csv))
 
-1. **Raw Data**: ShareGPT92K dataset in JSON format
-2. **Processing**: 
-   - NLP analysis via `full_nlp.py`
-   - Sentiment analysis
-   - OpenAI API processing for advanced features
-3. **Intermediate Storage**: 
-   - Processed conversations stored in `sampled_enriched_data/` as individual JSONs
-   - Enables batch processing and scalability
-4. **Final Output**: 
-   - Compiled into `merged_df_with_clusters.7z`
-   - Ready for EDA and visualization
+### Visualization
 
-### full_nlp.py
-- Comprehensive NLP processing module
-- Multi-threaded conversation analysis
-- Feature extraction and aggregation
-- Language detection and processing
-
-### human_labeling.py
-Interactive interface for manual message labeling:
-- Expressive/directive speech act labeling
-- Progress saving functionality
-- Navigation between messages
-- Quality control for automated labeling
-
-### visualization.ipynb
-Jupyter notebook for:
-- Data exploration
-- Feature visualization
-- Pattern analysis
-- Result presentation
+- see [visualization.ipynb](./visualization.ipynb); Jupyter notebook for: visualing clustering results, pattern analysis...
 
 ## Setup and Usage
 
@@ -75,15 +55,17 @@ Jupyter notebook for:
 
 Either use conda or pip to install the dependencies.
 
-bash
+```bash
 python -m venv venv
 source venv/bin/activate # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
-
+```
 OR
 
+```bash
 conda env create -f environment.yml
 conda activate sharegpt-analysis
+```
 
 
 ## License
